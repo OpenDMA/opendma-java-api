@@ -68,6 +68,9 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>ID</code> */
     public final static OdmaQName PROPERTY_ID = new OdmaQName("opendma.org", "ID");
 
+    /** qualified name of the OpenDMA system property <code>Repository</code> */
+    public final static OdmaQName PROPERTY_REPOSITORY = new OdmaQName("opendma.org", "Repository");  // defined in Sextion II.1
+
     //-----< class Class >-------------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Class</code> */
