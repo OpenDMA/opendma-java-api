@@ -43,8 +43,8 @@ public class OdmaQName
     }
 
     /**
-     * Create a new <code>OdmaQName</code> for a given <i>name qualifier</i> and
-     * <i>name</i>.
+     * Create a new <code>OdmaQName</code> for a given <i>name qualifier</i>
+     * and <i>name</i>.
      * 
      * @param qualifier
      *            The name <i>qualifier</i> of this qualified name. Can be
@@ -113,10 +113,8 @@ public class OdmaQName
      */
     public boolean equals(Object qn)
     {
-        return (qn != null) &&
-        (qn instanceof OdmaQName) &&
-        ((((qualifier == null) || (((OdmaQName) qn).qualifier == null)) && name.equals(((OdmaQName) qn).name)) || ((qualifier != null) && qualifier.equals(((OdmaQName) qn).qualifier) && name
-                .equals(((OdmaQName) qn).name)));
+        return (qn != null) && (qn instanceof OdmaQName) && ((((qualifier == null) || (((OdmaQName) qn).qualifier == null)) && name.equals(((OdmaQName) qn).name)) || ((qualifier != null) && qualifier
+                .equals(((OdmaQName) qn).qualifier) && name.equals(((OdmaQName) qn).name)));
     }
 
     /**
@@ -154,7 +152,7 @@ public class OdmaQName
     {
         return (((qualifier == null) ? 0 : qualifier.hashCode()) + name.hashCode());
     }
-    
+
     /**
      * Retruns a string representation of this qualified name.
      * 
@@ -162,7 +160,7 @@ public class OdmaQName
      */
     public String toString()
     {
-        return "[" + (qualifier==null ? "<null>" : qualifier) + ", " + name + "]";
+        return "[" + (qualifier == null ? "<null>" : qualifier) + ", " + name + "]";
     }
 
 }

@@ -9,15 +9,16 @@ import java.io.InputStream;
  */
 public interface OdmaContent
 {
-    
+
     /**
      * Returns the data as <code>InputStream</code>.<br>
-     * <b>The caller has to close this stream after she/he has finished reading the data.</b>
+     * <b>The caller has to close this stream after she/he has finished reading
+     * the data.</b>
      * 
      * @return the data as <code>InputStream</code>.
      */
     public InputStream getStream();
-    
+
     /**
      * Returns the size of the data in octests.
      * 

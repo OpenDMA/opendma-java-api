@@ -5,7 +5,7 @@ import org.opendma.OdmaTypes;
 /**
  * Exception thrown whenever the data type accessed by the user does not match
  * the real data type in OpenDMA.
- *
+ * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public class OdmaInvalidDataTypeException extends Exception
@@ -16,165 +16,202 @@ public class OdmaInvalidDataTypeException extends Exception
 
     /** the data type expected by the user */
     private int expectedDataType;
-    
+
     /** the multi-value / single-value property expected by the user */
     private boolean expectedMultivalue;
-    
-    /** wheather this Exception carries information about the real data type that is present in OpenDMA or not */
+
+    /**
+     * wheather this Exception carries information about the real data type that
+     * is present in OpenDMA or not
+     */
     private boolean hasFound;
-    
+
     /** the real data type that is present in OpenDMA */
     private int foundDataType;
-    
+
     /** the real multi-value / single-value property that is present in OpenDMA */
     private boolean foundMultivalue;
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      */
     public OdmaInvalidDataTypeException(int expectedDataType, boolean expectedMultivalue)
     {
-        super( getDefaultMessage(expectedDataType,expectedMultivalue) );
+        super(getDefaultMessage(expectedDataType, expectedMultivalue));
         this.hasFound = false;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param msg a message string for the user
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param msg
+     *            a message string for the user
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      */
     public OdmaInvalidDataTypeException(String msg, int expectedDataType, boolean expectedMultivalue)
     {
-        super( msg );
+        super(msg);
         this.hasFound = false;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param msg a message string for the user
-     * @param t the <code>Throwable</code> that caused this Exception
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param msg
+     *            a message string for the user
+     * @param t
+     *            the <code>Throwable</code> that caused this Exception
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      */
     public OdmaInvalidDataTypeException(String msg, Throwable t, int expectedDataType, boolean expectedMultivalue)
     {
-        super( msg, t );
+        super(msg, t);
         this.hasFound = false;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param t the <code>Throwable</code> that caused this Exception
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param t
+     *            the <code>Throwable</code> that caused this Exception
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      */
     public OdmaInvalidDataTypeException(Throwable t, int expectedDataType, boolean expectedMultivalue)
     {
-        super( getDefaultMessage(expectedDataType,expectedMultivalue), t );
+        super(getDefaultMessage(expectedDataType, expectedMultivalue), t);
         this.hasFound = false;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      * @param foundDataType
      * @param foundMultivalue
      */
     public OdmaInvalidDataTypeException(int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
     {
-        super( getDefaultMessage(expectedDataType,expectedMultivalue,foundDataType,foundMultivalue) );
+        super(getDefaultMessage(expectedDataType, expectedMultivalue, foundDataType, foundMultivalue));
         this.hasFound = true;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
         this.foundDataType = foundDataType;
         this.foundMultivalue = foundMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param msg a message string for the user
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param msg
+     *            a message string for the user
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      * @param foundDataType
      * @param foundMultivalue
      */
     public OdmaInvalidDataTypeException(String msg, int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
     {
-        super( msg );
+        super(msg);
         this.hasFound = true;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
         this.foundDataType = foundDataType;
         this.foundMultivalue = foundMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param msg a message string for the user
-     * @param t the <code>Throwable</code> that caused this Exception
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param msg
+     *            a message string for the user
+     * @param t
+     *            the <code>Throwable</code> that caused this Exception
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      * @param foundDataType
      * @param foundMultivalue
      */
     public OdmaInvalidDataTypeException(String msg, Throwable t, int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
     {
-        super( msg, t );
+        super(msg, t);
         this.hasFound = true;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
         this.foundDataType = foundDataType;
         this.foundMultivalue = foundMultivalue;
     }
-    
+
     /**
-     * Create a new <code>OdmaInvalidDataTypeException</code> with the given parameters.
+     * Create a new <code>OdmaInvalidDataTypeException</code> with the given
+     * parameters.
      * 
-     * @param t the <code>Throwable</code> that caused this Exception
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param t
+     *            the <code>Throwable</code> that caused this Exception
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      * @param foundDataType
      * @param foundMultivalue
      */
     public OdmaInvalidDataTypeException(Throwable t, int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
     {
-        super( getDefaultMessage(expectedDataType,expectedMultivalue,foundDataType,foundMultivalue), t );
+        super(getDefaultMessage(expectedDataType, expectedMultivalue, foundDataType, foundMultivalue), t);
         this.hasFound = true;
         this.expectedDataType = expectedDataType;
         this.expectedMultivalue = expectedMultivalue;
         this.foundDataType = foundDataType;
         this.foundMultivalue = foundMultivalue;
     }
-    
+
     /**
      * 
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      * @return x
      */
     private static String getDefaultMessage(int expectedDataType, boolean expectedMultivalue)
     {
         StringBuffer msgBuffer = new StringBuffer("Invalid data type. Expected ");
-        if(expectedMultivalue)
+        if (expectedMultivalue)
         {
             msgBuffer.append("multi-valued ");
         }
@@ -182,7 +219,7 @@ public class OdmaInvalidDataTypeException extends Exception
         {
             msgBuffer.append("single-valued ");
         }
-        switch(expectedDataType)
+        switch (expectedDataType)
         {
         case OdmaTypes.TYPE_STRING:
             msgBuffer.append("string");
@@ -218,22 +255,24 @@ public class OdmaInvalidDataTypeException extends Exception
             msgBuffer.append("content");
             break;
         }
-        return( msgBuffer.toString() );
+        return (msgBuffer.toString());
     }
 
     /**
      * 
-     * @param expectedDataType the data type expected by the user
-     * @param expectedMultivalue the multi-value / single-value property expected by the user
+     * @param expectedDataType
+     *            the data type expected by the user
+     * @param expectedMultivalue
+     *            the multi-value / single-value property expected by the user
      * @param foundDataType
      * @param foundMultivalue
-     *
+     * 
      * @return x
      */
     private static String getDefaultMessage(int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
     {
         StringBuffer msgBuffer = new StringBuffer("Invalid data type. Expected ");
-        if(expectedMultivalue)
+        if (expectedMultivalue)
         {
             msgBuffer.append("multi-valued ");
         }
@@ -241,7 +280,7 @@ public class OdmaInvalidDataTypeException extends Exception
         {
             msgBuffer.append("single-valued ");
         }
-        switch(expectedDataType)
+        switch (expectedDataType)
         {
         case OdmaTypes.TYPE_STRING:
             msgBuffer.append("string");
@@ -278,7 +317,7 @@ public class OdmaInvalidDataTypeException extends Exception
             break;
         }
         msgBuffer.append(" but found ");
-        if(foundMultivalue)
+        if (foundMultivalue)
         {
             msgBuffer.append("multi-valued ");
         }
@@ -286,7 +325,7 @@ public class OdmaInvalidDataTypeException extends Exception
         {
             msgBuffer.append("single-valued ");
         }
-        switch(foundDataType)
+        switch (foundDataType)
         {
         case OdmaTypes.TYPE_STRING:
             msgBuffer.append("string");
@@ -322,27 +361,27 @@ public class OdmaInvalidDataTypeException extends Exception
             msgBuffer.append("content");
             break;
         }
-        return( msgBuffer.toString() );
+        return (msgBuffer.toString());
     }
 
     /**
      * Returns the data type expected by the user.
-     *
+     * 
      * @return the data type expected by the user
      */
     public int getExpectedDataType()
     {
-        return( expectedDataType );
+        return (expectedDataType);
     }
-    
+
     /**
      * Returns the multi-value / single-value property expected by the user.
-     *
+     * 
      * @return the multi-value / single-value property expected by the user
      */
     public boolean isExpectedMultivalue()
     {
-        return( expectedMultivalue );
+        return (expectedMultivalue);
     }
 
     /**
@@ -351,25 +390,25 @@ public class OdmaInvalidDataTypeException extends Exception
      */
     public boolean hasFoundDataType()
     {
-        return( hasFound );
+        return (hasFound);
     }
-    
+
     /**
      * 
      * @return x
      */
     public int getFoundDataType()
     {
-        return( foundDataType );
+        return (foundDataType);
     }
-    
+
     /**
      * 
      * @return x
      */
     public boolean isFoundMultivalue()
     {
-        return( foundMultivalue );
+        return (foundMultivalue);
     }
 
 }

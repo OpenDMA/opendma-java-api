@@ -14,10 +14,11 @@ public interface OdmaId
      * Returns true if the given Object is a <code>OdmaId</code> or an
      * <code>OdmaGuid</code> identifying the same object.
      * 
-     * @param obj The object to compare this Id to
+     * @param obj
+     *            The object to compare this Id to
      * 
-     * @return true if and only if the given Object is a <code>OdmaId</code> or an
-     * <code>OdmaGuid</code> identifying the same object.
+     * @return true if and only if the given Object is a <code>OdmaId</code>
+     *         or an <code>OdmaGuid</code> identifying the same object.
      */
     public boolean equals(Object obj);
 
