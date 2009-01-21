@@ -296,11 +296,11 @@ public class OdmaTypes
 
     // Name already defined above
 
-    /** qualified name of the OpenDMA system property <code>Source</code> */
-    public final static OdmaQName PROPERTY_SOURCE = new OdmaQName("opendma.org", "Source");
+    /** qualified name of the OpenDMA system property <code>Container</code> */
+    public final static OdmaQName PROPERTY_CONTAINER = new OdmaQName("opendma.org", "Container");
 
-    /** qualified name of the OpenDMA system property <code>Destination</code> */
-    public final static OdmaQName PROPERTY_DESTINATION = new OdmaQName("opendma.org", "Destination");
+    /** qualified name of the OpenDMA system property <code>Containment</code> */
+    public final static OdmaQName PROPERTY_CONTAINMENT = new OdmaQName("opendma.org", "Containment");
 
     // CreatedAt already defined above
 
