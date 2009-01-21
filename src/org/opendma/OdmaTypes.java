@@ -163,16 +163,16 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>ReferenceClass</code> */
     public final static OdmaQName PROPERTY_REFERENCECLASS = new OdmaQName("opendma.org", "ReferenceClass");
 
-    /** qualified name of the OpenDMA system property <code>Multivalue</code> */
-    public final static OdmaQName PROPERTY_MULTIVALUE = new OdmaQName("opendma.org", "Multivalue");
+    /** qualified name of the OpenDMA system property <code>IsMultiValue</code> */
+    public final static OdmaQName PROPERTY_ISMULTIVALUE = new OdmaQName("opendma.org", "IsMultiValue");
 
     /** qualified name of the OpenDMA system property <code>IsRequired</code> */
     public final static OdmaQName PROPERTY_ISREQUIRED = new OdmaQName("opendma.org", "IsRequired");
 
     // IsHidden already defined above
 
-    /** qualified name of the OpenDMA system property <code>IsReadonly</code> */
-    public final static OdmaQName PROPERTY_ISREADONLY = new OdmaQName("opendma.org", "IsReadonly");
+    /** qualified name of the OpenDMA system property <code>IsReadOnly</code> */
+    public final static OdmaQName PROPERTY_ISREADONLY = new OdmaQName("opendma.org", "IsReadOnly");
 
     // IsSystem already defined above
 
