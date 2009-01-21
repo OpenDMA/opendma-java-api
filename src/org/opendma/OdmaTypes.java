@@ -96,8 +96,7 @@ public class OdmaTypes
     // Definition of the system classes of Section I.2
     // =============================================================================================
 
-    // -----< class Object
-    // >------------------------------------------------------------------------
+    // -----< class Object >------------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Object</code> */
     public final static OdmaQName CLASS_OBJECT = new OdmaQName("opendma.org", "Object");
@@ -109,13 +108,10 @@ public class OdmaTypes
     public final static OdmaQName PROPERTY_ID = new OdmaQName("opendma.org", "ID");
 
     /** qualified name of the OpenDMA system property <code>Repository</code> */
-    public final static OdmaQName PROPERTY_REPOSITORY = new OdmaQName("opendma.org", "Repository"); // defined
-                                                                                                    // in
-                                                                                                    // Sextion
-                                                                                                    // II.1
+    // defined in Section II.1
+    public final static OdmaQName PROPERTY_REPOSITORY = new OdmaQName("opendma.org", "Repository");
 
-    // -----< class Class
-    // >-------------------------------------------------------------------------
+    // -----< class Class >-------------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Class</code> */
     public final static OdmaQName CLASS_CLASS = new OdmaQName("opendma.org", "Class");
@@ -135,8 +131,8 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>Aspects</code> */
     public final static OdmaQName PROPERTY_ASPECTS = new OdmaQName("opendma.org", "Aspects");
 
-    /** qualified name of the OpenDMA system property <code>Properties</code> */
-    public final static OdmaQName PROPERTY_PROPERTIES = new OdmaQName("opendma.org", "Properties");
+    /** qualified name of the OpenDMA system property <code>DeclaredProperties</code> */
+    public final static OdmaQName PROPERTY_DECLAREDPROPERTIES = new OdmaQName("opendma.org", "DeclaredProperties");
 
     /** qualified name of the OpenDMA system property <code>IsInstantiable</code> */
     public final static OdmaQName PROPERTY_ISINSTANTIABLE = new OdmaQName("opendma.org", "IsInstantiable");
@@ -150,8 +146,7 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>SubClasses</code> */
     public final static OdmaQName PROPERTY_SUBCLASSES = new OdmaQName("opendma.org", "SubClasses");
 
-    // -----< class Property
-    // >----------------------------------------------------------------------
+    // -----< class Property >----------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>PropertyInfo</code> */
     public final static OdmaQName CLASS_PROPERTYINFO = new OdmaQName("opendma.org", "PropertyInfo");
@@ -185,8 +180,7 @@ public class OdmaTypes
     // Definition of the system classes of Section II
     // =============================================================================================
 
-    // -----< class Repository
-    // >--------------------------------------------------------------------
+    // -----< class Repository >--------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Repository</code> */
     public final static OdmaQName CLASS_REPOSITORY = new OdmaQName("opendma.org", "Repository");
@@ -201,8 +195,7 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>RootFolder</code> */
     public final static OdmaQName PROPERTY_ROOTFOLDER = new OdmaQName("opendma.org", "RootFolder");
 
-    // -----< aspect Document
-    // >---------------------------------------------------------------------
+    // -----< aspect Document >---------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system aspect <code>Document</code> */
     public final static OdmaQName ASPECT_DOCUMENT = new OdmaQName("opendma.org", "Document");
@@ -213,46 +206,28 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>Version</code> */
     public final static OdmaQName PROPERTY_VERSION = new OdmaQName("opendma.org", "Version");
 
-    /**
-     * qualified name of the OpenDMA system property
-     * <code>VersionCollection</code>
-     */
+    /** qualified name of the OpenDMA system property <code>VersionCollection</code> */
     public final static OdmaQName PROPERTY_VERSIONCOLLECTION = new OdmaQName("opendma.org", "VersionCollection");
 
-    /**
-     * qualified name of the OpenDMA system property
-     * <code>ContentElements</code>
-     */
+    /** qualified name of the OpenDMA system property <code>ContentElements</code> */
     public final static OdmaQName PROPERTY_CONTENTELEMENTS = new OdmaQName("opendma.org", "ContentElements");
 
-    /**
-     * qualified name of the OpenDMA system property
-     * <code>CombinedMimeType</code>
-     */
+    /** qualified name of the OpenDMA system property <code>CombinedMimeType</code> */
     public final static OdmaQName PROPERTY_COMBINEDMIMETYPE = new OdmaQName("opendma.org", "CombinedMimeType");
 
-    /**
-     * qualified name of the OpenDMA system property
-     * <code>PrimaryContentElement</code>
-     */
+    /** qualified name of the OpenDMA system property <code>PrimaryContentElement</code> */
     public final static OdmaQName PROPERTY_PRIMARYCONTENTELEMENT = new OdmaQName("opendma.org", "PrimaryContentElement");
 
     /** qualified name of the OpenDMA system property <code>PrimaryContent</code> */
     public final static OdmaQName PROPERTY_PRIMARYCONTENT = new OdmaQName("opendma.org", "PrimaryContent");
 
-    /**
-     * qualified name of the OpenDMA system property
-     * <code>PrimaryMimeType</code>
-     */
+    /** qualified name of the OpenDMA system property <code>PrimaryMimeType</code> */
     public final static OdmaQName PROPERTY_PRIMARYMIMETYPE = new OdmaQName("opendma.org", "PrimaryMimeType");
 
     /** qualified name of the OpenDMA system property <code>PrimarySize</code> */
     public final static OdmaQName PROPERTY_PRIMARYSIZE = new OdmaQName("opendma.org", "PrimarySize");
 
-    /**
-     * qualified name of the OpenDMA system property
-     * <code>PrimaryFileName</code>
-     */
+    /** qualified name of the OpenDMA system property <code>PrimaryFileName</code> */
     public final static OdmaQName PROPERTY_PRIMARYFILENAME = new OdmaQName("opendma.org", "PrimaryFileName");
 
     /** qualified name of the OpenDMA system property <code>IsCheckedOut</code> */
@@ -276,8 +251,7 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>CheckedOutBy</code> */
     public final static OdmaQName PROPERTY_CHECKEDOUTBY = new OdmaQName("opendma.org", "CheckedOutBy");
 
-    // -----< aspect ContentElement
-    // >---------------------------------------------------------------
+    // -----< aspect ContentElement >---------------------------------------------------------------
 
     /** qualified name of the OpenDMA system aspect <code>ContentElement</code> */
     public final static OdmaQName ASPECT_CONTENTELEMENT = new OdmaQName("opendma.org", "ContentElement");
@@ -294,8 +268,7 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>FileName</code> */
     public final static OdmaQName PROPERTY_FILENAME = new OdmaQName("opendma.org", "FileName");
 
-    // -----< aspect Folder
-    // >-----------------------------------------------------------------------
+    // -----< aspect Folder >-----------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system aspect <code>Folder</code> */
     public final static OdmaQName ASPECT_FOLDER = new OdmaQName("opendma.org", "Folder");
@@ -316,8 +289,7 @@ public class OdmaTypes
 
     // LastModifiedBy already defined above
 
-    // -----< aspect Association
-    // >------------------------------------------------------------------
+    // -----< aspect Association >------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system aspect <code>Association</code> */
     public final static OdmaQName ASPECT_ASSOCIATION = new OdmaQName("opendma.org", "Association");
