@@ -27,15 +27,15 @@ public interface OdmaAssociation extends OdmaObject
      * Returns the source of this <i>association</i>, i.e. the container.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).getString()</code>.
      * 
-     * @return the source of this <i>association</i>, i.e. the conatiner
+     * @return the source of this <i>association</i>, i.e. the container
      */
     public OdmaFolder getContainer();
 
     /**
      * Returns the destination of this <i>association</i>, i.e. the containment.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINMENT).getString()</code>.
      * 
-     * @return the source of this <i>association</i>, i.e. the conatiner
+     * @return the destination of this <i>association</i>, i.e. the containment
      */
     public OdmaObject getContainment();
 
