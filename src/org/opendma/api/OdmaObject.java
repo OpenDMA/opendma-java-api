@@ -108,7 +108,15 @@ public interface OdmaObject
      * 
      * @return the <i>unique object identifier</i> as <code>{@link OdmaId}</code> for this <i>object</i>
      */
-    public OdmaId getID();
+    public OdmaId getId();
+    
+    /**
+     * Returns the <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code> for this <i>object</i>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_GUID).getString()</code>.
+     * 
+     * @return the <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code> for this <i>object</i>
+     */
+    public OdmaGuid getGuid();
 
     /**
      * Returns the <code>{@link OdmaRepository}</code> this <i>object</i> is stored in.<br>

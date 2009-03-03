@@ -104,8 +104,11 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>Class</code> */
     public final static OdmaQName PROPERTY_CLASS = new OdmaQName("opendma.org", "Class");
 
-    /** qualified name of the OpenDMA system property <code>ID</code> */
-    public final static OdmaQName PROPERTY_ID = new OdmaQName("opendma.org", "ID");
+    /** qualified name of the OpenDMA system property <code>Id</code> */
+    public final static OdmaQName PROPERTY_ID = new OdmaQName("opendma.org", "Id");
+
+    /** qualified name of the OpenDMA system property <code>Guid</code> */
+    public final static OdmaQName PROPERTY_GUID = new OdmaQName("opendma.org", "Guid");
 
     /** qualified name of the OpenDMA system property <code>Repository</code> */
     // defined in Section II.1
@@ -197,6 +200,12 @@ public class OdmaTypes
 
     // -----< aspect Document >---------------------------------------------------------------------
 
+    /** qualified name of the OpenDMA system property <code>VersionSpecificId</code> */
+    public final static OdmaQName PROPERTY_VERSIONSPECIFICID = new OdmaQName("opendma.org", "VersionSpecificId");
+
+    /** qualified name of the OpenDMA system property <code>Guid</code> */
+    public final static OdmaQName PROPERTY_VERSIONSPECIFICGUID = new OdmaQName("opendma.org", "VersionSpecificGuid");
+    
     /** qualified name of the OpenDMA system aspect <code>Document</code> */
     public final static OdmaQName ASPECT_DOCUMENT = new OdmaQName("opendma.org", "Document");
 

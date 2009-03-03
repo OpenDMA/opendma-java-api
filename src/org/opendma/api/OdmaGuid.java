@@ -1,13 +1,15 @@
 package org.opendma.api;
 
 /**
- * Representation of the <i>unique object identifier<i> that can be used to
- * identify an <ocde>OdmaObject</code> inside a <code>OdmaRepository</code>.<br>
- * To globally identify an object you have to use the <code>OdmaGuid</code>.
+ * Representation of the <i>global unique object identifier<i> that can be used
+ * to globally identify an <ocde>OdmaObject</code>. A reference to the containing
+ * <code>OdmaRepository</code> is included in this ID.<br>
+ * To identify an object only inside an <code>OdmaRepository</code>, you can
+ * use the <code>OdmaId</code>.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public interface OdmaId
+public interface OdmaGuid
 {
 
     /**

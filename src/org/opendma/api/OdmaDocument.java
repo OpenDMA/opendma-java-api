@@ -19,6 +19,26 @@ public interface OdmaDocument extends OdmaObject
     // =============================================================================================
 
     /**
+     * Returns the version specific <i>unique object identifier</i> as <code>{@link OdmaId}</code> for
+     * this <i>object</i>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICID).getString()</code>.
+     * 
+     * @return the version specific <i>unique object identifier</i> as <code>{@link OdmaId}</code> for
+     * this <i>object</i>
+     */
+    public OdmaId getVersionSpecificId();
+    
+    /**
+     * Returns the version specific <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code>
+     * for this <i>object</i>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICGUID).getString()</code>.
+     * 
+     * @return the version specific <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code>
+     * for this <i>object</i>
+     */
+    public OdmaGuid getVersionSpecificGuid();
+    
+    /**
      * Returns the title of this <i>document</i>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.
      * 
