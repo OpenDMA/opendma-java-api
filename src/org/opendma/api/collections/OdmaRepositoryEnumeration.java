@@ -1,6 +1,5 @@
 package org.opendma.api.collections;
 
-import java.util.Iterator;
 
 /**
  * The content of a multi-valued <code>reference</code> property in OpenDMA.<br>

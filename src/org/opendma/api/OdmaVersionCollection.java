@@ -1,6 +1,7 @@
 package org.opendma.api;
 
 import org.opendma.api.collections.OdmaDocumentEnumeration;
+import java.util.Date;
 
 /**
  * Full description follows.
@@ -61,5 +62,29 @@ public interface OdmaVersionCollection extends OdmaObject
      * @return the version of this <code>Document</code> currently beeing worked on during a checkout. Only valid if and only if the corresponding <code>Document</code> is checked out.
      */
     public OdmaDocument getInProgress();
+
+    /**
+     * Returns the date when this <code>Document</code> has been created.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
+     * 
+     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Document</code> has been created
+     */
+    public Date getCreatedAt();
+
+    /**
+     * Returns the user who has created this <code>Document</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
+     * 
+     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has created this <code>Document</code>
+     */
+    public String getCreatedBy();
 
 }

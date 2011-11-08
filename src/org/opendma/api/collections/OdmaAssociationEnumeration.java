@@ -1,6 +1,5 @@
 package org.opendma.api.collections;
 
-import java.util.Iterator;
 
 /**
  * The content of a multi-valued <code>reference</code> property in OpenDMA.<br>
@@ -13,22 +12,7 @@ import java.util.Iterator;
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public interface OdmaAssociationEnumeration
+public interface OdmaAssociationEnumeration extends OdmaObjectEnumeration
 {
-
-    /**
-     * Returns an iterator over all <code>OdmaAssociation</code> elements.
-     * 
-     * @return an iterator over all <code>OdmaAssociation</code> elements.
-     */
-    public Iterator iterator();
-
-    /**
-     * Returns <code>true</code> if and only if the collection is empty, i.e.
-     * <code>iterator().hasNext()</code> returns <code>false</code>.
-     * 
-     * @return <code>true</code> if and only if the collection is empty.
-     */
-    public boolean isEmpty();
 
 }

@@ -9,6 +9,7 @@ import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
 import org.opendma.api.collections.OdmaDocumentEnumeration;
 import org.opendma.api.OdmaDocument;
+import java.util.Date;
 
 /**
  * Template implementation of the interface <code>{@link OdmaVersionCollection}</code>.<p>
@@ -138,6 +139,56 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
         catch(ClassCastException cce)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns the date when this <code>Document</code> has been created.<br>
+     * 
+     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Document</code> has been created
+     */
+    public Date getCreatedAt()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime();
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns the user who has created this <code>Document</code>.<br>
+     * 
+     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has created this <code>Document</code>
+     */
+    public String getCreatedBy()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

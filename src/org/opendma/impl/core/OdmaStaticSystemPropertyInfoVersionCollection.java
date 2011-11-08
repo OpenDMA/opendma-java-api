@@ -16,10 +16,11 @@ public class OdmaStaticSystemPropertyInfoVersionCollection extends OdmaStaticSys
         properties.put(OdmaTypes.PROPERTY_DATATYPE,new OdmaPropertyImpl(OdmaTypes.PROPERTY_DATATYPE,new Integer(OdmaTypes.TYPE_REFERENCE),OdmaTypes.TYPE_INTEGER,false,true));
         properties.put(OdmaTypes.PROPERTY_REFERENCECLASS,new OdmaPropertyImpl(OdmaTypes.PROPERTY_REFERENCECLASS,null,OdmaTypes.TYPE_REFERENCE,false,true));
         properties.put(OdmaTypes.PROPERTY_MULTIVALUE,new OdmaPropertyImpl(OdmaTypes.PROPERTY_MULTIVALUE,Boolean.FALSE,OdmaTypes.TYPE_BOOLEAN,false,true));
-        properties.put(OdmaTypes.PROPERTY_REQUIRED,new OdmaPropertyImpl(OdmaTypes.PROPERTY_REQUIRED,Boolean.TRUE,OdmaTypes.TYPE_BOOLEAN,false,true));
+        properties.put(OdmaTypes.PROPERTY_REQUIRED,new OdmaPropertyImpl(OdmaTypes.PROPERTY_REQUIRED,Boolean.FALSE,OdmaTypes.TYPE_BOOLEAN,false,true));
         properties.put(OdmaTypes.PROPERTY_READONLY,new OdmaPropertyImpl(OdmaTypes.PROPERTY_READONLY,Boolean.TRUE,OdmaTypes.TYPE_BOOLEAN,false,true));
         properties.put(OdmaTypes.PROPERTY_HIDDEN,new OdmaPropertyImpl(OdmaTypes.PROPERTY_HIDDEN,Boolean.FALSE,OdmaTypes.TYPE_BOOLEAN,false,true));
         properties.put(OdmaTypes.PROPERTY_SYSTEM,new OdmaPropertyImpl(OdmaTypes.PROPERTY_SYSTEM,Boolean.TRUE,OdmaTypes.TYPE_BOOLEAN,false,true));
+        properties.put(OdmaTypes.PROPERTY_CHOICES,new OdmaPropertyImpl(OdmaTypes.PROPERTY_CHOICES,null,OdmaTypes.TYPE_REFERENCE,true,true));
     }
 
 }

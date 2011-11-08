@@ -8,6 +8,7 @@ import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaClass;
+import org.opendma.api.collections.OdmaChoiceValueEnumeration;
 
 /**
  * Template implementation of the interface <code>{@link OdmaPropertyInfo}</code>.<p>
@@ -529,6 +530,35 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
         try
         {
             getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value);
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property.<br>
+     * 
+     * <p>Property <b>Choices</b> (opendma): <b>Reference to ChoiceValue (opendma)</b><br>
+     * [MultiValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property
+     */
+    public OdmaChoiceValueEnumeration getChoices()
+    {
+        try
+        {
+            return (OdmaChoiceValueEnumeration)getProperty(OdmaTypes.PROPERTY_CHOICES).getReferenceEnumeration();
+        }
+        catch(ClassCastException cce)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

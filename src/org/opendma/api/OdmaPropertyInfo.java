@@ -2,6 +2,7 @@ package org.opendma.api;
 
 import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.api.collections.OdmaChoiceValueEnumeration;
 
 /**
  * The <i>PropertyInfo</i> specific version of the <code>{@link OdmaObject}</code> interface
@@ -267,6 +268,18 @@ public interface OdmaPropertyInfo extends OdmaObject
      *             if this property can not be set by the current user
      */
     public void setSystem(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHOICES).getReferenceEnumeration()</code>.
+     * 
+     * <p>Property <b>Choices</b> (opendma): <b>Reference to ChoiceValue (opendma)</b><br>
+     * [MultiValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property
+     */
+    public OdmaChoiceValueEnumeration getChoices();
 
     /**
      * the qualified name of this <code>Class</code><br>

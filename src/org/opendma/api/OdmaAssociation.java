@@ -103,18 +103,6 @@ public interface OdmaAssociation extends OdmaObject
     public Date getCreatedAt();
 
     /**
-     * Returns the date when this <code>Association</code> has been modified the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
-     * 
-     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the date when this <code>Association</code> has been modified the last time
-     */
-    public Date getLastModifiedAt();
-
-    /**
      * Returns the user who has created this <code>Association</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
      * 
@@ -125,6 +113,18 @@ public interface OdmaAssociation extends OdmaObject
      * @return the user who has created this <code>Association</code>
      */
     public String getCreatedBy();
+
+    /**
+     * Returns the date when this <code>Association</code> has been modified the last time.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
+     * 
+     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Association</code> has been modified the last time
+     */
+    public Date getLastModifiedAt();
 
     /**
      * Returns the user who has modified this <code>Association</code> the last time.<br>

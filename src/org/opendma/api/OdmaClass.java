@@ -144,6 +144,18 @@ public interface OdmaClass extends OdmaObject
     public OdmaPropertyInfoEnumeration getProperties();
 
     /**
+     * Returns wheather this <code>Class</code> describes an Aspect or a valid class object.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECT).getBoolean()</code>.
+     * 
+     * <p>Property <b>Aspect</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather this <code>Class</code> describes an Aspect or a valid class object
+     */
+    public Boolean getAspect();
+
+    /**
      * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).getBoolean()</code>.
      * 
@@ -217,6 +229,30 @@ public interface OdmaClass extends OdmaObject
      *             if this property can not be set by the current user
      */
     public void setSystem(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns wheather objects of this class can be retrieved from a session by their id or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_RETRIEVABLE).getBoolean()</code>.
+     * 
+     * <p>Property <b>Retrievable</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather objects of this class can be retrieved from a session by their id or not
+     */
+    public Boolean getRetrievable();
+
+    /**
+     * Returns wheather objects of this class can be found by a search query or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SEARCHABLE).getBoolean()</code>.
+     * 
+     * <p>Property <b>Searchable</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather objects of this class can be found by a search query or not
+     */
+    public Boolean getSearchable();
 
     /**
      * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property).<br>

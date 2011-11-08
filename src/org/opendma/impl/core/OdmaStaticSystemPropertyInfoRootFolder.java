@@ -20,6 +20,7 @@ public class OdmaStaticSystemPropertyInfoRootFolder extends OdmaStaticSystemProp
         properties.put(OdmaTypes.PROPERTY_READONLY,new OdmaPropertyImpl(OdmaTypes.PROPERTY_READONLY,Boolean.TRUE,OdmaTypes.TYPE_BOOLEAN,false,true));
         properties.put(OdmaTypes.PROPERTY_HIDDEN,new OdmaPropertyImpl(OdmaTypes.PROPERTY_HIDDEN,Boolean.FALSE,OdmaTypes.TYPE_BOOLEAN,false,true));
         properties.put(OdmaTypes.PROPERTY_SYSTEM,new OdmaPropertyImpl(OdmaTypes.PROPERTY_SYSTEM,Boolean.TRUE,OdmaTypes.TYPE_BOOLEAN,false,true));
+        properties.put(OdmaTypes.PROPERTY_CHOICES,new OdmaPropertyImpl(OdmaTypes.PROPERTY_CHOICES,null,OdmaTypes.TYPE_REFERENCE,true,true));
     }
 
 }

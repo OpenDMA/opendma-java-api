@@ -170,31 +170,6 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     }
 
     /**
-     * Returns the date when this <code>Container</code> has been modified the last time.<br>
-     * 
-     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the date when this <code>Container</code> has been modified the last time
-     */
-    public Date getLastModifiedAt()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
      * Returns the user who has created this <code>Container</code>.<br>
      * 
      * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
@@ -208,6 +183,31 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
         try
         {
             return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns the date when this <code>Container</code> has been modified the last time.<br>
+     * 
+     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Container</code> has been modified the last time
+     */
+    public Date getLastModifiedAt()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

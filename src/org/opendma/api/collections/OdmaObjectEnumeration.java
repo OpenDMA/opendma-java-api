@@ -23,12 +23,4 @@ public interface OdmaObjectEnumeration
      */
     public Iterator iterator();
 
-    /**
-     * Returns <code>true</code> if and only if the collection is empty, i.e.
-     * <code>iterator().hasNext()</code> returns <code>false</code>.
-     * 
-     * @return <code>true</code> if and only if the collection is empty.
-     */
-    public boolean isEmpty();
-
 }

@@ -1,20 +1,22 @@
 package org.opendma.impl.core;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-import org.opendma.api.OdmaObject;
 import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaClass;
+import org.opendma.api.OdmaGuid;
+import org.opendma.api.OdmaId;
+import org.opendma.api.OdmaObject;
+import org.opendma.api.OdmaProperty;
+import org.opendma.api.OdmaQName;
+import org.opendma.api.OdmaRepository;
+import org.opendma.api.collections.OdmaClassEnumeration;
+import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
-import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.OdmaProperty;
-import org.opendma.api.OdmaQName;
-import org.opendma.api.OdmaClass;
-import org.opendma.api.OdmaId;
-import org.opendma.api.OdmaGuid;
-import org.opendma.api.OdmaRepository;
 import org.opendma.impl.OdmaPropertyImpl;
 
 /**
@@ -142,15 +144,45 @@ public class OdmaStaticSystemObject
     {
         // we are not dirty, and will never be. Nothing to do here.
     }
+    
+    public boolean instanceOf(OdmaQName classOrAspectName)
+    {
+        OdmaClass test = getOdmaClass();
+        while(test != null)
+        {
+            if(test.getQName().equals(classOrAspectName))
+            {
+                return true;
+            }
+            OdmaClassEnumeration aspects = test.getAspects();
+            if(aspects != null)
+            {
+                Iterator itAspects = aspects.iterator();
+                while(itAspects.hasNext())
+                {
+                    OdmaClass declaredAspect = (OdmaClass)itAspects.next();
+                    if(declaredAspect.getQName().equals(classOrAspectName))
+                    {
+                        return true;
+                    }
+                }
+            }
+            test = test.getParent();
+        }
+        return false;
+    }
 
     // =============================================================================================
     // Object specific property access
     // =============================================================================================
 
+    // CHECKTEMPLATE: the following code has most likely been copied from a class template. Make sure to keep this code up to date!
+    // The following template code is available as OdmaObjectTemplate
+
     /**
      * Returns the OpenDMA <code>Class</code> describing this <code>Object</code>.<br>
      * 
-     * <p>Property <b>Class</b> (opendma.org): <b>Reference to Class (opendma.org)</b><br>
+     * <p>Property <b>Class</b> (opendma): <b>Reference to Class (opendma)</b><br>
      * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 
@@ -179,7 +211,7 @@ public class OdmaStaticSystemObject
     /**
      * Returns the <i>unique object identifier</i> identifying this <code>Object</code> inside its <code>Repository</code>.<br>
      * 
-     * <p>Property <b>Id</b> (opendma.org): <b>String</b><br>
+     * <p>Property <b>Id</b> (opendma): <b>String</b><br>
      * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 
@@ -204,7 +236,7 @@ public class OdmaStaticSystemObject
     /**
      * Returns the <i>global unique object identifier</i> globally identifying this <code>Object</code>.<br>
      * 
-     * <p>Property <b>Guid</b> (opendma.org): <b>String</b><br>
+     * <p>Property <b>Guid</b> (opendma): <b>String</b><br>
      * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 
@@ -229,7 +261,7 @@ public class OdmaStaticSystemObject
     /**
      * Returns the OpenDMA <code>Repository</code> where this <code>Object</code> resides.<br>
      * 
-     * <p>Property <b>Repository</b> (opendma.org): <b>Reference to Repository (opendma.org)</b><br>
+     * <p>Property <b>Repository</b> (opendma): <b>Reference to Repository (opendma)</b><br>
      * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 

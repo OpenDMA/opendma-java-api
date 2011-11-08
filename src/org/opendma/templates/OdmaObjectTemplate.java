@@ -1,5 +1,7 @@
 package org.opendma.templates;
 
+import java.util.Iterator;
+
 import org.opendma.api.OdmaObject;
 import org.opendma.OdmaTypes;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
@@ -12,6 +14,7 @@ import org.opendma.api.OdmaClass;
 import org.opendma.api.OdmaId;
 import org.opendma.api.OdmaGuid;
 import org.opendma.api.OdmaRepository;
+import org.opendma.api.collections.OdmaClassEnumeration;
 
 /**
  * Template implementation of the interface <code>{@link OdmaObject}</code>.<p>
@@ -107,6 +110,33 @@ public class OdmaObjectTemplate implements OdmaObject
     public void save()
     {
         // TODO: implement me
+    }
+
+    public boolean instanceOf(OdmaQName classOrAspectName)
+    {
+        OdmaClass test = getOdmaClass();
+        while(test != null)
+        {
+            if(test.getQName().equals(classOrAspectName))
+            {
+                return true;
+            }
+            OdmaClassEnumeration aspects = test.getAspects();
+            if(aspects != null)
+            {
+                Iterator itAspects = aspects.iterator();
+                while(itAspects.hasNext())
+                {
+                    OdmaClass declaredAspect = (OdmaClass)itAspects.next();
+                    if(declaredAspect.getQName().equals(classOrAspectName))
+                    {
+                        return true;
+                    }
+                }
+            }
+            test = test.getParent();
+        }
+        return false;
     }
 
     // =============================================================================================

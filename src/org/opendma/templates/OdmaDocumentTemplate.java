@@ -7,10 +7,10 @@ import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
-import org.opendma.api.OdmaId;
-import org.opendma.api.OdmaGuid;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaVersionCollection;
+import org.opendma.api.OdmaId;
+import org.opendma.api.OdmaGuid;
 import org.opendma.api.collections.OdmaContentElementEnumeration;
 import org.opendma.api.OdmaContentElement;
 import java.util.Date;
@@ -37,56 +37,6 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
 
     // CHECKTEMPLATE: the following code has most likely been copied from a class template. Make sure to keep this code up to date!
     // The following template code is available as OdmaDocumentTemplate
-
-    /**
-     * Returns the <i>unique object identifier</i> identifying this <i>version</i> of this <code>Document</code> inside its <code>Repository</code>.<br>
-     * 
-     * <p>Property <b>VersionSpecificId</b> (opendma): <b>String</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the <i>unique object identifier</i> identifying this <i>version</i> of this <code>Document</code> inside its <code>Repository</code>
-     */
-    public OdmaId getVersionSpecificId()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICID).getId();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the <i>global unique object identifier</i> globally identifying this <i>version</i> of this <code>Object</code> inside its <code>Repository</code>.<br>
-     * 
-     * <p>Property <b>VersionSpecificGuid</b> (opendma): <b>String</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the <i>global unique object identifier</i> globally identifying this <i>version</i> of this <code>Object</code> inside its <code>Repository</code>
-     */
-    public OdmaGuid getVersionSpecificGuid()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICGUID).getGuid();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
 
     /**
      * Returns the <i>title</i> of this <code>Document</code>.<br>
@@ -143,7 +93,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0).<br>
      * 
      * <p>Property <b>Version</b> (opendma): <b>String</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * [SingleValue] [ReadOnly] [Nullable]<br>
      * Full description follows.</p>
      * 
      * @return the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0)
@@ -168,7 +118,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information.<br>
      * 
      * <p>Property <b>VersionCollection</b> (opendma): <b>Reference to VersionCollection (opendma)</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * [SingleValue] [ReadOnly] [Nullable]<br>
      * Full description follows.</p>
      * 
      * @return reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information
@@ -182,6 +132,56 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
         catch(ClassCastException cce)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns the <i>unique object identifier</i> identifying this logical document independent from the specific version inside its <code>Repository</code>.<br>
+     * 
+     * <p>Property <b>VersionIndependentId</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>unique object identifier</i> identifying this logical document independent from the specific version inside its <code>Repository</code>
+     */
+    public OdmaId getVersionIndependentId()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_VERSIONINDEPENDENTID).getId();
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns the <i>global unique object identifier</i> globally identifying this logical document independent from the specific version.<br>
+     * 
+     * <p>Property <b>VersionIndependentGuid</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>global unique object identifier</i> globally identifying this logical document independent from the specific version
+     */
+    public OdmaGuid getVersionIndependentGuid()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_VERSIONINDEPENDENTGUID).getGuid();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -225,17 +225,17 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
     /**
      * Returns the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
      * 
-     * <p>Property <b>CombinedMimeType</b> (opendma): <b>String</b><br>
+     * <p>Property <b>CombinedContentType</b> (opendma): <b>String</b><br>
      * [SingleValue] [Writable] [Nullable]<br>
      * Full description follows.</p>
      * 
      * @return the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of
      */
-    public String getCombinedMimeType()
+    public String getCombinedContentType()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_COMBINEDMIMETYPE).getString();
+            return getProperty(OdmaTypes.PROPERTY_COMBINEDCONTENTTYPE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -250,18 +250,18 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
     /**
      * Sets the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
      * 
-     * <p>Property <b>CombinedMimeType</b> (opendma): <b>String</b><br>
+     * <p>Property <b>CombinedContentType</b> (opendma): <b>String</b><br>
      * [SingleValue] [Writable] [Nullable]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
      *             if this property can not be set by the current user
      */
-    public void setCombinedMimeType(String value) throws OdmaAccessDeniedException
+    public void setCombinedContentType(String value) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_COMBINEDMIMETYPE).setValue(value);
+            getProperty(OdmaTypes.PROPERTY_COMBINEDCONTENTTYPE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -329,38 +329,13 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
     }
 
     /**
-     * Returns <code>true</code> if and only if this <code>Document</code> is checked out.<br>
-     * 
-     * <p>Property <b>CheckedOut</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return <code>true</code> if and only if this <code>Document</code> is checked out
-     */
-    public Boolean getCheckedOut()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_CHECKEDOUT).getBoolean();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the date when this <code>Document</code> has been created.<br>
+     * Returns the date when this version of this <code>Document</code> has been created.<br>
      * 
      * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br>
      * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return the date when this <code>Document</code> has been created
+     * @return the date when this version of this <code>Document</code> has been created
      */
     public Date getCreatedAt()
     {
@@ -379,19 +354,19 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
     }
 
     /**
-     * Returns the date when this version of this <code>Document</code> has been created.<br>
+     * Returns the user who has created this version of this <code>Document</code>.<br>
      * 
-     * <p>Property <b>VersionCreatedAt</b> (opendma): <b>DateTime</b><br>
+     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
      * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return the date when this version of this <code>Document</code> has been created
+     * @return the user who has created this version of this <code>Document</code>
      */
-    public Date getVersionCreatedAt()
+    public String getCreatedBy()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_VERSIONCREATEDAT).getDateTime();
+            return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -429,81 +404,6 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
     }
 
     /**
-     * Returns the date when this <code>Document</code> has been checked out.<br>
-     * 
-     * <p>Property <b>CheckedOutAt</b> (opendma): <b>DateTime</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
-     * Full description follows.</p>
-     * 
-     * @return the date when this <code>Document</code> has been checked out
-     */
-    public Date getCheckedOutAt()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_CHECKEDOUTAT).getDateTime();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the user who has created this <code>Document</code>.<br>
-     * 
-     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the user who has created this <code>Document</code>
-     */
-    public String getCreatedBy()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the user who has created this version of this <code>Document</code>.<br>
-     * 
-     * <p>Property <b>VersionCreatedBy</b> (opendma): <b>String</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the user who has created this version of this <code>Document</code>
-     */
-    public String getVersionCreatedBy()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_VERSIONCREATEDBY).getString();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
      * Returns the user who has modified this version of this <code>Document</code> the last time.<br>
      * 
      * <p>Property <b>LastModifiedBy</b> (opendma): <b>String</b><br>
@@ -517,6 +417,56 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
         try
         {
             return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString();
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns <code>true</code> if and only if this <code>Document</code> is checked out.<br>
+     * 
+     * <p>Property <b>CheckedOut</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return <code>true</code> if and only if this <code>Document</code> is checked out
+     */
+    public Boolean getCheckedOut()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_CHECKEDOUT).getBoolean();
+        }
+        catch(OdmaInvalidDataTypeException oidte)
+        {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaObjectNotFoundException oonfe)
+        {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns the date when this <code>Document</code> has been checked out.<br>
+     * 
+     * <p>Property <b>CheckedOutAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Document</code> has been checked out
+     */
+    public Date getCheckedOutAt()
+    {
+        try
+        {
+            return getProperty(OdmaTypes.PROPERTY_CHECKEDOUTAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

@@ -262,18 +262,28 @@ public class OdmaStaticClassHierarchy
         while(itPropertyInfos.hasNext())
         {
             OdmaStaticSystemPropertyInfo pi = (OdmaStaticSystemPropertyInfo)itPropertyInfos.next();
-            OdmaCoreId piId = new OdmaCoreId(pi.getNameQualifier()+"Property"+pi.getName());
-            OdmaCoreGuid piGuid = new OdmaCoreGuid(repoId,piId);
+            OdmaId piId = new OdmaId(pi.getNameQualifier()+"Property"+pi.getName());
+            OdmaGuid piGuid = new OdmaGuid(repoId,piId);
             pi.patchIds(piId,piGuid);
         }
         Iterator itClassInfos = classInfos.values().iterator();
         while(itClassInfos.hasNext())
         {
             OdmaStaticSystemClass ci = (OdmaStaticSystemClass)itClassInfos.next();
-            OdmaCoreId ciId = new OdmaCoreId(ci.getNameQualifier()+"Class"+ci.getName());
-            OdmaCoreGuid ciGuid = new OdmaCoreGuid(repoId,ciId);
+            OdmaId ciId = new OdmaId(ci.getNameQualifier()+"Class"+ci.getName());
+            OdmaGuid ciGuid = new OdmaGuid(repoId,ciId);
             ci.patchIds(ciId,ciGuid);
         }
+    }
+    
+    public boolean getRetrievable(OdmaQName className)
+    {
+        return false;
+    }
+    
+    public boolean getSearchable(OdmaQName className)
+    {
+        return false;
     }
     
     public void buildClassHierarchy() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
@@ -293,39 +303,53 @@ public class OdmaStaticClassHierarchy
         propertyInfos.put(OdmaTypes.PROPERTY_ASPECTS, new OdmaStaticSystemPropertyInfoAspects());
         propertyInfos.put(OdmaTypes.PROPERTY_DECLAREDPROPERTIES, new OdmaStaticSystemPropertyInfoDeclaredProperties());
         propertyInfos.put(OdmaTypes.PROPERTY_PROPERTIES, new OdmaStaticSystemPropertyInfoProperties());
+        propertyInfos.put(OdmaTypes.PROPERTY_ASPECT, new OdmaStaticSystemPropertyInfoAspect());
         propertyInfos.put(OdmaTypes.PROPERTY_INSTANTIABLE, new OdmaStaticSystemPropertyInfoInstantiable());
         propertyInfos.put(OdmaTypes.PROPERTY_HIDDEN, new OdmaStaticSystemPropertyInfoHidden());
         propertyInfos.put(OdmaTypes.PROPERTY_SYSTEM, new OdmaStaticSystemPropertyInfoSystem());
+        propertyInfos.put(OdmaTypes.PROPERTY_RETRIEVABLE, new OdmaStaticSystemPropertyInfoRetrievable());
+        propertyInfos.put(OdmaTypes.PROPERTY_SEARCHABLE, new OdmaStaticSystemPropertyInfoSearchable());
         propertyInfos.put(OdmaTypes.PROPERTY_SUBCLASSES, new OdmaStaticSystemPropertyInfoSubClasses());
         propertyInfos.put(OdmaTypes.PROPERTY_DATATYPE, new OdmaStaticSystemPropertyInfoDataType());
         propertyInfos.put(OdmaTypes.PROPERTY_REFERENCECLASS, new OdmaStaticSystemPropertyInfoReferenceClass());
         propertyInfos.put(OdmaTypes.PROPERTY_MULTIVALUE, new OdmaStaticSystemPropertyInfoMultiValue());
         propertyInfos.put(OdmaTypes.PROPERTY_REQUIRED, new OdmaStaticSystemPropertyInfoRequired());
         propertyInfos.put(OdmaTypes.PROPERTY_READONLY, new OdmaStaticSystemPropertyInfoReadOnly());
+        propertyInfos.put(OdmaTypes.PROPERTY_CHOICES, new OdmaStaticSystemPropertyInfoChoices());
+        propertyInfos.put(OdmaTypes.PROPERTY_STRINGVALUE, new OdmaStaticSystemPropertyInfoStringValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_INTEGERVALUE, new OdmaStaticSystemPropertyInfoIntegerValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_SHORTVALUE, new OdmaStaticSystemPropertyInfoShortValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_LONGVALUE, new OdmaStaticSystemPropertyInfoLongValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_FLOATVALUE, new OdmaStaticSystemPropertyInfoFloatValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_DOUBLEVALUE, new OdmaStaticSystemPropertyInfoDoubleValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_BOOLEANVALUE, new OdmaStaticSystemPropertyInfoBooleanValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_DATETIMEVALUE, new OdmaStaticSystemPropertyInfoDateTimeValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_BLOBVALUE, new OdmaStaticSystemPropertyInfoBLOBValue());
+        propertyInfos.put(OdmaTypes.PROPERTY_REFERENCEVALUE, new OdmaStaticSystemPropertyInfoReferenceValue());
         propertyInfos.put(OdmaTypes.PROPERTY_ROOTCLASS, new OdmaStaticSystemPropertyInfoRootClass());
         propertyInfos.put(OdmaTypes.PROPERTY_ROOTASPECTS, new OdmaStaticSystemPropertyInfoRootAspects());
         propertyInfos.put(OdmaTypes.PROPERTY_ROOTFOLDER, new OdmaStaticSystemPropertyInfoRootFolder());
-        propertyInfos.put(OdmaTypes.PROPERTY_VERSIONSPECIFICID, new OdmaStaticSystemPropertyInfoVersionSpecificId());
-        propertyInfos.put(OdmaTypes.PROPERTY_VERSIONSPECIFICGUID, new OdmaStaticSystemPropertyInfoVersionSpecificGuid());
         propertyInfos.put(OdmaTypes.PROPERTY_TITLE, new OdmaStaticSystemPropertyInfoTitle());
         propertyInfos.put(OdmaTypes.PROPERTY_VERSION, new OdmaStaticSystemPropertyInfoVersion());
         propertyInfos.put(OdmaTypes.PROPERTY_VERSIONCOLLECTION, new OdmaStaticSystemPropertyInfoVersionCollection());
+        propertyInfos.put(OdmaTypes.PROPERTY_VERSIONINDEPENDENTID, new OdmaStaticSystemPropertyInfoVersionIndependentId());
+        propertyInfos.put(OdmaTypes.PROPERTY_VERSIONINDEPENDENTGUID, new OdmaStaticSystemPropertyInfoVersionIndependentGuid());
         propertyInfos.put(OdmaTypes.PROPERTY_CONTENTELEMENTS, new OdmaStaticSystemPropertyInfoContentElements());
-        propertyInfos.put(OdmaTypes.PROPERTY_COMBINEDMIMETYPE, new OdmaStaticSystemPropertyInfoCombinedMimeType());
+        propertyInfos.put(OdmaTypes.PROPERTY_COMBINEDCONTENTTYPE, new OdmaStaticSystemPropertyInfoCombinedContentType());
         propertyInfos.put(OdmaTypes.PROPERTY_PRIMARYCONTENTELEMENT, new OdmaStaticSystemPropertyInfoPrimaryContentElement());
-        propertyInfos.put(OdmaTypes.PROPERTY_CHECKEDOUT, new OdmaStaticSystemPropertyInfoCheckedOut());
         propertyInfos.put(OdmaTypes.PROPERTY_CREATEDAT, new OdmaStaticSystemPropertyInfoCreatedAt());
-        propertyInfos.put(OdmaTypes.PROPERTY_VERSIONCREATEDAT, new OdmaStaticSystemPropertyInfoVersionCreatedAt());
-        propertyInfos.put(OdmaTypes.PROPERTY_LASTMODIFIEDAT, new OdmaStaticSystemPropertyInfoLastModifiedAt());
-        propertyInfos.put(OdmaTypes.PROPERTY_CHECKEDOUTAT, new OdmaStaticSystemPropertyInfoCheckedOutAt());
         propertyInfos.put(OdmaTypes.PROPERTY_CREATEDBY, new OdmaStaticSystemPropertyInfoCreatedBy());
-        propertyInfos.put(OdmaTypes.PROPERTY_VERSIONCREATEDBY, new OdmaStaticSystemPropertyInfoVersionCreatedBy());
+        propertyInfos.put(OdmaTypes.PROPERTY_LASTMODIFIEDAT, new OdmaStaticSystemPropertyInfoLastModifiedAt());
         propertyInfos.put(OdmaTypes.PROPERTY_LASTMODIFIEDBY, new OdmaStaticSystemPropertyInfoLastModifiedBy());
+        propertyInfos.put(OdmaTypes.PROPERTY_CHECKEDOUT, new OdmaStaticSystemPropertyInfoCheckedOut());
+        propertyInfos.put(OdmaTypes.PROPERTY_CHECKEDOUTAT, new OdmaStaticSystemPropertyInfoCheckedOutAt());
         propertyInfos.put(OdmaTypes.PROPERTY_CHECKEDOUTBY, new OdmaStaticSystemPropertyInfoCheckedOutBy());
+        propertyInfos.put(OdmaTypes.PROPERTY_CONTENTTYPE, new OdmaStaticSystemPropertyInfoContentType());
+        propertyInfos.put(OdmaTypes.PROPERTY_POSITION, new OdmaStaticSystemPropertyInfoPosition());
         propertyInfos.put(OdmaTypes.PROPERTY_CONTENT, new OdmaStaticSystemPropertyInfoContent());
         propertyInfos.put(OdmaTypes.PROPERTY_SIZE, new OdmaStaticSystemPropertyInfoSize());
-        propertyInfos.put(OdmaTypes.PROPERTY_MIMETYPE, new OdmaStaticSystemPropertyInfoMimeType());
         propertyInfos.put(OdmaTypes.PROPERTY_FILENAME, new OdmaStaticSystemPropertyInfoFileName());
+        propertyInfos.put(OdmaTypes.PROPERTY_LOCATION, new OdmaStaticSystemPropertyInfoLocation());
         propertyInfos.put(OdmaTypes.PROPERTY_VERSIONS, new OdmaStaticSystemPropertyInfoVersions());
         propertyInfos.put(OdmaTypes.PROPERTY_LATEST, new OdmaStaticSystemPropertyInfoLatest());
         propertyInfos.put(OdmaTypes.PROPERTY_RELEASED, new OdmaStaticSystemPropertyInfoReleased());
@@ -344,7 +368,7 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ID));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_GUID));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_REPOSITORY));
-        ssc = new OdmaStaticSystemClassObject(null,getSubClassesEnumeration(OdmaTypes.CLASS_OBJECT),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassObject(null,getSubClassesEnumeration(OdmaTypes.CLASS_OBJECT),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_OBJECT),getSearchable(OdmaTypes.CLASS_OBJECT));
         classInfos.put(OdmaTypes.CLASS_OBJECT, ssc);
 
         declaredAspects = null;
@@ -356,11 +380,14 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ASPECTS));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_DECLAREDPROPERTIES));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_PROPERTIES));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ASPECT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_INSTANTIABLE));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_HIDDEN));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SYSTEM));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_RETRIEVABLE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SEARCHABLE));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SUBCLASSES));
-        ssc = new OdmaStaticSystemClassClass(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_CLASS),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassClass(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_CLASS),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_CLASS),getSearchable(OdmaTypes.CLASS_CLASS));
         registerSubClass(OdmaTypes.CLASS_OBJECT, ssc);
         classInfos.put(OdmaTypes.CLASS_CLASS, ssc);
 
@@ -376,9 +403,27 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_READONLY));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_HIDDEN));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SYSTEM));
-        ssc = new OdmaStaticSystemClassPropertyInfo(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_PROPERTYINFO),declaredAspects,declaredProperties);
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CHOICES));
+        ssc = new OdmaStaticSystemClassPropertyInfo(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_PROPERTYINFO),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_PROPERTYINFO),getSearchable(OdmaTypes.CLASS_PROPERTYINFO));
         registerSubClass(OdmaTypes.CLASS_OBJECT, ssc);
         classInfos.put(OdmaTypes.CLASS_PROPERTYINFO, ssc);
+
+        declaredAspects = null;
+        declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_DISPLAYNAME));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_STRINGVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_INTEGERVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SHORTVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LONGVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_FLOATVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_DOUBLEVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_BOOLEANVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_DATETIMEVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_BLOBVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_REFERENCEVALUE));
+        ssc = new OdmaStaticSystemClassChoiceValue(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_CHOICEVALUE),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_CHOICEVALUE),getSearchable(OdmaTypes.CLASS_CHOICEVALUE));
+        registerSubClass(OdmaTypes.CLASS_OBJECT, ssc);
+        classInfos.put(OdmaTypes.CLASS_CHOICEVALUE, ssc);
 
         declaredAspects = null;
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
@@ -387,42 +432,54 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ROOTCLASS));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ROOTASPECTS));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ROOTFOLDER));
-        ssc = new OdmaStaticSystemClassRepository(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_REPOSITORY),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassRepository(getClassInfo(OdmaTypes.CLASS_OBJECT),getSubClassesEnumeration(OdmaTypes.CLASS_REPOSITORY),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_REPOSITORY),getSearchable(OdmaTypes.CLASS_REPOSITORY));
         registerSubClass(OdmaTypes.CLASS_OBJECT, ssc);
         classInfos.put(OdmaTypes.CLASS_REPOSITORY, ssc);
 
         declaredAspects = null;
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONSPECIFICID));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONSPECIFICGUID));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_TITLE));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSION));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONCOLLECTION));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONINDEPENDENTID));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONINDEPENDENTGUID));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTENTELEMENTS));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_COMBINEDMIMETYPE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_COMBINEDCONTENTTYPE));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_PRIMARYCONTENTELEMENT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CHECKEDOUT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONCREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CHECKEDOUTAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDBY));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_VERSIONCREATEDBY));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDBY));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CHECKEDOUT));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CHECKEDOUTAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CHECKEDOUTBY));
-        ssc = new OdmaStaticSystemClassDocument(null,getSubClassesEnumeration(OdmaTypes.CLASS_DOCUMENT),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassDocument(null,getSubClassesEnumeration(OdmaTypes.CLASS_DOCUMENT),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_DOCUMENT),getSearchable(OdmaTypes.CLASS_DOCUMENT));
         registerRootAspect(ssc);
         classInfos.put(OdmaTypes.CLASS_DOCUMENT, ssc);
 
         declaredAspects = null;
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTENT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SIZE));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_MIMETYPE));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_FILENAME));
-        ssc = new OdmaStaticSystemClassContentElement(null,getSubClassesEnumeration(OdmaTypes.CLASS_CONTENTELEMENT),declaredAspects,declaredProperties);
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTENTTYPE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_POSITION));
+        ssc = new OdmaStaticSystemClassContentElement(null,getSubClassesEnumeration(OdmaTypes.CLASS_CONTENTELEMENT),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_CONTENTELEMENT),getSearchable(OdmaTypes.CLASS_CONTENTELEMENT));
         registerRootAspect(ssc);
         classInfos.put(OdmaTypes.CLASS_CONTENTELEMENT, ssc);
+
+        declaredAspects = null;
+        declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTENT));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SIZE));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_FILENAME));
+        ssc = new OdmaStaticSystemClassDataContentElement(getClassInfo(OdmaTypes.CLASS_CONTENTELEMENT),getSubClassesEnumeration(OdmaTypes.CLASS_DATACONTENTELEMENT),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_DATACONTENTELEMENT),getSearchable(OdmaTypes.CLASS_DATACONTENTELEMENT));
+        registerSubClass(OdmaTypes.CLASS_CONTENTELEMENT, ssc);
+        classInfos.put(OdmaTypes.CLASS_DATACONTENTELEMENT, ssc);
+
+        declaredAspects = null;
+        declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LOCATION));
+        ssc = new OdmaStaticSystemClassReferenceContentElement(getClassInfo(OdmaTypes.CLASS_CONTENTELEMENT),getSubClassesEnumeration(OdmaTypes.CLASS_REFERENCECONTENTELEMENT),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_REFERENCECONTENTELEMENT),getSearchable(OdmaTypes.CLASS_REFERENCECONTENTELEMENT));
+        registerSubClass(OdmaTypes.CLASS_CONTENTELEMENT, ssc);
+        classInfos.put(OdmaTypes.CLASS_REFERENCECONTENTELEMENT, ssc);
 
         declaredAspects = null;
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
@@ -430,7 +487,9 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LATEST));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_RELEASED));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_INPROGRESS));
-        ssc = new OdmaStaticSystemClassVersionCollection(null,getSubClassesEnumeration(OdmaTypes.CLASS_VERSIONCOLLECTION),declaredAspects,declaredProperties);
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDAT));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDBY));
+        ssc = new OdmaStaticSystemClassVersionCollection(null,getSubClassesEnumeration(OdmaTypes.CLASS_VERSIONCOLLECTION),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_VERSIONCOLLECTION),getSearchable(OdmaTypes.CLASS_VERSIONCOLLECTION));
         registerRootAspect(ssc);
         classInfos.put(OdmaTypes.CLASS_VERSIONCOLLECTION, ssc);
 
@@ -440,10 +499,10 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINEES));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_ASSOCIATIONS));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDBY));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDBY));
-        ssc = new OdmaStaticSystemClassContainer(null,getSubClassesEnumeration(OdmaTypes.CLASS_CONTAINER),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassContainer(null,getSubClassesEnumeration(OdmaTypes.CLASS_CONTAINER),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_CONTAINER),getSearchable(OdmaTypes.CLASS_CONTAINER));
         registerRootAspect(ssc);
         classInfos.put(OdmaTypes.CLASS_CONTAINER, ssc);
 
@@ -451,7 +510,7 @@ public class OdmaStaticClassHierarchy
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_PARENT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_SUBFOLDERS));
-        ssc = new OdmaStaticSystemClassFolder(getClassInfo(OdmaTypes.CLASS_CONTAINER),getSubClassesEnumeration(OdmaTypes.CLASS_FOLDER),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassFolder(getClassInfo(OdmaTypes.CLASS_CONTAINER),getSubClassesEnumeration(OdmaTypes.CLASS_FOLDER),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_FOLDER),getSearchable(OdmaTypes.CLASS_FOLDER));
         registerSubClass(OdmaTypes.CLASS_CONTAINER, ssc);
         classInfos.put(OdmaTypes.CLASS_FOLDER, ssc);
 
@@ -459,7 +518,7 @@ public class OdmaStaticClassHierarchy
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINEDIN));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINEDINASSOCIATIONS));
-        ssc = new OdmaStaticSystemClassContainable(null,getSubClassesEnumeration(OdmaTypes.CLASS_CONTAINABLE),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassContainable(null,getSubClassesEnumeration(OdmaTypes.CLASS_CONTAINABLE),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_CONTAINABLE),getSearchable(OdmaTypes.CLASS_CONTAINABLE));
         registerRootAspect(ssc);
         classInfos.put(OdmaTypes.CLASS_CONTAINABLE, ssc);
 
@@ -469,10 +528,10 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINER));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINMENT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDBY));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDBY));
-        ssc = new OdmaStaticSystemClassAssociation(null,getSubClassesEnumeration(OdmaTypes.CLASS_ASSOCIATION),declaredAspects,declaredProperties);
+        ssc = new OdmaStaticSystemClassAssociation(null,getSubClassesEnumeration(OdmaTypes.CLASS_ASSOCIATION),declaredAspects,declaredProperties,getRetrievable(OdmaTypes.CLASS_ASSOCIATION),getSearchable(OdmaTypes.CLASS_ASSOCIATION));
         registerRootAspect(ssc);
         classInfos.put(OdmaTypes.CLASS_ASSOCIATION, ssc);
 
@@ -499,6 +558,7 @@ public class OdmaStaticClassHierarchy
         getPropertyInfo(OdmaTypes.PROPERTY_PROPERTIES).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_PROPERTYINFO));
         getPropertyInfo(OdmaTypes.PROPERTY_SUBCLASSES).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CLASS));
         getPropertyInfo(OdmaTypes.PROPERTY_REFERENCECLASS).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CLASS));
+        getPropertyInfo(OdmaTypes.PROPERTY_CHOICES).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CHOICEVALUE));
         getPropertyInfo(OdmaTypes.PROPERTY_ROOTCLASS).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CLASS));
         getPropertyInfo(OdmaTypes.PROPERTY_ROOTASPECTS).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CLASS));
         getPropertyInfo(OdmaTypes.PROPERTY_ROOTFOLDER).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_FOLDER));

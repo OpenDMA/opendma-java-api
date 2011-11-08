@@ -7,7 +7,6 @@ import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
-import org.opendma.api.OdmaContent;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 
 /**
@@ -34,95 +33,19 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
     // The following template code is available as OdmaContentElementTemplate
 
     /**
-     * Returns the binary content of this <code>ContentElement</code> as octets.<br>
-     * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the binary content of this <code>ContentElement</code> as octets
-     */
-    public OdmaContent getContent()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_CONTENT).getContent();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Sets the binary content of this <code>ContentElement</code> as octets.<br>
-     * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
-     */
-    public void setContent(OdmaContent value) throws OdmaAccessDeniedException
-    {
-        try
-        {
-            getProperty(OdmaTypes.PROPERTY_CONTENT).setValue(value);
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the number of octests the binary content of this <code>ContentElement</code> consists of.<br>
-     * 
-     * <p>Property <b>Size</b> (opendma): <b>Long</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
-     * Full description follows.</p>
-     * 
-     * @return the number of octests the binary content of this <code>ContentElement</code> consists of
-     */
-    public Long getSize()
-    {
-        try
-        {
-            return getProperty(OdmaTypes.PROPERTY_SIZE).getLong();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
      * Returns the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted.<br>
      * 
-     * <p>Property <b>MimeType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>ContentType</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
      * Full description follows.</p>
      * 
      * @return the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted
      */
-    public String getMimeType()
+    public String getContentType()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_MIMETYPE).getString();
+            return getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -137,18 +60,18 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
     /**
      * Sets the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted.<br>
      * 
-     * <p>Property <b>MimeType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>ContentType</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
      *             if this property can not be set by the current user
      */
-    public void setMimeType(String value) throws OdmaAccessDeniedException
+    public void setContentType(String value) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_MIMETYPE).setValue(value);
+            getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -161,45 +84,19 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
     }
 
     /**
-     * Returns the optional file name of this <code>ContentElement</code>.<br>
+     * Returns the position of this element in the list of all content elements of the containing document.<br>
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * <p>Property <b>Position</b> (opendma): <b>Integer</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return the optional file name of this <code>ContentElement</code>
+     * @return the position of this element in the list of all content elements of the containing document
      */
-    public String getFileName()
+    public Integer getPosition()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_FILENAME).getString();
-        }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaObjectNotFoundException oonfe)
-        {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Sets the optional file name of this <code>ContentElement</code>.<br>
-     * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
-     * Full description follows.</p>
-     * 
-     * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
-     */
-    public void setFileName(String value) throws OdmaAccessDeniedException
-    {
-        try
-        {
-            getProperty(OdmaTypes.PROPERTY_FILENAME).setValue(value);
+            return getProperty(OdmaTypes.PROPERTY_POSITION).getInteger();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
