@@ -1,22 +1,34 @@
 package org.opendma.api.collections;
 
+import java.util.Iterator;
+
 /**
- * Type safe version of the <code>OdmaObjectEnumeration</code> interface that
- * does only return objects implementing <code>OdmaAssociation</code> by the
- * Iterator.<br>
- * 
+ * The content of a multi-valued <code>reference</code> property in OpenDMA.<br>
+ * While scalar multi-value properties typically contain a limited number of
+ * items, reference properties might contain very large numbers of items. So
+ * they can only be accessed by an <code>Iterator</code> over all contained
+ * objects.<br>
+ * An implementation of OpenDMA should load the items on demand in pages from
+ * the server instead of retrieving all ietms at once.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public interface OdmaAssociationEnumeration extends OdmaObjectEnumeration
+public interface OdmaAssociationEnumeration
 {
 
     /**
-     * Returns the elements of this enumeration as <code>List</code>.<br>
-     * This is possible since <i>document</i>s are known to have only a small number of <i>content element</i>s.
+     * Returns an iterator over all <code>OdmaAssociation</code> elements.
      * 
-     * @return the elements of this enumeration as <code>List</code>
+     * @return an iterator over all <code>OdmaAssociation</code> elements.
      */
-    public ContentElementList asList();
+    public Iterator iterator();
+
+    /**
+     * Returns <code>true</code> if and only if the collection is empty, i.e.
+     * <code>iterator().hasNext()</code> returns <code>false</code>.
+     * 
+     * @return <code>true</code> if and only if the collection is empty.
+     */
+    public boolean isEmpty();
 
 }

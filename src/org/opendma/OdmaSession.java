@@ -1,0 +1,41 @@
+package org.opendma;
+
+import org.opendma.api.OdmaId;
+import org.opendma.api.OdmaObject;
+import org.opendma.api.OdmaQName;
+import org.opendma.api.OdmaRepository;
+import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.exceptions.OdmaObjectNotFoundException;
+
+/**
+ * A session (connection) with a specific OpenDMA domain.<br/>
+ * This interface has been designed with the JDBC <code>Connection</code> interface in mind and
+ * constitutes it's counterpart in the OpenDMA world.
+ * 
+ * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
+ */
+public interface OdmaSession
+{
+
+    /**
+     * Returns the <code>{@link OdmaRepository}</code> object for the given repository id.
+     * 
+     * @param repositoryId the id of the repository to return
+     * 
+     * @return the <code>{@link OdmaRepository}</code> object for the given repository id
+     * 
+     * @throws OdmaAccessDeniedException if the current user does not have access to the given repository
+     * @throws OdmaObjectNotFoundException if a repository with the given id does not exist
+     */
+    public OdmaRepository getRepository(OdmaId repositoryId) throws OdmaObjectNotFoundException, OdmaAccessDeniedException;
+    
+    /**
+     * Returns the <code>{@link OdmaId}</code>s of the repositories the user has access to.
+     * 
+     * @return the <code>{@link OdmaId}</code>s of the repositories the user has access to
+     */
+    public OdmaId[] getRepositoryIds();
+    
+    public OdmaObject getObject(OdmaId repositoryId, OdmaId objectId, OdmaQName className) throws OdmaObjectNotFoundException, OdmaAccessDeniedException;
+
+}

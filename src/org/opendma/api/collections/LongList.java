@@ -12,14 +12,14 @@ public interface LongList extends List
 {
 
     /**
-     * Returns the <code>Long</code> element at the specified position in this
-     * list.
+     * Returns the <code>Long</code> element at the specified position in
+     * this list.
      * 
      * @param index
      *            position of the element to return
      * 
-     * @return the <code>Long</code> element at the specified position in this
-     *         list.
+     * @return the <code>Long</code> element at the specified position in
+     *         this list.
      * 
      * @throws IndexOutOfBoundsException
      *             if the index is out of range (index < 0 || index >= size()).

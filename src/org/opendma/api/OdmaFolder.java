@@ -1,17 +1,17 @@
 package org.opendma.api;
 
-import java.util.Date;
-
-import org.opendma.api.collections.OdmaAssociationEnumeration;
-import org.opendma.api.collections.OdmaObjectEnumeration;
+import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.api.collections.OdmaFolderEnumeration;
 
 /**
- * The <i>Folder</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to all
- * defined OpenDMA properties.
+ * The <i>Folder</i> specific version of the <code>{@link OdmaContainer}</code> interface
+ * that offers short cuts to all defined OpenDMA properties.<p>
+ * 
+ * Full description follows.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public interface OdmaFolder extends OdmaObject
+public interface OdmaFolder extends OdmaContainer
 {
 
     // =============================================================================================
@@ -19,62 +19,40 @@ public interface OdmaFolder extends OdmaObject
     // =============================================================================================
 
     /**
-     * Returns the title of this <i>folder</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.
+     * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
-     * @return the title of this <i>folder</i>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
      */
-    public String getTitle();
+    public OdmaFolder getParent();
 
     /**
-     * Returns the enumeration over all <code>OdmaObject</code>s that are contained in this <i>folder</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEES).getObjectList()</code>.
+     * Sets the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).setValue(value)</code>.
      * 
-     * @return the enumeration over all <code>OdmaObject</code>s that are contained in this <i>folder</i>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public OdmaObjectEnumeration getContainees();
+    public void setParent(OdmaFolder value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the enumeration over all <code>OdmaAssociation</code>s between this <i>folder</i> and the
-     * <code>OdmaObject</code>s that are contained in this <i>folder</i>.<br>
-     * Shortcut for
-     * <code>(OdmaAssociationEnumeration)getProperty(OdmaTypes.PROPERTY_ASSOCIATIONS).getObjectList()</code>.
+     * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceEnumeration()</code>.
      * 
-     * @return the enumeration over all <code>OdmaAssociation</code>s between this <i>folder</i> and the
-     *         <code>OdmaObject</code>s that are contained in this <i>folder</i>
-     */
-    public OdmaAssociationEnumeration getAssociations();
-
-    /**
-     * Returns the <code>Date</code> when this <i>folder</i> has been created.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
+     * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br>
+     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
      * 
-     * @return the <code>Date</code> when this <i>folder</i> has been created
+     * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty
      */
-    public Date getCreatedAt();
-
-    /**
-     * Returns the <code>Date</code> when this <i>folder</i> has been modified the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
-     * 
-     * @return the <code>Date</code> when this <i>folder</i> has been modified the last time
-     */
-    public Date getLastModifiedAt();
-
-    /**
-     * Returns the name of the user who has created this <i>folder</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
-     * 
-     * @return the name of the user who has created this <i>folder</i>
-     */
-    public String getCreatedBy();
-
-    /**
-     * Returns the name of the user who has modified this <i>folder</i> the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
-     * 
-     * @return the name of the user who has modified this <i>folder</i> the last time
-     */
-    public String getLastModifiedBy();
+    public OdmaFolderEnumeration getSubFolders();
 
 }

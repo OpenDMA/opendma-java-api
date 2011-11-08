@@ -1,7 +1,7 @@
 package org.opendma.api.collections;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Type safe version of the <code>List</code> interface for the <i>DateTime</i>
@@ -13,18 +13,18 @@ public interface DateTimeList extends List
 {
 
     /**
-     * Returns the <code>Date</code> element at the specified position in this
-     * list.
+     * Returns the <code>Date</code> element at the specified position in
+     * this list.
      * 
      * @param index
      *            position of the element to return
      * 
-     * @return the <code>Date</code> element at the specified position in this
-     *         list.
+     * @return the <code>Date</code> element at the specified position in
+     *         this list.
      * 
      * @throws IndexOutOfBoundsException
      *             if the index is out of range (index < 0 || index >= size()).
      */
-    public Date getDate(int index);
+    public Date getDateTime(int index);
 
 }

@@ -4,14 +4,14 @@ import org.opendma.api.OdmaQName;
 
 /**
  * Static declaration of all type constants used in the OpenDMA spcification.
- * 
+ *
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public class OdmaTypes
 {
 
     // =============================================================================================
-    // Definition of the numeric data type id as defined in §2.5
+    // Declaration of numeric data type IDs
     // =============================================================================================
 
     /**
@@ -63,7 +63,7 @@ public class OdmaTypes
     public final static int TYPE_DATETIME = 8;
 
     /**
-     * Numeric type identifier of the data type <code>BLOB</code>.<br>
+     * Numeric type identifier of the data type <code>Blob</code>.<br>
      * Value is 9.
      */
     public final static int TYPE_BLOB = 9;
@@ -81,243 +81,276 @@ public class OdmaTypes
     public final static int TYPE_CONTENT = 11;
 
     /**
-     * First defined numeric type identifier.<br>
-     * Value is 1.
+     * Numeric type identifier of the data type <code>Id</code>.<br>
+     * Value is 100.
      */
-    public final static int MIN_TYPE = TYPE_STRING;
+    public final static int TYPE_ID = 100;
 
     /**
-     * Last defined numeric type identifier.<br>
-     * Value is 11.
+     * Numeric type identifier of the data type <code>Guid</code>.<br>
+     * Value is 101.
      */
-    public final static int MAX_TYPE = TYPE_CONTENT;
+    public final static int TYPE_GUID = 101;
 
     // =============================================================================================
-    // Definition of the system classes of Section I.2
+    // Declaration of pre-defined class names and property names
     // =============================================================================================
 
     // -----< class Object >------------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Object</code> */
-    public final static OdmaQName CLASS_OBJECT = new OdmaQName("opendma.org", "Object");
+    public final static OdmaQName CLASS_OBJECT = new OdmaQName("opendma", "Object");
 
     /** qualified name of the OpenDMA system property <code>Class</code> */
-    public final static OdmaQName PROPERTY_CLASS = new OdmaQName("opendma.org", "Class");
+    public final static OdmaQName PROPERTY_CLASS = new OdmaQName("opendma", "Class");
 
     /** qualified name of the OpenDMA system property <code>Id</code> */
-    public final static OdmaQName PROPERTY_ID = new OdmaQName("opendma.org", "Id");
+    public final static OdmaQName PROPERTY_ID = new OdmaQName("opendma", "Id");
 
     /** qualified name of the OpenDMA system property <code>Guid</code> */
-    public final static OdmaQName PROPERTY_GUID = new OdmaQName("opendma.org", "Guid");
+    public final static OdmaQName PROPERTY_GUID = new OdmaQName("opendma", "Guid");
 
     /** qualified name of the OpenDMA system property <code>Repository</code> */
-    // defined in Section II.1
-    public final static OdmaQName PROPERTY_REPOSITORY = new OdmaQName("opendma.org", "Repository");
+    public final static OdmaQName PROPERTY_REPOSITORY = new OdmaQName("opendma", "Repository");
 
     // -----< class Class >-------------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Class</code> */
-    public final static OdmaQName CLASS_CLASS = new OdmaQName("opendma.org", "Class");
+    public final static OdmaQName CLASS_CLASS = new OdmaQName("opendma", "Class");
 
     /** qualified name of the OpenDMA system property <code>Name</code> */
-    public final static OdmaQName PROPERTY_NAME = new OdmaQName("opendma.org", "Name");
+    public final static OdmaQName PROPERTY_NAME = new OdmaQName("opendma", "Name");
 
     /** qualified name of the OpenDMA system property <code>NameQualifier</code> */
-    public final static OdmaQName PROPERTY_NAMEQUALIFIER = new OdmaQName("opendma.org", "NameQualifier");
+    public final static OdmaQName PROPERTY_NAMEQUALIFIER = new OdmaQName("opendma", "NameQualifier");
 
     /** qualified name of the OpenDMA system property <code>DisplayName</code> */
-    public final static OdmaQName PROPERTY_DISPLAYNAME = new OdmaQName("opendma.org", "DisplayName");
+    public final static OdmaQName PROPERTY_DISPLAYNAME = new OdmaQName("opendma", "DisplayName");
 
     /** qualified name of the OpenDMA system property <code>Parent</code> */
-    public final static OdmaQName PROPERTY_PARENT = new OdmaQName("opendma.org", "Parent");
+    public final static OdmaQName PROPERTY_PARENT = new OdmaQName("opendma", "Parent");
 
     /** qualified name of the OpenDMA system property <code>Aspects</code> */
-    public final static OdmaQName PROPERTY_ASPECTS = new OdmaQName("opendma.org", "Aspects");
+    public final static OdmaQName PROPERTY_ASPECTS = new OdmaQName("opendma", "Aspects");
 
     /** qualified name of the OpenDMA system property <code>DeclaredProperties</code> */
-    public final static OdmaQName PROPERTY_DECLAREDPROPERTIES = new OdmaQName("opendma.org", "DeclaredProperties");
+    public final static OdmaQName PROPERTY_DECLAREDPROPERTIES = new OdmaQName("opendma", "DeclaredProperties");
 
-    /** qualified name of the OpenDMA system property <code>IsInstantiable</code> */
-    public final static OdmaQName PROPERTY_ISINSTANTIABLE = new OdmaQName("opendma.org", "IsInstantiable");
+    /** qualified name of the OpenDMA system property <code>Properties</code> */
+    public final static OdmaQName PROPERTY_PROPERTIES = new OdmaQName("opendma", "Properties");
 
-    /** qualified name of the OpenDMA system property <code>IsHidden</code> */
-    public final static OdmaQName PROPERTY_ISHIDDEN = new OdmaQName("opendma.org", "IsHidden");
+    /** qualified name of the OpenDMA system property <code>Instantiable</code> */
+    public final static OdmaQName PROPERTY_INSTANTIABLE = new OdmaQName("opendma", "Instantiable");
 
-    /** qualified name of the OpenDMA system property <code>IsSystem</code> */
-    public final static OdmaQName PROPERTY_ISSYSTEM = new OdmaQName("opendma.org", "IsSystem");
+    /** qualified name of the OpenDMA system property <code>Hidden</code> */
+    public final static OdmaQName PROPERTY_HIDDEN = new OdmaQName("opendma", "Hidden");
+
+    /** qualified name of the OpenDMA system property <code>System</code> */
+    public final static OdmaQName PROPERTY_SYSTEM = new OdmaQName("opendma", "System");
 
     /** qualified name of the OpenDMA system property <code>SubClasses</code> */
-    public final static OdmaQName PROPERTY_SUBCLASSES = new OdmaQName("opendma.org", "SubClasses");
+    public final static OdmaQName PROPERTY_SUBCLASSES = new OdmaQName("opendma", "SubClasses");
 
-    // -----< class Property >----------------------------------------------------------------------
+    // -----< class PropertyInfo >------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>PropertyInfo</code> */
-    public final static OdmaQName CLASS_PROPERTYINFO = new OdmaQName("opendma.org", "PropertyInfo");
+    public final static OdmaQName CLASS_PROPERTYINFO = new OdmaQName("opendma", "PropertyInfo");
 
-    // Name already defined above
+    // Property Name already defined previously
 
-    // NameQualifier already defined above
+    // Property NameQualifier already defined previously
 
-    // DisplayName already defined above
+    // Property DisplayName already defined previously
 
     /** qualified name of the OpenDMA system property <code>DataType</code> */
-    public final static OdmaQName PROPERTY_DATATYPE = new OdmaQName("opendma.org", "DataType");
+    public final static OdmaQName PROPERTY_DATATYPE = new OdmaQName("opendma", "DataType");
 
     /** qualified name of the OpenDMA system property <code>ReferenceClass</code> */
-    public final static OdmaQName PROPERTY_REFERENCECLASS = new OdmaQName("opendma.org", "ReferenceClass");
+    public final static OdmaQName PROPERTY_REFERENCECLASS = new OdmaQName("opendma", "ReferenceClass");
 
-    /** qualified name of the OpenDMA system property <code>IsMultiValue</code> */
-    public final static OdmaQName PROPERTY_ISMULTIVALUE = new OdmaQName("opendma.org", "IsMultiValue");
+    /** qualified name of the OpenDMA system property <code>MultiValue</code> */
+    public final static OdmaQName PROPERTY_MULTIVALUE = new OdmaQName("opendma", "MultiValue");
 
-    /** qualified name of the OpenDMA system property <code>IsRequired</code> */
-    public final static OdmaQName PROPERTY_ISREQUIRED = new OdmaQName("opendma.org", "IsRequired");
+    /** qualified name of the OpenDMA system property <code>Required</code> */
+    public final static OdmaQName PROPERTY_REQUIRED = new OdmaQName("opendma", "Required");
 
-    // IsHidden already defined above
+    /** qualified name of the OpenDMA system property <code>ReadOnly</code> */
+    public final static OdmaQName PROPERTY_READONLY = new OdmaQName("opendma", "ReadOnly");
 
-    /** qualified name of the OpenDMA system property <code>IsReadOnly</code> */
-    public final static OdmaQName PROPERTY_ISREADONLY = new OdmaQName("opendma.org", "IsReadOnly");
+    // Property Hidden already defined previously
 
-    // IsSystem already defined above
-
-    // =============================================================================================
-    // Definition of the system classes of Section II
-    // =============================================================================================
+    // Property System already defined previously
 
     // -----< class Repository >--------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Repository</code> */
-    public final static OdmaQName CLASS_REPOSITORY = new OdmaQName("opendma.org", "Repository");
+    public final static OdmaQName CLASS_REPOSITORY = new OdmaQName("opendma", "Repository");
 
-    // Name already defined above
+    // Property Name already defined previously
 
-    // DisplayName already defined above
+    // Property DisplayName already defined previously
 
     /** qualified name of the OpenDMA system property <code>RootClass</code> */
-    public final static OdmaQName PROPERTY_ROOTCLASS = new OdmaQName("opendma.org", "RootClass");
+    public final static OdmaQName PROPERTY_ROOTCLASS = new OdmaQName("opendma", "RootClass");
+
+    /** qualified name of the OpenDMA system property <code>RootAspects</code> */
+    public final static OdmaQName PROPERTY_ROOTASPECTS = new OdmaQName("opendma", "RootAspects");
 
     /** qualified name of the OpenDMA system property <code>RootFolder</code> */
-    public final static OdmaQName PROPERTY_ROOTFOLDER = new OdmaQName("opendma.org", "RootFolder");
+    public final static OdmaQName PROPERTY_ROOTFOLDER = new OdmaQName("opendma", "RootFolder");
 
-    // -----< aspect Document >---------------------------------------------------------------------
+    // -----< class Document >----------------------------------------------------------------------
+
+    /** qualified name of the OpenDMA system class <code>Document</code> */
+    public final static OdmaQName CLASS_DOCUMENT = new OdmaQName("opendma", "Document");
 
     /** qualified name of the OpenDMA system property <code>VersionSpecificId</code> */
-    public final static OdmaQName PROPERTY_VERSIONSPECIFICID = new OdmaQName("opendma.org", "VersionSpecificId");
+    public final static OdmaQName PROPERTY_VERSIONSPECIFICID = new OdmaQName("opendma", "VersionSpecificId");
 
-    /** qualified name of the OpenDMA system property <code>Guid</code> */
-    public final static OdmaQName PROPERTY_VERSIONSPECIFICGUID = new OdmaQName("opendma.org", "VersionSpecificGuid");
-    
-    /** qualified name of the OpenDMA system aspect <code>Document</code> */
-    public final static OdmaQName ASPECT_DOCUMENT = new OdmaQName("opendma.org", "Document");
+    /** qualified name of the OpenDMA system property <code>VersionSpecificGuid</code> */
+    public final static OdmaQName PROPERTY_VERSIONSPECIFICGUID = new OdmaQName("opendma", "VersionSpecificGuid");
 
     /** qualified name of the OpenDMA system property <code>Title</code> */
-    public final static OdmaQName PROPERTY_TITLE = new OdmaQName("opendma.org", "Title");
+    public final static OdmaQName PROPERTY_TITLE = new OdmaQName("opendma", "Title");
 
     /** qualified name of the OpenDMA system property <code>Version</code> */
-    public final static OdmaQName PROPERTY_VERSION = new OdmaQName("opendma.org", "Version");
+    public final static OdmaQName PROPERTY_VERSION = new OdmaQName("opendma", "Version");
 
     /** qualified name of the OpenDMA system property <code>VersionCollection</code> */
-    public final static OdmaQName PROPERTY_VERSIONCOLLECTION = new OdmaQName("opendma.org", "VersionCollection");
+    public final static OdmaQName PROPERTY_VERSIONCOLLECTION = new OdmaQName("opendma", "VersionCollection");
 
     /** qualified name of the OpenDMA system property <code>ContentElements</code> */
-    public final static OdmaQName PROPERTY_CONTENTELEMENTS = new OdmaQName("opendma.org", "ContentElements");
+    public final static OdmaQName PROPERTY_CONTENTELEMENTS = new OdmaQName("opendma", "ContentElements");
 
     /** qualified name of the OpenDMA system property <code>CombinedMimeType</code> */
-    public final static OdmaQName PROPERTY_COMBINEDMIMETYPE = new OdmaQName("opendma.org", "CombinedMimeType");
+    public final static OdmaQName PROPERTY_COMBINEDMIMETYPE = new OdmaQName("opendma", "CombinedMimeType");
 
     /** qualified name of the OpenDMA system property <code>PrimaryContentElement</code> */
-    public final static OdmaQName PROPERTY_PRIMARYCONTENTELEMENT = new OdmaQName("opendma.org", "PrimaryContentElement");
+    public final static OdmaQName PROPERTY_PRIMARYCONTENTELEMENT = new OdmaQName("opendma", "PrimaryContentElement");
 
-    /** qualified name of the OpenDMA system property <code>PrimaryContent</code> */
-    public final static OdmaQName PROPERTY_PRIMARYCONTENT = new OdmaQName("opendma.org", "PrimaryContent");
-
-    /** qualified name of the OpenDMA system property <code>PrimaryMimeType</code> */
-    public final static OdmaQName PROPERTY_PRIMARYMIMETYPE = new OdmaQName("opendma.org", "PrimaryMimeType");
-
-    /** qualified name of the OpenDMA system property <code>PrimarySize</code> */
-    public final static OdmaQName PROPERTY_PRIMARYSIZE = new OdmaQName("opendma.org", "PrimarySize");
-
-    /** qualified name of the OpenDMA system property <code>PrimaryFileName</code> */
-    public final static OdmaQName PROPERTY_PRIMARYFILENAME = new OdmaQName("opendma.org", "PrimaryFileName");
-
-    /** qualified name of the OpenDMA system property <code>IsCheckedOut</code> */
-    public final static OdmaQName PROPERTY_ISCHECKEDOUT = new OdmaQName("opendma.org", "IsCheckedOut");
+    /** qualified name of the OpenDMA system property <code>CheckedOut</code> */
+    public final static OdmaQName PROPERTY_CHECKEDOUT = new OdmaQName("opendma", "CheckedOut");
 
     /** qualified name of the OpenDMA system property <code>CreatedAt</code> */
-    public final static OdmaQName PROPERTY_CREATEDAT = new OdmaQName("opendma.org", "CreatedAt");
+    public final static OdmaQName PROPERTY_CREATEDAT = new OdmaQName("opendma", "CreatedAt");
+
+    /** qualified name of the OpenDMA system property <code>VersionCreatedAt</code> */
+    public final static OdmaQName PROPERTY_VERSIONCREATEDAT = new OdmaQName("opendma", "VersionCreatedAt");
 
     /** qualified name of the OpenDMA system property <code>LastModifiedAt</code> */
-    public final static OdmaQName PROPERTY_LASTMODIFIEDAT = new OdmaQName("opendma.org", "LastModifiedAt");
+    public final static OdmaQName PROPERTY_LASTMODIFIEDAT = new OdmaQName("opendma", "LastModifiedAt");
 
-    /** qualified name of the OpenDMA system property <code>CeckedOutAt</code> */
-    public final static OdmaQName PROPERTY_CHECKEDOUTAT = new OdmaQName("opendma.org", "CheckedOutAt");
+    /** qualified name of the OpenDMA system property <code>CheckedOutAt</code> */
+    public final static OdmaQName PROPERTY_CHECKEDOUTAT = new OdmaQName("opendma", "CheckedOutAt");
 
     /** qualified name of the OpenDMA system property <code>CreatedBy</code> */
-    public final static OdmaQName PROPERTY_CREATEDBY = new OdmaQName("opendma.org", "CreatedBy");
+    public final static OdmaQName PROPERTY_CREATEDBY = new OdmaQName("opendma", "CreatedBy");
+
+    /** qualified name of the OpenDMA system property <code>VersionCreatedBy</code> */
+    public final static OdmaQName PROPERTY_VERSIONCREATEDBY = new OdmaQName("opendma", "VersionCreatedBy");
 
     /** qualified name of the OpenDMA system property <code>LastModifiedBy</code> */
-    public final static OdmaQName PROPERTY_LASTMODIFIEDBY = new OdmaQName("opendma.org", "LastModifiedBy");
+    public final static OdmaQName PROPERTY_LASTMODIFIEDBY = new OdmaQName("opendma", "LastModifiedBy");
 
     /** qualified name of the OpenDMA system property <code>CheckedOutBy</code> */
-    public final static OdmaQName PROPERTY_CHECKEDOUTBY = new OdmaQName("opendma.org", "CheckedOutBy");
+    public final static OdmaQName PROPERTY_CHECKEDOUTBY = new OdmaQName("opendma", "CheckedOutBy");
 
-    // -----< aspect ContentElement >---------------------------------------------------------------
+    // -----< class ContentElement >----------------------------------------------------------------
 
-    /** qualified name of the OpenDMA system aspect <code>ContentElement</code> */
-    public final static OdmaQName ASPECT_CONTENTELEMENT = new OdmaQName("opendma.org", "ContentElement");
+    /** qualified name of the OpenDMA system class <code>ContentElement</code> */
+    public final static OdmaQName CLASS_CONTENTELEMENT = new OdmaQName("opendma", "ContentElement");
 
     /** qualified name of the OpenDMA system property <code>Content</code> */
-    public final static OdmaQName PROPERTY_CONTENT = new OdmaQName("opendma.org", "Content");
+    public final static OdmaQName PROPERTY_CONTENT = new OdmaQName("opendma", "Content");
 
     /** qualified name of the OpenDMA system property <code>Size</code> */
-    public final static OdmaQName PROPERTY_SIZE = new OdmaQName("opendma.org", "Size");
+    public final static OdmaQName PROPERTY_SIZE = new OdmaQName("opendma", "Size");
 
     /** qualified name of the OpenDMA system property <code>MimeType</code> */
-    public final static OdmaQName PROPERTY_MIMETYPE = new OdmaQName("opendma.org", "MimeType");
+    public final static OdmaQName PROPERTY_MIMETYPE = new OdmaQName("opendma", "MimeType");
 
     /** qualified name of the OpenDMA system property <code>FileName</code> */
-    public final static OdmaQName PROPERTY_FILENAME = new OdmaQName("opendma.org", "FileName");
+    public final static OdmaQName PROPERTY_FILENAME = new OdmaQName("opendma", "FileName");
 
-    // -----< aspect Folder >-----------------------------------------------------------------------
+    // -----< class VersionCollection >-------------------------------------------------------------
 
-    /** qualified name of the OpenDMA system aspect <code>Folder</code> */
-    public final static OdmaQName ASPECT_FOLDER = new OdmaQName("opendma.org", "Folder");
+    /** qualified name of the OpenDMA system class <code>VersionCollection</code> */
+    public final static OdmaQName CLASS_VERSIONCOLLECTION = new OdmaQName("opendma", "VersionCollection");
 
-    // Title already defined above
+    /** qualified name of the OpenDMA system property <code>Versions</code> */
+    public final static OdmaQName PROPERTY_VERSIONS = new OdmaQName("opendma", "Versions");
+
+    /** qualified name of the OpenDMA system property <code>Latest</code> */
+    public final static OdmaQName PROPERTY_LATEST = new OdmaQName("opendma", "Latest");
+
+    /** qualified name of the OpenDMA system property <code>Released</code> */
+    public final static OdmaQName PROPERTY_RELEASED = new OdmaQName("opendma", "Released");
+
+    /** qualified name of the OpenDMA system property <code>InProgress</code> */
+    public final static OdmaQName PROPERTY_INPROGRESS = new OdmaQName("opendma", "InProgress");
+
+    // -----< class Container >---------------------------------------------------------------------
+
+    /** qualified name of the OpenDMA system class <code>Container</code> */
+    public final static OdmaQName CLASS_CONTAINER = new OdmaQName("opendma", "Container");
+
+    // Property Title already defined previously
 
     /** qualified name of the OpenDMA system property <code>Containees</code> */
-    public final static OdmaQName PROPERTY_CONTAINEES = new OdmaQName("opendma.org", "Containees");
+    public final static OdmaQName PROPERTY_CONTAINEES = new OdmaQName("opendma", "Containees");
 
     /** qualified name of the OpenDMA system property <code>Associations</code> */
-    public final static OdmaQName PROPERTY_ASSOCIATIONS = new OdmaQName("opendma.org", "Associations");
+    public final static OdmaQName PROPERTY_ASSOCIATIONS = new OdmaQName("opendma", "Associations");
 
-    // CreatedAt already defined above
+    // Property CreatedAt already defined previously
 
-    // LastModifiedAt already defined above
+    // Property LastModifiedAt already defined previously
 
-    // CreatedBy already defined above
+    // Property CreatedBy already defined previously
 
-    // LastModifiedBy already defined above
+    // Property LastModifiedBy already defined previously
 
-    // -----< aspect Association >------------------------------------------------------------------
+    // -----< class Folder >------------------------------------------------------------------------
 
-    /** qualified name of the OpenDMA system aspect <code>Association</code> */
-    public final static OdmaQName ASPECT_ASSOCIATION = new OdmaQName("opendma.org", "Association");
+    /** qualified name of the OpenDMA system class <code>Folder</code> */
+    public final static OdmaQName CLASS_FOLDER = new OdmaQName("opendma", "Folder");
 
-    // Name already defined above
+    // Property Parent already defined previously
+
+    /** qualified name of the OpenDMA system property <code>SubFolders</code> */
+    public final static OdmaQName PROPERTY_SUBFOLDERS = new OdmaQName("opendma", "SubFolders");
+
+    // -----< class Containable >-------------------------------------------------------------------
+
+    /** qualified name of the OpenDMA system class <code>Containable</code> */
+    public final static OdmaQName CLASS_CONTAINABLE = new OdmaQName("opendma", "Containable");
+
+    /** qualified name of the OpenDMA system property <code>ContainedIn</code> */
+    public final static OdmaQName PROPERTY_CONTAINEDIN = new OdmaQName("opendma", "ContainedIn");
+
+    /** qualified name of the OpenDMA system property <code>ContainedInAssociations</code> */
+    public final static OdmaQName PROPERTY_CONTAINEDINASSOCIATIONS = new OdmaQName("opendma", "ContainedInAssociations");
+
+    // -----< class Association >-------------------------------------------------------------------
+
+    /** qualified name of the OpenDMA system class <code>Association</code> */
+    public final static OdmaQName CLASS_ASSOCIATION = new OdmaQName("opendma", "Association");
+
+    // Property Name already defined previously
 
     /** qualified name of the OpenDMA system property <code>Container</code> */
-    public final static OdmaQName PROPERTY_CONTAINER = new OdmaQName("opendma.org", "Container");
+    public final static OdmaQName PROPERTY_CONTAINER = new OdmaQName("opendma", "Container");
 
     /** qualified name of the OpenDMA system property <code>Containment</code> */
-    public final static OdmaQName PROPERTY_CONTAINMENT = new OdmaQName("opendma.org", "Containment");
+    public final static OdmaQName PROPERTY_CONTAINMENT = new OdmaQName("opendma", "Containment");
 
-    // CreatedAt already defined above
+    // Property CreatedAt already defined previously
 
-    // LastModifiedAt already defined above
+    // Property LastModifiedAt already defined previously
 
-    // CreatedBy already defined above
+    // Property CreatedBy already defined previously
 
-    // LastModifiedBy already defined above
+    // Property LastModifiedBy already defined previously
 
     // =============================================================================================
     // TECHNICAL: empty private default constructor to prevent instantiation

@@ -9,7 +9,7 @@ package org.opendma.api;
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public class OdmaQName
+public final class OdmaQName
 {
 
     /** the name <i>qualifier</i> of this qualified name */
@@ -82,7 +82,7 @@ public class OdmaQName
      */
     public String getQualifier()
     {
-        return (qualifier);
+        return qualifier;
     }
 
     /**
@@ -92,7 +92,7 @@ public class OdmaQName
      */
     public String getName()
     {
-        return (name);
+        return name;
     }
 
     /**
@@ -160,7 +160,7 @@ public class OdmaQName
      */
     public String toString()
     {
-        return "[" + (qualifier == null ? "<null>" : qualifier) + ", " + name + "]";
+        return (qualifier == null ? "<null>" : qualifier) + ":" + name;
     }
 
 }

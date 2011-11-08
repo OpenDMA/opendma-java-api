@@ -3,7 +3,7 @@ package org.opendma.api.collections;
 import java.util.List;
 
 /**
- * Type safe version of the <code>List</code> interface for the <i>BLOB</i>
+ * Type safe version of the <code>List</code> interface for the <i>Blob</i>
  * data type.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board

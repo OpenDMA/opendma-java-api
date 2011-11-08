@@ -1,13 +1,13 @@
 package org.opendma.api;
 
+import org.opendma.api.OdmaId;
+import org.opendma.api.OdmaGuid;
+import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.api.collections.OdmaContentElementEnumeration;
 import java.util.Date;
 
-import org.opendma.api.collections.ContentElementList;
-import org.opendma.api.collections.OdmaVersionEnumeration;
-
 /**
- * The <i>Document</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to
- * all defined OpenDMA properties.
+ * Full description follows.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
@@ -19,156 +19,245 @@ public interface OdmaDocument extends OdmaObject
     // =============================================================================================
 
     /**
-     * Returns the version specific <i>unique object identifier</i> as <code>{@link OdmaId}</code> for
-     * this <i>object</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICID).getString()</code>.
+     * Returns the <i>unique object identifier</i> identifying this <i>version</i> of this <code>Document</code> inside its <code>Repository</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICID).getId()</code>.
      * 
-     * @return the version specific <i>unique object identifier</i> as <code>{@link OdmaId}</code> for
-     * this <i>object</i>
+     * <p>Property <b>VersionSpecificId</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>unique object identifier</i> identifying this <i>version</i> of this <code>Document</code> inside its <code>Repository</code>
      */
     public OdmaId getVersionSpecificId();
-    
+
     /**
-     * Returns the version specific <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code>
-     * for this <i>object</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICGUID).getString()</code>.
+     * Returns the <i>global unique object identifier</i> globally identifying this <i>version</i> of this <code>Object</code> inside its <code>Repository</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONSPECIFICGUID).getGuid()</code>.
      * 
-     * @return the version specific <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code>
-     * for this <i>object</i>
+     * <p>Property <b>VersionSpecificGuid</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>global unique object identifier</i> globally identifying this <i>version</i> of this <code>Object</code> inside its <code>Repository</code>
      */
     public OdmaGuid getVersionSpecificGuid();
-    
+
     /**
-     * Returns the title of this <i>document</i>.<br>
+     * Returns the <i>title</i> of this <code>Document</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.
      * 
-     * @return the title of this <i>document</i>
+     * <p>Property <b>Title</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>title</i> of this <code>Document</code>
      */
     public String getTitle();
 
     /**
-     * Returns the version string of this <i>document</i>.<br>
+     * Sets the <i>title</i> of this <code>Document</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).setValue(value)</code>.
+     * 
+     * <p>Property <b>Title</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setTitle(String value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSION).getString()</code>.
      * 
-     * @return the version string of this <i>document</i>
+     * <p>Property <b>Version</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0)
      */
     public String getVersion();
 
     /**
-     * Returns the enumeration of all versions of this <i>document</i>.<br>
-     * Shortcut for
-     * <code>(OdmaVersionEnumeration)getProperty(OdmaTypes.PROPERTY_VERSIONCOLLECTION).getObjectList()</code>.
+     * Returns reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONCOLLECTION).getReference()</code>.
      * 
-     * @return the version string of this <i>document</i>
+     * <p>Property <b>VersionCollection</b> (opendma): <b>Reference to VersionCollection (opendma)</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information
      */
-    public OdmaVersionEnumeration getVersionCollection();
+    public OdmaVersionCollection getVersionCollection();
 
     /**
-     * Returns the list of all content elements of this <i>document</i>.<br>
-     * Shortcut for
-     * <code>((OdmaContentElementEnumeration)getProperty(OdmaTypes.PROPERTY_CONTENTELEMENTS).getObjectList()).asList()</code>.
+     * Returns the collection of all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTELEMENTS).getReferenceEnumeration()</code>.
      * 
-     * @return the list of all content elements of this <i>document</i>
+     * <p>Property <b>ContentElements</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
+     * [MultiValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the collection of all <code>ContentElement</code>s this <code>Document</code> consists of
      */
-    public ContentElementList getContentElements();
+    public OdmaContentElementEnumeration getContentElements();
 
     /**
-     * Returns the combined mime type of this <i>document</i>.<br>
+     * Returns the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_COMBINEDMIMETYPE).getString()</code>.
      * 
-     * @return the version string of this <i>document</i>
+     * <p>Property <b>CombinedMimeType</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of
      */
     public String getCombinedMimeType();
 
     /**
-     * Returns the primary content of this <i>content element</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYCONTENT).getContent()</code>.
+     * Sets the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_COMBINEDMIMETYPE).setValue(value)</code>.
      * 
-     * @return the primary content of this <i>content element</i>
+     * <p>Property <b>CombinedMimeType</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public OdmaContent getPrimaryContent();
+    public void setCombinedMimeType(String value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the primary size of this <i>content element</i> in octets.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYSIZE).getLong()</code>.
+     * Returns the primary <code>ContentElement</code>s that represents this <code>Document</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYCONTENTELEMENT).getReference()</code>.
      * 
-     * @return the primary size of this <i>content element</i> in octets
+     * <p>Property <b>PrimaryContentElement</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the primary <code>ContentElement</code>s that represents this <code>Document</code>
      */
-    public long getPrimarySize();
+    public OdmaContentElement getPrimaryContentElement();
 
     /**
-     * Returns the primary mime type of this <i>content element</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYMIMETYPE).getString()</code>.
+     * Sets the primary <code>ContentElement</code>s that represents this <code>Document</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYCONTENTELEMENT).setValue(value)</code>.
      * 
-     * @return the primary mime type of this <i>content element</i>
+     * <p>Property <b>PrimaryContentElement</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public String getPrimaryMimeType();
+    public void setPrimaryContentElement(OdmaContentElement value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the primary file name of this <i>content element</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYFILENAME).getString()</code>.
+     * Returns <code>true</code> if and only if this <code>Document</code> is checked out.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUT).getBoolean()</code>.
      * 
-     * @return the primary file name of this <i>content element</i>
+     * <p>Property <b>CheckedOut</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return <code>true</code> if and only if this <code>Document</code> is checked out
      */
-    public String getPrimaryFileName();
+    public Boolean getCheckedOut();
 
     /**
-     * Returns true if and only if this <i>document</i> has been checked out. The method
-     * <code>{@link #getCheckedOutBy()}</code> will return the user who has checked out this document and the method
-     * <code>{@link #getCheckedOutAt()}</code> will return the <code>Date</code> when this <i>document</i> has been
-     * checked out.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISCHECKEDOUT).getBoolean()</code>.
-     * 
-     * @return true if and only if this <i>document</i> has been checked out
-     */
-    public boolean isCheckedOut();
-
-    /**
-     * Returns the <code>Date</code> when this <i>document</i> has been created.<br>
+     * Returns the date when this <code>Document</code> has been created.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
      * 
-     * @return the <code>Date</code> when this <i>document</i> has been created
+     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Document</code> has been created
      */
     public Date getCreatedAt();
 
     /**
-     * Returns the <code>Date</code> when this <i>document</i> has been modified the last time. This date must be
-     * idendical to the creation date of the current version.<br>
+     * Returns the date when this version of this <code>Document</code> has been created.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONCREATEDAT).getDateTime()</code>.
+     * 
+     * <p>Property <b>VersionCreatedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this version of this <code>Document</code> has been created
+     */
+    public Date getVersionCreatedAt();
+
+    /**
+     * Returns the date when this version of this <code>Document</code> has been modified the last time.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
      * 
-     * @return the <code>Date</code> when this <i>document</i> has been modified the last time
+     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this version of this <code>Document</code> has been modified the last time
      */
     public Date getLastModifiedAt();
 
     /**
-     * Returns the <code>Date</code> when this <i>document</i> has been checked out.<br>
+     * Returns the date when this <code>Document</code> has been checked out.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUTAT).getDateTime()</code>.
      * 
-     * @return the <code>Date</code> when this <i>document</i> has been checked out
+     * <p>Property <b>CheckedOutAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Document</code> has been checked out
      */
     public Date getCheckedOutAt();
 
     /**
-     * Returns the name of the user who has created this <i>document</i>.<br>
+     * Returns the user who has created this <code>Document</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
      * 
-     * @return the name of the user who has created this <i>document</i>
+     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has created this <code>Document</code>
      */
     public String getCreatedBy();
 
     /**
-     * Returns the name of the user who has modified this <i>document</i> the last time.<br>
+     * Returns the user who has created this version of this <code>Document</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONCREATEDBY).getString()</code>.
+     * 
+     * <p>Property <b>VersionCreatedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has created this version of this <code>Document</code>
+     */
+    public String getVersionCreatedBy();
+
+    /**
+     * Returns the user who has modified this version of this <code>Document</code> the last time.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
      * 
-     * @return the name of the user who has modified this <i>document</i> the last time
+     * <p>Property <b>LastModifiedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has modified this version of this <code>Document</code> the last time
      */
     public String getLastModifiedBy();
 
     /**
-     * Returns the name of the user who has checked out this document.<br>
+     * Returns the user who has checked out this <code>Document</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUTBY).getString()</code>.
      * 
-     * @return the name of the user who has checked out this document
+     * <p>Property <b>CheckedOutBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has checked out this <code>Document</code>
      */
     public String getCheckedOutBy();
 

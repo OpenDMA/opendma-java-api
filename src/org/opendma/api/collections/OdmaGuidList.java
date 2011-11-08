@@ -1,30 +1,30 @@
 package org.opendma.api.collections;
 
 import java.util.List;
-
-import org.opendma.api.OdmaContentElement;
+import org.opendma.api.OdmaGuid;
 
 /**
- * Type safe version of the <code>List</code> interface for <i>OdmaContentElement</i> objects.
+ * Type safe version of the <code>List</code> interface for the <i>Guid</i>
+ * data type.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public interface ContentElementList extends List
+public interface OdmaGuidList extends List
 {
 
     /**
-     * Returns the <code>{@link OdmaContentElement}</code> at the specified position in
+     * Returns the <code>OdmaGuid</code> element at the specified position in
      * this list.
      * 
      * @param index
      *            position of the element to return
      * 
-     * @return the <code>{@link OdmaContentElement}</code> element at the specified position in
+     * @return the <code>OdmaGuid</code> element at the specified position in
      *         this list.
      * 
      * @throws IndexOutOfBoundsException
      *             if the index is out of range (index < 0 || index >= size()).
      */
-    public OdmaContentElement getContentElement(int index);
+    public OdmaGuid getGuid(int index);
 
 }

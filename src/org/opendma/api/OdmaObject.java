@@ -1,22 +1,13 @@
 package org.opendma.api;
 
-import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
+import org.opendma.exceptions.OdmaInvalidDataTypeException;
+import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.api.OdmaId;
+import org.opendma.api.OdmaGuid;
 
 /**
- * The basic <i>Object</i> in the OpenDMA architecture.<br>
- * It is made up of a list of <code>{@link OdmaProperty}</code>s that can be read by the getProperty() method. All
- * these properties are hereby hold in a local cache. When these properties are retrieved from the server is not defined
- * and up to the implementation. But the API offers a set of method to ensure that specific properties are in the local
- * cache.
- * <ul>
- * <li>By calling the <code>{@link #prepareProperties(OdmaQName[], boolean)}</code> method a user can make the
- * OpenDMA implementation to ensure that the given properties are in the local cache.</li>
- * <li>When retrieving an <code>OdmaObject</code> from some API method, the user can give a list of initial
- * properties for the local cache.</li>
- * </ul>
- * Changes to properties are only stored in the local cache. They are persist to the server upon a
- * <code>{@link #save()}</code> method call.
+ * Full description follows.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
@@ -75,8 +66,10 @@ public interface OdmaObject
      *             properties of the class of this object
      * @throws OdmaInvalidDataTypeException
      *             if and only if the Class of the given Object does not match the data type of the named property
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public void setProperty(OdmaQName propertyName, Object newValue) throws OdmaObjectNotFoundException, OdmaInvalidDataTypeException;
+    public void setProperty(OdmaQName propertyName, Object newValue) throws OdmaObjectNotFoundException, OdmaInvalidDataTypeException, OdmaAccessDeniedException;
 
     /**
      * Returns true if there are some pending changes to properties that have not yet been persisted to the server.
@@ -95,34 +88,50 @@ public interface OdmaObject
     // =============================================================================================
 
     /**
-     * Returns the <code>{@link OdmaClass}</code> describing this <i>object</i>.<br>
-     * Shortcut for <code>(OdmaClass)getProperty(OdmaTypes.PROPERTY_CLASS).getObject()</code>.
+     * Returns the OpenDMA <code>Class</code> describing this <code>Object</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CLASS).getReference()</code>.
      * 
-     * @return the <code>{@link OdmaClass}</code> describing this <i>object</i>
+     * <p>Property <b>Class</b> (opendma): <b>Reference to Class (opendma)</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the OpenDMA <code>Class</code> describing this <code>Object</code>
      */
     public OdmaClass getOdmaClass();
 
     /**
-     * Returns the <i>unique object identifier</i> as <code>{@link OdmaId}</code> for this <i>object</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ID).getString()</code>.
+     * Returns the <i>unique object identifier</i> identifying this <code>Object</code> inside its <code>Repository</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ID).getId()</code>.
      * 
-     * @return the <i>unique object identifier</i> as <code>{@link OdmaId}</code> for this <i>object</i>
+     * <p>Property <b>Id</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>unique object identifier</i> identifying this <code>Object</code> inside its <code>Repository</code>
      */
     public OdmaId getId();
-    
+
     /**
-     * Returns the <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code> for this <i>object</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_GUID).getString()</code>.
+     * Returns the <i>global unique object identifier</i> globally identifying this <code>Object</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_GUID).getGuid()</code>.
      * 
-     * @return the <i>global unique object identifier</i> as <code>{@link OdmaGuid}</code> for this <i>object</i>
+     * <p>Property <b>Guid</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>global unique object identifier</i> globally identifying this <code>Object</code>
      */
     public OdmaGuid getGuid();
 
     /**
-     * Returns the <code>{@link OdmaRepository}</code> this <i>object</i> is stored in.<br>
-     * Shortcut for <code>(OdmaRepository)getProperty(OdmaTypes.PROPERTY_REPOSITORY).getObject()</code>.
+     * Returns the OpenDMA <code>Repository</code> where this <code>Object</code> resides.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REPOSITORY).getReference()</code>.
      * 
-     * @return the <code>{@link OdmaRepository}</code> this <i>object</i> is stored in.
+     * <p>Property <b>Repository</b> (opendma): <b>Reference to Repository (opendma)</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the OpenDMA <code>Repository</code> where this <code>Object</code> resides
      */
     public OdmaRepository getRepository();
 

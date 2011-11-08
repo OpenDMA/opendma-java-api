@@ -1,0 +1,117 @@
+package org.opendma.api;
+
+import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.api.collections.OdmaContainableEnumeration;
+import org.opendma.api.collections.OdmaAssociationEnumeration;
+import java.util.Date;
+
+/**
+ * Full description follows.
+ * 
+ * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
+ */
+public interface OdmaContainer extends OdmaObject
+{
+
+    // =============================================================================================
+    // Object specific property access
+    // =============================================================================================
+
+    /**
+     * Returns the <i>title</i> of this <code>Container</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.
+     * 
+     * <p>Property <b>Title</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>title</i> of this <code>Container</code>
+     */
+    public String getTitle();
+
+    /**
+     * Sets the <i>title</i> of this <code>Container</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).setValue(value)</code>.
+     * 
+     * <p>Property <b>Title</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setTitle(String value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the collection of all <code>Containable</code> objects that are contained in this <code>Container</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEES).getReferenceEnumeration()</code>.
+     * 
+     * <p>Property <b>Containees</b> (opendma): <b>Reference to Containable (opendma)</b><br>
+     * [MultiValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the collection of all <code>Containable</code> objects that are contained in this <code>Container</code>
+     */
+    public OdmaContainableEnumeration getContainees();
+
+    /**
+     * Returns the collection of all <code>Association</code>s between this <code>Container</code> and its containees.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASSOCIATIONS).getReferenceEnumeration()</code>.
+     * 
+     * <p>Property <b>Associations</b> (opendma): <b>Reference to Association (opendma)</b><br>
+     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the collection of all <code>Association</code>s between this <code>Container</code> and its containees
+     */
+    public OdmaAssociationEnumeration getAssociations();
+
+    /**
+     * Returns the date when this <code>Container</code> has been created.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
+     * 
+     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Container</code> has been created
+     */
+    public Date getCreatedAt();
+
+    /**
+     * Returns the date when this <code>Container</code> has been modified the last time.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
+     * 
+     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Container</code> has been modified the last time
+     */
+    public Date getLastModifiedAt();
+
+    /**
+     * Returns the user who has created this <code>Container</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
+     * 
+     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has created this <code>Container</code>
+     */
+    public String getCreatedBy();
+
+    /**
+     * Returns the user who has modified this <code>Container</code> the last time.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
+     * 
+     * <p>Property <b>LastModifiedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has modified this <code>Container</code> the last time
+     */
+    public String getLastModifiedBy();
+
+}

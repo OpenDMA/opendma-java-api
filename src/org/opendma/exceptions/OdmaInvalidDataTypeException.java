@@ -8,7 +8,7 @@ import org.opendma.OdmaTypes;
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
-public class OdmaInvalidDataTypeException extends Exception
+public class OdmaInvalidDataTypeException extends OdmaException
 {
 
     /** the serial version ID required for serialization */
@@ -254,6 +254,15 @@ public class OdmaInvalidDataTypeException extends Exception
         case OdmaTypes.TYPE_CONTENT:
             msgBuffer.append("content");
             break;
+        case OdmaTypes.TYPE_ID:
+            msgBuffer.append("id");
+            break;
+        case OdmaTypes.TYPE_GUID:
+            msgBuffer.append("guid");
+            break;
+        default:
+            msgBuffer.append("<unknown>");
+            break;
         }
         return (msgBuffer.toString());
     }
@@ -315,6 +324,15 @@ public class OdmaInvalidDataTypeException extends Exception
         case OdmaTypes.TYPE_CONTENT:
             msgBuffer.append("content");
             break;
+        case OdmaTypes.TYPE_ID:
+            msgBuffer.append("id");
+            break;
+        case OdmaTypes.TYPE_GUID:
+            msgBuffer.append("guid");
+            break;
+        default:
+            msgBuffer.append("<unknown>");
+            break;
         }
         msgBuffer.append(" but found ");
         if (foundMultivalue)
@@ -359,6 +377,15 @@ public class OdmaInvalidDataTypeException extends Exception
             break;
         case OdmaTypes.TYPE_CONTENT:
             msgBuffer.append("content");
+            break;
+        case OdmaTypes.TYPE_ID:
+            msgBuffer.append("id");
+            break;
+        case OdmaTypes.TYPE_GUID:
+            msgBuffer.append("guid");
+            break;
+        default:
+            msgBuffer.append("<unknown>");
             break;
         }
         return (msgBuffer.toString());

@@ -1,10 +1,10 @@
 package org.opendma.api;
 
+import org.opendma.exceptions.OdmaAccessDeniedException;
 import java.util.Date;
 
 /**
- * The <i>Association</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to
- * all defined OpenDMA properties.
+ * Full description follows.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
@@ -16,58 +16,125 @@ public interface OdmaAssociation extends OdmaObject
     // =============================================================================================
 
     /**
-     * Returns the name of this <i>association</i>.<br>
+     * Returns the <i>name</i> of this <code>Association</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * @return the name of this <i>association</i>
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>name</i> of this <code>Association</code>
      */
     public String getName();
 
     /**
-     * Returns the source of this <i>association</i>, i.e. the container.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).getString()</code>.
+     * Sets the <i>name</i> of this <code>Association</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
      * 
-     * @return the source of this <i>association</i>, i.e. the container
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public OdmaFolder getContainer();
+    public void setName(String value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the destination of this <i>association</i>, i.e. the containment.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINMENT).getString()</code>.
+     * Returns the <code>Container</code> of this <code>Association</code> in which the containment is said to be contained.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).getReference()</code>.
      * 
-     * @return the destination of this <i>association</i>, i.e. the containment
+     * <p>Property <b>Container</b> (opendma): <b>Reference to Container (opendma)</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <code>Container</code> of this <code>Association</code> in which the containment is said to be contained
      */
-    public OdmaObject getContainment();
+    public OdmaContainer getContainer();
 
     /**
-     * Returns the <code>Date</code> when this <i>association</i> has been created.<br>
+     * Sets the <code>Container</code> of this <code>Association</code> in which the containment is said to be contained.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).setValue(value)</code>.
+     * 
+     * <p>Property <b>Container</b> (opendma): <b>Reference to Container (opendma)</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setContainer(OdmaContainer value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINMENT).getReference()</code>.
+     * 
+     * <p>Property <b>Containment</b> (opendma): <b>Reference to Containable (opendma)</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container
+     */
+    public OdmaContainable getContainment();
+
+    /**
+     * Sets the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINMENT).setValue(value)</code>.
+     * 
+     * <p>Property <b>Containment</b> (opendma): <b>Reference to Containable (opendma)</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setContainment(OdmaContainable value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the date when this <code>Association</code> has been created.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
      * 
-     * @return the <code>Date</code> when this <i>association</i> has been created
+     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Association</code> has been created
      */
     public Date getCreatedAt();
 
     /**
-     * Returns the <code>Date</code> when this <i>association</i> has been modified the last time.<br>
+     * Returns the date when this <code>Association</code> has been modified the last time.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
      * 
-     * @return the <code>Date</code> when this <i>association</i> has been modified the last time
+     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the date when this <code>Association</code> has been modified the last time
      */
     public Date getLastModifiedAt();
 
     /**
-     * Returns the name of the user who has created this <i>association</i>.<br>
+     * Returns the user who has created this <code>Association</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
      * 
-     * @return the name of the user who has created this <i>association</i>
+     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has created this <code>Association</code>
      */
     public String getCreatedBy();
 
     /**
-     * Returns the name of the user who has modified this <i>association</i> the last time.<br>
+     * Returns the user who has modified this <code>Association</code> the last time.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
      * 
-     * @return the name of the user who has modified this <i>association</i> the last time
+     * <p>Property <b>LastModifiedBy</b> (opendma): <b>String</b><br>
+     * [SingleValue] [ReadOnly] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the user who has modified this <code>Association</code> the last time
      */
     public String getLastModifiedBy();
 

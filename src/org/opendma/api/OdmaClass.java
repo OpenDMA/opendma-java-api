@@ -1,11 +1,15 @@
 package org.opendma.api;
 
+import org.opendma.api.OdmaQName;
+import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.collections.OdmaClassEnumeration;
 import org.opendma.api.collections.OdmaPropertyInfoEnumeration;
 
 /**
- * The <i>Class</i> specific version of the <code>{@link OdmaObject}</code>
- * interface that offers short cuts to all defined OpenDMA properties.
+ * The <i>Class</i> specific version of the <code>{@link OdmaObject}</code> interface
+ * that offers short cuts to all defined OpenDMA properties.<p>
+ * 
+ * The <i>Class</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to all defined OpenDMA properties.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
@@ -17,106 +21,221 @@ public interface OdmaClass extends OdmaObject
     // =============================================================================================
 
     /**
-     * Returns the name of this <i>class</i>.<br>
+     * Returns the internal (technical) <i>name</i> of this <code>Class</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * @return the name describing this <i>class</i>
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the internal (technical) <i>name</i> of this <code>Class</code>
      */
     public String getName();
 
     /**
-     * Returns the qualifier of the name of this <i>class</i>.<br>
+     * Sets the internal (technical) <i>name</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
+     * 
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setName(String value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the name <i>qualifier</i> of this <code>Class</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
      * 
-     * @return the qualifier of the the name describing this <i>class</i>
+     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the name <i>qualifier</i> of this <code>Class</code>
      */
     public String getNameQualifier();
 
     /**
-     * Returns the qualified name of this <i>class</i>.<br>
-     * Shortcut for <code>new OdmaQName(getNameQualifier(),getName())</code>.
+     * Sets the name <i>qualifier</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
      * 
-     * @return the qualified name describing this <i>class</i>
+     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public OdmaQName getQName();
+    public void setNameQualifier(String value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the name of this <i>class</i> that should be displayed to the user.<br>
+     * Returns the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
      * 
-     * @return the name of this <i>class</i> that should be displayed to the user
+     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>display name</i> of this <code>Class</code> to be displayed to end users
      */
     public String getDisplayName();
 
     /**
-     * Returns the parent of this <i>class</i>.<br>
-     * Shortcut for <code>(OdmaClass)getProperty(OdmaTypes.PROPERTY_PARENT).getObject()</code>.
+     * Sets the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value)</code>.
      * 
-     * @return the parent of this <i>class</i>
+     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setDisplayName(String value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
+     * 
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br>
+     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>
      */
     public OdmaClass getParent();
 
     /**
-     * Returns all aspects of this <i>class</i>.<br>
-     * Shortcut for <code>(OdmaClassEnumeration)getProperty(OdmaTypes.PROPERTY_ASPECTS).getObjectList()</code>.
+     * Returns the list of <i>aspects</i> that are implemented by this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceEnumeration()</code>.
      * 
-     * @return all aspects of this <i>class</i>
+     * <p>Property <b>Aspects</b> (opendma): <b>Reference to Class (opendma)</b><br>
+     * [MultiValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the list of <i>aspects</i> that are implemented by this <code>Class</code>
      */
     public OdmaClassEnumeration getAspects();
 
     /**
-     * Returns all properties declared in this <i>class</i>.<br>
-     * The list off all effective properties also includes inherited properties and is
-     * availible by the method <code>{@link #getProperties()}</code>.
-     * Shortcut for <code>(OdmaPropertyInfoEnumeration) getProperty(OdmaTypes.PROPERTY_DECLAREDPROPERTIES) .getObjectList()</code>.
+     * Returns the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties)..<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DECLAREDPROPERTIES).getReferenceEnumeration()</code>.
      * 
-     * @return all properties declared in this <i>class</i>
+     * <p>Property <b>DeclaredProperties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
+     * [MultiValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties).
      */
     public OdmaPropertyInfoEnumeration getDeclaredProperties();
 
     /**
-     * Returns true if it is possible to create instances of this <i>class</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISINSTANTIABLE).getBoolean()</code>.
+     * Returns the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties..<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PROPERTIES).getReferenceEnumeration()</code>.
      * 
-     * @return true if it is possible to create instances of this <i>class</i>
+     * <p>Property <b>Properties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
+     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties.
      */
-    public boolean isInstantiable();
+    public OdmaPropertyInfoEnumeration getProperties();
 
     /**
-     * Returns true if this <i>class</i> should not be displayed to the default user.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISHIDDEN).getBoolean()</code>.
+     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).getBoolean()</code>.
      * 
-     * @return true if this <i>class</i> should not be displayed to the default user
+     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
      */
-    public boolean isHidden();
+    public Boolean getInstantiable();
 
     /**
-     * Returns true if this <i>class</i> represents internal technical objects that are
-     * of no interest to default users.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISSYSTEM).getBoolean()</code>.
+     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).setValue(value)</code>.
      * 
-     * @return true if this <i>class</i> represents internal technical objects
+     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public boolean isSystem();
+    public void setInstantiable(Boolean value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns all sub classes of this <i>class</i>, i.e. all <i>class</i> objects that have
-     * a reference to this class in their parent property.<br>
-     * Shortcut for <code>(OdmaClassEnumeration)getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getObjectList()</code>.
+     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
      * 
-     * @return all sub classes of this <i>class</i>
+     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather this <code>Class</code> should be displayed to end users or not
+     */
+    public Boolean getHidden();
+
+    /**
+     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).setValue(value)</code>.
+     * 
+     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setHidden(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).getBoolean()</code>.
+     * 
+     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather this <code>Class</code> is defined by the system (true) or by users (false)
+     */
+    public Boolean getSystem();
+
+    /**
+     * Sets wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value)</code>.
+     * 
+     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setSystem(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getReferenceEnumeration()</code>.
+     * 
+     * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br>
+     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property)
      */
     public OdmaClassEnumeration getSubClasses();
 
-    // =============================================================================================
-    // Calculated data
-    // =============================================================================================
-
     /**
-     * Returns all properties of this <i>class</i>, inherited and declared once.<br>
+     * the qualified name of this <code>Class</code><br>
+     * <p>Full description follows.</p>
      * 
-     * @return all properties of this <i>class</i>
+     * @return the qualified name of this <code>Class</code>
      */
-    public OdmaPropertyInfoEnumeration getProperties();
+    public OdmaQName getQName();
 
 }

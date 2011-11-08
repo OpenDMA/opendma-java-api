@@ -1,8 +1,13 @@
 package org.opendma.api;
 
+import org.opendma.api.OdmaQName;
+import org.opendma.exceptions.OdmaAccessDeniedException;
+
 /**
- * The <i>PropertyInfo</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts
- * to all defined OpenDMA properties.
+ * The <i>PropertyInfo</i> specific version of the <code>{@link OdmaObject}</code> interface
+ * that offers short cuts to all defined OpenDMA properties.<p>
+ * 
+ * Full description follows.
  * 
  * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
@@ -14,93 +19,261 @@ public interface OdmaPropertyInfo extends OdmaObject
     // =============================================================================================
 
     /**
-     * Returns the name of this <i>property info</i>.<br>
+     * Returns the internal (technical) <i>name</i> of this <code>PropertyInfo</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * @return the name describing this <i>property info</i>
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the internal (technical) <i>name</i> of this <code>PropertyInfo</code>
      */
     public String getName();
 
     /**
-     * Returns the qualifier of the name of this <i>property info</i>.<br>
+     * Sets the internal (technical) <i>name</i> of this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
+     * 
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setName(String value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the name <i>qualifier</i> of this <code>PropertyInfo</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
      * 
-     * @return the qualifier of the the name describing this <i>property info</i>
+     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the name <i>qualifier</i> of this <code>PropertyInfo</code>
      */
     public String getNameQualifier();
 
     /**
-     * Returns the qualified name of this <i>property info</i>.<br>
-     * Shortcut for <code>new OdmaQName(getNameQualifier(),getName())</code>.
+     * Sets the name <i>qualifier</i> of this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
      * 
-     * @return the qualified name describing this <i>property info</i>
+     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public OdmaQName getQName();
+    public void setNameQualifier(String value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the name of this <i>property info</i> that should be displayed to the user.<br>
+     * Returns the <i>display name</i> of this <code>PropertyInfo</code> to be displayed to end users.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
      * 
-     * @return the name of this <i>property info</i> that should be displayed to the user
+     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the <i>display name</i> of this <code>PropertyInfo</code> to be displayed to end users
      */
     public String getDisplayName();
 
     /**
-     * Returns the numeric ID of the data type described by this <i>property info</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATATYPE).getInteger()</code>.
+     * Sets the <i>display name</i> of this <code>PropertyInfo</code> to be displayed to end users.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value)</code>.
      * 
-     * @return the numeric ID of the data type described by this <i>property info</i>
+     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public int getDataType();
+    public void setDisplayName(String value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the required <i>class</i> of the object referenced by this property if this <i>property info</i>
-     * describes a <i>Reference</i> property.<br>
-     * Shortcut for <code>(OdmaClass)getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).getObject()</code>.
+     * Returns the numeric ID of the data type described by this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATATYPE).getInteger()</code>.
      * 
-     * @return the required <i>class</i> of the object referenced by this property
+     * <p>Property <b>DataType</b> (opendma): <b>Integer</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return the numeric ID of the data type described by this <code>PropertyInfo</code>
+     */
+    public Integer getDataType();
+
+    /**
+     * Sets the numeric ID of the data type described by this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATATYPE).setValue(value)</code>.
+     * 
+     * <p>Property <b>DataType</b> (opendma): <b>Integer</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setDataType(Integer value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).getReference()</code>.
+     * 
+     * <p>Property <b>ReferenceClass</b> (opendma): <b>Reference to Class (opendma)</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @return the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>
      */
     public OdmaClass getReferenceClass();
 
     /**
-     * Returns true if and only if this <i>property info</i> describes a multi valued property.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISMULTIVALUE).getBoolean()</code>.
+     * Sets the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).setValue(value)</code>.
      * 
-     * @return true if and only if this <i>property info</i> describes a multi valued property
+     * <p>Property <b>ReferenceClass</b> (opendma): <b>Reference to Class (opendma)</b><br>
+     * [SingleValue] [Writable] [Nullable]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public boolean isMultiValue();
+    public void setReferenceClass(OdmaClass value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns true if and only if the property described by this <i>property info</i> must not conatin null.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISREQUIRED).getBoolean()</code>.
+     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_MULTIVALUE).getBoolean()</code>.
      * 
-     * @return true if and only if the property described by this <i>property info</i> must not conatin null
+     * <p>Property <b>MultiValue</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
      */
-    public boolean isRequired();
+    public Boolean getMultiValue();
 
     /**
-     * Returns true if the current user is not allowed to modify the property described by this <i>property info</i>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISREADONLY).getBoolean()</code>.
+     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_MULTIVALUE).setValue(value)</code>.
      * 
-     * @return true if the current user is not allowed to modify the property described by this <i>property info</i>
+     * <p>Property <b>MultiValue</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public boolean isReadOnly();
+    public void setMultiValue(Boolean value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns true if the property described by this <i>property info</i> should not be displayed to the default user.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISHIDDEN).getBoolean()</code>.
+     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REQUIRED).getBoolean()</code>.
      * 
-     * @return true if the property described by this <i>property info</i> should not be displayed to the default user
+     * <p>Property <b>Required</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
      */
-    public boolean isHidden();
+    public Boolean getRequired();
 
     /**
-     * Returns true if the property described by this <i>property info</i> represents internal technical objects that
-     * are of no interest to default users.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ISSYSTEM).getBoolean()</code>.
+     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REQUIRED).setValue(value)</code>.
      * 
-     * @return true if the property described by this <i>property info</i> represents internal technical objects
+     * <p>Property <b>Required</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
      */
-    public boolean isSystem();
+    public void setRequired(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_READONLY).getBoolean()</code>.
+     * 
+     * <p>Property <b>ReadOnly</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather this <code>Class</code> should be displayed to end users or not
+     */
+    public Boolean getReadOnly();
+
+    /**
+     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_READONLY).setValue(value)</code>.
+     * 
+     * <p>Property <b>ReadOnly</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setReadOnly(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
+     * 
+     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather this <code>Class</code> should be displayed to end users or not
+     */
+    public Boolean getHidden();
+
+    /**
+     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).setValue(value)</code>.
+     * 
+     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setHidden(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * Returns wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).getBoolean()</code>.
+     * 
+     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @return wheather this <code>Class</code> is defined by the system (true) or by users (false)
+     */
+    public Boolean getSystem();
+
+    /**
+     * Sets wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value)</code>.
+     * 
+     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
+     * [SingleValue] [Writable] [Required]<br>
+     * Full description follows.</p>
+     * 
+     * @throws OdmaAccessDeniedException
+     *             if this property can not be set by the current user
+     */
+    public void setSystem(Boolean value) throws OdmaAccessDeniedException;
+
+    /**
+     * the qualified name of this <code>Class</code><br>
+     * <p>Full description follows.</p>
+     * 
+     * @return the qualified name of this <code>Class</code>
+     */
+    public OdmaQName getQName();
 
 }
