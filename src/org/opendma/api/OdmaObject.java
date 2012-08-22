@@ -82,7 +82,7 @@ public interface OdmaObject
      * Persist the current pending changes to properties at the server.
      */
     public void save();
-    
+
     /**
      * Returns <code>true</code> if and only if the class of this object or one of its ancestors equals
      * the given name or the class of this object or one of its ancestors incorporates the aspect with

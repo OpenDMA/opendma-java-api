@@ -360,7 +360,7 @@ public class OdmaStaticClassHierarchy
         propertyInfos.put(OdmaTypes.PROPERTY_CONTAINEDIN, new OdmaStaticSystemPropertyInfoContainedIn());
         propertyInfos.put(OdmaTypes.PROPERTY_CONTAINEDINASSOCIATIONS, new OdmaStaticSystemPropertyInfoContainedInAssociations());
         propertyInfos.put(OdmaTypes.PROPERTY_CONTAINER, new OdmaStaticSystemPropertyInfoContainer());
-        propertyInfos.put(OdmaTypes.PROPERTY_CONTAINMENT, new OdmaStaticSystemPropertyInfoContainment());
+        propertyInfos.put(OdmaTypes.PROPERTY_CONTAINABLE, new OdmaStaticSystemPropertyInfoContainable());
 
         declaredAspects = null;
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
@@ -526,7 +526,7 @@ public class OdmaStaticClassHierarchy
         declaredProperties = new OdmaArrayListPropertyInfoEnumeration();
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINER));
-        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINMENT));
+        declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CONTAINABLE));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDAT));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_CREATEDBY));
         declaredProperties.add(getPropertyInfo(OdmaTypes.PROPERTY_LASTMODIFIEDAT));
@@ -575,7 +575,7 @@ public class OdmaStaticClassHierarchy
         getPropertyInfo(OdmaTypes.PROPERTY_CONTAINEDIN).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CONTAINER));
         getPropertyInfo(OdmaTypes.PROPERTY_CONTAINEDINASSOCIATIONS).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_ASSOCIATION));
         getPropertyInfo(OdmaTypes.PROPERTY_CONTAINER).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CONTAINER));
-        getPropertyInfo(OdmaTypes.PROPERTY_CONTAINMENT).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CONTAINABLE));
+        getPropertyInfo(OdmaTypes.PROPERTY_CONTAINABLE).patchReferenceClass(getClassInfo(OdmaTypes.CLASS_CONTAINABLE));
     }
 
 }

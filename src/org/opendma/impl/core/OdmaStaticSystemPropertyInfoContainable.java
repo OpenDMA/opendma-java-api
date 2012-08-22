@@ -5,14 +5,14 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemPropertyInfoContainment extends OdmaStaticSystemPropertyInfo
+public class OdmaStaticSystemPropertyInfoContainable extends OdmaStaticSystemPropertyInfo
 {
 
-    public OdmaStaticSystemPropertyInfoContainment() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
+    public OdmaStaticSystemPropertyInfoContainable() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
     {
-        properties.put(OdmaTypes.PROPERTY_NAME,new OdmaPropertyImpl(OdmaTypes.PROPERTY_NAME,OdmaTypes.PROPERTY_CONTAINMENT.getName(),OdmaTypes.TYPE_STRING,false,true));
-        properties.put(OdmaTypes.PROPERTY_NAMEQUALIFIER,new OdmaPropertyImpl(OdmaTypes.PROPERTY_NAMEQUALIFIER,OdmaTypes.PROPERTY_CONTAINMENT.getQualifier(),OdmaTypes.TYPE_STRING,false,true));
-        properties.put(OdmaTypes.PROPERTY_DISPLAYNAME,new OdmaPropertyImpl(OdmaTypes.PROPERTY_DISPLAYNAME,OdmaTypes.PROPERTY_CONTAINMENT.getName(),OdmaTypes.TYPE_STRING,false,true));
+        properties.put(OdmaTypes.PROPERTY_NAME,new OdmaPropertyImpl(OdmaTypes.PROPERTY_NAME,OdmaTypes.PROPERTY_CONTAINABLE.getName(),OdmaTypes.TYPE_STRING,false,true));
+        properties.put(OdmaTypes.PROPERTY_NAMEQUALIFIER,new OdmaPropertyImpl(OdmaTypes.PROPERTY_NAMEQUALIFIER,OdmaTypes.PROPERTY_CONTAINABLE.getQualifier(),OdmaTypes.TYPE_STRING,false,true));
+        properties.put(OdmaTypes.PROPERTY_DISPLAYNAME,new OdmaPropertyImpl(OdmaTypes.PROPERTY_DISPLAYNAME,OdmaTypes.PROPERTY_CONTAINABLE.getName(),OdmaTypes.TYPE_STRING,false,true));
         properties.put(OdmaTypes.PROPERTY_DATATYPE,new OdmaPropertyImpl(OdmaTypes.PROPERTY_DATATYPE,new Integer(OdmaTypes.TYPE_REFERENCE),OdmaTypes.TYPE_INTEGER,false,true));
         properties.put(OdmaTypes.PROPERTY_REFERENCECLASS,new OdmaPropertyImpl(OdmaTypes.PROPERTY_REFERENCECLASS,null,OdmaTypes.TYPE_REFERENCE,false,true));
         properties.put(OdmaTypes.PROPERTY_MULTIVALUE,new OdmaPropertyImpl(OdmaTypes.PROPERTY_MULTIVALUE,Boolean.FALSE,OdmaTypes.TYPE_BOOLEAN,false,true));

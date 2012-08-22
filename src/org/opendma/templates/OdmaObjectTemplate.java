@@ -1,12 +1,12 @@
 package org.opendma.templates;
 
-import java.util.Iterator;
-
 import org.opendma.api.OdmaObject;
 import org.opendma.OdmaTypes;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
+import java.util.Iterator;
+import org.opendma.api.collections.OdmaClassEnumeration;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
@@ -14,7 +14,6 @@ import org.opendma.api.OdmaClass;
 import org.opendma.api.OdmaId;
 import org.opendma.api.OdmaGuid;
 import org.opendma.api.OdmaRepository;
-import org.opendma.api.collections.OdmaClassEnumeration;
 
 /**
  * Template implementation of the interface <code>{@link OdmaObject}</code>.<p>
@@ -112,8 +111,19 @@ public class OdmaObjectTemplate implements OdmaObject
         // TODO: implement me
     }
 
+    /**
+     * Returns <code>true</code> if and only if the class of this object or one of its ancestors equals
+     * the given name or the class of this object or one of its ancestors incorporates the aspect with
+     * the given name.
+     * 
+     * @param classOrAspectName
+     *             the qualified name of the class or aspect to test for
+     * 
+     * @return if the class of this object is or extends the given class or incorportes the given aspect
+     */
     public boolean instanceOf(OdmaQName classOrAspectName)
     {
+        // TODO: this code needs to be improved to take advantage of the actual repository
         OdmaClass test = getOdmaClass();
         while(test != null)
         {

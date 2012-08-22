@@ -404,8 +404,8 @@ public class OdmaTypes
     /** qualified name of the OpenDMA system property <code>Container</code> */
     public final static OdmaQName PROPERTY_CONTAINER = new OdmaQName("opendma", "Container");
 
-    /** qualified name of the OpenDMA system property <code>Containment</code> */
-    public final static OdmaQName PROPERTY_CONTAINMENT = new OdmaQName("opendma", "Containment");
+    /** qualified name of the OpenDMA system property <code>Containable</code> */
+    public final static OdmaQName PROPERTY_CONTAINABLE = new OdmaQName("opendma", "Containable");
 
     // Property CreatedAt already defined previously
 
