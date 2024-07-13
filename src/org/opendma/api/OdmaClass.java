@@ -1,6 +1,5 @@
 package org.opendma.api;
 
-import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.collections.OdmaClassEnumeration;
 import org.opendma.api.collections.OdmaPropertyInfoEnumeration;

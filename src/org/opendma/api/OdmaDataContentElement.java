@@ -1,6 +1,5 @@
 package org.opendma.api;
 
-import org.opendma.api.OdmaContent;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 
 /**

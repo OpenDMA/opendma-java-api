@@ -1,8 +1,6 @@
 package org.opendma.api;
 
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.OdmaId;
-import org.opendma.api.OdmaGuid;
 import org.opendma.api.collections.OdmaContentElementEnumeration;
 import java.util.Date;
 

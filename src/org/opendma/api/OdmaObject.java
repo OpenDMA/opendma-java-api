@@ -3,8 +3,6 @@ package org.opendma.api;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.OdmaId;
-import org.opendma.api.OdmaGuid;
 
 /**
  * Full description follows.

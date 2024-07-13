@@ -12,13 +12,9 @@ import org.opendma.api.collections.BooleanList;
 import java.util.Date;
 import org.opendma.api.collections.DateTimeList;
 import org.opendma.api.collections.BlobList;
-import org.opendma.api.OdmaObject;
 import org.opendma.api.collections.OdmaObjectEnumeration;
-import org.opendma.api.OdmaContent;
 import org.opendma.api.collections.OdmaContentList;
-import org.opendma.api.OdmaId;
 import org.opendma.api.collections.OdmaIdList;
-import org.opendma.api.OdmaGuid;
 import org.opendma.api.collections.OdmaGuidList;
 
 /**
