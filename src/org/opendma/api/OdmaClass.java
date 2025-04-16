@@ -98,16 +98,16 @@ public interface OdmaClass extends OdmaObject
     void setDisplayName(String newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
+     * Returns the <i>super</i> <code>Class</code> that is extended by this <code>Class</code>.<br/>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUPERCLASS).getReference()</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br/>
+     * <p>Property <b>SuperClass</b> (opendma): <b>Reference to Class (opendma)</b><br/>
      * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>
+     * @return the <i>super</i> <code>Class</code> that is extended by this <code>Class</code>
      */
-    OdmaClass getParent();
+    OdmaClass getSuperClass();
 
     /**
      * Returns the list of <i>aspects</i> that are implemented by this <code>Class</code>.<br/>
@@ -266,14 +266,14 @@ public interface OdmaClass extends OdmaObject
     Boolean isSearchable();
 
     /**
-     * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property).<br/>
+     * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <code>SuperClass</code> property).<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br/>
      * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property)
+     * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <code>SuperClass</code> property)
      */
     Iterable<OdmaClass> getSubClasses();
 

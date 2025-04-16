@@ -177,13 +177,13 @@ public class OdmaStaticClassHierarchy
         };
     }
     
-    public void registerSubClass(OdmaQName parentName, OdmaClass subClass)
+    public void registerSubClass(OdmaQName superClassName, OdmaClass subClass)
     {
-        if(!parentName.equals(subClass.getParent().getQName()))
+        if(!superClassName.equals(subClass.getSuperClass().getQName()))
         {
-            throw new OdmaRuntimeException("Name of parent class does not equal regsitered parent");
+            throw new OdmaRuntimeException("Name of super class does not equal registered super class");
         }
-        ArrayList<OdmaClass> subClasses = getInternalSubClassesArrayList(parentName);
+        ArrayList<OdmaClass> subClasses = getInternalSubClassesArrayList(superClassName);
         synchronized(subClasses)
         {
             if(!subClasses.contains(subClass))
@@ -234,7 +234,7 @@ public class OdmaStaticClassHierarchy
             {
                 return true;
             }
-            test = test.getParent();
+            test = test.getSuperClass();
             if((test != null)&&(noLoopTest.containsKey(test.getQName())))
             {
                 throw new OdmaRuntimeException("Loop in class hierarchy of "+c.getQName());
@@ -245,7 +245,7 @@ public class OdmaStaticClassHierarchy
     
     public boolean isOrIsExtending(OdmaClass c, OdmaQName testAgainst)
     {
-        // test parent relationship
+        // test super class relationship
         if(isOrIsAncestorOf(c,testAgainst))
         {
             return true;
@@ -328,7 +328,7 @@ public class OdmaStaticClassHierarchy
         propertyInfos.put(OdmaCommonNames.PROPERTY_NAME, new OdmaStaticSystemPropertyInfoClassName());
         propertyInfos.put(OdmaCommonNames.PROPERTY_NAMEQUALIFIER, new OdmaStaticSystemPropertyInfoClassNameQualifier());
         propertyInfos.put(OdmaCommonNames.PROPERTY_DISPLAYNAME, new OdmaStaticSystemPropertyInfoClassDisplayName());
-        propertyInfos.put(OdmaCommonNames.PROPERTY_PARENT, new OdmaStaticSystemPropertyInfoClassParent());
+        propertyInfos.put(OdmaCommonNames.PROPERTY_SUPERCLASS, new OdmaStaticSystemPropertyInfoClassSuperClass());
         propertyInfos.put(OdmaCommonNames.PROPERTY_ASPECTS, new OdmaStaticSystemPropertyInfoClassAspects());
         propertyInfos.put(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES, new OdmaStaticSystemPropertyInfoClassDeclaredProperties());
         propertyInfos.put(OdmaCommonNames.PROPERTY_PROPERTIES, new OdmaStaticSystemPropertyInfoClassProperties());
@@ -385,6 +385,7 @@ public class OdmaStaticClassHierarchy
         propertyInfos.put(OdmaCommonNames.PROPERTY_INPROGRESS, new OdmaStaticSystemPropertyInfoVersionCollectionInProgress());
         propertyInfos.put(OdmaCommonNames.PROPERTY_CONTAINEES, new OdmaStaticSystemPropertyInfoContainerContainees());
         propertyInfos.put(OdmaCommonNames.PROPERTY_ASSOCIATIONS, new OdmaStaticSystemPropertyInfoContainerAssociations());
+        propertyInfos.put(OdmaCommonNames.PROPERTY_PARENT, new OdmaStaticSystemPropertyInfoFolderParent());
         propertyInfos.put(OdmaCommonNames.PROPERTY_SUBFOLDERS, new OdmaStaticSystemPropertyInfoFolderSubFolders());
         propertyInfos.put(OdmaCommonNames.PROPERTY_CONTAINEDIN, new OdmaStaticSystemPropertyInfoContainableContainedIn());
         propertyInfos.put(OdmaCommonNames.PROPERTY_CONTAINEDINASSOCIATIONS, new OdmaStaticSystemPropertyInfoContainableContainedInAssociations());
@@ -405,7 +406,7 @@ public class OdmaStaticClassHierarchy
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAMEQUALIFIER));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_DISPLAYNAME));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_PARENT));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_SUPERCLASS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_ASPECTS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_PROPERTIES));
@@ -581,7 +582,7 @@ public class OdmaStaticClassHierarchy
 
         getPropertyInfo(OdmaCommonNames.PROPERTY_CLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_REPOSITORY).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_REPOSITORY));
-        getPropertyInfo(OdmaCommonNames.PROPERTY_PARENT).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
+        getPropertyInfo(OdmaCommonNames.PROPERTY_SUPERCLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_ASPECTS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_PROPERTYINFO));
         getPropertyInfo(OdmaCommonNames.PROPERTY_PROPERTIES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_PROPERTYINFO));
@@ -600,6 +601,7 @@ public class OdmaStaticClassHierarchy
         getPropertyInfo(OdmaCommonNames.PROPERTY_INPROGRESS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_DOCUMENT));
         getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINEES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CONTAINABLE));
         getPropertyInfo(OdmaCommonNames.PROPERTY_ASSOCIATIONS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_ASSOCIATION));
+        getPropertyInfo(OdmaCommonNames.PROPERTY_PARENT).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_FOLDER));
         getPropertyInfo(OdmaCommonNames.PROPERTY_SUBFOLDERS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_FOLDER));
         getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINEDIN).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CONTAINER));
         getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINEDINASSOCIATIONS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_ASSOCIATION));

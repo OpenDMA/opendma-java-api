@@ -191,20 +191,20 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
     }
 
     /**
-     * Returns the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
+     * Returns the <i>super</i> <code>Class</code> that is extended by this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUPERCLASS).getReference()</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br/>
+     * <p>Property <b>SuperClass</b> (opendma): <b>Reference to Class (opendma)</b><br/>
      * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>
+     * @return the <i>super</i> <code>Class</code> that is extended by this <code>Class</code>
      */
-    public OdmaClass getParent()
+    public OdmaClass getSuperClass()
     {
         try
         {
-            return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_PARENT).getReference();
+            return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_SUPERCLASS).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -560,14 +560,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
     }
 
     /**
-     * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property).<br>
+     * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <code>SuperClass</code> property).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br/>
      * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property)
+     * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <code>SuperClass</code> property)
      */
      @SuppressWarnings("unchecked")
     public Iterable<OdmaClass> getSubClasses()

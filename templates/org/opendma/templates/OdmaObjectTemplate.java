@@ -138,7 +138,7 @@ public class OdmaObjectTemplate implements OdmaObject
                     }
                 }
             }
-            test = test.getParent();
+            test = test.getSuperClass();
         }
         return false;
     }

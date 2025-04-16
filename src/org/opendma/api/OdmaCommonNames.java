@@ -37,8 +37,8 @@ public class OdmaCommonNames
     /** qualified name of the OpenDMA system property <code>DisplayName</code> */
     public static final OdmaQName PROPERTY_DISPLAYNAME = new OdmaQName("opendma", "DisplayName");
 
-    /** qualified name of the OpenDMA system property <code>Parent</code> */
-    public static final OdmaQName PROPERTY_PARENT = new OdmaQName("opendma", "Parent");
+    /** qualified name of the OpenDMA system property <code>SuperClass</code> */
+    public static final OdmaQName PROPERTY_SUPERCLASS = new OdmaQName("opendma", "SuperClass");
 
     /** qualified name of the OpenDMA system property <code>Aspects</code> */
     public static final OdmaQName PROPERTY_ASPECTS = new OdmaQName("opendma", "Aspects");
@@ -288,7 +288,8 @@ public class OdmaCommonNames
     /** qualified name of the OpenDMA system class <code>Folder</code> */
     public static final OdmaQName CLASS_FOLDER = new OdmaQName("opendma", "Folder");
 
-    // Property Parent already defined previously
+    /** qualified name of the OpenDMA system property <code>Parent</code> */
+    public static final OdmaQName PROPERTY_PARENT = new OdmaQName("opendma", "Parent");
 
     /** qualified name of the OpenDMA system property <code>SubFolders</code> */
     public static final OdmaQName PROPERTY_SUBFOLDERS = new OdmaQName("opendma", "SubFolders");

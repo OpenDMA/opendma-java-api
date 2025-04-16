@@ -42,14 +42,14 @@ public interface OdmaFolder extends OdmaContainer
     void setParent(OdmaFolder newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br/>
+     * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent property.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
      * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty
+     * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent property
      */
     Iterable<OdmaFolder> getSubFolders();
 
