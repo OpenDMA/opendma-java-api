@@ -1,13 +1,12 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaRepository;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaClass;
-import org.opendma.api.collections.OdmaClassEnumeration;
 import org.opendma.api.OdmaFolder;
 
 /**
@@ -40,7 +39,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_NAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_NAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -66,7 +65,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_NAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -91,7 +90,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -117,7 +116,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -142,7 +141,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
     {
         try
         {
-            return (OdmaClass)getProperty(OdmaTypes.PROPERTY_ROOTCLASS).getReference();
+            return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_ROOTCLASS).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -167,11 +166,12 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * 
      * @return the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect
      */
-    public OdmaClassEnumeration getRootAspects()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaClass> getRootAspects()
     {
         try
         {
-            return (OdmaClassEnumeration)getProperty(OdmaTypes.PROPERTY_ROOTASPECTS).getReferenceEnumeration();
+            return (Iterable<OdmaClass>)getProperty(OdmaCommonNames.PROPERTY_ROOTASPECTS).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {
@@ -200,7 +200,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
     {
         try
         {
-            return (OdmaFolder)getProperty(OdmaTypes.PROPERTY_ROOTFOLDER).getReference();
+            return (OdmaFolder)getProperty(OdmaCommonNames.PROPERTY_ROOTFOLDER).getReference();
         }
         catch(ClassCastException cce)
         {

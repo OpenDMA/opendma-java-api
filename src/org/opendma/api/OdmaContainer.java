@@ -1,8 +1,6 @@
 package org.opendma.api;
 
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaContainableEnumeration;
-import org.opendma.api.collections.OdmaAssociationEnumeration;
 import java.util.Date;
 
 /**
@@ -44,7 +42,7 @@ public interface OdmaContainer extends OdmaObject
 
     /**
      * Returns the collection of all <code>Containable</code> objects that are contained in this <code>Container</code>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEES).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Containees</b> (opendma): <b>Reference to Containable (opendma)</b><br>
      * [MultiValue] [ReadOnly] [Required]<br>
@@ -52,11 +50,11 @@ public interface OdmaContainer extends OdmaObject
      * 
      * @return the collection of all <code>Containable</code> objects that are contained in this <code>Container</code>
      */
-    public OdmaContainableEnumeration getContainees();
+    public Iterable<OdmaContainable> getContainees();
 
     /**
      * Returns the collection of all <code>Association</code>s between this <code>Container</code> and its containees.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASSOCIATIONS).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASSOCIATIONS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Associations</b> (opendma): <b>Reference to Association (opendma)</b><br>
      * [MultiValue] [ReadOnly] [Nullable]<br>
@@ -64,7 +62,7 @@ public interface OdmaContainer extends OdmaObject
      * 
      * @return the collection of all <code>Association</code>s between this <code>Container</code> and its containees
      */
-    public OdmaAssociationEnumeration getAssociations();
+    public Iterable<OdmaAssociation> getAssociations();
 
     /**
      * Returns the date when this <code>Container</code> has been created.<br>

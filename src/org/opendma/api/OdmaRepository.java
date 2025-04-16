@@ -1,7 +1,6 @@
 package org.opendma.api;
 
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaClassEnumeration;
 
 /**
  * The <i>Repository</i> specific version of the <code>{@link OdmaObject}</code> interface
@@ -82,7 +81,7 @@ public interface OdmaRepository extends OdmaObject
 
     /**
      * Returns the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ROOTASPECTS).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ROOTASPECTS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>RootAspects</b> (opendma): <b>Reference to Class (opendma)</b><br>
      * [MultiValue] [ReadOnly] [Nullable]<br>
@@ -90,7 +89,7 @@ public interface OdmaRepository extends OdmaObject
      * 
      * @return the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect
      */
-    public OdmaClassEnumeration getRootAspects();
+    public Iterable<OdmaClass> getRootAspects();
 
     /**
      * Returns the <i>root</i> <code>Folder</code> of a dedicated folder tree in this <code>Repository</code> (if any).<br>

@@ -1,7 +1,7 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaDataContentElement;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
@@ -46,7 +46,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CONTENT).getContent();
+            return getProperty(OdmaCommonNames.PROPERTY_CONTENT).getContent();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -72,7 +72,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_CONTENT).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_CONTENT).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -97,7 +97,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_SIZE).getLong();
+            return getProperty(OdmaCommonNames.PROPERTY_SIZE).getLong();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -122,7 +122,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_FILENAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_FILENAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -148,7 +148,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_FILENAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_FILENAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

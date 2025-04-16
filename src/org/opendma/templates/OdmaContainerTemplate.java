@@ -1,15 +1,15 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaContainer;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaContainableEnumeration;
-import org.opendma.api.collections.OdmaAssociationEnumeration;
+import org.opendma.api.OdmaContainable;
+import org.opendma.api.OdmaAssociation;
 import java.util.Date;
 
 /**
@@ -48,7 +48,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_TITLE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_TITLE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -74,7 +74,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_TITLE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_TITLE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -95,11 +95,12 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
      * 
      * @return the collection of all <code>Containable</code> objects that are contained in this <code>Container</code>
      */
-    public OdmaContainableEnumeration getContainees()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaContainable> getContainees()
     {
         try
         {
-            return (OdmaContainableEnumeration)getProperty(OdmaTypes.PROPERTY_CONTAINEES).getReferenceEnumeration();
+            return (Iterable<OdmaContainable>)getProperty(OdmaCommonNames.PROPERTY_CONTAINEES).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {
@@ -124,11 +125,12 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
      * 
      * @return the collection of all <code>Association</code>s between this <code>Container</code> and its containees
      */
-    public OdmaAssociationEnumeration getAssociations()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaAssociation> getAssociations()
     {
         try
         {
-            return (OdmaAssociationEnumeration)getProperty(OdmaTypes.PROPERTY_ASSOCIATIONS).getReferenceEnumeration();
+            return (Iterable<OdmaAssociation>)getProperty(OdmaCommonNames.PROPERTY_ASSOCIATIONS).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {
@@ -157,7 +159,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime();
+            return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -182,7 +184,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -207,7 +209,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime();
+            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -232,7 +234,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

@@ -1,7 +1,7 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaAssociation;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
@@ -48,7 +48,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_NAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_NAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -74,7 +74,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_NAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -99,7 +99,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return (OdmaContainer)getProperty(OdmaTypes.PROPERTY_CONTAINER).getReference();
+            return (OdmaContainer)getProperty(OdmaCommonNames.PROPERTY_CONTAINER).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -129,7 +129,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_CONTAINER).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_CONTAINER).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -154,7 +154,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return (OdmaContainable)getProperty(OdmaTypes.PROPERTY_CONTAINABLE).getReference();
+            return (OdmaContainable)getProperty(OdmaCommonNames.PROPERTY_CONTAINABLE).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -184,7 +184,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_CONTAINABLE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_CONTAINABLE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -209,7 +209,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime();
+            return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -234,7 +234,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -259,7 +259,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime();
+            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -284,7 +284,7 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

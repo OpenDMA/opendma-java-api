@@ -1,7 +1,6 @@
 package org.opendma.api;
 
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaContentElementEnumeration;
 import java.util.Date;
 
 /**
@@ -91,7 +90,7 @@ public interface OdmaDocument extends OdmaObject
 
     /**
      * Returns the collection of all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTELEMENTS).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTELEMENTS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>ContentElements</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
      * [MultiValue] [Writable] [Nullable]<br>
@@ -99,7 +98,7 @@ public interface OdmaDocument extends OdmaObject
      * 
      * @return the collection of all <code>ContentElement</code>s this <code>Document</code> consists of
      */
-    public OdmaContentElementEnumeration getContentElements();
+    public Iterable<OdmaContentElement> getContentElements();
 
     /**
      * Returns the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>

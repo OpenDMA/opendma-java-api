@@ -2,20 +2,8 @@ package org.opendma.api;
 
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.StringList;
-import org.opendma.api.collections.IntegerList;
-import org.opendma.api.collections.ShortList;
-import org.opendma.api.collections.LongList;
-import org.opendma.api.collections.FloatList;
-import org.opendma.api.collections.DoubleList;
-import org.opendma.api.collections.BooleanList;
+import java.util.List;
 import java.util.Date;
-import org.opendma.api.collections.DateTimeList;
-import org.opendma.api.collections.BlobList;
-import org.opendma.api.collections.OdmaObjectEnumeration;
-import org.opendma.api.collections.OdmaContentList;
-import org.opendma.api.collections.OdmaIdList;
-import org.opendma.api.collections.OdmaGuidList;
 
 /**
  * A <i>Property</i> of an <code>OdmaObject</code> in the OpenDMA
@@ -56,7 +44,7 @@ public interface OdmaProperty
      * 
      * @see org.opendma.OdmaTypes
      */
-    public int getType();
+    public OdmaType getType();
 
     /**
      * Set the value of this property to the given new value. The
@@ -268,172 +256,172 @@ public interface OdmaProperty
     public OdmaGuid getGuid() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>StringList</code> value of this property if and only if
+     * Returns the <code>List<String></code> value of this property if and only if
      * the data type of this property is a multi valued <i>String</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>StringList</code> value of this property
+     * @return the <code>List<String></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>String</i>
      *             property
      */
-    public StringList getStringList() throws OdmaInvalidDataTypeException;
+    public List<String> getStringList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>IntegerList</code> value of this property if and only if
+     * Returns the <code>List<Integer></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Integer</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>IntegerList</code> value of this property
+     * @return the <code>List<Integer></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Integer</i>
      *             property
      */
-    public IntegerList getIntegerList() throws OdmaInvalidDataTypeException;
+    public List<Integer> getIntegerList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>ShortList</code> value of this property if and only if
+     * Returns the <code>List<Short></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Short</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>ShortList</code> value of this property
+     * @return the <code>List<Short></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Short</i>
      *             property
      */
-    public ShortList getShortList() throws OdmaInvalidDataTypeException;
+    public List<Short> getShortList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>LongList</code> value of this property if and only if
+     * Returns the <code>List<Long></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Long</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>LongList</code> value of this property
+     * @return the <code>List<Long></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Long</i>
      *             property
      */
-    public LongList getLongList() throws OdmaInvalidDataTypeException;
+    public List<Long> getLongList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>FloatList</code> value of this property if and only if
+     * Returns the <code>List<Float></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Float</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>FloatList</code> value of this property
+     * @return the <code>List<Float></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Float</i>
      *             property
      */
-    public FloatList getFloatList() throws OdmaInvalidDataTypeException;
+    public List<Float> getFloatList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>DoubleList</code> value of this property if and only if
+     * Returns the <code>List<Double></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Double</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>DoubleList</code> value of this property
+     * @return the <code>List<Double></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Double</i>
      *             property
      */
-    public DoubleList getDoubleList() throws OdmaInvalidDataTypeException;
+    public List<Double> getDoubleList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>BooleanList</code> value of this property if and only if
+     * Returns the <code>List<Boolean></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Boolean</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>BooleanList</code> value of this property
+     * @return the <code>List<Boolean></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Boolean</i>
      *             property
      */
-    public BooleanList getBooleanList() throws OdmaInvalidDataTypeException;
+    public List<Boolean> getBooleanList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>DateTimeList</code> value of this property if and only if
+     * Returns the <code>List<Date></code> value of this property if and only if
      * the data type of this property is a multi valued <i>DateTime</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>DateTimeList</code> value of this property
+     * @return the <code>List<Date></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>DateTime</i>
      *             property
      */
-    public DateTimeList getDateTimeList() throws OdmaInvalidDataTypeException;
+    public List<Date> getDateTimeList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>BlobList</code> value of this property if and only if
+     * Returns the <code>List<byte[]></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Blob</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>BlobList</code> value of this property
+     * @return the <code>List<byte[]></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Blob</i>
      *             property
      */
-    public BlobList getBlobList() throws OdmaInvalidDataTypeException;
+    public List<byte[]> getBlobList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>OdmaObjectEnumeration</code> value of this property if and only if
+     * Returns the <code>Iterable<? extends OdmaObject></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Reference</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>OdmaObjectEnumeration</code> value of this property
+     * @return the <code>Iterable<? extends OdmaObject></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Reference</i>
      *             property
      */
-    public OdmaObjectEnumeration getReferenceEnumeration() throws OdmaInvalidDataTypeException;
+    public Iterable<? extends OdmaObject> getReferenceIterable() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>OdmaContentList</code> value of this property if and only if
+     * Returns the <code>List<OdmaContent></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Content</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>OdmaContentList</code> value of this property
+     * @return the <code>List<OdmaContent></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Content</i>
      *             property
      */
-    public OdmaContentList getContentList() throws OdmaInvalidDataTypeException;
+    public List<OdmaContent> getContentList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>OdmaIdList</code> value of this property if and only if
+     * Returns the <code>List<OdmaId></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Id</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>OdmaIdList</code> value of this property
+     * @return the <code>List<OdmaId></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Id</i>
      *             property
      */
-    public OdmaIdList getIdList() throws OdmaInvalidDataTypeException;
+    public List<OdmaId> getIdList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>OdmaGuidList</code> value of this property if and only if
+     * Returns the <code>List<OdmaGuid></code> value of this property if and only if
      * the data type of this property is a multi valued <i>Guid</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>OdmaGuidList</code> value of this property
+     * @return the <code>List<OdmaGuid></code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if this property is not a multi valued <i>Guid</i>
      *             property
      */
-    public OdmaGuidList getGuidList() throws OdmaInvalidDataTypeException;
+    public List<OdmaGuid> getGuidList() throws OdmaInvalidDataTypeException;
 
 }

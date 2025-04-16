@@ -1,6 +1,6 @@
 package org.opendma.exceptions;
 
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaType;
 
 /**
  * Exception thrown whenever the data type accessed by the user does not match
@@ -15,19 +15,19 @@ public class OdmaInvalidDataTypeException extends OdmaException
     private static final long serialVersionUID = 5012000289312853013L;
 
     /** the data type expected by the user */
-    private int expectedDataType;
+    private OdmaType expectedDataType;
 
     /** the multi-value / single-value property expected by the user */
     private boolean expectedMultivalue;
 
     /**
-     * wheather this Exception carries information about the real data type that
+     * whether this Exception carries information about the real data type that
      * is present in OpenDMA or not
      */
     private boolean hasFound;
 
     /** the real data type that is present in OpenDMA */
-    private int foundDataType;
+    private OdmaType foundDataType;
 
     /** the real multi-value / single-value property that is present in OpenDMA */
     private boolean foundMultivalue;
@@ -41,7 +41,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param expectedMultivalue
      *            the multi-value / single-value property expected by the user
      */
-    public OdmaInvalidDataTypeException(int expectedDataType, boolean expectedMultivalue)
+    public OdmaInvalidDataTypeException(OdmaType expectedDataType, boolean expectedMultivalue)
     {
         super(getDefaultMessage(expectedDataType, expectedMultivalue));
         this.hasFound = false;
@@ -60,7 +60,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param expectedMultivalue
      *            the multi-value / single-value property expected by the user
      */
-    public OdmaInvalidDataTypeException(String msg, int expectedDataType, boolean expectedMultivalue)
+    public OdmaInvalidDataTypeException(String msg, OdmaType expectedDataType, boolean expectedMultivalue)
     {
         super(msg);
         this.hasFound = false;
@@ -81,7 +81,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param expectedMultivalue
      *            the multi-value / single-value property expected by the user
      */
-    public OdmaInvalidDataTypeException(String msg, Throwable t, int expectedDataType, boolean expectedMultivalue)
+    public OdmaInvalidDataTypeException(String msg, Throwable t, OdmaType expectedDataType, boolean expectedMultivalue)
     {
         super(msg, t);
         this.hasFound = false;
@@ -100,7 +100,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param expectedMultivalue
      *            the multi-value / single-value property expected by the user
      */
-    public OdmaInvalidDataTypeException(Throwable t, int expectedDataType, boolean expectedMultivalue)
+    public OdmaInvalidDataTypeException(Throwable t, OdmaType expectedDataType, boolean expectedMultivalue)
     {
         super(getDefaultMessage(expectedDataType, expectedMultivalue), t);
         this.hasFound = false;
@@ -119,7 +119,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param foundDataType
      * @param foundMultivalue
      */
-    public OdmaInvalidDataTypeException(int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
+    public OdmaInvalidDataTypeException(OdmaType expectedDataType, boolean expectedMultivalue, OdmaType foundDataType, boolean foundMultivalue)
     {
         super(getDefaultMessage(expectedDataType, expectedMultivalue, foundDataType, foundMultivalue));
         this.hasFound = true;
@@ -142,7 +142,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param foundDataType
      * @param foundMultivalue
      */
-    public OdmaInvalidDataTypeException(String msg, int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
+    public OdmaInvalidDataTypeException(String msg, OdmaType expectedDataType, boolean expectedMultivalue, OdmaType foundDataType, boolean foundMultivalue)
     {
         super(msg);
         this.hasFound = true;
@@ -167,7 +167,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param foundDataType
      * @param foundMultivalue
      */
-    public OdmaInvalidDataTypeException(String msg, Throwable t, int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
+    public OdmaInvalidDataTypeException(String msg, Throwable t, OdmaType expectedDataType, boolean expectedMultivalue, OdmaType foundDataType, boolean foundMultivalue)
     {
         super(msg, t);
         this.hasFound = true;
@@ -190,7 +190,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * @param foundDataType
      * @param foundMultivalue
      */
-    public OdmaInvalidDataTypeException(Throwable t, int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
+    public OdmaInvalidDataTypeException(Throwable t, OdmaType expectedDataType, boolean expectedMultivalue, OdmaType foundDataType, boolean foundMultivalue)
     {
         super(getDefaultMessage(expectedDataType, expectedMultivalue, foundDataType, foundMultivalue), t);
         this.hasFound = true;
@@ -208,7 +208,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      *            the multi-value / single-value property expected by the user
      * @return x
      */
-    private static String getDefaultMessage(int expectedDataType, boolean expectedMultivalue)
+    private static String getDefaultMessage(OdmaType expectedDataType, boolean expectedMultivalue)
     {
         StringBuffer msgBuffer = new StringBuffer("Invalid data type. Expected ");
         if (expectedMultivalue)
@@ -221,43 +221,43 @@ public class OdmaInvalidDataTypeException extends OdmaException
         }
         switch (expectedDataType)
         {
-        case OdmaTypes.TYPE_STRING:
+        case STRING:
             msgBuffer.append("string");
             break;
-        case OdmaTypes.TYPE_INTEGER:
+        case INTEGER:
             msgBuffer.append("integer");
             break;
-        case OdmaTypes.TYPE_SHORT:
+        case SHORT:
             msgBuffer.append("short");
             break;
-        case OdmaTypes.TYPE_LONG:
+        case LONG:
             msgBuffer.append("long");
             break;
-        case OdmaTypes.TYPE_FLOAT:
+        case FLOAT:
             msgBuffer.append("float");
             break;
-        case OdmaTypes.TYPE_DOUBLE:
+        case DOUBLE:
             msgBuffer.append("double");
             break;
-        case OdmaTypes.TYPE_BOOLEAN:
+        case BOOLEAN:
             msgBuffer.append("boolean");
             break;
-        case OdmaTypes.TYPE_DATETIME:
+        case DATETIME:
             msgBuffer.append("datetime");
             break;
-        case OdmaTypes.TYPE_BLOB:
+        case BLOB:
             msgBuffer.append("blob");
             break;
-        case OdmaTypes.TYPE_REFERENCE:
+        case REFERENCE:
             msgBuffer.append("object");
             break;
-        case OdmaTypes.TYPE_CONTENT:
+        case CONTENT:
             msgBuffer.append("content");
             break;
-        case OdmaTypes.TYPE_ID:
+        case ID:
             msgBuffer.append("id");
             break;
-        case OdmaTypes.TYPE_GUID:
+        case GUID:
             msgBuffer.append("guid");
             break;
         default:
@@ -278,7 +278,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * 
      * @return x
      */
-    private static String getDefaultMessage(int expectedDataType, boolean expectedMultivalue, int foundDataType, boolean foundMultivalue)
+    private static String getDefaultMessage(OdmaType expectedDataType, boolean expectedMultivalue, OdmaType foundDataType, boolean foundMultivalue)
     {
         StringBuffer msgBuffer = new StringBuffer("Invalid data type. Expected ");
         if (expectedMultivalue)
@@ -291,43 +291,43 @@ public class OdmaInvalidDataTypeException extends OdmaException
         }
         switch (expectedDataType)
         {
-        case OdmaTypes.TYPE_STRING:
+        case STRING:
             msgBuffer.append("string");
             break;
-        case OdmaTypes.TYPE_INTEGER:
+        case INTEGER:
             msgBuffer.append("integer");
             break;
-        case OdmaTypes.TYPE_SHORT:
+        case SHORT:
             msgBuffer.append("short");
             break;
-        case OdmaTypes.TYPE_LONG:
+        case LONG:
             msgBuffer.append("long");
             break;
-        case OdmaTypes.TYPE_FLOAT:
+        case FLOAT:
             msgBuffer.append("float");
             break;
-        case OdmaTypes.TYPE_DOUBLE:
+        case DOUBLE:
             msgBuffer.append("double");
             break;
-        case OdmaTypes.TYPE_BOOLEAN:
+        case BOOLEAN:
             msgBuffer.append("boolean");
             break;
-        case OdmaTypes.TYPE_DATETIME:
+        case DATETIME:
             msgBuffer.append("datetime");
             break;
-        case OdmaTypes.TYPE_BLOB:
+        case BLOB:
             msgBuffer.append("blob");
             break;
-        case OdmaTypes.TYPE_REFERENCE:
+        case REFERENCE:
             msgBuffer.append("object");
             break;
-        case OdmaTypes.TYPE_CONTENT:
+        case CONTENT:
             msgBuffer.append("content");
             break;
-        case OdmaTypes.TYPE_ID:
+        case ID:
             msgBuffer.append("id");
             break;
-        case OdmaTypes.TYPE_GUID:
+        case GUID:
             msgBuffer.append("guid");
             break;
         default:
@@ -345,43 +345,43 @@ public class OdmaInvalidDataTypeException extends OdmaException
         }
         switch (foundDataType)
         {
-        case OdmaTypes.TYPE_STRING:
+        case STRING:
             msgBuffer.append("string");
             break;
-        case OdmaTypes.TYPE_INTEGER:
+        case INTEGER:
             msgBuffer.append("integer");
             break;
-        case OdmaTypes.TYPE_SHORT:
+        case SHORT:
             msgBuffer.append("short");
             break;
-        case OdmaTypes.TYPE_LONG:
+        case LONG:
             msgBuffer.append("long");
             break;
-        case OdmaTypes.TYPE_FLOAT:
+        case FLOAT:
             msgBuffer.append("float");
             break;
-        case OdmaTypes.TYPE_DOUBLE:
+        case DOUBLE:
             msgBuffer.append("double");
             break;
-        case OdmaTypes.TYPE_BOOLEAN:
+        case BOOLEAN:
             msgBuffer.append("boolean");
             break;
-        case OdmaTypes.TYPE_DATETIME:
+        case DATETIME:
             msgBuffer.append("datetime");
             break;
-        case OdmaTypes.TYPE_BLOB:
+        case BLOB:
             msgBuffer.append("blob");
             break;
-        case OdmaTypes.TYPE_REFERENCE:
+        case REFERENCE:
             msgBuffer.append("object");
             break;
-        case OdmaTypes.TYPE_CONTENT:
+        case CONTENT:
             msgBuffer.append("content");
             break;
-        case OdmaTypes.TYPE_ID:
+        case ID:
             msgBuffer.append("id");
             break;
-        case OdmaTypes.TYPE_GUID:
+        case GUID:
             msgBuffer.append("guid");
             break;
         default:
@@ -396,7 +396,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * 
      * @return the data type expected by the user
      */
-    public int getExpectedDataType()
+    public OdmaType getExpectedDataType()
     {
         return (expectedDataType);
     }
@@ -424,7 +424,7 @@ public class OdmaInvalidDataTypeException extends OdmaException
      * 
      * @return x
      */
-    public int getFoundDataType()
+    public OdmaType getFoundDataType()
     {
         return (foundDataType);
     }

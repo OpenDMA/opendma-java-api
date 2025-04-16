@@ -1,14 +1,14 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaContainable;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
-import org.opendma.api.collections.OdmaContainerEnumeration;
-import org.opendma.api.collections.OdmaAssociationEnumeration;
+import org.opendma.api.OdmaContainer;
+import org.opendma.api.OdmaAssociation;
 
 /**
  * Template implementation of the interface <code>{@link OdmaContainable}</code>.<p>
@@ -42,11 +42,12 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the collection of <code>Container</code>s this <code>Containable</code> is contained in
      */
-    public OdmaContainerEnumeration getContainedIn()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaContainer> getContainedIn()
     {
         try
         {
-            return (OdmaContainerEnumeration)getProperty(OdmaTypes.PROPERTY_CONTAINEDIN).getReferenceEnumeration();
+            return (Iterable<OdmaContainer>)getProperty(OdmaCommonNames.PROPERTY_CONTAINEDIN).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {
@@ -71,11 +72,12 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the collection of <code>Association</code>s that bind this <code>Containable</code> in the <code>Container</code>s
      */
-    public OdmaAssociationEnumeration getContainedInAssociations()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaAssociation> getContainedInAssociations()
     {
         try
         {
-            return (OdmaAssociationEnumeration)getProperty(OdmaTypes.PROPERTY_CONTAINEDINASSOCIATIONS).getReferenceEnumeration();
+            return (Iterable<OdmaAssociation>)getProperty(OdmaCommonNames.PROPERTY_CONTAINEDINASSOCIATIONS).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {

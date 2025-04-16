@@ -1,14 +1,13 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaFolder;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaFolderEnumeration;
 
 /**
  * Template implementation of the interface <code>{@link OdmaFolder}</code>.<p>
@@ -46,7 +45,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
     {
         try
         {
-            return (OdmaFolder)getProperty(OdmaTypes.PROPERTY_PARENT).getReference();
+            return (OdmaFolder)getProperty(OdmaCommonNames.PROPERTY_PARENT).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -76,7 +75,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_PARENT).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_PARENT).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -97,11 +96,12 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * 
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty
      */
-    public OdmaFolderEnumeration getSubFolders()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaFolder> getSubFolders()
     {
         try
         {
-            return (OdmaFolderEnumeration)getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceEnumeration();
+            return (Iterable<OdmaFolder>)getProperty(OdmaCommonNames.PROPERTY_SUBFOLDERS).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {

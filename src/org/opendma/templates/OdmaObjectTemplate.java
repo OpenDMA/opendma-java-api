@@ -1,12 +1,11 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaObject;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import java.util.Iterator;
-import org.opendma.api.collections.OdmaClassEnumeration;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
@@ -131,13 +130,13 @@ public class OdmaObjectTemplate implements OdmaObject
             {
                 return true;
             }
-            OdmaClassEnumeration aspects = test.getAspects();
+            Iterable<OdmaClass> aspects = test.getAspects();
             if(aspects != null)
             {
-                Iterator itAspects = aspects.iterator();
+                Iterator<OdmaClass> itAspects = aspects.iterator();
                 while(itAspects.hasNext())
                 {
-                    OdmaClass declaredAspect = (OdmaClass)itAspects.next();
+                    OdmaClass declaredAspect = itAspects.next();
                     if(declaredAspect.getQName().equals(classOrAspectName))
                     {
                         return true;
@@ -169,7 +168,7 @@ public class OdmaObjectTemplate implements OdmaObject
     {
         try
         {
-            return (OdmaClass)getProperty(OdmaTypes.PROPERTY_CLASS).getReference();
+            return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_CLASS).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -198,7 +197,7 @@ public class OdmaObjectTemplate implements OdmaObject
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_ID).getId();
+            return getProperty(OdmaCommonNames.PROPERTY_ID).getId();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -223,7 +222,7 @@ public class OdmaObjectTemplate implements OdmaObject
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_GUID).getGuid();
+            return getProperty(OdmaCommonNames.PROPERTY_GUID).getGuid();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -248,7 +247,7 @@ public class OdmaObjectTemplate implements OdmaObject
     {
         try
         {
-            return (OdmaRepository)getProperty(OdmaTypes.PROPERTY_REPOSITORY).getReference();
+            return (OdmaRepository)getProperty(OdmaCommonNames.PROPERTY_REPOSITORY).getReference();
         }
         catch(ClassCastException cce)
         {

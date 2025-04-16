@@ -1,7 +1,7 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaContentElement;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
@@ -45,7 +45,7 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_CONTENTTYPE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -71,7 +71,7 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_CONTENTTYPE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -96,7 +96,7 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_POSITION).getInteger();
+            return getProperty(OdmaCommonNames.PROPERTY_POSITION).getInteger();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

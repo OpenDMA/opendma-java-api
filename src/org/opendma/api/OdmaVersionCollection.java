@@ -1,6 +1,5 @@
 package org.opendma.api;
 
-import org.opendma.api.collections.OdmaDocumentEnumeration;
 import java.util.Date;
 
 /**
@@ -17,7 +16,7 @@ public interface OdmaVersionCollection extends OdmaObject
 
     /**
      * Returns collection of all versions of the <code>Document</code>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONS).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Versions</b> (opendma): <b>Reference to Document (opendma)</b><br>
      * [MultiValue] [ReadOnly] [Required]<br>
@@ -25,7 +24,7 @@ public interface OdmaVersionCollection extends OdmaObject
      * 
      * @return collection of all versions of the <code>Document</code>
      */
-    public OdmaDocumentEnumeration getVersions();
+    public Iterable<OdmaDocument> getVersions();
 
     /**
      * Returns the latest version of this <code>Document</code>.<br>

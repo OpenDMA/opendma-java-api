@@ -1,7 +1,6 @@
 package org.opendma.api;
 
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaChoiceValueEnumeration;
 
 /**
  * The <i>PropertyInfo</i> specific version of the <code>{@link OdmaObject}</code> interface
@@ -144,19 +143,19 @@ public interface OdmaPropertyInfo extends OdmaObject
     public void setReferenceClass(OdmaClass value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Returns whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_MULTIVALUE).getBoolean()</code>.
      * 
      * <p>Property <b>MultiValue</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
+     * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
     public Boolean getMultiValue();
 
     /**
-     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Sets whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_MULTIVALUE).setValue(value)</code>.
      * 
      * <p>Property <b>MultiValue</b> (opendma): <b>Boolean</b><br>
@@ -169,19 +168,19 @@ public interface OdmaPropertyInfo extends OdmaObject
     public void setMultiValue(Boolean value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Returns whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REQUIRED).getBoolean()</code>.
      * 
      * <p>Property <b>Required</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
+     * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
     public Boolean getRequired();
 
     /**
-     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Sets whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REQUIRED).setValue(value)</code>.
      * 
      * <p>Property <b>Required</b> (opendma): <b>Boolean</b><br>
@@ -194,19 +193,19 @@ public interface OdmaPropertyInfo extends OdmaObject
     public void setRequired(Boolean value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Returns whether this <code>Class</code> should be displayed to end users or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_READONLY).getBoolean()</code>.
      * 
      * <p>Property <b>ReadOnly</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather this <code>Class</code> should be displayed to end users or not
+     * @return whether this <code>Class</code> should be displayed to end users or not
      */
     public Boolean getReadOnly();
 
     /**
-     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Sets whether this <code>Class</code> should be displayed to end users or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_READONLY).setValue(value)</code>.
      * 
      * <p>Property <b>ReadOnly</b> (opendma): <b>Boolean</b><br>
@@ -219,19 +218,19 @@ public interface OdmaPropertyInfo extends OdmaObject
     public void setReadOnly(Boolean value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Returns whether this <code>Class</code> should be displayed to end users or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
      * 
      * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather this <code>Class</code> should be displayed to end users or not
+     * @return whether this <code>Class</code> should be displayed to end users or not
      */
     public Boolean getHidden();
 
     /**
-     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Sets whether this <code>Class</code> should be displayed to end users or not.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).setValue(value)</code>.
      * 
      * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
@@ -244,19 +243,19 @@ public interface OdmaPropertyInfo extends OdmaObject
     public void setHidden(Boolean value) throws OdmaAccessDeniedException;
 
     /**
-     * Returns wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Returns whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).getBoolean()</code>.
      * 
      * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather this <code>Class</code> is defined by the system (true) or by users (false)
+     * @return whether this <code>Class</code> is defined by the system (true) or by users (false)
      */
     public Boolean getSystem();
 
     /**
-     * Sets wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Sets whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value)</code>.
      * 
      * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
@@ -270,7 +269,7 @@ public interface OdmaPropertyInfo extends OdmaObject
 
     /**
      * Returns set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHOICES).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHOICES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Choices</b> (opendma): <b>Reference to ChoiceValue (opendma)</b><br>
      * [MultiValue] [Writable] [Nullable]<br>
@@ -278,7 +277,7 @@ public interface OdmaPropertyInfo extends OdmaObject
      * 
      * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property
      */
-    public OdmaChoiceValueEnumeration getChoices();
+    public Iterable<OdmaChoiceValue> getChoices();
 
     /**
      * the qualified name of this <code>Class</code><br>

@@ -1,14 +1,14 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaPropertyInfo;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaClass;
-import org.opendma.api.collections.OdmaChoiceValueEnumeration;
+import org.opendma.api.OdmaChoiceValue;
 
 /**
  * Template implementation of the interface <code>{@link OdmaPropertyInfo}</code>.<p>
@@ -40,7 +40,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_NAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_NAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -66,7 +66,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_NAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -91,7 +91,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -117,7 +117,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -142,7 +142,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -168,7 +168,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -193,7 +193,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_DATATYPE).getInteger();
+            return getProperty(OdmaCommonNames.PROPERTY_DATATYPE).getInteger();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -219,7 +219,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_DATATYPE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DATATYPE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -244,7 +244,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            return (OdmaClass)getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).getReference();
+            return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_REFERENCECLASS).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -274,7 +274,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_REFERENCECLASS).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -287,19 +287,19 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Returns whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * 
      * <p>Property <b>MultiValue</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
+     * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
     public Boolean getMultiValue()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_MULTIVALUE).getBoolean();
+            return getProperty(OdmaCommonNames.PROPERTY_MULTIVALUE).getBoolean();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -312,7 +312,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Sets whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * 
      * <p>Property <b>MultiValue</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
@@ -325,7 +325,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_MULTIVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_MULTIVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -338,19 +338,19 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Returns wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Returns whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * 
      * <p>Property <b>Required</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather <code>Object</code>s of this <code>Class</code> can be created or not
+     * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
     public Boolean getRequired()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_REQUIRED).getBoolean();
+            return getProperty(OdmaCommonNames.PROPERTY_REQUIRED).getBoolean();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -363,7 +363,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Sets wheather <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Sets whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
      * 
      * <p>Property <b>Required</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
@@ -376,7 +376,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_REQUIRED).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_REQUIRED).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -389,19 +389,19 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Returns whether this <code>Class</code> should be displayed to end users or not.<br>
      * 
      * <p>Property <b>ReadOnly</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather this <code>Class</code> should be displayed to end users or not
+     * @return whether this <code>Class</code> should be displayed to end users or not
      */
     public Boolean getReadOnly()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_READONLY).getBoolean();
+            return getProperty(OdmaCommonNames.PROPERTY_READONLY).getBoolean();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -414,7 +414,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Sets whether this <code>Class</code> should be displayed to end users or not.<br>
      * 
      * <p>Property <b>ReadOnly</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
@@ -427,7 +427,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_READONLY).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_READONLY).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -440,19 +440,19 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Returns wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Returns whether this <code>Class</code> should be displayed to end users or not.<br>
      * 
      * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather this <code>Class</code> should be displayed to end users or not
+     * @return whether this <code>Class</code> should be displayed to end users or not
      */
     public Boolean getHidden()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean();
+            return getProperty(OdmaCommonNames.PROPERTY_HIDDEN).getBoolean();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -465,7 +465,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Sets wheather this <code>Class</code> should be displayed to end users or not.<br>
+     * Sets whether this <code>Class</code> should be displayed to end users or not.<br>
      * 
      * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
@@ -478,7 +478,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_HIDDEN).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_HIDDEN).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -491,19 +491,19 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Returns wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Returns whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
      * 
      * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
      * Full description follows.</p>
      * 
-     * @return wheather this <code>Class</code> is defined by the system (true) or by users (false)
+     * @return whether this <code>Class</code> is defined by the system (true) or by users (false)
      */
     public Boolean getSystem()
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_SYSTEM).getBoolean();
+            return getProperty(OdmaCommonNames.PROPERTY_SYSTEM).getBoolean();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -516,7 +516,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Sets wheather this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Sets whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
      * 
      * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
      * [SingleValue] [Writable] [Required]<br>
@@ -529,7 +529,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_SYSTEM).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -550,11 +550,12 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * 
      * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property
      */
-    public OdmaChoiceValueEnumeration getChoices()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaChoiceValue> getChoices()
     {
         try
         {
-            return (OdmaChoiceValueEnumeration)getProperty(OdmaTypes.PROPERTY_CHOICES).getReferenceEnumeration();
+            return (Iterable<OdmaChoiceValue>)getProperty(OdmaCommonNames.PROPERTY_CHOICES).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {

@@ -1,7 +1,6 @@
 package org.opendma.api;
 
 import org.opendma.exceptions.OdmaAccessDeniedException;
-import org.opendma.api.collections.OdmaFolderEnumeration;
 
 /**
  * The <i>Folder</i> specific version of the <code>{@link OdmaContainer}</code> interface
@@ -45,7 +44,7 @@ public interface OdmaFolder extends OdmaContainer
 
     /**
      * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceEnumeration()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br>
      * [MultiValue] [ReadOnly] [Nullable]<br>
@@ -53,6 +52,6 @@ public interface OdmaFolder extends OdmaContainer
      * 
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty
      */
-    public OdmaFolderEnumeration getSubFolders();
+    public Iterable<OdmaFolder> getSubFolders();
 
 }

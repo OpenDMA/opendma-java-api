@@ -1,7 +1,7 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaChoiceValue;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
@@ -37,7 +37,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -63,7 +63,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -88,7 +88,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_STRINGVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_STRINGVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -114,7 +114,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_STRINGVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_STRINGVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -139,7 +139,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -165,7 +165,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -190,7 +190,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_SHORTVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -216,7 +216,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_SHORTVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -241,7 +241,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_LONGVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -267,7 +267,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_LONGVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -292,7 +292,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_FLOATVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -318,7 +318,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_FLOATVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -343,7 +343,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -369,7 +369,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -394,7 +394,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -420,7 +420,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -445,7 +445,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -471,7 +471,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -496,7 +496,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -522,7 +522,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_BLOBVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -547,7 +547,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_REFERENCEVALUE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -573,7 +573,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     {
         try
         {
-            getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_REFERENCEVALUE).setValue(value);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

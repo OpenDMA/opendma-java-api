@@ -1,13 +1,12 @@
 package org.opendma.templates;
 
 import org.opendma.api.OdmaVersionCollection;
-import org.opendma.OdmaTypes;
+import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaProperty;
 import org.opendma.api.OdmaQName;
-import org.opendma.api.collections.OdmaDocumentEnumeration;
 import org.opendma.api.OdmaDocument;
 import java.util.Date;
 
@@ -43,11 +42,12 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * 
      * @return collection of all versions of the <code>Document</code>
      */
-    public OdmaDocumentEnumeration getVersions()
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaDocument> getVersions()
     {
         try
         {
-            return (OdmaDocumentEnumeration)getProperty(OdmaTypes.PROPERTY_VERSIONS).getReferenceEnumeration();
+            return (Iterable<OdmaDocument>)getProperty(OdmaCommonNames.PROPERTY_VERSIONS).getReferenceIterable();
         }
         catch(ClassCastException cce)
         {
@@ -76,7 +76,7 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
     {
         try
         {
-            return (OdmaDocument)getProperty(OdmaTypes.PROPERTY_LATEST).getReference();
+            return (OdmaDocument)getProperty(OdmaCommonNames.PROPERTY_LATEST).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -105,7 +105,7 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
     {
         try
         {
-            return (OdmaDocument)getProperty(OdmaTypes.PROPERTY_RELEASED).getReference();
+            return (OdmaDocument)getProperty(OdmaCommonNames.PROPERTY_RELEASED).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -134,7 +134,7 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
     {
         try
         {
-            return (OdmaDocument)getProperty(OdmaTypes.PROPERTY_INPROGRESS).getReference();
+            return (OdmaDocument)getProperty(OdmaCommonNames.PROPERTY_INPROGRESS).getReference();
         }
         catch(ClassCastException cce)
         {
@@ -163,7 +163,7 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime();
+            return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
@@ -188,7 +188,7 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
     {
         try
         {
-            return getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte)
         {

@@ -1,7 +1,5 @@
 package org.opendma.api;
 
-import org.opendma.api.collections.OdmaObjectEnumeration;
-
 /**
  * The result of a search operation.
  * 
@@ -17,7 +15,7 @@ public interface OdmaSearchResult
      * @return the collection of objects found by the search if at least one object has been
      * found
      */
-    public OdmaObjectEnumeration getObjects();
+    public Iterable<OdmaObject> getObjects();
 
     /**
      * Returns the number of objects found by the search.
