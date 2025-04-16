@@ -12,8 +12,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaChoiceValue
-{
+public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaChoiceValue {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -30,18 +29,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the <i>display name</i> of this Choice to be displayed to end users
      */
-    public String getDisplayName()
-    {
-        try
-        {
+    public String getDisplayName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -60,18 +55,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDisplayName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setDisplayName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -86,18 +77,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the String value of this choice or null, if the property info this choice is assigned to is not of data type String
      */
-    public String getStringValue()
-    {
-        try
-        {
+    public String getStringValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_STRINGVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -116,18 +103,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setStringValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setStringValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_STRINGVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -142,18 +125,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer
      */
-    public String getIntegerValue()
-    {
-        try
-        {
+    public String getIntegerValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -172,18 +151,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setIntegerValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setIntegerValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -198,18 +173,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short
      */
-    public String getShortValue()
-    {
-        try
-        {
+    public String getShortValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -228,18 +199,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setShortValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setShortValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -254,18 +221,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long
      */
-    public String getLongValue()
-    {
-        try
-        {
+    public String getLongValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -284,18 +247,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setLongValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setLongValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -310,18 +269,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float
      */
-    public String getFloatValue()
-    {
-        try
-        {
+    public String getFloatValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -340,18 +295,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setFloatValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setFloatValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -366,18 +317,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double
      */
-    public String getDoubleValue()
-    {
-        try
-        {
+    public String getDoubleValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -396,18 +343,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDoubleValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setDoubleValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -422,18 +365,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean
      */
-    public String getBooleanValue()
-    {
-        try
-        {
+    public String getBooleanValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -452,18 +391,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setBooleanValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setBooleanValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -478,18 +413,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime
      */
-    public String getDateTimeValue()
-    {
-        try
-        {
+    public String getDateTimeValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -508,18 +439,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDateTimeValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setDateTimeValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -534,18 +461,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
      */
-    public String getBLOBValue()
-    {
-        try
-        {
+    public String getBLOBValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -564,18 +487,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setBLOBValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setBLOBValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -590,18 +509,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * 
      * @return the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference
      */
-    public String getReferenceValue()
-    {
-        try
-        {
+    public String getReferenceValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_REFERENCEVALUE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -620,18 +535,14 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setReferenceValue(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setReferenceValue(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_REFERENCEVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

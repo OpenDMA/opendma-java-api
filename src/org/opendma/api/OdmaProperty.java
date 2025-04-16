@@ -14,8 +14,7 @@ import java.util.Date;
  * method. Changes are only persisted in the repository after a call to the
  * <code>{@link #save()}</code> method of the containing object.
  */
-public interface OdmaProperty
-{
+public interface OdmaProperty {
 
     /**
      * Returns the qualified name of this property.

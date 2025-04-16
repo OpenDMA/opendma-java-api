@@ -8,8 +8,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public interface OdmaRepository extends OdmaObject
-{
+public interface OdmaRepository extends OdmaObject {
 
     // ----- Object specific property access -------------------------------------------------------
 

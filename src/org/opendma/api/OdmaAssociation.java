@@ -6,8 +6,7 @@ import java.util.Date;
 /**
  * Full description follows.
  */
-public interface OdmaAssociation extends OdmaObject
-{
+public interface OdmaAssociation extends OdmaObject {
 
     // ----- Object specific property access -------------------------------------------------------
 

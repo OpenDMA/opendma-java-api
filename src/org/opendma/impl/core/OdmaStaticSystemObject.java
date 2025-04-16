@@ -19,13 +19,11 @@ import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemObject
-{
+public class OdmaStaticSystemObject {
 
     protected Map<OdmaQName, OdmaProperty> properties = new HashMap<OdmaQName, OdmaProperty>();
 
-    protected OdmaStaticSystemObject()
-    {
+    protected OdmaStaticSystemObject() {
         // properties of opendma.org Object
         properties.put(OdmaCommonNames.PROPERTY_CLASS,null);
         properties.put(OdmaCommonNames.PROPERTY_ID,null);
@@ -33,19 +31,16 @@ public class OdmaStaticSystemObject
         properties.put(OdmaCommonNames.PROPERTY_REPOSITORY,null);
     }
 
-    protected void patchClass(OdmaClass newClass) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    protected void patchClass(OdmaClass newClass) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_CLASS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_CLASS,newClass,OdmaType.REFERENCE,false,true));
     }
 
-    protected void patchIds(OdmaId newId, OdmaGuid newGuid) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    protected void patchIds(OdmaId newId, OdmaGuid newGuid) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_ID,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_ID,newId,OdmaType.ID,false,true));
         properties.put(OdmaCommonNames.PROPERTY_GUID,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_GUID,newGuid,OdmaType.GUID,false,true));
     }
 
-    protected void patchRepository(OdmaRepository newRepository) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    protected void patchRepository(OdmaRepository newRepository) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_REPOSITORY,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_REPOSITORY,newRepository,OdmaType.REFERENCE,false,true));
     }
 
@@ -67,8 +62,9 @@ public class OdmaStaticSystemObject
      */
     public OdmaProperty getProperty(OdmaQName propertyName) throws OdmaPropertyNotFoundException {
         OdmaProperty p = (OdmaProperty)properties.get(propertyName);
-        if(p == null)
+        if(p == null) {
             throw new OdmaPropertyNotFoundException(propertyName);
+        }
         return p;
     }
 
@@ -137,21 +133,16 @@ public class OdmaStaticSystemObject
      */
     public boolean instanceOf(OdmaQName classOrAspectName) {
         OdmaClass test = getOdmaClass();
-        while(test != null)
-        {
-            if(test.getQName().equals(classOrAspectName))
-            {
+        while(test != null) {
+            if(test.getQName().equals(classOrAspectName)) {
                 return true;
             }
             Iterable<OdmaClass> aspects = test.getAspects();
-            if(aspects != null)
-            {
+            if(aspects != null) {
                 Iterator<OdmaClass> itAspects = aspects.iterator();
-                while(itAspects.hasNext())
-                {
+                while(itAspects.hasNext()) {
                     OdmaClass declaredAspect = (OdmaClass)itAspects.next();
-                    if(declaredAspect.getQName().equals(classOrAspectName))
-                    {
+                    if(declaredAspect.getQName().equals(classOrAspectName)) {
                         return true;
                     }
                 }
@@ -176,22 +167,17 @@ public class OdmaStaticSystemObject
      * 
      * @return the OpenDMA <code>Class</code> describing this <code>Object</code>
      */
-    public OdmaClass getOdmaClass()
-    {
-        try
-        {
+    public OdmaClass getOdmaClass() {
+        try {
             return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_CLASS).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -206,18 +192,14 @@ public class OdmaStaticSystemObject
      * 
      * @return the <i>unique object identifier</i> identifying this <code>Object</code> inside its <code>Repository</code>
      */
-    public OdmaId getId()
-    {
-        try
-        {
+    public OdmaId getId() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_ID).getId();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -232,18 +214,14 @@ public class OdmaStaticSystemObject
      * 
      * @return the <i>global unique object identifier</i> globally identifying this <code>Object</code>
      */
-    public OdmaGuid getGuid()
-    {
-        try
-        {
+    public OdmaGuid getGuid() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_GUID).getGuid();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -258,22 +236,17 @@ public class OdmaStaticSystemObject
      * 
      * @return the OpenDMA <code>Repository</code> where this <code>Object</code> resides
      */
-    public OdmaRepository getRepository()
-    {
-        try
-        {
+    public OdmaRepository getRepository() {
+        try {
             return (OdmaRepository)getProperty(OdmaCommonNames.PROPERTY_REPOSITORY).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

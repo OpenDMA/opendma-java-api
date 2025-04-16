@@ -13,8 +13,7 @@ import java.util.Date;
  * 
  * Full description follows.
  */
-public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements OdmaVersionCollection
-{
+public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements OdmaVersionCollection {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -32,22 +31,17 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * @return collection of all versions of the <code>Document</code>
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaDocument> getVersions()
-    {
-        try
-        {
+    public Iterable<OdmaDocument> getVersions() {
+        try {
             return (Iterable<OdmaDocument>)getProperty(OdmaCommonNames.PROPERTY_VERSIONS).getReferenceIterable();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -62,22 +56,17 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * 
      * @return the latest version of this <code>Document</code>
      */
-    public OdmaDocument getLatest()
-    {
-        try
-        {
+    public OdmaDocument getLatest() {
+        try {
             return (OdmaDocument)getProperty(OdmaCommonNames.PROPERTY_LATEST).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -92,22 +81,17 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * 
      * @return the last released version of this <code>Document</code>
      */
-    public OdmaDocument getReleased()
-    {
-        try
-        {
+    public OdmaDocument getReleased() {
+        try {
             return (OdmaDocument)getProperty(OdmaCommonNames.PROPERTY_RELEASED).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -122,22 +106,17 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * 
      * @return the version of this <code>Document</code> currently beeing worked on during a checkout. Only valid if and only if the corresponding <code>Document</code> is checked out.
      */
-    public OdmaDocument getInProgress()
-    {
-        try
-        {
+    public OdmaDocument getInProgress() {
+        try {
             return (OdmaDocument)getProperty(OdmaCommonNames.PROPERTY_INPROGRESS).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -152,18 +131,14 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * 
      * @return the date when this <code>Document</code> has been created
      */
-    public Date getCreatedAt()
-    {
-        try
-        {
+    public Date getCreatedAt() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -178,18 +153,14 @@ public class OdmaVersionCollectionTemplate extends OdmaObjectTemplate implements
      * 
      * @return the user who has created this <code>Document</code>
      */
-    public String getCreatedBy()
-    {
-        try
-        {
+    public String getCreatedBy() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

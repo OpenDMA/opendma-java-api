@@ -12,8 +12,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFolder
-{
+public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFolder {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -30,22 +29,17 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * 
      * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
      */
-    public OdmaFolder getParent()
-    {
-        try
-        {
+    public OdmaFolder getParent() {
+        try {
             return (OdmaFolder)getProperty(OdmaCommonNames.PROPERTY_PARENT).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -64,18 +58,14 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setParent(OdmaFolder newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setParent(OdmaFolder newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_PARENT).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -91,22 +81,17 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent property
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaFolder> getSubFolders()
-    {
-        try
-        {
+    public Iterable<OdmaFolder> getSubFolders() {
+        try {
             return (Iterable<OdmaFolder>)getProperty(OdmaCommonNames.PROPERTY_SUBFOLDERS).getReferenceIterable();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

@@ -13,8 +13,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate implements OdmaDataContentElement
-{
+public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate implements OdmaDataContentElement {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -31,18 +30,14 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * 
      * @return the binary content of this <code>ContentElement</code> as octets
      */
-    public OdmaContent getContent()
-    {
-        try
-        {
+    public OdmaContent getContent() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_CONTENT).getContent();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -61,18 +56,14 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setContent(OdmaContent newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setContent(OdmaContent newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_CONTENT).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -87,18 +78,14 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * 
      * @return the number of octests the binary content of this <code>ContentElement</code> consists of
      */
-    public Long getSize()
-    {
-        try
-        {
+    public Long getSize() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_SIZE).getLong();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -113,18 +100,14 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * 
      * @return the optional file name of this <code>ContentElement</code>
      */
-    public String getFileName()
-    {
-        try
-        {
+    public String getFileName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_FILENAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -143,18 +126,14 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setFileName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setFileName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_FILENAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

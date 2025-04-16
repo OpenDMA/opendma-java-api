@@ -13,8 +13,7 @@ import org.opendma.api.OdmaAssociation;
  * 
  * Full description follows.
  */
-public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaContainable
-{
+public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaContainable {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -32,22 +31,17 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
      * @return the collection of <code>Container</code>s this <code>Containable</code> is contained in
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaContainer> getContainedIn()
-    {
-        try
-        {
+    public Iterable<OdmaContainer> getContainedIn() {
+        try {
             return (Iterable<OdmaContainer>)getProperty(OdmaCommonNames.PROPERTY_CONTAINEDIN).getReferenceIterable();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -63,22 +57,17 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
      * @return the collection of <code>Association</code>s that bind this <code>Containable</code> in the <code>Container</code>s
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaAssociation> getContainedInAssociations()
-    {
-        try
-        {
+    public Iterable<OdmaAssociation> getContainedInAssociations() {
+        try {
             return (Iterable<OdmaAssociation>)getProperty(OdmaCommonNames.PROPERTY_CONTAINEDINASSOCIATIONS).getReferenceIterable();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

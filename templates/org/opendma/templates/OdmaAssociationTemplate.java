@@ -15,8 +15,7 @@ import java.util.Date;
  * 
  * Full description follows.
  */
-public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaAssociation
-{
+public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaAssociation {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -33,18 +32,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the <i>name</i> of this <code>Association</code>
      */
-    public String getName()
-    {
-        try
-        {
+    public String getName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_NAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -63,18 +58,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -89,22 +80,17 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the <code>Container</code> of this <code>Association</code> in which the containable is said to be contained
      */
-    public OdmaContainer getContainer()
-    {
-        try
-        {
+    public OdmaContainer getContainer() {
+        try {
             return (OdmaContainer)getProperty(OdmaCommonNames.PROPERTY_CONTAINER).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -123,18 +109,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setContainer(OdmaContainer newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setContainer(OdmaContainer newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_CONTAINER).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -149,22 +131,17 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container
      */
-    public OdmaContainable getContainable()
-    {
-        try
-        {
+    public OdmaContainable getContainable() {
+        try {
             return (OdmaContainable)getProperty(OdmaCommonNames.PROPERTY_CONTAINABLE).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -183,18 +160,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setContainable(OdmaContainable newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setContainable(OdmaContainable newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_CONTAINABLE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -209,18 +182,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the date when this <code>Association</code> has been created
      */
-    public Date getCreatedAt()
-    {
-        try
-        {
+    public Date getCreatedAt() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -235,18 +204,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the user who has created this <code>Association</code>
      */
-    public String getCreatedBy()
-    {
-        try
-        {
+    public String getCreatedBy() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -261,18 +226,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the date when this <code>Association</code> has been modified the last time
      */
-    public Date getLastModifiedAt()
-    {
-        try
-        {
+    public Date getLastModifiedAt() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT).getDateTime();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -287,18 +248,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
      * 
      * @return the user who has modified this <code>Association</code> the last time
      */
-    public String getLastModifiedBy()
-    {
-        try
-        {
+    public String getLastModifiedBy() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

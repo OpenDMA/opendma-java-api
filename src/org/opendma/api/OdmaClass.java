@@ -8,8 +8,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * The <i>Class</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to all defined OpenDMA properties.
  */
-public interface OdmaClass extends OdmaObject
-{
+public interface OdmaClass extends OdmaObject {
 
     // ----- Object specific property access -------------------------------------------------------
 

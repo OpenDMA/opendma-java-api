@@ -3,8 +3,7 @@ package org.opendma.api;
 /**
  * OpenDMA property data types.
  */
-public enum OdmaType
-{
+public enum OdmaType {
 
     STRING(1),
     INTEGER(2),

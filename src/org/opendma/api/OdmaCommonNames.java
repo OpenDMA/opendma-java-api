@@ -3,8 +3,7 @@ package org.opendma.api;
 /**
  * Static declaration of all common names used in the OpenDMA specification.
  */
-public class OdmaCommonNames
-{
+public class OdmaCommonNames {
 
     // -----< class Object >------------------------------------------------------------------------
 
@@ -329,8 +328,7 @@ public class OdmaCommonNames
     /**
      * Empty private constructor to prevent instantiation of this class.
      */
-    private OdmaCommonNames()
-    {
+    private OdmaCommonNames() {
         // empty constructor
     }
 

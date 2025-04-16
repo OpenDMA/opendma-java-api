@@ -6,8 +6,7 @@ import java.util.Date;
 /**
  * Full description follows.
  */
-public interface OdmaDocument extends OdmaObject
-{
+public interface OdmaDocument extends OdmaObject {
 
     // ----- Object specific property access -------------------------------------------------------
 

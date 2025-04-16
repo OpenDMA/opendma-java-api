@@ -4,8 +4,7 @@ package org.opendma.api;
 /**
  * Full description follows.
  */
-public interface OdmaContainable extends OdmaObject
-{
+public interface OdmaContainable extends OdmaObject {
 
     // ----- Object specific property access -------------------------------------------------------
 

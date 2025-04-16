@@ -14,8 +14,7 @@ import org.opendma.api.OdmaFolder;
  * 
  * Full description follows.
  */
-public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRepository
-{
+public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRepository {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -32,18 +31,14 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * 
      * @return the internal (technical) <i>name</i> of this <code>Repository</code>
      */
-    public String getName()
-    {
-        try
-        {
+    public String getName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_NAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -62,18 +57,14 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -88,18 +79,14 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * 
      * @return the <i>display name</i> of this <code>Repository</code> to be displayed to end users
      */
-    public String getDisplayName()
-    {
-        try
-        {
+    public String getDisplayName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -118,18 +105,14 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDisplayName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setDisplayName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -144,22 +127,17 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * 
      * @return the <i>root</i> <code>Class</code> of the class hierarchy in this <code>Repository</code>
      */
-    public OdmaClass getRootClass()
-    {
-        try
-        {
+    public OdmaClass getRootClass() {
+        try {
             return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_ROOTCLASS).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -175,22 +153,17 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * @return the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaClass> getRootAspects()
-    {
-        try
-        {
+    public Iterable<OdmaClass> getRootAspects() {
+        try {
             return (Iterable<OdmaClass>)getProperty(OdmaCommonNames.PROPERTY_ROOTASPECTS).getReferenceIterable();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -205,22 +178,17 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * 
      * @return the <i>root</i> <code>Folder</code> of a dedicated folder tree in this <code>Repository</code> (if any)
      */
-    public OdmaFolder getRootFolder()
-    {
-        try
-        {
+    public OdmaFolder getRootFolder() {
+        try {
             return (OdmaFolder)getProperty(OdmaCommonNames.PROPERTY_ROOTFOLDER).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

@@ -12,8 +12,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public class OdmaReferenceContentElementTemplate extends OdmaContentElementTemplate implements OdmaReferenceContentElement
-{
+public class OdmaReferenceContentElementTemplate extends OdmaContentElementTemplate implements OdmaReferenceContentElement {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -30,18 +29,14 @@ public class OdmaReferenceContentElementTemplate extends OdmaContentElementTempl
      * 
      * @return the URI where the content is stored
      */
-    public String getLocation()
-    {
-        try
-        {
+    public String getLocation() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_LOCATION).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -60,18 +55,14 @@ public class OdmaReferenceContentElementTemplate extends OdmaContentElementTempl
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setLocation(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setLocation(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_LOCATION).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

@@ -12,11 +12,9 @@ import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject implements OdmaPropertyInfo
-{
+public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject implements OdmaPropertyInfo {
 
-    protected void patchReferenceClass(OdmaClass newReferenceClass) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    protected void patchReferenceClass(OdmaClass newReferenceClass) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_REFERENCECLASS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_REFERENCECLASS,newReferenceClass,OdmaType.REFERENCE,false,true));
     }
 
@@ -35,18 +33,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return the internal (technical) <i>name</i> of this <code>PropertyInfo</code>
      */
-    public String getName()
-    {
-        try
-        {
+    public String getName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_NAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -65,18 +59,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -91,18 +81,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return the name <i>qualifier</i> of this <code>PropertyInfo</code>
      */
-    public String getNameQualifier()
-    {
-        try
-        {
+    public String getNameQualifier() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -121,18 +107,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setNameQualifier(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setNameQualifier(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -147,18 +129,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return the <i>display name</i> of this <code>PropertyInfo</code> to be displayed to end users
      */
-    public String getDisplayName()
-    {
-        try
-        {
+    public String getDisplayName() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -177,18 +155,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDisplayName(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setDisplayName(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -203,18 +177,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return the numeric ID of the data type described by this <code>PropertyInfo</code>
      */
-    public Integer getDataType()
-    {
-        try
-        {
+    public Integer getDataType() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_DATATYPE).getInteger();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -233,18 +203,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDataType(Integer newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setDataType(Integer newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_DATATYPE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -259,22 +225,17 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>
      */
-    public OdmaClass getReferenceClass()
-    {
-        try
-        {
+    public OdmaClass getReferenceClass() {
+        try {
             return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_REFERENCECLASS).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -293,18 +254,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setReferenceClass(OdmaClass newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setReferenceClass(OdmaClass newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_REFERENCECLASS).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -319,18 +276,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
-    public Boolean isMultiValue()
-    {
-        try
-        {
+    public Boolean isMultiValue() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_MULTIVALUE).getBoolean();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -349,18 +302,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setMultiValue(Boolean newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setMultiValue(Boolean newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_MULTIVALUE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -375,18 +324,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
-    public Boolean isRequired()
-    {
-        try
-        {
+    public Boolean isRequired() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_REQUIRED).getBoolean();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -405,18 +350,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setRequired(Boolean newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setRequired(Boolean newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_REQUIRED).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -431,18 +372,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return whether this <code>Class</code> should be displayed to end users or not
      */
-    public Boolean isReadOnly()
-    {
-        try
-        {
+    public Boolean isReadOnly() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_READONLY).getBoolean();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -461,18 +398,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setReadOnly(Boolean newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setReadOnly(Boolean newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_READONLY).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -487,18 +420,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return whether this <code>Class</code> should be displayed to end users or not
      */
-    public Boolean isHidden()
-    {
-        try
-        {
+    public Boolean isHidden() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_HIDDEN).getBoolean();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -517,18 +446,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setHidden(Boolean newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setHidden(Boolean newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_HIDDEN).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -543,18 +468,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return whether this <code>Class</code> is defined by the system (true) or by users (false)
      */
-    public Boolean isSystem()
-    {
-        try
-        {
+    public Boolean isSystem() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_SYSTEM).getBoolean();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -573,18 +494,14 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setSystem(Boolean newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setSystem(Boolean newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_SYSTEM).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -600,22 +517,17 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaChoiceValue> getChoices()
-    {
-        try
-        {
+    public Iterable<OdmaChoiceValue> getChoices() {
+        try {
             return (Iterable<OdmaChoiceValue>)getProperty(OdmaCommonNames.PROPERTY_CHOICES).getReferenceIterable();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -626,8 +538,7 @@ public class OdmaStaticSystemPropertyInfo extends OdmaStaticSystemObject impleme
      * 
      * @return the qualified name of this <code>Class</code>
      */
-    public OdmaQName getQName()
-    {
+    public OdmaQName getQName() {
         return new OdmaQName(getNameQualifier(),getName());
     }
 

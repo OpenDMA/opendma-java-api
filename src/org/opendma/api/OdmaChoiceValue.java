@@ -8,8 +8,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public interface OdmaChoiceValue extends OdmaObject
-{
+public interface OdmaChoiceValue extends OdmaObject {
 
     // ----- Object specific property access -------------------------------------------------------
 

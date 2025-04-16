@@ -12,8 +12,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * 
  * Full description follows.
  */
-public class OdmaContentElementTemplate extends OdmaObjectTemplate implements OdmaContentElement
-{
+public class OdmaContentElementTemplate extends OdmaObjectTemplate implements OdmaContentElement {
 
     // ----- Object specific property access -------------------------------------------------------
 
@@ -30,18 +29,14 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
      * 
      * @return the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted
      */
-    public String getContentType()
-    {
-        try
-        {
+    public String getContentType() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_CONTENTTYPE).getString();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -60,18 +55,14 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setContentType(String newValue) throws OdmaAccessDeniedException
-    {
-        try
-        {
+    public void setContentType(String newValue) throws OdmaAccessDeniedException {
+        try {
             getProperty(OdmaCommonNames.PROPERTY_CONTENTTYPE).setValue(newValue);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -86,18 +77,14 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
      * 
      * @return the position of this element in the list of all content elements of the containing document
      */
-    public Integer getPosition()
-    {
-        try
-        {
+    public Integer getPosition() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_POSITION).getInteger();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }

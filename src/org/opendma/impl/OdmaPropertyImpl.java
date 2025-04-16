@@ -16,8 +16,7 @@ import org.opendma.api.OdmaGuid;
 /**
  * Standard implementation of the OdmaProperty interface.
  */
-public class OdmaPropertyImpl implements OdmaProperty
-{
+public class OdmaPropertyImpl implements OdmaProperty {
     
     /** the name of this property */
     protected OdmaQName name;
@@ -59,17 +58,14 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if the Class of the given Object does not match
      *             the data type of this property
      */
-    public OdmaPropertyImpl(OdmaQName name, Object value, OdmaType dataType, boolean multiValue, boolean readOnly) throws OdmaInvalidDataTypeException
-    {
+    public OdmaPropertyImpl(OdmaQName name, Object value, OdmaType dataType, boolean multiValue, boolean readOnly) throws OdmaInvalidDataTypeException {
         this.name = name;
         this.dataType = dataType;
         this.multiValue = multiValue;
-        try
-        {
+        try {
             setValue(value);
         }
-        catch(OdmaAccessDeniedException e)
-        {
+        catch(OdmaAccessDeniedException e) {
             throw new OdmaRuntimeException("Implementation error.");
         }
         this.readOnly = readOnly;
@@ -81,8 +77,7 @@ public class OdmaPropertyImpl implements OdmaProperty
      * 
      * @return the qualified name of this property.
      */
-    public OdmaQName getName()
-    {
+    public OdmaQName getName() {
         return name;
     }
 
@@ -95,8 +90,7 @@ public class OdmaPropertyImpl implements OdmaProperty
      * 
      * @see org.opendma.OdmaTypes
      */
-    public OdmaType getType()
-    {
+    public OdmaType getType() {
         return dataType;
     }
 
@@ -107,8 +101,7 @@ public class OdmaPropertyImpl implements OdmaProperty
      * 
      * @return the value of this property.
      */
-    public Object getValue()
-    {
+    public Object getValue() {
         return value;
     }
 
@@ -119,8 +112,7 @@ public class OdmaPropertyImpl implements OdmaProperty
      * @return <code>true</code> true if and only if this property has been changed and these
      *         changes have not yet been saved
      */
-    public boolean isDirty()
-    {
+    public boolean isDirty() {
         return dirty;
     }
 
@@ -129,8 +121,7 @@ public class OdmaPropertyImpl implements OdmaProperty
      * 
      * @return <code>true</code> if and only if this property is a multi value property.
      */
-    public boolean isMultiValue()
-    {
+    public boolean isMultiValue() {
         return multiValue;
     }
 
@@ -139,28 +130,22 @@ public class OdmaPropertyImpl implements OdmaProperty
      * 
      * @return <code>true</code> if and only if this property must not be changed.
      */
-    public boolean isReadOnly()
-    {
+    public boolean isReadOnly() {
         return readOnly;
     }
 
-    private boolean checkListAndValues(Object obj, Class<?> expectedElementsClass)
-    {
-        if(!(obj instanceof List<?>))
-        {
+    private boolean checkListAndValues(Object obj, Class<?> expectedElementsClass) {
+        if(!(obj instanceof List<?>)) {
             return false;
         }
-        for(Object element : (List<?>)obj)
-        {
-            if(!expectedElementsClass.isAssignableFrom(element.getClass()))
-            {
+        for(Object element : (List<?>)obj) {
+            if(!expectedElementsClass.isAssignableFrom(element.getClass())) {
                 return false;
             }
         }
         return true;
     }
     
-
     /**
      * Set the value of this property to the given new value. The
      * <code>Class</code> of the given <code>Object</code> has to match the
@@ -176,8 +161,7 @@ public class OdmaPropertyImpl implements OdmaProperty
      * @throws OdmaAccessDeniedException
      *             if this property can not be set by the current user
      */
-    public void setValue(Object newValue) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    public void setValue(Object newValue) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         if(readOnly)
         {
             throw new OdmaAccessDeniedException();
@@ -190,135 +174,95 @@ public class OdmaPropertyImpl implements OdmaProperty
         }
         if(multiValue)
         {
-            switch(dataType)
-            {
+            switch(dataType) {
             case STRING:
-                if(checkListAndValues(newValue,String.class))
-                {
+                if(checkListAndValues(newValue,String.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued String data type. It can only be set to values assignable to `List<String>`");
                 }
                 break;
             case INTEGER:
-                if(checkListAndValues(newValue,Integer.class))
-                {
+                if(checkListAndValues(newValue,Integer.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Integer data type. It can only be set to values assignable to `List<Integer>`");
                 }
                 break;
             case SHORT:
-                if(checkListAndValues(newValue,Short.class))
-                {
+                if(checkListAndValues(newValue,Short.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Short data type. It can only be set to values assignable to `List<Short>`");
                 }
                 break;
             case LONG:
-                if(checkListAndValues(newValue,Long.class))
-                {
+                if(checkListAndValues(newValue,Long.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Long data type. It can only be set to values assignable to `List<Long>`");
                 }
                 break;
             case FLOAT:
-                if(checkListAndValues(newValue,Float.class))
-                {
+                if(checkListAndValues(newValue,Float.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Float data type. It can only be set to values assignable to `List<Float>`");
                 }
                 break;
             case DOUBLE:
-                if(checkListAndValues(newValue,Double.class))
-                {
+                if(checkListAndValues(newValue,Double.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Double data type. It can only be set to values assignable to `List<Double>`");
                 }
                 break;
             case BOOLEAN:
-                if(checkListAndValues(newValue,Boolean.class))
-                {
+                if(checkListAndValues(newValue,Boolean.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Boolean data type. It can only be set to values assignable to `List<Boolean>`");
                 }
                 break;
             case DATETIME:
-                if(checkListAndValues(newValue,Date.class))
-                {
+                if(checkListAndValues(newValue,Date.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued DateTime data type. It can only be set to values assignable to `List<Date>`");
                 }
                 break;
             case BLOB:
-                if(checkListAndValues(newValue,byte[].class))
-                {
+                if(checkListAndValues(newValue,byte[].class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Blob data type. It can only be set to values assignable to `List<byte[]>`");
                 }
                 break;
             case REFERENCE:
-                if(newValue instanceof Iterable<?>)
-                {
+                if(newValue instanceof Iterable<?>) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Reference data type. It can only be set to values assignable to `Iterable<OdmaObject>`");
                 }
                 break;
             case CONTENT:
-                if(checkListAndValues(newValue,OdmaContent.class))
-                {
+                if(checkListAndValues(newValue,OdmaContent.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Content data type. It can only be set to values assignable to `List<OdmaContent>`");
                 }
                 break;
             case ID:
-                if(checkListAndValues(newValue,OdmaId.class))
-                {
+                if(checkListAndValues(newValue,OdmaId.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Id data type. It can only be set to values assignable to `List<OdmaId>`");
                 }
                 break;
             case GUID:
-                if(checkListAndValues(newValue,OdmaGuid.class))
-                {
+                if(checkListAndValues(newValue,OdmaGuid.class)) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued Guid data type. It can only be set to values assignable to `List<OdmaGuid>`");
                 }
                 break;
@@ -328,135 +272,95 @@ public class OdmaPropertyImpl implements OdmaProperty
         }
         else
         {
-            switch(dataType)
-            {
+            switch(dataType) {
             case STRING:
-                if(newValue instanceof String)
-                {
+                if(newValue instanceof String) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued String data type. It can only be set to values assignable to `String`");
                 }
                 break;
             case INTEGER:
-                if(newValue instanceof Integer)
-                {
+                if(newValue instanceof Integer) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Integer data type. It can only be set to values assignable to `Integer`");
                 }
                 break;
             case SHORT:
-                if(newValue instanceof Short)
-                {
+                if(newValue instanceof Short) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Short data type. It can only be set to values assignable to `Short`");
                 }
                 break;
             case LONG:
-                if(newValue instanceof Long)
-                {
+                if(newValue instanceof Long) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Long data type. It can only be set to values assignable to `Long`");
                 }
                 break;
             case FLOAT:
-                if(newValue instanceof Float)
-                {
+                if(newValue instanceof Float) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Float data type. It can only be set to values assignable to `Float`");
                 }
                 break;
             case DOUBLE:
-                if(newValue instanceof Double)
-                {
+                if(newValue instanceof Double) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Double data type. It can only be set to values assignable to `Double`");
                 }
                 break;
             case BOOLEAN:
-                if(newValue instanceof Boolean)
-                {
+                if(newValue instanceof Boolean) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Boolean data type. It can only be set to values assignable to `Boolean`");
                 }
                 break;
             case DATETIME:
-                if(newValue instanceof Date)
-                {
+                if(newValue instanceof Date) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued DateTime data type. It can only be set to values assignable to `Date`");
                 }
                 break;
             case BLOB:
-                if(newValue instanceof byte[])
-                {
+                if(newValue instanceof byte[]) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Blob data type. It can only be set to values assignable to `byte[]`");
                 }
                 break;
             case REFERENCE:
-                if(newValue instanceof OdmaObject)
-                {
+                if(newValue instanceof OdmaObject) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Reference data type. It can only be set to values assignable to `OdmaObject`");
                 }
                 break;
             case CONTENT:
-                if(newValue instanceof OdmaContent)
-                {
+                if(newValue instanceof OdmaContent) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Content data type. It can only be set to values assignable to `OdmaContent`");
                 }
                 break;
             case ID:
-                if(newValue instanceof OdmaId)
-                {
+                if(newValue instanceof OdmaId) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Id data type. It can only be set to values assignable to `OdmaId`");
                 }
                 break;
             case GUID:
-                if(newValue instanceof OdmaGuid)
-                {
+                if(newValue instanceof OdmaGuid) {
                     value = newValue;
-                }
-                else
-                {
+                } else {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued Guid data type. It can only be set to values assignable to `OdmaGuid`");
                 }
                 break;
@@ -478,14 +382,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>String</i>
      *             property
      */
-    public String getString() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.STRING) )
-        {
+    public String getString() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.STRING) ) {
             return (String)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getString()`");
         }
     }
@@ -501,14 +401,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Integer</i>
      *             property
      */
-    public Integer getInteger() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.INTEGER) )
-        {
+    public Integer getInteger() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.INTEGER) ) {
             return (Integer)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getInteger()`");
         }
     }
@@ -524,14 +420,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Short</i>
      *             property
      */
-    public Short getShort() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.SHORT) )
-        {
+    public Short getShort() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.SHORT) ) {
             return (Short)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getShort()`");
         }
     }
@@ -547,14 +439,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Long</i>
      *             property
      */
-    public Long getLong() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.LONG) )
-        {
+    public Long getLong() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.LONG) ) {
             return (Long)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getLong()`");
         }
     }
@@ -570,14 +458,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Float</i>
      *             property
      */
-    public Float getFloat() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.FLOAT) )
-        {
+    public Float getFloat() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.FLOAT) ) {
             return (Float)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getFloat()`");
         }
     }
@@ -593,14 +477,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Double</i>
      *             property
      */
-    public Double getDouble() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.DOUBLE) )
-        {
+    public Double getDouble() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.DOUBLE) ) {
             return (Double)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getDouble()`");
         }
     }
@@ -616,14 +496,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Boolean</i>
      *             property
      */
-    public Boolean getBoolean() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.BOOLEAN) )
-        {
+    public Boolean getBoolean() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.BOOLEAN) ) {
             return (Boolean)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBoolean()`");
         }
     }
@@ -639,14 +515,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>DateTime</i>
      *             property
      */
-    public Date getDateTime() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.DATETIME) )
-        {
+    public Date getDateTime() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.DATETIME) ) {
             return (Date)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getDateTime()`");
         }
     }
@@ -662,14 +534,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Blob</i>
      *             property
      */
-    public byte[] getBlob() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.BLOB) )
-        {
+    public byte[] getBlob() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.BLOB) ) {
             return (byte[])value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBlob()`");
         }
     }
@@ -685,14 +553,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Reference</i>
      *             property
      */
-    public OdmaObject getReference() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.REFERENCE) )
-        {
+    public OdmaObject getReference() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.REFERENCE) ) {
             return (OdmaObject)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getReference()`");
         }
     }
@@ -708,14 +572,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Content</i>
      *             property
      */
-    public OdmaContent getContent() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.CONTENT) )
-        {
+    public OdmaContent getContent() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.CONTENT) ) {
             return (OdmaContent)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getContent()`");
         }
     }
@@ -731,14 +591,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Id</i>
      *             property
      */
-    public OdmaId getId() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.ID) )
-        {
+    public OdmaId getId() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.ID) ) {
             return (OdmaId)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getId()`");
         }
     }
@@ -754,14 +610,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             if and only if this property is not a single valued <i>Guid</i>
      *             property
      */
-    public OdmaGuid getGuid() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == false) && (dataType == OdmaType.GUID) )
-        {
+    public OdmaGuid getGuid() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.GUID) ) {
             return (OdmaGuid)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getGuid()`");
         }
     }
@@ -778,14 +630,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<String> getStringList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.STRING) )
-        {
+    public List<String> getStringList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.STRING) ) {
             return (List<String>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getStringList()`");
         }
     }
@@ -802,14 +650,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Integer> getIntegerList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.INTEGER) )
-        {
+    public List<Integer> getIntegerList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.INTEGER) ) {
             return (List<Integer>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getIntegerList()`");
         }
     }
@@ -826,14 +670,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Short> getShortList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.SHORT) )
-        {
+    public List<Short> getShortList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.SHORT) ) {
             return (List<Short>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getShortList()`");
         }
     }
@@ -850,14 +690,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Long> getLongList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.LONG) )
-        {
+    public List<Long> getLongList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.LONG) ) {
             return (List<Long>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getLongList()`");
         }
     }
@@ -874,14 +710,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Float> getFloatList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.FLOAT) )
-        {
+    public List<Float> getFloatList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.FLOAT) ) {
             return (List<Float>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getFloatList()`");
         }
     }
@@ -898,14 +730,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Double> getDoubleList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.DOUBLE) )
-        {
+    public List<Double> getDoubleList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.DOUBLE) ) {
             return (List<Double>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getDoubleList()`");
         }
     }
@@ -922,14 +750,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Boolean> getBooleanList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.BOOLEAN) )
-        {
+    public List<Boolean> getBooleanList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.BOOLEAN) ) {
             return (List<Boolean>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBooleanList()`");
         }
     }
@@ -946,14 +770,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<Date> getDateTimeList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.DATETIME) )
-        {
+    public List<Date> getDateTimeList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.DATETIME) ) {
             return (List<Date>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getDateTimeList()`");
         }
     }
@@ -970,14 +790,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<byte[]> getBlobList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.BLOB) )
-        {
+    public List<byte[]> getBlobList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.BLOB) ) {
             return (List<byte[]>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBlobList()`");
         }
     }
@@ -994,14 +810,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public Iterable<? extends OdmaObject> getReferenceIterable() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.REFERENCE) )
-        {
+    public Iterable<? extends OdmaObject> getReferenceIterable() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.REFERENCE) ) {
             return (Iterable<? extends OdmaObject>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getReferenceIterable()`");
         }
     }
@@ -1018,14 +830,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<OdmaContent> getContentList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.CONTENT) )
-        {
+    public List<OdmaContent> getContentList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.CONTENT) ) {
             return (List<OdmaContent>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getContentList()`");
         }
     }
@@ -1042,14 +850,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<OdmaId> getIdList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.ID) )
-        {
+    public List<OdmaId> getIdList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.ID) ) {
             return (List<OdmaId>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getIdList()`");
         }
     }
@@ -1066,14 +870,10 @@ public class OdmaPropertyImpl implements OdmaProperty
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<OdmaGuid> getGuidList() throws OdmaInvalidDataTypeException
-    {
-        if( (multiValue == true) && (dataType == OdmaType.GUID) )
-        {
+    public List<OdmaGuid> getGuidList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.GUID) ) {
             return (List<OdmaGuid>)value;
-        }
-        else
-        {
+        } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getGuidList()`");
         }
     }

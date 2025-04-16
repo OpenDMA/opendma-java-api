@@ -7,8 +7,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 /**
  * Full description follows.
  */
-public interface OdmaObject
-{
+public interface OdmaObject {
 
     // ----- Generic property access ---------------------------------------------------------------
 

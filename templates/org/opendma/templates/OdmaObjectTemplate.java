@@ -19,8 +19,7 @@ import org.opendma.api.OdmaRepository;
  * 
  * Full description follows.
  */
-public class OdmaObjectTemplate implements OdmaObject
-{
+public class OdmaObjectTemplate implements OdmaObject {
 
     // ----- Generic property access ---------------------------------------------------------------
 
@@ -38,8 +37,7 @@ public class OdmaObjectTemplate implements OdmaObject
      * @throws OdmaPropertyNotFoundException
      *             Thrown if the given qualified name does not identify a property in the effective properties of the class of this object.
      */
-    public OdmaProperty getProperty(OdmaQName propertyName) throws OdmaPropertyNotFoundException
-    {
+    public OdmaProperty getProperty(OdmaQName propertyName) throws OdmaPropertyNotFoundException {
         // TODO: implement me
         return null;
     }
@@ -57,8 +55,7 @@ public class OdmaObjectTemplate implements OdmaObject
      * @param refresh
      *            flag to indicate if the properties should also be retrieved if they are already in the local cache.
      */
-    public void prepareProperties(OdmaQName[] propertyNames, boolean refresh)
-    {
+    public void prepareProperties(OdmaQName[] propertyNames, boolean refresh) {
         // TODO: implement me
     }
 
@@ -81,8 +78,7 @@ public class OdmaObjectTemplate implements OdmaObject
      * @throws OdmaAccessDeniedException
      *             if this property can not be set by the current user
      */
-    public void setProperty(OdmaQName propertyName, Object newValue) throws OdmaPropertyNotFoundException, OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    public void setProperty(OdmaQName propertyName, Object newValue) throws OdmaPropertyNotFoundException, OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         // TODO: implement me
     }
 
@@ -91,8 +87,7 @@ public class OdmaObjectTemplate implements OdmaObject
      * 
      * @return true if there are pending changes that have not yet been persisted
      */
-    public boolean isDirty()
-    {
+    public boolean isDirty() {
         // TODO: implement me
         return false;
     }
@@ -100,8 +95,7 @@ public class OdmaObjectTemplate implements OdmaObject
     /**
      * Persist the current pending changes to properties at the server.
      */
-    public void save()
-    {
+    public void save() {
         // TODO: implement me
     }
 
@@ -115,25 +109,19 @@ public class OdmaObjectTemplate implements OdmaObject
      * 
      * @return if the class of this object is or extends the given class or incorportes the given aspect
      */
-    public boolean instanceOf(OdmaQName classOrAspectName)
-    {
+    public boolean instanceOf(OdmaQName classOrAspectName) {
         // TODO: this code needs to be improved to take advantage of the actual repository
         OdmaClass test = getOdmaClass();
-        while(test != null)
-        {
-            if(test.getQName().equals(classOrAspectName))
-            {
+        while(test != null) {
+            if(test.getQName().equals(classOrAspectName)) {
                 return true;
             }
             Iterable<OdmaClass> aspects = test.getAspects();
-            if(aspects != null)
-            {
+            if(aspects != null) {
                 Iterator<OdmaClass> itAspects = aspects.iterator();
-                while(itAspects.hasNext())
-                {
+                while(itAspects.hasNext()) {
                     OdmaClass declaredAspect = itAspects.next();
-                    if(declaredAspect.getQName().equals(classOrAspectName))
-                    {
+                    if(declaredAspect.getQName().equals(classOrAspectName)) {
                         return true;
                     }
                 }
@@ -158,22 +146,17 @@ public class OdmaObjectTemplate implements OdmaObject
      * 
      * @return the OpenDMA <code>Class</code> describing this <code>Object</code>
      */
-    public OdmaClass getOdmaClass()
-    {
-        try
-        {
+    public OdmaClass getOdmaClass() {
+        try {
             return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_CLASS).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -188,18 +171,14 @@ public class OdmaObjectTemplate implements OdmaObject
      * 
      * @return the <i>unique object identifier</i> identifying this <code>Object</code> inside its <code>Repository</code>
      */
-    public OdmaId getId()
-    {
-        try
-        {
+    public OdmaId getId() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_ID).getId();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -214,18 +193,14 @@ public class OdmaObjectTemplate implements OdmaObject
      * 
      * @return the <i>global unique object identifier</i> globally identifying this <code>Object</code>
      */
-    public OdmaGuid getGuid()
-    {
-        try
-        {
+    public OdmaGuid getGuid() {
+        try {
             return getProperty(OdmaCommonNames.PROPERTY_GUID).getGuid();
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
@@ -240,22 +215,17 @@ public class OdmaObjectTemplate implements OdmaObject
      * 
      * @return the OpenDMA <code>Repository</code> where this <code>Object</code> resides
      */
-    public OdmaRepository getRepository()
-    {
-        try
-        {
+    public OdmaRepository getRepository() {
+        try {
             return (OdmaRepository)getProperty(OdmaCommonNames.PROPERTY_REPOSITORY).getReference();
         }
-        catch(ClassCastException cce)
-        {
+        catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
         }
-        catch(OdmaInvalidDataTypeException oidte)
-        {
+        catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaPropertyNotFoundException oonfe)
-        {
+        catch(OdmaPropertyNotFoundException oonfe) {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
     }
