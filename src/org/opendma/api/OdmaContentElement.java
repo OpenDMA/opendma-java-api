@@ -19,7 +19,7 @@ public interface OdmaContentElement extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).getString()</code>.
      * 
      * <p>Property <b>ContentType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted
@@ -31,7 +31,7 @@ public interface OdmaContentElement extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).setValue(value)</code>.
      * 
      * <p>Property <b>ContentType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException

@@ -81,7 +81,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Returns the name <i>qualifier</i> of this <code>Class</code>.<br>
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the name <i>qualifier</i> of this <code>Class</code>
@@ -106,7 +106,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Sets the name <i>qualifier</i> of this <code>Class</code>.<br>
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -183,7 +183,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Returns the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>.<br>
      * 
      * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * [SingleValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>
@@ -212,7 +212,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Returns the list of <i>aspects</i> that are implemented by this <code>Class</code>.<br>
      * 
      * <p>Property <b>Aspects</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <i>aspects</i> that are implemented by this <code>Class</code>
@@ -242,7 +242,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Returns the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties)..<br>
      * 
      * <p>Property <b>DeclaredProperties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties).
@@ -272,7 +272,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Returns the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties..<br>
      * 
      * <p>Property <b>Properties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties.
@@ -530,7 +530,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
      * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property).<br>
      * 
      * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property)

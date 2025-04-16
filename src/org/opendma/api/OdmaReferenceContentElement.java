@@ -22,7 +22,7 @@ public interface OdmaReferenceContentElement extends OdmaContentElement
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LOCATION).getString()</code>.
      * 
      * <p>Property <b>Location</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the URI where the content is stored
@@ -34,7 +34,7 @@ public interface OdmaReferenceContentElement extends OdmaContentElement
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LOCATION).setValue(value)</code>.
      * 
      * <p>Property <b>Location</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException

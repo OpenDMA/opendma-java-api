@@ -36,7 +36,7 @@ public class OdmaReferenceContentElementTemplate extends OdmaContentElementTempl
      * Returns the URI where the content is stored.<br>
      * 
      * <p>Property <b>Location</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the URI where the content is stored
@@ -61,7 +61,7 @@ public class OdmaReferenceContentElementTemplate extends OdmaContentElementTempl
      * Sets the URI where the content is stored.<br>
      * 
      * <p>Property <b>Location</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException

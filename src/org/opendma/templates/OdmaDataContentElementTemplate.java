@@ -37,7 +37,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * Returns the binary content of this <code>ContentElement</code> as octets.<br>
      * 
      * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the binary content of this <code>ContentElement</code> as octets
@@ -62,7 +62,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * Sets the binary content of this <code>ContentElement</code> as octets.<br>
      * 
      * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -113,7 +113,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * Returns the optional file name of this <code>ContentElement</code>.<br>
      * 
      * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the optional file name of this <code>ContentElement</code>
@@ -138,7 +138,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * Sets the optional file name of this <code>ContentElement</code>.<br>
      * 
      * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException

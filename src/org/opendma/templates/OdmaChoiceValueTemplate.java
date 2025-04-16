@@ -79,7 +79,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the String value of this choice or null, if the property info this choice is assigned to is not of data type String.<br>
      * 
      * <p>Property <b>StringValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the String value of this choice or null, if the property info this choice is assigned to is not of data type String
@@ -104,7 +104,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the String value of this choice or null, if the property info this choice is assigned to is not of data type String.<br>
      * 
      * <p>Property <b>StringValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -130,7 +130,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer.<br>
      * 
      * <p>Property <b>IntegerValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer
@@ -155,7 +155,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer.<br>
      * 
      * <p>Property <b>IntegerValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -181,7 +181,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short.<br>
      * 
      * <p>Property <b>ShortValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short
@@ -206,7 +206,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short.<br>
      * 
      * <p>Property <b>ShortValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -232,7 +232,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long.<br>
      * 
      * <p>Property <b>LongValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long
@@ -257,7 +257,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long.<br>
      * 
      * <p>Property <b>LongValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -283,7 +283,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float.<br>
      * 
      * <p>Property <b>FloatValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float
@@ -308,7 +308,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float.<br>
      * 
      * <p>Property <b>FloatValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -334,7 +334,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double.<br>
      * 
      * <p>Property <b>DoubleValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double
@@ -359,7 +359,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double.<br>
      * 
      * <p>Property <b>DoubleValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -385,7 +385,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean.<br>
      * 
      * <p>Property <b>BooleanValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean
@@ -410,7 +410,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean.<br>
      * 
      * <p>Property <b>BooleanValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -436,7 +436,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime.<br>
      * 
      * <p>Property <b>DateTimeValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime
@@ -461,7 +461,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime.<br>
      * 
      * <p>Property <b>DateTimeValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -487,7 +487,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * 
      * <p>Property <b>BLOBValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
@@ -512,7 +512,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * 
      * <p>Property <b>BLOBValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -538,7 +538,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br>
      * 
      * <p>Property <b>ReferenceValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference
@@ -563,7 +563,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br>
      * 
      * <p>Property <b>ReferenceValue</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException

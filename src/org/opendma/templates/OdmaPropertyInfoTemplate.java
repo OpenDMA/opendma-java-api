@@ -82,7 +82,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * Returns the name <i>qualifier</i> of this <code>PropertyInfo</code>.<br>
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the name <i>qualifier</i> of this <code>PropertyInfo</code>
@@ -107,7 +107,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * Sets the name <i>qualifier</i> of this <code>PropertyInfo</code>.<br>
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -235,7 +235,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * Returns the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>.<br>
      * 
      * <p>Property <b>ReferenceClass</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>
@@ -264,7 +264,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * Sets the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>.<br>
      * 
      * <p>Property <b>ReferenceClass</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -545,7 +545,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * Returns set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property.<br>
      * 
      * <p>Property <b>Choices</b> (opendma): <b>Reference to ChoiceValue (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property

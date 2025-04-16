@@ -47,7 +47,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the name <i>qualifier</i> of this <code>Class</code>
@@ -59,7 +59,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -97,7 +97,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
      * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * [SingleValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>
@@ -109,7 +109,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Aspects</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <i>aspects</i> that are implemented by this <code>Class</code>
@@ -121,7 +121,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DECLAREDPROPERTIES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>DeclaredProperties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties).
@@ -133,7 +133,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PROPERTIES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Properties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties.
@@ -256,7 +256,7 @@ public interface OdmaClass extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property)

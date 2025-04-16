@@ -37,7 +37,7 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the collection of <code>Container</code>s this <code>Containable</code> is contained in.<br>
      * 
      * <p>Property <b>ContainedIn</b> (opendma): <b>Reference to Container (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Container</code>s this <code>Containable</code> is contained in
@@ -67,7 +67,7 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the collection of <code>Association</code>s that bind this <code>Containable</code> in the <code>Container</code>s.<br>
      * 
      * <p>Property <b>ContainedInAssociations</b> (opendma): <b>Reference to Association (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Association</code>s that bind this <code>Containable</code> in the <code>Container</code>s

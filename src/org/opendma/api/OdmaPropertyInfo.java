@@ -47,7 +47,7 @@ public interface OdmaPropertyInfo extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the name <i>qualifier</i> of this <code>PropertyInfo</code>
@@ -59,7 +59,7 @@ public interface OdmaPropertyInfo extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
      * 
      * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -122,7 +122,7 @@ public interface OdmaPropertyInfo extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).getReference()</code>.
      * 
      * <p>Property <b>ReferenceClass</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the required <code>Class</code> of the object referenced by this property if this <code>PropertyInfo</code>
@@ -134,7 +134,7 @@ public interface OdmaPropertyInfo extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCECLASS).setValue(value)</code>.
      * 
      * <p>Property <b>ReferenceClass</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -272,7 +272,7 @@ public interface OdmaPropertyInfo extends OdmaObject
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHOICES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Choices</b> (opendma): <b>Reference to ChoiceValue (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return set of possible choices the values of this property is limited to or null if there are no constraints for the value of this property

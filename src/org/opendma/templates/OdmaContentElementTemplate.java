@@ -36,7 +36,7 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
      * Returns the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted.<br>
      * 
      * <p>Property <b>ContentType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted
@@ -61,7 +61,7 @@ public class OdmaContentElementTemplate extends OdmaObjectTemplate implements Od
      * Sets the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted.<br>
      * 
      * <p>Property <b>ContentType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException

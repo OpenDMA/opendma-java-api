@@ -39,7 +39,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
      * Returns the <i>title</i> of this <code>Container</code>.<br>
      * 
      * <p>Property <b>Title</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <i>title</i> of this <code>Container</code>
@@ -64,7 +64,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
      * Sets the <i>title</i> of this <code>Container</code>.<br>
      * 
      * <p>Property <b>Title</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -120,7 +120,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
      * Returns the collection of all <code>Association</code>s between this <code>Container</code> and its containees.<br>
      * 
      * <p>Property <b>Associations</b> (opendma): <b>Reference to Association (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the collection of all <code>Association</code>s between this <code>Container</code> and its containees

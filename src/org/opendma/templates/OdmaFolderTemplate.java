@@ -36,7 +36,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
      * 
      * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
@@ -65,7 +65,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * Sets the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
      * 
      * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -91,7 +91,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
      * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br>
      * 
      * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty

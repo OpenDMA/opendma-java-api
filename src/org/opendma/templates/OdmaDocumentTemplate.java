@@ -41,7 +41,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the <i>title</i> of this <code>Document</code>.<br>
      * 
      * <p>Property <b>Title</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <i>title</i> of this <code>Document</code>
@@ -66,7 +66,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Sets the <i>title</i> of this <code>Document</code>.<br>
      * 
      * <p>Property <b>Title</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -92,7 +92,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0).<br>
      * 
      * <p>Property <b>Version</b> (opendma): <b>String</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * [SingleValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0)
@@ -117,7 +117,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information.<br>
      * 
      * <p>Property <b>VersionCollection</b> (opendma): <b>Reference to VersionCollection (opendma)</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * [SingleValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information
@@ -196,7 +196,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the collection of all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
      * 
      * <p>Property <b>ContentElements</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
-     * [MultiValue] [Writable] [Nullable]<br>
+     * [MultiValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the collection of all <code>ContentElement</code>s this <code>Document</code> consists of
@@ -226,7 +226,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
      * 
      * <p>Property <b>CombinedContentType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of
@@ -251,7 +251,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Sets the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
      * 
      * <p>Property <b>CombinedContentType</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -277,7 +277,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the primary <code>ContentElement</code>s that represents this <code>Document</code>.<br>
      * 
      * <p>Property <b>PrimaryContentElement</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the primary <code>ContentElement</code>s that represents this <code>Document</code>
@@ -306,7 +306,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Sets the primary <code>ContentElement</code>s that represents this <code>Document</code>.<br>
      * 
      * <p>Property <b>PrimaryContentElement</b> (opendma): <b>Reference to ContentElement (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -457,7 +457,7 @@ public class OdmaDocumentTemplate extends OdmaObjectTemplate implements OdmaDocu
      * Returns the date when this <code>Document</code> has been checked out.<br>
      * 
      * <p>Property <b>CheckedOutAt</b> (opendma): <b>DateTime</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * [SingleValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the date when this <code>Document</code> has been checked out

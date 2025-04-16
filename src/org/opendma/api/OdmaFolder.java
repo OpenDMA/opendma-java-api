@@ -22,7 +22,7 @@ public interface OdmaFolder extends OdmaContainer
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
      * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
@@ -34,7 +34,7 @@ public interface OdmaFolder extends OdmaContainer
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).setValue(value)</code>.
      * 
      * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -47,7 +47,7 @@ public interface OdmaFolder extends OdmaContainer
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceIterable()</code>.
      * 
      * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty

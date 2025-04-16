@@ -161,7 +161,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * Returns the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect.<br>
      * 
      * <p>Property <b>RootAspects</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [Nullable]<br>
+     * [MultiValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect
@@ -191,7 +191,7 @@ public class OdmaRepositoryTemplate extends OdmaObjectTemplate implements OdmaRe
      * Returns the <i>root</i> <code>Folder</code> of a dedicated folder tree in this <code>Repository</code> (if any).<br>
      * 
      * <p>Property <b>RootFolder</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [ReadOnly] [Nullable]<br>
+     * [SingleValue] [ReadOnly] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the <i>root</i> <code>Folder</code> of a dedicated folder tree in this <code>Repository</code> (if any)

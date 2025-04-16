@@ -22,7 +22,7 @@ public interface OdmaDataContentElement extends OdmaContentElement
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).getContent()</code>.
      * 
      * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the binary content of this <code>ContentElement</code> as octets
@@ -34,7 +34,7 @@ public interface OdmaDataContentElement extends OdmaContentElement
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).setValue(value)</code>.
      * 
      * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
@@ -59,7 +59,7 @@ public interface OdmaDataContentElement extends OdmaContentElement
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).getString()</code>.
      * 
      * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @return the optional file name of this <code>ContentElement</code>
@@ -71,7 +71,7 @@ public interface OdmaDataContentElement extends OdmaContentElement
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).setValue(value)</code>.
      * 
      * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Nullable]<br>
+     * [SingleValue] [Writable] [NotRequired]<br>
      * Full description follows.</p>
      * 
      * @throws OdmaAccessDeniedException
