@@ -13,8 +13,6 @@ import java.util.Date;
  * change its value by calling the <code>{@link #setValue(Object)}</code>
  * method. Changes are only persisted in the repository after a call to the
  * <code>{@link #save()}</code> method of the containing object.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public interface OdmaProperty
 {
@@ -27,6 +25,17 @@ public interface OdmaProperty
     public OdmaQName getName();
 
     /**
+     * Returns the data type of this property.<br>
+     * You can find a list of all data types in the <code>OdmaTypes</code>
+     * class.
+     * 
+     * @return the data type of this property.
+     * 
+     * @see org.opendma.OdmaTypes
+     */
+    public OdmaType getType();
+
+    /**
      * Returns the value of this property.<br>
      * The concrete <code>Object</code> returned by this method depends on the
      * data type of this property.
@@ -36,53 +45,40 @@ public interface OdmaProperty
     public Object getValue();
 
     /**
-     * Returns the numeric identifier of the data type of this property.<br>
-     * You can find a list of all data types in the <code>OdmaTypes</code>
-     * class.
-     * 
-     * @return the numeric identifier of the data type of this property.
-     * 
-     * @see org.opendma.OdmaTypes
-     */
-    public OdmaType getType();
-
-    /**
      * Set the value of this property to the given new value. The
      * <code>Class</code> of the given <code>Object</code> has to match the
-     * data type of this property.
+     * data type of this OdmaProperty.
      * 
      * @param newValue
      *            the new value to set this property to.
      * 
      * @throws OdmaInvalidDataTypeException
-     *             if and only if the Class of the given Object does not match
-     *             the data type of this property
+     *             if the Class of the newValue does not match
+     *             the data type of this OdmaProperty
      * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             if this OdmaProperty is read-only or cannot be set by the current user
      */
     public void setValue(Object newValue) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException;
 
     /**
-     * Returns <code>true</code> if and only if this property is a multi value property.
+     * Checks if this property is a multi-value property.
      * 
      * @return <code>true</code> if and only if this property is a multi value property.
      */
     public boolean isMultiValue();
 
     /**
-     * Returns <code>true</code> if and only if this property has been changed and these
-     * changes have not yet been saved.
+     * Checks if the property has unsaved changes
      * 
-     * @return <code>true</code> true if and only if this property has been changed and these
-     *         changes have not yet been saved
+     * @return <code>true</code> if and only if this property has unsaved changes
      */
     public boolean isDirty();
 
     /**
-     * Returns <code>true</code> if and only if this property must not be changed.
+     * Checks if this property is read-only.
      * 
-     * @return <code>true</code> if and only if this property must not be changed.
+     * @return <code>true</code> if and only if this property is read-only.
      */
     public boolean isReadOnly();
 

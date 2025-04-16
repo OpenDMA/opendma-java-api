@@ -6,15 +6,13 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemPropertyInfoRetrievable extends OdmaStaticSystemPropertyInfo
-{
+public class OdmaStaticSystemPropertyInfoRetrievable extends OdmaStaticSystemPropertyInfo {
 
-    public OdmaStaticSystemPropertyInfoRetrievable() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
-    {
+    public OdmaStaticSystemPropertyInfoRetrievable() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_NAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.PROPERTY_RETRIEVABLE.getName(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_NAMEQUALIFIER,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAMEQUALIFIER,OdmaCommonNames.PROPERTY_RETRIEVABLE.getQualifier(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.PROPERTY_RETRIEVABLE.getName(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_DATATYPE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DATATYPE,new Integer(7),OdmaType.INTEGER,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_DATATYPE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DATATYPE,Integer.valueOf(7),OdmaType.INTEGER,false,true));
         properties.put(OdmaCommonNames.PROPERTY_REFERENCECLASS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_REFERENCECLASS,null,OdmaType.REFERENCE,false,true));
         properties.put(OdmaCommonNames.PROPERTY_MULTIVALUE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_MULTIVALUE,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_REQUIRED,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_REQUIRED,Boolean.TRUE,OdmaType.BOOLEAN,false,true));

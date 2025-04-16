@@ -3,27 +3,23 @@ package org.opendma.api;
 import java.io.InputStream;
 
 /**
- * Represents the <code>Content</code> data type in OpenDMA.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
+ * Represents the Content data type in OpenDMA.
+ * Provides access to the content stream and its size.
  */
-public interface OdmaContent
-{
+public interface OdmaContent {
 
     /**
-     * Returns the data as <code>InputStream</code>.<br>
-     * <b>The caller has to close this stream after she/he has finished reading
-     * the data.</b>
-     * 
-     * @return the data as <code>InputStream</code>.
+     * Gets the stream to access the content's binary data.
+     *
+     * @return An InputStream for reading the content's binary data.
      */
-    public InputStream getStream();
+    InputStream getStream();
 
     /**
-     * Returns the size of the data in octests.
-     * 
-     * @return the size of the data in octests.
+     * Gets the size of the content in bytes.
+     *
+     * @return The size of the content in bytes as a long.
      */
-    public long getSize();
+    long getSize();
 
 }

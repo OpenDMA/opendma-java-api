@@ -2,8 +2,6 @@ package org.opendma.api;
 
 /**
  * OpenDMA property data types.
- *
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public enum OdmaType
 {

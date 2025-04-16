@@ -3,7 +3,7 @@ package org.opendma.templates;
 import org.opendma.api.OdmaClass;
 import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
-import org.opendma.exceptions.OdmaObjectNotFoundException;
+import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
@@ -13,24 +13,21 @@ import org.opendma.api.OdmaPropertyInfo;
  * Template implementation of the interface <code>{@link OdmaClass}</code>.<p>
  * 
  * The <i>Class</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to all defined OpenDMA properties.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 {
 
-    // =============================================================================================
-    // Object specific property access
-    // =============================================================================================
+    // ----- Object specific property access -------------------------------------------------------
 
     // CHECKTEMPLATE: the following code has most likely been copied from a class template. Make sure to keep this code up to date!
     // The following template code is available as OdmaClassTemplate
 
     /**
      * Returns the internal (technical) <i>name</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return the internal (technical) <i>name</i> of this <code>Class</code>
@@ -45,7 +42,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -53,25 +50,29 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Sets the internal (technical) <i>name</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the internal (technical) <i>name</i> of this <code>Class</code>
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setName(String value) throws OdmaAccessDeniedException
+    public void setName(String newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_NAME).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -79,9 +80,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the name <i>qualifier</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
      * 
-     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the name <i>qualifier</i> of this <code>Class</code>
@@ -96,7 +98,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -104,25 +106,29 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Sets the name <i>qualifier</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
      * 
-     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the name <i>qualifier</i> of this <code>Class</code>
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setNameQualifier(String value) throws OdmaAccessDeniedException
+    public void setNameQualifier(String newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -130,9 +136,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return the <i>display name</i> of this <code>Class</code> to be displayed to end users
@@ -147,7 +154,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -155,25 +162,29 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Sets the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value)</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the <i>display name</i> of this <code>Class</code> to be displayed to end users
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDisplayName(String value) throws OdmaAccessDeniedException
+    public void setDisplayName(String newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_DISPLAYNAME).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -181,9 +192,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [SingleValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Class (opendma)</b><br/>
+     * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the <i>parent</i> <code>Class</code> that is extended by this <code>Class</code>
@@ -202,7 +214,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -210,9 +222,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the list of <i>aspects</i> that are implemented by this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>Aspects</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Aspects</b> (opendma): <b>Reference to Class (opendma)</b><br/>
+     * [MultiValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the list of <i>aspects</i> that are implemented by this <code>Class</code>
@@ -232,7 +245,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -240,9 +253,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties)..<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DECLAREDPROPERTIES).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>DeclaredProperties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
-     * [MultiValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>DeclaredProperties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br/>
+     * [MultiValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties).
@@ -262,7 +276,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -270,9 +284,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties..<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PROPERTIES).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>Properties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>Properties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties.
@@ -292,7 +307,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -300,14 +315,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns whether this <code>Class</code> describes an Aspect or a valid class object.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECT).getBoolean()</code>.
      * 
-     * <p>Property <b>Aspect</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * <p>Property <b>Aspect</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [ReadOnly] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return whether this <code>Class</code> describes an Aspect or a valid class object
      */
-    public Boolean getAspect()
+    public Boolean isAspect()
     {
         try
         {
@@ -317,7 +333,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -325,14 +341,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).getBoolean()</code>.
      * 
-     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
      */
-    public Boolean getInstantiable()
+    public Boolean isInstantiable()
     {
         try
         {
@@ -342,7 +359,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -350,25 +367,29 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Sets whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).setValue(value)</code>.
      * 
-     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for whether <code>Object</code>s of this <code>Class</code> can be created or not
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setInstantiable(Boolean value) throws OdmaAccessDeniedException
+    public void setInstantiable(Boolean newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_INSTANTIABLE).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_INSTANTIABLE).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -376,14 +397,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns whether this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
      * 
-     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return whether this <code>Class</code> should be displayed to end users or not
      */
-    public Boolean getHidden()
+    public Boolean isHidden()
     {
         try
         {
@@ -393,7 +415,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -401,25 +423,29 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Sets whether this <code>Class</code> should be displayed to end users or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).setValue(value)</code>.
      * 
-     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for whether this <code>Class</code> should be displayed to end users or not
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setHidden(Boolean value) throws OdmaAccessDeniedException
+    public void setHidden(Boolean newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_HIDDEN).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_HIDDEN).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -427,14 +453,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).getBoolean()</code>.
      * 
-     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return whether this <code>Class</code> is defined by the system (true) or by users (false)
      */
-    public Boolean getSystem()
+    public Boolean isSystem()
     {
         try
         {
@@ -444,7 +471,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -452,25 +479,29 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Sets whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value)</code>.
      * 
-     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [Writable] [Required]<br>
+     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [Writable] [Required]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for whether this <code>Class</code> is defined by the system (true) or by users (false)
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setSystem(Boolean value) throws OdmaAccessDeniedException
+    public void setSystem(Boolean newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_SYSTEM).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_SYSTEM).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -478,14 +509,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns whether objects of this class can be retrieved from a session by their id or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_RETRIEVABLE).getBoolean()</code>.
      * 
-     * <p>Property <b>Retrievable</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * <p>Property <b>Retrievable</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [ReadOnly] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return whether objects of this class can be retrieved from a session by their id or not
      */
-    public Boolean getRetrievable()
+    public Boolean isRetrievable()
     {
         try
         {
@@ -495,7 +527,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -503,14 +535,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns whether objects of this class can be found by a search query or not.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SEARCHABLE).getBoolean()</code>.
      * 
-     * <p>Property <b>Searchable</b> (opendma): <b>Boolean</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * <p>Property <b>Searchable</b> (opendma): <b>Boolean</b><br/>
+     * [SingleValue] [ReadOnly] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return whether objects of this class can be found by a search query or not
      */
-    public Boolean getSearchable()
+    public Boolean isSearchable()
     {
         try
         {
@@ -520,7 +553,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -528,9 +561,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
 
     /**
      * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property).<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <i>parent</i> property)
@@ -550,7 +584,7 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }

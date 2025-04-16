@@ -3,10 +3,8 @@ package org.opendma.templates;
 import org.opendma.api.OdmaDataContentElement;
 import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
-import org.opendma.exceptions.OdmaObjectNotFoundException;
+import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
-import org.opendma.api.OdmaProperty;
-import org.opendma.api.OdmaQName;
 import org.opendma.api.OdmaContent;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 
@@ -14,30 +12,21 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * Template implementation of the interface <code>{@link OdmaDataContentElement}</code>.<p>
  * 
  * Full description follows.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate implements OdmaDataContentElement
 {
 
-    public OdmaProperty getProperty(OdmaQName propertyName) throws OdmaObjectNotFoundException
-    {
-        // TODO: implement me
-        return null;
-    }
-
-    // =============================================================================================
-    // Object specific property access
-    // =============================================================================================
+    // ----- Object specific property access -------------------------------------------------------
 
     // CHECKTEMPLATE: the following code has most likely been copied from a class template. Make sure to keep this code up to date!
     // The following template code is available as OdmaDataContentElementTemplate
 
     /**
      * Returns the binary content of this <code>ContentElement</code> as octets.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).getContent()</code>.
      * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Content</b> (opendma): <b>Content</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the binary content of this <code>ContentElement</code> as octets
@@ -52,7 +41,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -60,25 +49,29 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
 
     /**
      * Sets the binary content of this <code>ContentElement</code> as octets.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).setValue(value)</code>.
      * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Content</b> (opendma): <b>Content</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the binary content of this <code>ContentElement</code> as octets
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setContent(OdmaContent value) throws OdmaAccessDeniedException
+    public void setContent(OdmaContent newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_CONTENT).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_CONTENT).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -86,9 +79,10 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
 
     /**
      * Returns the number of octests the binary content of this <code>ContentElement</code> consists of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SIZE).getLong()</code>.
      * 
-     * <p>Property <b>Size</b> (opendma): <b>Long</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * <p>Property <b>Size</b> (opendma): <b>Long</b><br/>
+     * [SingleValue] [ReadOnly] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return the number of octests the binary content of this <code>ContentElement</code> consists of
@@ -103,7 +97,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -111,9 +105,10 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
 
     /**
      * Returns the optional file name of this <code>ContentElement</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).getString()</code>.
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>FileName</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the optional file name of this <code>ContentElement</code>
@@ -128,7 +123,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -136,25 +131,29 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
 
     /**
      * Sets the optional file name of this <code>ContentElement</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).setValue(value)</code>.
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>FileName</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the optional file name of this <code>ContentElement</code>
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setFileName(String value) throws OdmaAccessDeniedException
+    public void setFileName(String newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_FILENAME).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_FILENAME).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }

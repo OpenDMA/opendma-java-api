@@ -3,40 +3,29 @@ package org.opendma.templates;
 import org.opendma.api.OdmaFolder;
 import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
-import org.opendma.exceptions.OdmaObjectNotFoundException;
+import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
-import org.opendma.api.OdmaProperty;
-import org.opendma.api.OdmaQName;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 
 /**
  * Template implementation of the interface <code>{@link OdmaFolder}</code>.<p>
  * 
  * Full description follows.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFolder
 {
 
-    public OdmaProperty getProperty(OdmaQName propertyName) throws OdmaObjectNotFoundException
-    {
-        // TODO: implement me
-        return null;
-    }
-
-    // =============================================================================================
-    // Object specific property access
-    // =============================================================================================
+    // ----- Object specific property access -------------------------------------------------------
 
     // CHECKTEMPLATE: the following code has most likely been copied from a class template. Make sure to keep this code up to date!
     // The following template code is available as OdmaFolderTemplate
 
     /**
      * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
@@ -55,7 +44,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -63,25 +52,29 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
 
     /**
      * Sets the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).setValue(value)</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the <code>Folder</code> this <code>Folder</code> is a sub folder of
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setParent(OdmaFolder value) throws OdmaAccessDeniedException
+    public void setParent(OdmaFolder newValue) throws OdmaAccessDeniedException
     {
         try
         {
-            getProperty(OdmaCommonNames.PROPERTY_PARENT).setValue(value);
+            getProperty(OdmaCommonNames.PROPERTY_PARENT).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte)
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -89,9 +82,10 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
 
     /**
      * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty
@@ -111,7 +105,7 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }

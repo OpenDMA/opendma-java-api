@@ -3,10 +3,8 @@ package org.opendma.templates;
 import org.opendma.api.OdmaContainable;
 import org.opendma.api.OdmaCommonNames;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
-import org.opendma.exceptions.OdmaObjectNotFoundException;
+import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
-import org.opendma.api.OdmaProperty;
-import org.opendma.api.OdmaQName;
 import org.opendma.api.OdmaContainer;
 import org.opendma.api.OdmaAssociation;
 
@@ -14,30 +12,21 @@ import org.opendma.api.OdmaAssociation;
  * Template implementation of the interface <code>{@link OdmaContainable}</code>.<p>
  * 
  * Full description follows.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaContainable
 {
 
-    public OdmaProperty getProperty(OdmaQName propertyName) throws OdmaObjectNotFoundException
-    {
-        // TODO: implement me
-        return null;
-    }
-
-    // =============================================================================================
-    // Object specific property access
-    // =============================================================================================
+    // ----- Object specific property access -------------------------------------------------------
 
     // CHECKTEMPLATE: the following code has most likely been copied from a class template. Make sure to keep this code up to date!
     // The following template code is available as OdmaContainableTemplate
 
     /**
      * Returns the collection of <code>Container</code>s this <code>Containable</code> is contained in.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEDIN).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>ContainedIn</b> (opendma): <b>Reference to Container (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>ContainedIn</b> (opendma): <b>Reference to Container (opendma)</b><br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Container</code>s this <code>Containable</code> is contained in
@@ -57,7 +46,7 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }
@@ -65,9 +54,10 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the collection of <code>Association</code>s that bind this <code>Containable</code> in the <code>Container</code>s.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEDINASSOCIATIONS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>ContainedInAssociations</b> (opendma): <b>Reference to Association (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>ContainedInAssociations</b> (opendma): <b>Reference to Association (opendma)</b><br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Association</code>s that bind this <code>Containable</code> in the <code>Container</code>s
@@ -87,7 +77,7 @@ public class OdmaContainableTemplate extends OdmaObjectTemplate implements OdmaC
         {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
         }
-        catch(OdmaObjectNotFoundException oonfe)
+        catch(OdmaPropertyNotFoundException oonfe)
         {
             throw new OdmaRuntimeException("Predefined system property missing",oonfe);
         }

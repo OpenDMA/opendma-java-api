@@ -4,54 +4,53 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 
 /**
  * The <i>Folder</i> specific version of the <code>{@link OdmaContainer}</code> interface
- * that offers short cuts to all defined OpenDMA properties.<p>
+ * offering short-cuts to all defined OpenDMA properties.
  * 
  * Full description follows.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public interface OdmaFolder extends OdmaContainer
 {
 
-    // =============================================================================================
-    // Object specific property access
-    // =============================================================================================
+    // ----- Object specific property access -------------------------------------------------------
 
     /**
-     * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
      */
-    public OdmaFolder getParent();
+    OdmaFolder getParent();
 
     /**
      * Sets the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).setValue(value)</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the <code>Folder</code> this <code>Folder</code> is a sub folder of
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setParent(OdmaFolder value) throws OdmaAccessDeniedException;
+    void setParent(OdmaFolder newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br>
+     * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br>
-     * [MultiValue] [ReadOnly] [NotRequired]<br>
+     * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent ptoperty
      */
-    public Iterable<OdmaFolder> getSubFolders();
+    Iterable<OdmaFolder> getSubFolders();
 
 }

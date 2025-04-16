@@ -6,9 +6,8 @@ import org.opendma.api.OdmaQName;
 import org.opendma.api.OdmaRepository;
 import org.opendma.api.OdmaSearchResult;
 import org.opendma.exceptions.OdmaAccessDeniedException;
+import org.opendma.exceptions.OdmaException;
 import org.opendma.exceptions.OdmaObjectNotFoundException;
-import org.opendma.exceptions.OdmaQuerySyntaxException;
-import org.opendma.exceptions.OdmaSearchException;
 
 /**
  * A session (connection) with a specific OpenDMA domain.<br/>
@@ -83,7 +82,7 @@ public interface OdmaSession
      * @throws OdmaQuerySyntaxException if the query string does not follow the OpenDMA query syntax definition
      * @throws OdmaSearchException if the repository is not able to execute the search
      */
-    public OdmaSearchResult search(OdmaId repositoryId, String query) throws OdmaObjectNotFoundException, OdmaAccessDeniedException, OdmaQuerySyntaxException, OdmaSearchException;
+    public OdmaSearchResult search(OdmaId repositoryId, String query) throws OdmaException;
     
     /**
      * Invalidate this session and release all associated resources.

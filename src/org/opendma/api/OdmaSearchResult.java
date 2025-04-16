@@ -1,26 +1,22 @@
 package org.opendma.api;
 
 /**
- * The result of a search operation.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
+ * Represents the result of a search operation.
+ * Provides access to the objects found and number of objects.
  */
-public interface OdmaSearchResult
-{
+public interface OdmaSearchResult {
     
     /**
-     * Returns the collection of objects found by the search if at least one object has been
-     * found or <code>null</code> if no obejcts have been found.
+     * Returns the collection of objects found by the search.
      * 
-     * @return the collection of objects found by the search if at least one object has been
-     * found
+     * @return the collection of objects found by the search
      */
     public Iterable<OdmaObject> getObjects();
 
     /**
-     * Returns the number of objects found by the search.
+     * Returns the number of objects found by the search or -1 if the total size is unknown.
      * 
-     * @return the number of objects found by the search
+     * @return the number of objects found by the search or -1 if the total size is unknown
      */
     public int getSize();
 

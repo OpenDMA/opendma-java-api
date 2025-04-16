@@ -4,79 +4,81 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 
 /**
  * The <i>DataContentElement</i> specific version of the <code>{@link OdmaContentElement}</code> interface
- * that offers short cuts to all defined OpenDMA properties.<p>
+ * offering short-cuts to all defined OpenDMA properties.
  * 
  * Full description follows.
- * 
- * @author Stefan Kopf, xaldon Technologies GmbH, the OpenDMA architecture board
  */
 public interface OdmaDataContentElement extends OdmaContentElement
 {
 
-    // =============================================================================================
-    // Object specific property access
-    // =============================================================================================
+    // ----- Object specific property access -------------------------------------------------------
 
     /**
-     * Returns the binary content of this <code>ContentElement</code> as octets.<br>
+     * Returns the binary content of this <code>ContentElement</code> as octets.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).getContent()</code>.
      * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Content</b> (opendma): <b>Content</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the binary content of this <code>ContentElement</code> as octets
      */
-    public OdmaContent getContent();
+    OdmaContent getContent();
 
     /**
      * Sets the binary content of this <code>ContentElement</code> as octets.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).setValue(value)</code>.
      * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>Content</b> (opendma): <b>Content</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the binary content of this <code>ContentElement</code> as octets
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setContent(OdmaContent value) throws OdmaAccessDeniedException;
+    void setContent(OdmaContent newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the number of octests the binary content of this <code>ContentElement</code> consists of.<br>
+     * Returns the number of octests the binary content of this <code>ContentElement</code> consists of.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SIZE).getLong()</code>.
      * 
-     * <p>Property <b>Size</b> (opendma): <b>Long</b><br>
-     * [SingleValue] [ReadOnly] [Required]<br>
+     * <p>Property <b>Size</b> (opendma): <b>Long</b><br/>
+     * [SingleValue] [ReadOnly] [Required]<br/>
      * Full description follows.</p>
      * 
      * @return the number of octests the binary content of this <code>ContentElement</code> consists of
      */
-    public Long getSize();
+    Long getSize();
 
     /**
-     * Returns the optional file name of this <code>ContentElement</code>.<br>
+     * Returns the optional file name of this <code>ContentElement</code>.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).getString()</code>.
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>FileName</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the optional file name of this <code>ContentElement</code>
      */
-    public String getFileName();
+    String getFileName();
 
     /**
      * Sets the optional file name of this <code>ContentElement</code>.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).setValue(value)</code>.
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br>
-     * [SingleValue] [Writable] [NotRequired]<br>
+     * <p>Property <b>FileName</b> (opendma): <b>String</b><br/>
+     * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
+     * @param newValue
+     *             The new value for the optional file name of this <code>ContentElement</code>
+     * 
      * @throws OdmaAccessDeniedException
-     *             if this property can not be set by the current user
+     *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setFileName(String value) throws OdmaAccessDeniedException;
+    void setFileName(String newValue) throws OdmaAccessDeniedException;
 
 }
