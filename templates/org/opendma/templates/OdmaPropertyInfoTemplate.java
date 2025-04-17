@@ -71,18 +71,18 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Returns the name <i>qualifier</i> of this <code>PropertyInfo</code>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
+     * Returns the <i>namespace</i> of this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMESPACE).getString()</code>.
      * 
-     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>Namespace</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the name <i>qualifier</i> of this <code>PropertyInfo</code>
+     * @return the <i>namespace</i> of this <code>PropertyInfo</code>
      */
-    public String getNameQualifier() {
+    public String getNamespace() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_NAMESPACE).getString();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -93,22 +93,22 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
     }
 
     /**
-     * Sets the name <i>qualifier</i> of this <code>PropertyInfo</code>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
+     * Sets the <i>namespace</i> of this <code>PropertyInfo</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMESPACE).setValue(value)</code>.
      * 
-     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>Namespace</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
-     *             The new value for the name <i>qualifier</i> of this <code>PropertyInfo</code>
+     *             The new value for the <i>namespace</i> of this <code>PropertyInfo</code>
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setNameQualifier(String newValue) throws OdmaAccessDeniedException {
+    public void setNamespace(String newValue) throws OdmaAccessDeniedException {
         try {
-            getProperty(OdmaCommonNames.PROPERTY_NAMEQUALIFIER).setValue(newValue);
+            getProperty(OdmaCommonNames.PROPERTY_NAMESPACE).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -538,7 +538,7 @@ public class OdmaPropertyInfoTemplate extends OdmaObjectTemplate implements Odma
      * @return the qualified name of this <code>Class</code>
      */
     public OdmaQName getQName() {
-        return new OdmaQName(getNameQualifier(),getName());
+        return new OdmaQName(getNamespace(),getName());
     }
 
 }

@@ -15,7 +15,7 @@ public class OdmaStaticSystemClassDataContentElement extends OdmaStaticSystemCla
     {
         super(subClasses);
         properties.put(OdmaCommonNames.PROPERTY_NAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.CLASS_DATACONTENTELEMENT.getName(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_NAMEQUALIFIER,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAMEQUALIFIER,OdmaCommonNames.CLASS_DATACONTENTELEMENT.getQualifier(),OdmaType.STRING,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.CLASS_DATACONTENTELEMENT.getNamespace(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.CLASS_DATACONTENTELEMENT.getName(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_SUPERCLASS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_SUPERCLASS,superClass,OdmaType.REFERENCE,false,true));
         properties.put(OdmaCommonNames.PROPERTY_ASPECTS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_ASPECTS,aspects,OdmaType.REFERENCE,true,true));

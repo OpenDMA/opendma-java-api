@@ -1,0 +1,74 @@
+package org.opendma.api;
+
+import java.util.List;
+
+import org.opendma.exceptions.OdmaObjectNotFoundException;
+import org.opendma.exceptions.OdmaQuerySyntaxException;
+
+/**
+ * A session is the context through which objects can be retrieved from a specific OpenDMA domain.
+ * It is typically established for a defined account with an instance of a document management system.
+ */
+public interface OdmaSession {
+    
+    /**
+     * Returns a list of repository <code>{@link OdmaId}</code>s the account has access to.
+     * 
+     * @return a list of repository <code>{@link OdmaId}</code>s the account has access to
+     */
+    List<OdmaId> getRepositoryIds();
+
+    /**
+     * Returns the <code>{@link OdmaRepository}</code> object for the given repository id.
+     * 
+     * @param repositoryId the id of the repository to return
+     * 
+     * @return the <code>{@link OdmaRepository}</code> object for the given repository id
+     * 
+     * @throws OdmaObjectNotFoundException if a repository with the given id does not exist or the current account has no access
+     */
+    OdmaRepository getRepository(OdmaId repositoryId) throws OdmaObjectNotFoundException;
+    
+    /**
+     * Returns the object of the given class identified by the given ID in the given repository.
+     * 
+     * @param repositoryId
+     *            the id of the repository to retrieve the object from
+     * 
+     * @param objectId
+     *            the id of the object to return
+     * 
+     * @param propertyNames
+     *            array of qualified property names to retrieve from the server or <code>null</code> to retrieve all
+     * 
+     * @return the object of the given class identified by the given ID in the given repository.
+     * 
+     * @throws OdmaObjectNotFoundException if no object with this ID exists or the account has no access
+     */
+    OdmaObject getObject(OdmaId repositoryId, OdmaId objectId, OdmaQName[] propertyNames) throws OdmaObjectNotFoundException;
+    
+    /**
+     * Performs a search operation against a repository and returns the result.
+     * 
+     * @param repositoryId
+     *            the id of the repository to retrieve the object from
+     * 
+     * @param queryLanguage
+     *            the language specifier in which the query is  given
+     * 
+     * @param query
+     *            search specification in the given query language
+     * 
+     * @return the search result of this operation.
+     * 
+     * @throws OdmaObjectNotFoundException if the repository does not exist
+     * @throws OdmaQuerySyntaxException if the query string is syntactically incorrect or the query language is not supported
+     */
+    OdmaSearchResult search(OdmaId repositoryId, String query) throws OdmaObjectNotFoundException, OdmaQuerySyntaxException;
+    
+    /**
+     * Invalidate this session and release all associated resources.
+     */
+    void close();
+
+}

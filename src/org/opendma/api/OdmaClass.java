@@ -41,32 +41,32 @@ public interface OdmaClass extends OdmaObject {
     void setName(String newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the name <i>qualifier</i> of this <code>Class</code>.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).getString()</code>.
+     * Returns the <i>namespace</i> of this <code>Class</code>.<br/>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMESPACE).getString()</code>.
      * 
-     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>Namespace</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
-     * @return the name <i>qualifier</i> of this <code>Class</code>
+     * @return the <i>namespace</i> of this <code>Class</code>
      */
-    String getNameQualifier();
+    String getNamespace();
 
     /**
-     * Sets the name <i>qualifier</i> of this <code>Class</code>.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMEQUALIFIER).setValue(value)</code>.
+     * Sets the <i>namespace</i> of this <code>Class</code>.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMESPACE).setValue(value)</code>.
      * 
-     * <p>Property <b>NameQualifier</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>Namespace</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
-     *             The new value for the name <i>qualifier</i> of this <code>Class</code>
+     *             The new value for the <i>namespace</i> of this <code>Class</code>
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    void setNameQualifier(String newValue) throws OdmaAccessDeniedException;
+    void setNamespace(String newValue) throws OdmaAccessDeniedException;
 
     /**
      * Returns the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br/>

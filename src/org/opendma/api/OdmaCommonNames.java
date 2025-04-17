@@ -30,8 +30,8 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>Name</code> */
     public static final OdmaQName PROPERTY_NAME = new OdmaQName("opendma", "Name");
 
-    /** qualified name of the OpenDMA system property <code>NameQualifier</code> */
-    public static final OdmaQName PROPERTY_NAMEQUALIFIER = new OdmaQName("opendma", "NameQualifier");
+    /** qualified name of the OpenDMA system property <code>Namespace</code> */
+    public static final OdmaQName PROPERTY_NAMESPACE = new OdmaQName("opendma", "Namespace");
 
     /** qualified name of the OpenDMA system property <code>DisplayName</code> */
     public static final OdmaQName PROPERTY_DISPLAYNAME = new OdmaQName("opendma", "DisplayName");
@@ -76,7 +76,7 @@ public class OdmaCommonNames {
 
     // Property Name already defined previously
 
-    // Property NameQualifier already defined previously
+    // Property Namespace already defined previously
 
     // Property DisplayName already defined previously
 
