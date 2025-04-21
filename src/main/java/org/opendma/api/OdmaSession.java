@@ -45,7 +45,7 @@ public interface OdmaSession {
      * 
      * @throws OdmaObjectNotFoundException if no object with this ID exists or the account has no access
      */
-    OdmaObject getObject(OdmaId repositoryId, OdmaId objectId, OdmaQName className, OdmaQName[] propertyNames) throws OdmaObjectNotFoundException;
+    OdmaObject getObject(OdmaId repositoryId, OdmaId objectId, OdmaQName[] propertyNames) throws OdmaObjectNotFoundException;
     
     /**
      * Performs a search operation against a repository and returns the result.
