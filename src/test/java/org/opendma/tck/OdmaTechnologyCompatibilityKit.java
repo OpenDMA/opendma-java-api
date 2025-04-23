@@ -939,6 +939,9 @@ public class OdmaTechnologyCompatibilityKit {
             if(propAspects.isMultiValue() != true) {
                 result.add("Property opendma:Aspects MultiValue is not 'true'");
             }
+            if(propAspects.getValue() == null) {
+                result.add("Property opendma:Aspects is multi-valued but value is null");
+            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Aspects");
         }
@@ -1050,6 +1053,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(propDeclaredProperties.isMultiValue() != true) {
                 result.add("Property opendma:DeclaredProperties MultiValue is not 'true'");
+            }
+            if(propDeclaredProperties.getValue() == null) {
+                result.add("Property opendma:DeclaredProperties is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:DeclaredProperties");
@@ -1165,6 +1171,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propProperties.isReadOnly()) {
                 result.add("Property opendma:Properties ReadOnly must be 'true'");
+            }
+            if(propProperties.getValue() == null) {
+                result.add("Property opendma:Properties is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Properties");
@@ -1943,6 +1952,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propSubClasses.isReadOnly()) {
                 result.add("Property opendma:SubClasses ReadOnly must be 'true'");
+            }
+            if(propSubClasses.getValue() == null) {
+                result.add("Property opendma:SubClasses is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:SubClasses");
@@ -3154,6 +3166,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(propChoices.isMultiValue() != true) {
                 result.add("Property opendma:Choices MultiValue is not 'true'");
+            }
+            if(propChoices.getValue() == null) {
+                result.add("Property opendma:Choices is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Choices");
@@ -4793,6 +4808,9 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propRootAspects.isReadOnly()) {
                 result.add("Property opendma:RootAspects ReadOnly must be 'true'");
             }
+            if(propRootAspects.getValue() == null) {
+                result.add("Property opendma:RootAspects is multi-valued but value is null");
+            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:RootAspects");
         }
@@ -5582,6 +5600,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(propContentElements.isMultiValue() != true) {
                 result.add("Property opendma:ContentElements MultiValue is not 'true'");
+            }
+            if(propContentElements.getValue() == null) {
+                result.add("Property opendma:ContentElements is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:ContentElements");
@@ -7382,7 +7403,10 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property opendma:Versions ReadOnly must be 'true'");
             }
             if(propVersions.getValue() == null) {
-                result.add("Property opendma:Versions is required but value is null");
+                result.add("Property opendma:Versions is multi-valued but value is null");
+            }
+            if(((List<Object>)propVersions.getValue()).isEmpty()) {
+                result.add("Property opendma:Versions is required but value is empty");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Versions");
@@ -8193,7 +8217,10 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property opendma:Containees ReadOnly must be 'true'");
             }
             if(propContainees.getValue() == null) {
-                result.add("Property opendma:Containees is required but value is null");
+                result.add("Property opendma:Containees is multi-valued but value is null");
+            }
+            if(((List<Object>)propContainees.getValue()).isEmpty()) {
+                result.add("Property opendma:Containees is required but value is empty");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Containees");
@@ -8309,6 +8336,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propAssociations.isReadOnly()) {
                 result.add("Property opendma:Associations ReadOnly must be 'true'");
+            }
+            if(propAssociations.getValue() == null) {
+                result.add("Property opendma:Associations is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Associations");
@@ -8994,6 +9024,9 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propSubFolders.isReadOnly()) {
                 result.add("Property opendma:SubFolders ReadOnly must be 'true'");
             }
+            if(propSubFolders.getValue() == null) {
+                result.add("Property opendma:SubFolders is multi-valued but value is null");
+            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:SubFolders");
         }
@@ -9118,6 +9151,9 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propContainedIn.isReadOnly()) {
                 result.add("Property opendma:ContainedIn ReadOnly must be 'true'");
             }
+            if(propContainedIn.getValue() == null) {
+                result.add("Property opendma:ContainedIn is multi-valued but value is null");
+            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:ContainedIn");
         }
@@ -9232,6 +9268,9 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propContainedInAssociations.isReadOnly()) {
                 result.add("Property opendma:ContainedInAssociations ReadOnly must be 'true'");
+            }
+            if(propContainedInAssociations.getValue() == null) {
+                result.add("Property opendma:ContainedInAssociations is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:ContainedInAssociations");

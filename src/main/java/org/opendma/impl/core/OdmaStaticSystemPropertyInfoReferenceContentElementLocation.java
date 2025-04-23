@@ -1,7 +1,9 @@
 package org.opendma.impl.core;
 
+import java.util.ArrayList;
 import org.opendma.api.OdmaCommonNames;
 import org.opendma.api.OdmaType;
+import org.opendma.api.OdmaObject;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.impl.OdmaPropertyImpl;
@@ -19,7 +21,7 @@ public class OdmaStaticSystemPropertyInfoReferenceContentElementLocation extends
         properties.put(OdmaCommonNames.PROPERTY_READONLY,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_READONLY,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_HIDDEN,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_HIDDEN,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_SYSTEM,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_SYSTEM,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_CHOICES,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_CHOICES,null,OdmaType.REFERENCE,true,true));
+        properties.put(OdmaCommonNames.PROPERTY_CHOICES,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_CHOICES,new ArrayList<OdmaObject>(0),OdmaType.REFERENCE,true,true));
     }
 
 }

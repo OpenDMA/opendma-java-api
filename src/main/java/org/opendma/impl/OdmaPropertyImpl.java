@@ -168,6 +168,10 @@ public class OdmaPropertyImpl implements OdmaProperty {
         }
         if(newValue == null)
         {
+            if(multiValue)
+            {
+                throw new OdmaInvalidDataTypeException("Multi-valued properties must not be `null`. If a value is not required, the collection can be empty.");
+            }
             value = null;
             dirty = true;
             return;

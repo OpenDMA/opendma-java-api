@@ -341,7 +341,7 @@ public class OdmaStaticClassHierarchy {
         propertyInfos.put(OdmaCommonNames.PROPERTY_CONTAINER, new OdmaStaticSystemPropertyInfoAssociationContainer());
         propertyInfos.put(OdmaCommonNames.PROPERTY_CONTAINABLE, new OdmaStaticSystemPropertyInfoAssociationContainable());
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CLASS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_ID));
@@ -350,7 +350,7 @@ public class OdmaStaticClassHierarchy {
         ssc = new OdmaStaticSystemClassObject(null,getSubClasses(OdmaCommonNames.CLASS_OBJECT),declaredAspects,declaredProperties,getRetrievable(OdmaCommonNames.CLASS_OBJECT),getSearchable(OdmaCommonNames.CLASS_OBJECT));
         classInfos.put(OdmaCommonNames.CLASS_OBJECT, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAMESPACE));
@@ -370,7 +370,7 @@ public class OdmaStaticClassHierarchy {
         registerSubClass(OdmaCommonNames.CLASS_OBJECT, ssc);
         classInfos.put(OdmaCommonNames.CLASS_CLASS, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAMESPACE));
@@ -387,7 +387,7 @@ public class OdmaStaticClassHierarchy {
         registerSubClass(OdmaCommonNames.CLASS_OBJECT, ssc);
         classInfos.put(OdmaCommonNames.CLASS_PROPERTYINFO, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_DISPLAYNAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_STRINGVALUE));
@@ -404,7 +404,7 @@ public class OdmaStaticClassHierarchy {
         registerSubClass(OdmaCommonNames.CLASS_OBJECT, ssc);
         classInfos.put(OdmaCommonNames.CLASS_CHOICEVALUE, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_DISPLAYNAME));
@@ -415,7 +415,7 @@ public class OdmaStaticClassHierarchy {
         registerSubClass(OdmaCommonNames.CLASS_OBJECT, ssc);
         classInfos.put(OdmaCommonNames.CLASS_REPOSITORY, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_TITLE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_VERSION));
@@ -436,7 +436,7 @@ public class OdmaStaticClassHierarchy {
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_DOCUMENT, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CONTENTTYPE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_POSITION));
@@ -444,7 +444,7 @@ public class OdmaStaticClassHierarchy {
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_CONTENTELEMENT, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CONTENT));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_SIZE));
@@ -453,14 +453,14 @@ public class OdmaStaticClassHierarchy {
         registerSubClass(OdmaCommonNames.CLASS_CONTENTELEMENT, ssc);
         classInfos.put(OdmaCommonNames.CLASS_DATACONTENTELEMENT, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_LOCATION));
         ssc = new OdmaStaticSystemClassReferenceContentElement(getClassInfo(OdmaCommonNames.CLASS_CONTENTELEMENT),getSubClasses(OdmaCommonNames.CLASS_REFERENCECONTENTELEMENT),declaredAspects,declaredProperties,getRetrievable(OdmaCommonNames.CLASS_REFERENCECONTENTELEMENT),getSearchable(OdmaCommonNames.CLASS_REFERENCECONTENTELEMENT));
         registerSubClass(OdmaCommonNames.CLASS_CONTENTELEMENT, ssc);
         classInfos.put(OdmaCommonNames.CLASS_REFERENCECONTENTELEMENT, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_VERSIONS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_LATEST));
@@ -472,7 +472,7 @@ public class OdmaStaticClassHierarchy {
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_VERSIONCOLLECTION, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_TITLE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINEES));
@@ -485,7 +485,7 @@ public class OdmaStaticClassHierarchy {
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_CONTAINER, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_PARENT));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_SUBFOLDERS));
@@ -493,7 +493,7 @@ public class OdmaStaticClassHierarchy {
         registerSubClass(OdmaCommonNames.CLASS_CONTAINER, ssc);
         classInfos.put(OdmaCommonNames.CLASS_FOLDER, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINEDIN));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINEDINASSOCIATIONS));
@@ -501,7 +501,7 @@ public class OdmaStaticClassHierarchy {
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_CONTAINABLE, ssc);
 
-        declaredAspects = null;
+        declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.PROPERTY_CONTAINER));
