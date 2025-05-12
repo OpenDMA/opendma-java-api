@@ -455,13 +455,13 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Returns the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getString()</code>.
      * 
-     * <p>Property <b>BLOBValue</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>BlobValue</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
      */
-    public String getBLOBValue() {
+    public String getBlobValue() {
         try {
             return getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).getString();
         }
@@ -477,7 +477,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>BLOBValue</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>BlobValue</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
@@ -487,7 +487,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setBLOBValue(String newValue) throws OdmaAccessDeniedException {
+    public void setBlobValue(String newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).setValue(newValue);
         }

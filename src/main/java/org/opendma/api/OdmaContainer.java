@@ -8,8 +8,6 @@ import java.util.Date;
  */
 public interface OdmaContainer extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the <i>title</i> of this <code>Container</code>.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.

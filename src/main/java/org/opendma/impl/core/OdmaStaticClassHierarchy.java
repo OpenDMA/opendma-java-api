@@ -302,7 +302,7 @@ public class OdmaStaticClassHierarchy {
         propertyInfos.put(OdmaCommonNames.PROPERTY_DOUBLEVALUE, new OdmaStaticSystemPropertyInfoChoiceValueDoubleValue());
         propertyInfos.put(OdmaCommonNames.PROPERTY_BOOLEANVALUE, new OdmaStaticSystemPropertyInfoChoiceValueBooleanValue());
         propertyInfos.put(OdmaCommonNames.PROPERTY_DATETIMEVALUE, new OdmaStaticSystemPropertyInfoChoiceValueDateTimeValue());
-        propertyInfos.put(OdmaCommonNames.PROPERTY_BLOBVALUE, new OdmaStaticSystemPropertyInfoChoiceValueBLOBValue());
+        propertyInfos.put(OdmaCommonNames.PROPERTY_BLOBVALUE, new OdmaStaticSystemPropertyInfoChoiceValueBlobValue());
         propertyInfos.put(OdmaCommonNames.PROPERTY_REFERENCEVALUE, new OdmaStaticSystemPropertyInfoChoiceValueReferenceValue());
         propertyInfos.put(OdmaCommonNames.PROPERTY_ROOTCLASS, new OdmaStaticSystemPropertyInfoRepositoryRootClass());
         propertyInfos.put(OdmaCommonNames.PROPERTY_ROOTASPECTS, new OdmaStaticSystemPropertyInfoRepositoryRootAspects());

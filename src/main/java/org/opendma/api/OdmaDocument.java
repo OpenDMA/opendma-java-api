@@ -8,8 +8,6 @@ import java.util.Date;
  */
 public interface OdmaDocument extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the <i>title</i> of this <code>Document</code>.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.

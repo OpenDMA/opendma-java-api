@@ -7,8 +7,6 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  */
 public interface OdmaContentElement extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the mime type describing how the <code>Content</code> of this <code>ContentElement</code> has to be interpreted.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTTYPE).getString()</code>.

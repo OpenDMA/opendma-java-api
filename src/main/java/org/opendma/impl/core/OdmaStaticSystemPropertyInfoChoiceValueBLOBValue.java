@@ -8,9 +8,9 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemPropertyInfoChoiceValueBLOBValue extends OdmaStaticSystemPropertyInfo {
+public class OdmaStaticSystemPropertyInfoChoiceValueBlobValue extends OdmaStaticSystemPropertyInfo {
 
-    public OdmaStaticSystemPropertyInfoChoiceValueBLOBValue() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
+    public OdmaStaticSystemPropertyInfoChoiceValueBlobValue() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_NAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.PROPERTY_BLOBVALUE.getName(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.PROPERTY_BLOBVALUE.getNamespace(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.PROPERTY_BLOBVALUE.getName(),OdmaType.STRING,false,true));

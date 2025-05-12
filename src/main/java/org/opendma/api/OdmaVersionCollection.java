@@ -7,8 +7,6 @@ import java.util.Date;
  */
 public interface OdmaVersionCollection extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns collection of all versions of the <code>Document</code>.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONS).getReferenceIterable()</code>.

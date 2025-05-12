@@ -10,8 +10,6 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  */
 public interface OdmaPropertyInfo extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the internal (technical) <i>name</i> of this <code>PropertyInfo</code>.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.

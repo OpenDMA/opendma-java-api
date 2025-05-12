@@ -10,8 +10,6 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  */
 public interface OdmaFolder extends OdmaContainer {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.

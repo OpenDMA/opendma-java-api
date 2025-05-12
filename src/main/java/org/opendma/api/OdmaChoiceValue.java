@@ -10,8 +10,6 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  */
 public interface OdmaChoiceValue extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the <i>display name</i> of this Choice to be displayed to end users.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
@@ -268,19 +266,19 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getString()</code>.
      * 
-     * <p>Property <b>BLOBValue</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>BlobValue</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
      */
-    String getBLOBValue();
+    String getBlobValue();
 
     /**
      * Sets the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>BLOBValue</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>BlobValue</b> (opendma): <b>String</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
@@ -290,7 +288,7 @@ public interface OdmaChoiceValue extends OdmaObject {
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    void setBLOBValue(String newValue) throws OdmaAccessDeniedException;
+    void setBlobValue(String newValue) throws OdmaAccessDeniedException;
 
     /**
      * Returns the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br/>

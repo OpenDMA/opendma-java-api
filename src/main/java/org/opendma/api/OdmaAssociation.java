@@ -8,8 +8,6 @@ import java.util.Date;
  */
 public interface OdmaAssociation extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the <i>name</i> of this <code>Association</code>.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.

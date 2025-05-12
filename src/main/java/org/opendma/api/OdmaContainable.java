@@ -6,8 +6,6 @@ package org.opendma.api;
  */
 public interface OdmaContainable extends OdmaObject {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the collection of <code>Container</code>s this <code>Containable</code> is contained in.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEDIN).getReferenceIterable()</code>.

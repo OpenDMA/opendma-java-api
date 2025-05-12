@@ -10,8 +10,6 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  */
 public interface OdmaDataContentElement extends OdmaContentElement {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the binary content of this <code>ContentElement</code> as octets.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).getContent()</code>.

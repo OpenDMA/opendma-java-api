@@ -4229,110 +4229,110 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property info for opendma:DateTimeValue in all properties System is not 'true'");
             }
         }
-        // opendma:BLOBValue
-        OdmaQName qnameBLOBValue = new OdmaQName("opendma","BLOBValue");
+        // opendma:BlobValue
+        OdmaQName qnameBlobValue = new OdmaQName("opendma","BlobValue");
         try {
-            OdmaProperty propBLOBValue = obj.getProperty(qnameBLOBValue);
-            if(propBLOBValue.getName() == null) {
-                result.add("Property opendma:BLOBValue qname is null");
+            OdmaProperty propBlobValue = obj.getProperty(qnameBlobValue);
+            if(propBlobValue.getName() == null) {
+                result.add("Property opendma:BlobValue qname is null");
             }
-            if(!"opendma".equals(propBLOBValue.getName().getNamespace())) {
-                result.add("Property opendma:BLOBValue qname namespace is not 'opendma', found instead'"+propBLOBValue.getName().getNamespace()+"'");
+            if(!"opendma".equals(propBlobValue.getName().getNamespace())) {
+                result.add("Property opendma:BlobValue qname namespace is not 'opendma', found instead'"+propBlobValue.getName().getNamespace()+"'");
             }
-            if(!"BLOBValue".equals(propBLOBValue.getName().getName())) {
-                result.add("Property opendma:BLOBValue qname name is not 'BLOBValue', found instead'"+propBLOBValue.getName().getName()+"'");
+            if(!"BlobValue".equals(propBlobValue.getName().getName())) {
+                result.add("Property opendma:BlobValue qname name is not 'BlobValue', found instead'"+propBlobValue.getName().getName()+"'");
             }
-            if(propBLOBValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:BLOBValue type is not 'STRING'");
+            if(propBlobValue.getType() != OdmaType.STRING) {
+                result.add("Property opendma:BlobValue type is not 'STRING'");
             }
-            if(propBLOBValue.isMultiValue() != false) {
-                result.add("Property opendma:BLOBValue MultiValue is not 'false'");
+            if(propBlobValue.isMultiValue() != false) {
+                result.add("Property opendma:BlobValue MultiValue is not 'false'");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:BLOBValue");
+            result.add("Missing property opendma:BlobValue");
         }
         if(clazz != null && (new OdmaQName("opendma","ChoiceValue")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredBLOBValue = null;
+            OdmaPropertyInfo piDeclaredBlobValue = null;
             if(declaredProperties != null) {
                 for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameBLOBValue.equals(pi.getQName())) {
-                        if(piDeclaredBLOBValue == null) {
-                            piDeclaredBLOBValue = pi;
+                    if(qnameBlobValue.equals(pi.getQName())) {
+                        if(piDeclaredBlobValue == null) {
+                            piDeclaredBlobValue = pi;
                         } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:BLOBValue");
+                            result.add("Declared properties in class have multiple property info objects with qname opendma:BlobValue");
                         }
                     }
                 }
             }
-            if(piDeclaredBLOBValue == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:BLOBValue");
+            if(piDeclaredBlobValue == null) {
+                result.add("Declared properties in class have no property info object with qname opendma:BlobValue");
             }
-            if(piDeclaredBLOBValue != null) {
-                if(!"opendma".equals(piDeclaredBLOBValue.getNamespace())) {
-                    result.add("Property info for opendma:BLOBValue in declared properties qname namespace is not 'opendma'");
+            if(piDeclaredBlobValue != null) {
+                if(!"opendma".equals(piDeclaredBlobValue.getNamespace())) {
+                    result.add("Property info for opendma:BlobValue in declared properties qname namespace is not 'opendma'");
                 }
-                if(!"BLOBValue".equals(piDeclaredBLOBValue.getName())) {
-                    result.add("Property info for opendma:BLOBValue in declared properties qname name is not 'BLOBValue'");
+                if(!"BlobValue".equals(piDeclaredBlobValue.getName())) {
+                    result.add("Property info for opendma:BlobValue in declared properties qname name is not 'BlobValue'");
                 }
-                if(piDeclaredBLOBValue.getDataType() != 1) {
-                    result.add("Property info for opendma:BLOBValue in declared properties data type is not '1'");
+                if(piDeclaredBlobValue.getDataType() != 1) {
+                    result.add("Property info for opendma:BlobValue in declared properties data type is not '1'");
                 }
-                if(piDeclaredBLOBValue.isMultiValue() != false) {
-                    result.add("Property info for opendma:BLOBValue in declared properties MultiValue is not 'false'");
+                if(piDeclaredBlobValue.isMultiValue() != false) {
+                    result.add("Property info for opendma:BlobValue in declared properties MultiValue is not 'false'");
                 }
-                if(piDeclaredBLOBValue.isReadOnly() != false) {
-                    result.add("Property info for opendma:BLOBValue in declared properties ReadOnly is not 'false'");
+                if(piDeclaredBlobValue.isReadOnly() != false) {
+                    result.add("Property info for opendma:BlobValue in declared properties ReadOnly is not 'false'");
                 }
-                if(piDeclaredBLOBValue.isHidden() != false) {
-                    result.add("Property info for opendma:BLOBValue in declared properties Hidden is not 'false'");
+                if(piDeclaredBlobValue.isHidden() != false) {
+                    result.add("Property info for opendma:BlobValue in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredBLOBValue.isRequired() != false) {
-                result.add("Property info for opendma:BLOBValue in declared properties Required is not 'false'");
+                if(piDeclaredBlobValue.isRequired() != false) {
+                result.add("Property info for opendma:BlobValue in declared properties Required is not 'false'");
                 }
-                if(piDeclaredBLOBValue.isSystem() != true) {
-                    result.add("Property info for opendma:BLOBValue in declared properties System is not 'true'");
+                if(piDeclaredBlobValue.isSystem() != true) {
+                    result.add("Property info for opendma:BlobValue in declared properties System is not 'true'");
                 }
             }
         }
-        OdmaPropertyInfo piAllBLOBValue = null;
+        OdmaPropertyInfo piAllBlobValue = null;
         if(allProperties != null) {
             for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameBLOBValue.equals(pi.getQName())) {
-                    if(piAllBLOBValue == null) {
-                        piAllBLOBValue = pi;
+                if(qnameBlobValue.equals(pi.getQName())) {
+                    if(piAllBlobValue == null) {
+                        piAllBlobValue = pi;
                     } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:BLOBValue");
+                        result.add("All properties in class have multiple property info objects with qname opendma:BlobValue");
                     }
                 }
             }
         }
-        if(piAllBLOBValue == null) {
-            result.add("All properties in class have no property info object with qname opendma:BLOBValue");
+        if(piAllBlobValue == null) {
+            result.add("All properties in class have no property info object with qname opendma:BlobValue");
         }
-        if(piAllBLOBValue != null) {
-            if(!"opendma".equals(piAllBLOBValue.getNamespace())) {
-                result.add("Property info for opendma:BLOBValue in all properties qname namespace is not 'opendma'");
+        if(piAllBlobValue != null) {
+            if(!"opendma".equals(piAllBlobValue.getNamespace())) {
+                result.add("Property info for opendma:BlobValue in all properties qname namespace is not 'opendma'");
             }
-            if(!"BLOBValue".equals(piAllBLOBValue.getName())) {
-                result.add("Property info for opendma:BLOBValue in all properties qname name is not 'BLOBValue'");
+            if(!"BlobValue".equals(piAllBlobValue.getName())) {
+                result.add("Property info for opendma:BlobValue in all properties qname name is not 'BlobValue'");
             }
-            if(piAllBLOBValue.getDataType() != 1) {
-                result.add("Property info for opendma:BLOBValue in all properties data type is not '1'");
+            if(piAllBlobValue.getDataType() != 1) {
+                result.add("Property info for opendma:BlobValue in all properties data type is not '1'");
             }
-            if(piAllBLOBValue.isMultiValue() != false) {
-                result.add("Property info for opendma:BLOBValue in all properties MultiValue is not 'false'");
+            if(piAllBlobValue.isMultiValue() != false) {
+                result.add("Property info for opendma:BlobValue in all properties MultiValue is not 'false'");
             }
-            if(piAllBLOBValue.isReadOnly() != false) {
-                result.add("Property info for opendma:BLOBValue in all properties ReadOnly is not 'false'");
+            if(piAllBlobValue.isReadOnly() != false) {
+                result.add("Property info for opendma:BlobValue in all properties ReadOnly is not 'false'");
             }
-            if(piAllBLOBValue.isHidden() != false) {
-                result.add("Property info for opendma:BLOBValue in all properties Hidden is not 'false'");
+            if(piAllBlobValue.isHidden() != false) {
+                result.add("Property info for opendma:BlobValue in all properties Hidden is not 'false'");
             }
-            if(piAllBLOBValue.isRequired() != false) {
-                result.add("Property info for opendma:BLOBValue in all properties Required is not 'false'");
+            if(piAllBlobValue.isRequired() != false) {
+                result.add("Property info for opendma:BlobValue in all properties Required is not 'false'");
             }
-            if(piAllBLOBValue.isSystem() != true) {
-                result.add("Property info for opendma:BLOBValue in all properties System is not 'true'");
+            if(piAllBlobValue.isSystem() != true) {
+                result.add("Property info for opendma:BlobValue in all properties System is not 'true'");
             }
         }
         // opendma:ReferenceValue

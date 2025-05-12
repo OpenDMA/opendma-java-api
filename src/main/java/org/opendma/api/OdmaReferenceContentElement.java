@@ -10,8 +10,6 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  */
 public interface OdmaReferenceContentElement extends OdmaContentElement {
 
-    // ----- Object specific property access -------------------------------------------------------
-
     /**
      * Returns the URI where the content is stored.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LOCATION).getString()</code>.
