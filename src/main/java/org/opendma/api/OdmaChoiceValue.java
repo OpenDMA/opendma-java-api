@@ -292,21 +292,21 @@ public interface OdmaChoiceValue extends OdmaObject {
 
     /**
      * Returns the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).getReference()</code>.
      * 
-     * <p>Property <b>ReferenceValue</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>ReferenceValue</b> (opendma): <b>Reference to Object (opendma)</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference
      */
-    String getReferenceValue();
+    OdmaObject getReferenceValue();
 
     /**
      * Sets the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>ReferenceValue</b> (opendma): <b>String</b><br/>
+     * <p>Property <b>ReferenceValue</b> (opendma): <b>Reference to Object (opendma)</b><br/>
      * [SingleValue] [Writable] [NotRequired]<br/>
      * Full description follows.</p>
      * 
@@ -316,6 +316,6 @@ public interface OdmaChoiceValue extends OdmaObject {
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    void setReferenceValue(String newValue) throws OdmaAccessDeniedException;
+    void setReferenceValue(OdmaObject newValue) throws OdmaAccessDeniedException;
 
 }

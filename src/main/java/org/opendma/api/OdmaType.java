@@ -38,4 +38,23 @@ public enum OdmaType {
         throw new IllegalArgumentException("Unknown numericId " + numericId);
     }
 
+    /**
+     * Returns the OdmaType corresponding to the given name, ignoring case.
+     *
+     * @param name the name of the OdmaType (case-insensitive)
+     * @return the matching OdmaType
+     * @throws IllegalArgumentException if no matching OdmaType exists
+     */
+    public static OdmaType fromString(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("OdmaType name must not be null or empty");
+        }
+        for (OdmaType type : OdmaType.values()) {
+            if (type.name().equalsIgnoreCase(name.trim())) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown OdmaType name: " + name);
+    }
+
 }

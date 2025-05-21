@@ -76,8 +76,8 @@ public class OdmaProxyHandler implements InvocationHandler {
         PROPERTY_MAP.put("setDateTimeValue", new PropertyMapping(OdmaCommonNames.PROPERTY_DATETIMEVALUE, OdmaType.STRING, false));
         PROPERTY_MAP.put("getBlobValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BLOBVALUE, OdmaType.STRING, false));
         PROPERTY_MAP.put("setBlobValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BLOBVALUE, OdmaType.STRING, false));
-        PROPERTY_MAP.put("getReferenceValue", new PropertyMapping(OdmaCommonNames.PROPERTY_REFERENCEVALUE, OdmaType.STRING, false));
-        PROPERTY_MAP.put("setReferenceValue", new PropertyMapping(OdmaCommonNames.PROPERTY_REFERENCEVALUE, OdmaType.STRING, false));
+        PROPERTY_MAP.put("getReferenceValue", new PropertyMapping(OdmaCommonNames.PROPERTY_REFERENCEVALUE, OdmaType.REFERENCE, false));
+        PROPERTY_MAP.put("setReferenceValue", new PropertyMapping(OdmaCommonNames.PROPERTY_REFERENCEVALUE, OdmaType.REFERENCE, false));
         PROPERTY_MAP.put("getRootClass", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTCLASS, OdmaType.REFERENCE, false));
         PROPERTY_MAP.put("getRootAspects", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTASPECTS, OdmaType.REFERENCE, true));
         PROPERTY_MAP.put("getRootFolder", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTFOLDER, OdmaType.REFERENCE, false));

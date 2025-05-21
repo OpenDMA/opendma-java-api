@@ -40,7 +40,7 @@ public interface OdmaContentElement extends OdmaObject {
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_POSITION).getInteger()</code>.
      * 
      * <p>Property <b>Position</b> (opendma): <b>Integer</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
+     * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the position of this element in the list of all content elements of the containing document

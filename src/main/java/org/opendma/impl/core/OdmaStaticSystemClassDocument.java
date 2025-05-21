@@ -14,18 +14,18 @@ public class OdmaStaticSystemClassDocument extends OdmaStaticSystemClass
     public OdmaStaticSystemClassDocument(OdmaStaticSystemClass superClass, Iterable<OdmaClass> subClasses, Iterable<OdmaClass> aspects, Iterable<OdmaPropertyInfo> declaredProperties, boolean retrievable, boolean searchable) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException
     {
         super(subClasses);
-        properties.put(OdmaCommonNames.PROPERTY_NAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.CLASS_DOCUMENT.getName(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.CLASS_DOCUMENT.getNamespace(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.CLASS_DOCUMENT.getName(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_SUPERCLASS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_SUPERCLASS,superClass,OdmaType.REFERENCE,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_ASPECTS,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_ASPECTS,aspects,OdmaType.REFERENCE,true,true));
-        properties.put(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES,declaredProperties,OdmaType.REFERENCE,true,true));
-        properties.put(OdmaCommonNames.PROPERTY_ASPECT,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_ASPECT,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_INSTANTIABLE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_INSTANTIABLE,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_HIDDEN,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_HIDDEN,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_SYSTEM,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_SYSTEM,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_RETRIEVABLE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_RETRIEVABLE,(retrievable?Boolean.TRUE:Boolean.FALSE),OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_SEARCHABLE,new OdmaPropertyImpl(OdmaCommonNames.PROPERTY_SEARCHABLE,(searchable?Boolean.TRUE:Boolean.FALSE),OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_NAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.CLASS_DOCUMENT.getName(),OdmaType.STRING,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.CLASS_DOCUMENT.getNamespace(),OdmaType.STRING,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.CLASS_DOCUMENT.getName(),OdmaType.STRING,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_SUPERCLASS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_SUPERCLASS,superClass,OdmaType.REFERENCE,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_ASPECTS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_ASPECTS,aspects,OdmaType.REFERENCE,true,true));
+        properties.put(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES,declaredProperties,OdmaType.REFERENCE,true,true));
+        properties.put(OdmaCommonNames.PROPERTY_ASPECT,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_ASPECT,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_INSTANTIABLE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_INSTANTIABLE,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_HIDDEN,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_HIDDEN,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_SYSTEM,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_SYSTEM,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_RETRIEVABLE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_RETRIEVABLE,(retrievable?Boolean.TRUE:Boolean.FALSE),OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_SEARCHABLE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_SEARCHABLE,(searchable?Boolean.TRUE:Boolean.FALSE),OdmaType.BOOLEAN,false,true));
         buildProperties();
     }
 

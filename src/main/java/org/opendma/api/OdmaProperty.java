@@ -82,6 +82,13 @@ public interface OdmaProperty {
     public boolean isReadOnly();
 
     /**
+     * Indicates if the value of this property is immediately available can be read without a round-trip to a back-end system.
+     * 
+     * @return <code>true</code> if the value is immediately available, <code>false</code> if reading this value requires a round-trip to a back-end system.
+     */
+    public boolean isResolved();
+
+    /**
      * Returns the <code>String</code> value of this property if and only if
      * the data type of this property is a single valued <i>String</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.

@@ -73,7 +73,7 @@ public class OdmaDataContentElementTemplate extends OdmaContentElementTemplate i
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SIZE).getLong()</code>.
      * 
      * <p>Property <b>Size</b> (opendma): <b>Long</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
+     * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the number of octests the binary content of this <code>ContentElement</code> consists of

@@ -538,6 +538,7 @@ public class OdmaStaticClassHierarchy {
         getPropertyInfo(OdmaCommonNames.PROPERTY_SUBCLASSES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_REFERENCECLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_CHOICES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CHOICEVALUE));
+        getPropertyInfo(OdmaCommonNames.PROPERTY_REFERENCEVALUE).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_OBJECT));
         getPropertyInfo(OdmaCommonNames.PROPERTY_ROOTCLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_ROOTASPECTS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.PROPERTY_ROOTFOLDER).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_FOLDER));

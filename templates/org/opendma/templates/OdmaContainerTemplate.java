@@ -75,7 +75,7 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINEES).getReferenceIterable()</code>.
      * 
      * <p>Property <b>Containees</b> (opendma): <b>Reference to Containable (opendma)</b><br/>
-     * [MultiValue] [ReadOnly] [Required]<br/>
+     * [MultiValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the collection of all <code>Containable</code> objects that are contained in this <code>Container</code>

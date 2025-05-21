@@ -4348,8 +4348,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"ReferenceValue".equals(propReferenceValue.getName().getName())) {
                 result.add("Property opendma:ReferenceValue qname name is not 'ReferenceValue', found instead'"+propReferenceValue.getName().getName()+"'");
             }
-            if(propReferenceValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:ReferenceValue type is not 'STRING'");
+            if(propReferenceValue.getType() != OdmaType.REFERENCE) {
+                result.add("Property opendma:ReferenceValue type is not 'REFERENCE'");
             }
             if(propReferenceValue.isMultiValue() != false) {
                 result.add("Property opendma:ReferenceValue MultiValue is not 'false'");
@@ -4380,13 +4380,16 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"ReferenceValue".equals(piDeclaredReferenceValue.getName())) {
                     result.add("Property info for opendma:ReferenceValue in declared properties qname name is not 'ReferenceValue'");
                 }
-                if(piDeclaredReferenceValue.getDataType() != 1) {
-                    result.add("Property info for opendma:ReferenceValue in declared properties data type is not '1'");
+                if(piDeclaredReferenceValue.getDataType() != 10) {
+                    result.add("Property info for opendma:ReferenceValue in declared properties data type is not '10'");
                 }
                 if(piDeclaredReferenceValue.isMultiValue() != false) {
                     result.add("Property info for opendma:ReferenceValue in declared properties MultiValue is not 'false'");
                 }
                 if(piDeclaredReferenceValue.isReadOnly() != false) {
+                    result.add("Property info for opendma:ReferenceValue in declared properties ReadOnly is not 'false'");
+                }
+                if(!(new OdmaQName("opendma","Object")).equals(piDeclaredReferenceValue.getReferenceClass().getQName())) {
                     result.add("Property info for opendma:ReferenceValue in declared properties ReadOnly is not 'false'");
                 }
                 if(piDeclaredReferenceValue.isHidden() != false) {
@@ -4422,13 +4425,16 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"ReferenceValue".equals(piAllReferenceValue.getName())) {
                 result.add("Property info for opendma:ReferenceValue in all properties qname name is not 'ReferenceValue'");
             }
-            if(piAllReferenceValue.getDataType() != 1) {
-                result.add("Property info for opendma:ReferenceValue in all properties data type is not '1'");
+            if(piAllReferenceValue.getDataType() != 10) {
+                result.add("Property info for opendma:ReferenceValue in all properties data type is not '10'");
             }
             if(piAllReferenceValue.isMultiValue() != false) {
                 result.add("Property info for opendma:ReferenceValue in all properties MultiValue is not 'false'");
             }
             if(piAllReferenceValue.isReadOnly() != false) {
+                result.add("Property info for opendma:ReferenceValue in all properties ReadOnly is not 'false'");
+            }
+            if(!(new OdmaQName("opendma","Object")).equals(piAllReferenceValue.getReferenceClass().getQName())) {
                 result.add("Property info for opendma:ReferenceValue in all properties ReadOnly is not 'false'");
             }
             if(piAllReferenceValue.isHidden() != false) {
@@ -6833,9 +6839,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propPosition.isReadOnly()) {
                 result.add("Property opendma:Position ReadOnly must be 'true'");
             }
-            if(propPosition.getValue() == null) {
-                result.add("Property opendma:Position is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Position");
         }
@@ -6874,8 +6877,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredPosition.isHidden() != false) {
                     result.add("Property info for opendma:Position in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredPosition.isRequired() != true) {
-                result.add("Property info for opendma:Position in declared properties Required is not 'true'");
+                if(piDeclaredPosition.isRequired() != false) {
+                result.add("Property info for opendma:Position in declared properties Required is not 'false'");
                 }
                 if(piDeclaredPosition.isSystem() != true) {
                     result.add("Property info for opendma:Position in declared properties System is not 'true'");
@@ -6916,8 +6919,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllPosition.isHidden() != false) {
                 result.add("Property info for opendma:Position in all properties Hidden is not 'false'");
             }
-            if(piAllPosition.isRequired() != true) {
-                result.add("Property info for opendma:Position in all properties Required is not 'true'");
+            if(piAllPosition.isRequired() != false) {
+                result.add("Property info for opendma:Position in all properties Required is not 'false'");
             }
             if(piAllPosition.isSystem() != true) {
                 result.add("Property info for opendma:Position in all properties System is not 'true'");
@@ -7060,9 +7063,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propSize.isReadOnly()) {
                 result.add("Property opendma:Size ReadOnly must be 'true'");
             }
-            if(propSize.getValue() == null) {
-                result.add("Property opendma:Size is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Size");
         }
@@ -7101,8 +7101,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredSize.isHidden() != false) {
                     result.add("Property info for opendma:Size in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredSize.isRequired() != true) {
-                result.add("Property info for opendma:Size in declared properties Required is not 'true'");
+                if(piDeclaredSize.isRequired() != false) {
+                result.add("Property info for opendma:Size in declared properties Required is not 'false'");
                 }
                 if(piDeclaredSize.isSystem() != true) {
                     result.add("Property info for opendma:Size in declared properties System is not 'true'");
@@ -7143,8 +7143,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllSize.isHidden() != false) {
                 result.add("Property info for opendma:Size in all properties Hidden is not 'false'");
             }
-            if(piAllSize.isRequired() != true) {
-                result.add("Property info for opendma:Size in all properties Required is not 'true'");
+            if(piAllSize.isRequired() != false) {
+                result.add("Property info for opendma:Size in all properties Required is not 'false'");
             }
             if(piAllSize.isSystem() != true) {
                 result.add("Property info for opendma:Size in all properties System is not 'true'");
@@ -7523,9 +7523,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propLatest.isReadOnly()) {
                 result.add("Property opendma:Latest ReadOnly must be 'true'");
             }
-            if(propLatest.getValue() == null) {
-                result.add("Property opendma:Latest is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Latest");
         }
@@ -7567,8 +7564,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLatest.isHidden() != false) {
                     result.add("Property info for opendma:Latest in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLatest.isRequired() != true) {
-                result.add("Property info for opendma:Latest in declared properties Required is not 'true'");
+                if(piDeclaredLatest.isRequired() != false) {
+                result.add("Property info for opendma:Latest in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLatest.isSystem() != true) {
                     result.add("Property info for opendma:Latest in declared properties System is not 'true'");
@@ -7612,8 +7609,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLatest.isHidden() != false) {
                 result.add("Property info for opendma:Latest in all properties Hidden is not 'false'");
             }
-            if(piAllLatest.isRequired() != true) {
-                result.add("Property info for opendma:Latest in all properties Required is not 'true'");
+            if(piAllLatest.isRequired() != false) {
+                result.add("Property info for opendma:Latest in all properties Required is not 'false'");
             }
             if(piAllLatest.isSystem() != true) {
                 result.add("Property info for opendma:Latest in all properties System is not 'true'");
@@ -7640,9 +7637,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propReleased.isReadOnly()) {
                 result.add("Property opendma:Released ReadOnly must be 'true'");
-            }
-            if(propReleased.getValue() == null) {
-                result.add("Property opendma:Released is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Released");
@@ -7685,8 +7679,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredReleased.isHidden() != false) {
                     result.add("Property info for opendma:Released in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredReleased.isRequired() != true) {
-                result.add("Property info for opendma:Released in declared properties Required is not 'true'");
+                if(piDeclaredReleased.isRequired() != false) {
+                result.add("Property info for opendma:Released in declared properties Required is not 'false'");
                 }
                 if(piDeclaredReleased.isSystem() != true) {
                     result.add("Property info for opendma:Released in declared properties System is not 'true'");
@@ -7730,8 +7724,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllReleased.isHidden() != false) {
                 result.add("Property info for opendma:Released in all properties Hidden is not 'false'");
             }
-            if(piAllReleased.isRequired() != true) {
-                result.add("Property info for opendma:Released in all properties Required is not 'true'");
+            if(piAllReleased.isRequired() != false) {
+                result.add("Property info for opendma:Released in all properties Required is not 'false'");
             }
             if(piAllReleased.isSystem() != true) {
                 result.add("Property info for opendma:Released in all properties System is not 'true'");
@@ -7758,9 +7752,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propInProgress.isReadOnly()) {
                 result.add("Property opendma:InProgress ReadOnly must be 'true'");
-            }
-            if(propInProgress.getValue() == null) {
-                result.add("Property opendma:InProgress is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:InProgress");
@@ -7803,8 +7794,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredInProgress.isHidden() != false) {
                     result.add("Property info for opendma:InProgress in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredInProgress.isRequired() != true) {
-                result.add("Property info for opendma:InProgress in declared properties Required is not 'true'");
+                if(piDeclaredInProgress.isRequired() != false) {
+                result.add("Property info for opendma:InProgress in declared properties Required is not 'false'");
                 }
                 if(piDeclaredInProgress.isSystem() != true) {
                     result.add("Property info for opendma:InProgress in declared properties System is not 'true'");
@@ -7848,8 +7839,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllInProgress.isHidden() != false) {
                 result.add("Property info for opendma:InProgress in all properties Hidden is not 'false'");
             }
-            if(piAllInProgress.isRequired() != true) {
-                result.add("Property info for opendma:InProgress in all properties Required is not 'true'");
+            if(piAllInProgress.isRequired() != false) {
+                result.add("Property info for opendma:InProgress in all properties Required is not 'false'");
             }
             if(piAllInProgress.isSystem() != true) {
                 result.add("Property info for opendma:InProgress in all properties System is not 'true'");
@@ -8219,9 +8210,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(propContainees.getValue() == null) {
                 result.add("Property opendma:Containees is multi-valued but value is null");
             }
-            if(((List<Object>)propContainees.getValue()).isEmpty()) {
-                result.add("Property opendma:Containees is required but value is empty");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Containees");
         }
@@ -8263,8 +8251,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredContainees.isHidden() != false) {
                     result.add("Property info for opendma:Containees in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredContainees.isRequired() != true) {
-                result.add("Property info for opendma:Containees in declared properties Required is not 'true'");
+                if(piDeclaredContainees.isRequired() != false) {
+                result.add("Property info for opendma:Containees in declared properties Required is not 'false'");
                 }
                 if(piDeclaredContainees.isSystem() != true) {
                     result.add("Property info for opendma:Containees in declared properties System is not 'true'");
@@ -8308,8 +8296,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllContainees.isHidden() != false) {
                 result.add("Property info for opendma:Containees in all properties Hidden is not 'false'");
             }
-            if(piAllContainees.isRequired() != true) {
-                result.add("Property info for opendma:Containees in all properties Required is not 'true'");
+            if(piAllContainees.isRequired() != false) {
+                result.add("Property info for opendma:Containees in all properties Required is not 'false'");
             }
             if(piAllContainees.isSystem() != true) {
                 result.add("Property info for opendma:Containees in all properties System is not 'true'");

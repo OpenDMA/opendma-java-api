@@ -24,7 +24,7 @@ public interface OdmaVersionCollection extends OdmaObject {
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LATEST).getReference()</code>.
      * 
      * <p>Property <b>Latest</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
+     * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the latest version of this <code>Document</code>
@@ -36,7 +36,7 @@ public interface OdmaVersionCollection extends OdmaObject {
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_RELEASED).getReference()</code>.
      * 
      * <p>Property <b>Released</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
+     * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the last released version of this <code>Document</code>
@@ -48,7 +48,7 @@ public interface OdmaVersionCollection extends OdmaObject {
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INPROGRESS).getReference()</code>.
      * 
      * <p>Property <b>InProgress</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
+     * [SingleValue] [ReadOnly] [NotRequired]<br/>
      * Full description follows.</p>
      * 
      * @return the version of this <code>Document</code> currently beeing worked on during a checkout. Only valid if and only if the corresponding <code>Document</code> is checked out.
