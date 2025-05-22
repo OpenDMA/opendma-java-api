@@ -79,7 +79,7 @@ public class OdmaPropertyImpl implements OdmaProperty {
      *             if and only if the Class of the given Object does not match
      *             the data type of this property
      */
-    private OdmaPropertyImpl(OdmaQName name, Object value, OdmaLazyPropertyValueProvider valueProvider, OdmaType dataType, boolean multiValue, boolean readOnly) throws OdmaInvalidDataTypeException {
+    protected OdmaPropertyImpl(OdmaQName name, Object value, OdmaLazyPropertyValueProvider valueProvider, OdmaType dataType, boolean multiValue, boolean readOnly) throws OdmaInvalidDataTypeException {
         this.name = name;
         this.dataType = dataType;
         this.multiValue = multiValue;
