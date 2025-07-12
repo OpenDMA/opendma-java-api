@@ -6,32 +6,32 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * The <i>ChoiceValue</i> specific version of the <code>{@link OdmaObject}</code> interface
  * offering short-cuts to all defined OpenDMA properties.
  * 
- * Full description follows.
+ * Describes a possible value of a property
  */
 public interface OdmaChoiceValue extends OdmaObject {
 
     /**
-     * Returns the <i>display name</i> of this Choice to be displayed to end users.<br/>
+     * Returns Text shown to end users to refer to this possible value option.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>DisplayName</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * This DisplayName indirections allows Administrators to define friendly descriptions for end users while storing internal numbers or abbreviation in the system</p>
      * 
-     * @return the <i>display name</i> of this Choice to be displayed to end users
+     * @return Text shown to end users to refer to this possible value option
      */
     String getDisplayName();
 
     /**
-     * Sets the <i>display name</i> of this Choice to be displayed to end users.<br>
+     * Sets Text shown to end users to refer to this possible value option.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value)</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>DisplayName</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * This DisplayName indirections allows Administrators to define friendly descriptions for end users while storing internal numbers or abbreviation in the system</p>
      * 
      * @param newValue
-     *             The new value for the <i>display name</i> of this Choice to be displayed to end users
+     *             The new value for Text shown to end users to refer to this possible value option
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -42,8 +42,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the String value of this choice or null, if the property info this choice is assigned to is not of data type String.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_STRINGVALUE).getString()</code>.
      * 
-     * <p>Property <b>StringValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>StringValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the String value of this choice or null, if the property info this choice is assigned to is not of data type String
@@ -54,8 +54,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the String value of this choice or null, if the property info this choice is assigned to is not of data type String.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_STRINGVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>StringValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>StringValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -70,8 +70,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).getString()</code>.
      * 
-     * <p>Property <b>IntegerValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>IntegerValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer
@@ -82,8 +82,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>IntegerValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>IntegerValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -98,8 +98,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SHORTVALUE).getString()</code>.
      * 
-     * <p>Property <b>ShortValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>ShortValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short
@@ -110,8 +110,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SHORTVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>ShortValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>ShortValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -126,8 +126,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LONGVALUE).getString()</code>.
      * 
-     * <p>Property <b>LongValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>LongValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long
@@ -138,8 +138,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LONGVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>LongValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>LongValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -154,8 +154,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FLOATVALUE).getString()</code>.
      * 
-     * <p>Property <b>FloatValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>FloatValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float
@@ -166,8 +166,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FLOATVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>FloatValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>FloatValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -182,8 +182,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).getString()</code>.
      * 
-     * <p>Property <b>DoubleValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>DoubleValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double
@@ -194,8 +194,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>DoubleValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>DoubleValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -210,8 +210,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).getString()</code>.
      * 
-     * <p>Property <b>BooleanValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>BooleanValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean
@@ -222,8 +222,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>BooleanValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>BooleanValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -238,8 +238,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).getString()</code>.
      * 
-     * <p>Property <b>DateTimeValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>DateTimeValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime
@@ -250,8 +250,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>DateTimeValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>DateTimeValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -266,8 +266,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getString()</code>.
      * 
-     * <p>Property <b>BlobValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>BlobValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
@@ -278,8 +278,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>BlobValue</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>BlobValue</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
@@ -294,8 +294,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Returns the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).getReference()</code>.
      * 
-     * <p>Property <b>ReferenceValue</b> (opendma): <b>Reference to Object (opendma)</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>ReferenceValue</b>: Reference to Object (opendma)<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference
@@ -306,8 +306,8 @@ public interface OdmaChoiceValue extends OdmaObject {
      * Sets the Reference value of this choice or null, if the property info this choice is assigned to is not of data type Reference.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_REFERENCEVALUE).setValue(value)</code>.
      * 
-     * <p>Property <b>ReferenceValue</b> (opendma): <b>Reference to Object (opendma)</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
+     * <p>Property opendma:<b>ReferenceValue</b>: Reference to Object (opendma)<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue

@@ -257,10 +257,6 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>InProgress</code> */
     public static final OdmaQName PROPERTY_INPROGRESS = new OdmaQName("opendma", "InProgress");
 
-    // Property CreatedAt already defined previously
-
-    // Property CreatedBy already defined previously
-
     // -----< class Container >---------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Container</code> */

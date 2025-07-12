@@ -1,82 +1,53 @@
 package org.opendma.api;
 
-import java.util.Date;
 
 /**
- * Full description follows.
+ * A VersionCollection represents the set of all versions of a Document. Based on the actual document management system, it can represent a single series of versions, a tree of version, or any other versioning concept.
  */
 public interface OdmaVersionCollection extends OdmaObject {
 
     /**
-     * Returns collection of all versions of the <code>Document</code>.<br/>
+     * Returns Set of all versions of a document.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>Versions</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [MultiValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Versions</b>: Reference to Document (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Required]</p>
      * 
-     * @return collection of all versions of the <code>Document</code>
+     * @return Set of all versions of a document
      */
     Iterable<OdmaDocument> getVersions();
 
     /**
-     * Returns the latest version of this <code>Document</code>.<br/>
+     * Returns Latest version of a document.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LATEST).getReference()</code>.
      * 
-     * <p>Property <b>Latest</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Latest</b>: Reference to Document (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the latest version of this <code>Document</code>
+     * @return Latest version of a document
      */
     OdmaDocument getLatest();
 
     /**
-     * Returns the last released version of this <code>Document</code>.<br/>
+     * Returns Latest released version of a document if a version has been released.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_RELEASED).getReference()</code>.
      * 
-     * <p>Property <b>Released</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Released</b>: Reference to Document (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the last released version of this <code>Document</code>
+     * @return Latest released version of a document if a version has been released
      */
     OdmaDocument getReleased();
 
     /**
-     * Returns the version of this <code>Document</code> currently beeing worked on during a checkout. Only valid if and only if the corresponding <code>Document</code> is checked out..<br/>
+     * Returns Latest checked out working copy of a document.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INPROGRESS).getReference()</code>.
      * 
-     * <p>Property <b>InProgress</b> (opendma): <b>Reference to Document (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>InProgress</b>: Reference to Document (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the version of this <code>Document</code> currently beeing worked on during a checkout. Only valid if and only if the corresponding <code>Document</code> is checked out.
+     * @return Latest checked out working copy of a document
      */
     OdmaDocument getInProgress();
-
-    /**
-     * Returns the date when this <code>Document</code> has been created.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
-     * 
-     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
-     * 
-     * @return the date when this <code>Document</code> has been created
-     */
-    Date getCreatedAt();
-
-    /**
-     * Returns the user who has created this <code>Document</code>.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
-     * 
-     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
-     * 
-     * @return the user who has created this <code>Document</code>
-     */
-    String getCreatedBy();
 
 }

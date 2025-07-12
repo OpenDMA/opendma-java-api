@@ -1,6 +1,7 @@
 package org.opendma.impl;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -145,7 +146,11 @@ public class OdmaProxyHandler implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         if (method.getDeclaringClass().equals(OdmaCoreObject.class)) {
-            return method.invoke(coreObject, args);
+            try {
+                return method.invoke(coreObject, args);
+            } catch(InvocationTargetException ite) {
+                throw ite.getCause();
+            }
         }
 
         String methodName = method.getName();

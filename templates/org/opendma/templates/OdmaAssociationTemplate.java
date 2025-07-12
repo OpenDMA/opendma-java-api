@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * Template implementation of the interface <code>{@link OdmaAssociation}</code>.<p>
  * 
- * Full description follows.
+ * An Association represents the directed link between an opendma:Container and an opendma:Containable object.
  */
 public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaAssociation {
 
@@ -23,14 +23,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     // The following template code is available as OdmaAssociationTemplate
 
     /**
-     * Returns the <i>name</i> of this <code>Association</code>.<br>
+     * Returns the name of this association.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>Name</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * This name is used to refer to this specific association in the context of it's container and tell tem apart. Many systems pose additional constraints on this name.</p>
      * 
-     * @return the <i>name</i> of this <code>Association</code>
+     * @return the name of this association
      */
     public String getName() {
         try {
@@ -45,15 +45,15 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Sets the <i>name</i> of this <code>Association</code>.<br>
+     * Sets the name of this association.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>Name</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * This name is used to refer to this specific association in the context of it's container and tell tem apart. Many systems pose additional constraints on this name.</p>
      * 
      * @param newValue
-     *             The new value for the <i>name</i> of this <code>Association</code>
+     *             The new value for the name of this association
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -71,14 +71,13 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Returns the <code>Container</code> of this <code>Association</code> in which the containable is said to be contained.<br>
+     * Returns the source of this directed link.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).getReference()</code>.
      * 
-     * <p>Property <b>Container</b> (opendma): <b>Reference to Container (opendma)</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Container</b>: Reference to Container (opendma)<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
-     * @return the <code>Container</code> of this <code>Association</code> in which the containable is said to be contained
+     * @return the source of this directed link
      */
     public OdmaContainer getContainer() {
         try {
@@ -96,15 +95,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Sets the <code>Container</code> of this <code>Association</code> in which the containable is said to be contained.<br>
+     * Sets the source of this directed link.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINER).setValue(value)</code>.
      * 
-     * <p>Property <b>Container</b> (opendma): <b>Reference to Container (opendma)</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Container</b>: Reference to Container (opendma)<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
      * @param newValue
-     *             The new value for the <code>Container</code> of this <code>Association</code> in which the containable is said to be contained
+     *             The new value for the source of this directed link
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -122,14 +120,13 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Returns the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container.<br>
+     * Returns the destination of this directed link.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINABLE).getReference()</code>.
      * 
-     * <p>Property <b>Containable</b> (opendma): <b>Reference to Containable (opendma)</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Containable</b>: Reference to Containable (opendma)<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
-     * @return the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container
+     * @return the destination of this directed link
      */
     public OdmaContainable getContainable() {
         try {
@@ -147,15 +144,14 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Sets the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container.<br>
+     * Sets the destination of this directed link.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTAINABLE).setValue(value)</code>.
      * 
-     * <p>Property <b>Containable</b> (opendma): <b>Reference to Containable (opendma)</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Containable</b>: Reference to Containable (opendma)<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
      * @param newValue
-     *             The new value for the <code>Containable</code> of this <code>Association</code> which is said to be contained in the container
+     *             The new value for the destination of this directed link
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -173,14 +169,13 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Returns the date when this <code>Association</code> has been created.<br>
+     * Returns the timestamp when this association has been created.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
      * 
-     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CreatedAt</b>: DateTime<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the date when this <code>Association</code> has been created
+     * @return the timestamp when this association has been created
      */
     public Date getCreatedAt() {
         try {
@@ -195,14 +190,13 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Returns the user who has created this <code>Association</code>.<br>
+     * Returns the user who created this association.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
      * 
-     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CreatedBy</b>: String<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the user who has created this <code>Association</code>
+     * @return the user who created this association
      */
     public String getCreatedBy() {
         try {
@@ -217,14 +211,13 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Returns the date when this <code>Association</code> has been modified the last time.<br>
+     * Returns the timestamp when this association has been modified the last time.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
      * 
-     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>LastModifiedAt</b>: DateTime<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the date when this <code>Association</code> has been modified the last time
+     * @return the timestamp when this association has been modified the last time
      */
     public Date getLastModifiedAt() {
         try {
@@ -239,14 +232,13 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     }
 
     /**
-     * Returns the user who has modified this <code>Association</code> the last time.<br>
+     * Returns the user who modified this association the last time.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
      * 
-     * <p>Property <b>LastModifiedBy</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>LastModifiedBy</b>: String<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the user who has modified this <code>Association</code> the last time
+     * @return the user who modified this association the last time
      */
     public String getLastModifiedBy() {
         try {

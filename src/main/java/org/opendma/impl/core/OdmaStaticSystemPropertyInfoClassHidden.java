@@ -1,6 +1,7 @@
 package org.opendma.impl.core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import org.opendma.api.OdmaCommonNames;
 import org.opendma.api.OdmaType;
 import org.opendma.api.OdmaObject;
@@ -21,7 +22,7 @@ public class OdmaStaticSystemPropertyInfoClassHidden extends OdmaStaticSystemPro
         properties.put(OdmaCommonNames.PROPERTY_READONLY,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_READONLY,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_HIDDEN,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_HIDDEN,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_SYSTEM,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_SYSTEM,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_CHOICES,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_CHOICES,new ArrayList<OdmaObject>(0),OdmaType.REFERENCE,true,true));
+        properties.put(OdmaCommonNames.PROPERTY_CHOICES,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_CHOICES,Collections.unmodifiableList(new ArrayList<OdmaObject>(0)),OdmaType.REFERENCE,true,true));
     }
 
 }

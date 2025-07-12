@@ -21,7 +21,7 @@ public class OdmaStaticSystemClassContainable extends OdmaStaticSystemClass
         properties.put(OdmaCommonNames.PROPERTY_ASPECTS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_ASPECTS,aspects,OdmaType.REFERENCE,true,true));
         properties.put(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES,declaredProperties,OdmaType.REFERENCE,true,true));
         properties.put(OdmaCommonNames.PROPERTY_ASPECT,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_ASPECT,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_INSTANTIABLE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_INSTANTIABLE,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_INSTANTIABLE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_INSTANTIABLE,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_HIDDEN,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_HIDDEN,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_SYSTEM,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_SYSTEM,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_RETRIEVABLE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_RETRIEVABLE,(retrievable?Boolean.TRUE:Boolean.FALSE),OdmaType.BOOLEAN,false,true));

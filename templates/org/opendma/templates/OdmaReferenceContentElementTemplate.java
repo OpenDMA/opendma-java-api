@@ -10,7 +10,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 /**
  * Template implementation of the interface <code>{@link OdmaReferenceContentElement}</code>.<p>
  * 
- * Full description follows.
+ * A ReferenceContentElement represents a reference to external data. The reference is stored as URI to the content location.
  */
 public class OdmaReferenceContentElementTemplate extends OdmaContentElementTemplate implements OdmaReferenceContentElement {
 
@@ -23,9 +23,8 @@ public class OdmaReferenceContentElementTemplate extends OdmaContentElementTempl
      * Returns the URI where the content is stored.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LOCATION).getString()</code>.
      * 
-     * <p>Property <b>Location</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Location</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
      * @return the URI where the content is stored
      */
@@ -45,9 +44,8 @@ public class OdmaReferenceContentElementTemplate extends OdmaContentElementTempl
      * Sets the URI where the content is stored.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LOCATION).setValue(value)</code>.
      * 
-     * <p>Property <b>Location</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Location</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
      * @param newValue
      *             The new value for the URI where the content is stored

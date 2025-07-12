@@ -6,32 +6,30 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * The <i>DataContentElement</i> specific version of the <code>{@link OdmaContentElement}</code> interface
  * offering short-cuts to all defined OpenDMA properties.
  * 
- * Full description follows.
+ * A DataContentElement represents one atomic octet stream. The binary data is stored together with meta data like size and filename
  */
 public interface OdmaDataContentElement extends OdmaContentElement {
 
     /**
-     * Returns the binary content of this <code>ContentElement</code> as octets.<br/>
+     * Returns the binary data of this content element.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).getContent()</code>.
      * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Content</b>: Content<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
-     * @return the binary content of this <code>ContentElement</code> as octets
+     * @return the binary data of this content element
      */
     OdmaContent getContent();
 
     /**
-     * Sets the binary content of this <code>ContentElement</code> as octets.<br>
+     * Sets the binary data of this content element.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENT).setValue(value)</code>.
      * 
-     * <p>Property <b>Content</b> (opendma): <b>Content</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Content</b>: Content<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
      * @param newValue
-     *             The new value for the binary content of this <code>ContentElement</code> as octets
+     *             The new value for the binary data of this content element
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -39,39 +37,36 @@ public interface OdmaDataContentElement extends OdmaContentElement {
     void setContent(OdmaContent newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the number of octests the binary content of this <code>ContentElement</code> consists of.<br/>
+     * Returns the size of the data in number of octets.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SIZE).getLong()</code>.
      * 
-     * <p>Property <b>Size</b> (opendma): <b>Long</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Size</b>: Long<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the number of octests the binary content of this <code>ContentElement</code> consists of
+     * @return the size of the data in number of octets
      */
     Long getSize();
 
     /**
-     * Returns the optional file name of this <code>ContentElement</code>.<br/>
+     * Returns the optional file name of the data.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).getString()</code>.
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>FileName</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
-     * @return the optional file name of this <code>ContentElement</code>
+     * @return the optional file name of the data
      */
     String getFileName();
 
     /**
-     * Sets the optional file name of this <code>ContentElement</code>.<br>
+     * Sets the optional file name of the data.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FILENAME).setValue(value)</code>.
      * 
-     * <p>Property <b>FileName</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>FileName</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
      * @param newValue
-     *             The new value for the optional file name of this <code>ContentElement</code>
+     *             The new value for the optional file name of the data
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user

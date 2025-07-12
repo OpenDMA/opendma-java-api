@@ -82,11 +82,26 @@ public interface OdmaProperty {
     public boolean isReadOnly();
 
     /**
+     * The availability state of a property value.
+     */
+    public enum PropertyResolutionState {
+        
+        /** Reading this value requires a round-trip to a back-end system */
+        UNRESOLVED,
+
+	    /** The OdmaId of the referenced object is immediately available, but reading the object value requires a round-trip to a back-end system */
+        IDRESOLVED,
+        
+        /** The value is immediately available */
+        RESOLVED
+    }
+
+    /**
      * Indicates if the value of this property is immediately available can be read without a round-trip to a back-end system.
      * 
-     * @return <code>true</code> if the value is immediately available, <code>false</code> if reading this value requires a round-trip to a back-end system.
+     * @return the availability state of this property value.
      */
-    public boolean isResolved();
+     public PropertyResolutionState getResolutionState();
 
     /**
      * Returns the <code>String</code> value of this property if and only if
@@ -217,6 +232,22 @@ public interface OdmaProperty {
      *             property
      */
     public OdmaObject getReference() throws OdmaInvalidDataTypeException;
+
+    /**
+     * Returns the <code>OdmaId</code> of the <code>Reference</code> if and only if
+     * the data type of this property is a single valued <i>Reference</i>. Throws
+     * an <code>OdmaInvalidDataTypeException</code> otherwise.
+     * 
+     * Based on the PropertyResolutionState, it is possible that this OdmaId is immediately available
+     * while the OdmaObject requires an additional round-trip to the server.
+     * 
+     * @return the <code>OdmaId</code> of the <code>Reference</code> value of this property
+     * 
+     * @throws OdmaInvalidDataTypeException
+     *             if and only if this property is not a single valued <i>Reference</i>
+     *             property
+     */
+    public OdmaId getReferenceId() throws OdmaInvalidDataTypeException;
 
     /**
      * Returns the <code>Content</code> value of this property if and only if

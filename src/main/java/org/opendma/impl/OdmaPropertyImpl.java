@@ -21,13 +21,21 @@ public class OdmaPropertyImpl implements OdmaProperty {
     
     /**
      * Interface for lazy property resolution.
-     *
      */
     public interface OdmaLazyPropertyValueProvider {
+    
+        /**
+         * Indicates of the OdmaId of a referenced object is available without a round-trip to a back-end system.
+         */
+        boolean hasReferenceId();
+        
+        /**
+         * Get the OdmaId of a referenced object, if available. Returns null otherwise.
+         */
+        OdmaId getReferenceId();
         
         /**
          * Resolves the value of the property when accessed.
-         *
          */
         Object resovlePropertyValue();
         
@@ -225,10 +233,16 @@ public class OdmaPropertyImpl implements OdmaProperty {
     /**
      * Indicates if the value of this property is immediately available can be read without a round-trip to a back-end system.
      * 
-     * @return <code>true</code> if the value is immediately available, <code>false</code> if reading this value requires a round-trip to a back-end system.
+     * @return the availability state of this property value.
      */
-    public boolean isResolved() {
-        return valueProvider == null;
+    public PropertyResolutionState getResolutionState() {
+        if(valueProvider == null) {
+            return PropertyResolutionState.RESOLVED;
+        } else if(valueProvider.hasReferenceId()) {
+            return PropertyResolutionState.IDRESOLVED;
+        } else {
+            return PropertyResolutionState.UNRESOLVED;
+        }
     }
 
     private boolean checkListAndValues(Object obj, Class<?> expectedElementsClass) {
@@ -672,6 +686,35 @@ public class OdmaPropertyImpl implements OdmaProperty {
         if( (multiValue == false) && (dataType == OdmaType.REFERENCE) ) {
             enforceValue();
             return (OdmaObject)value;
+        } else {
+            throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getReference()`");
+        }
+    }
+
+    /**
+     * Returns the <code>OdmaId</code> of the <code>Reference</code> if and only if
+     * the data type of this property is a single valued <i>Reference</i>. Throws
+     * an <code>OdmaInvalidDataTypeException</code> otherwise.
+     * 
+     * Based on the PropertyResolutionState, it is possible that this OdmaId is immediately available
+     * while the OdmaObject requires an additional round-trip to the server.
+     * 
+     * @return the <code>OdmaId</code> of the <code>Reference</code> value of this property
+     * 
+     * @throws OdmaInvalidDataTypeException
+     *             if and only if this property is not a single valued <i>Reference</i>
+     *             property
+     */
+    public OdmaId getReferenceId() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.REFERENCE) ) {
+            if(valueProvider == null) {
+                return ((OdmaObject)value).getId();
+            } else if(valueProvider.hasReferenceId()) {
+                return valueProvider.getReferenceId();
+            } else {
+                enforceValue();
+                return ((OdmaObject)value).getId();
+            }
         } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getReference()`");
         }

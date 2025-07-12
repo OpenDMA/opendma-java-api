@@ -10,7 +10,7 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 /**
  * Template implementation of the interface <code>{@link OdmaFolder}</code>.<p>
  * 
- * Full description follows.
+ * A Folder is an extension of the Container forming one single rooted loop-free tree.
  */
 public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFolder {
 
@@ -20,14 +20,14 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
     // The following template code is available as OdmaFolderTemplate
 
     /**
-     * Returns the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Returns the parent folder this folder is contained in.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).getReference()</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Parent</b>: Reference to Folder (opendma)<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
+     * Following this property from folder object to folder object will ultimately lead to the single root folder of the Repository. This is the only folder having a null value for this property</p>
      * 
-     * @return the <code>Folder</code> this <code>Folder</code> is a sub folder of
+     * @return the parent folder this folder is contained in
      */
     public OdmaFolder getParent() {
         try {
@@ -45,15 +45,15 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
     }
 
     /**
-     * Sets the <code>Folder</code> this <code>Folder</code> is a sub folder of.<br>
+     * Sets the parent folder this folder is contained in.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PARENT).setValue(value)</code>.
      * 
-     * <p>Property <b>Parent</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Parent</b>: Reference to Folder (opendma)<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
+     * Following this property from folder object to folder object will ultimately lead to the single root folder of the Repository. This is the only folder having a null value for this property</p>
      * 
      * @param newValue
-     *             The new value for the <code>Folder</code> this <code>Folder</code> is a sub folder of
+     *             The new value for the parent folder this folder is contained in
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -71,14 +71,14 @@ public class OdmaFolderTemplate extends OdmaContainerTemplate implements OdmaFol
     }
 
     /**
-     * Returns the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent property.<br>
+     * Returns the set of Folder objects that contain this folder in their opendma:Parent property.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBFOLDERS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>SubFolders</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
-     * [MultiValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>SubFolders</b>: Reference to Folder (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]<br/>
+     * Using this property for a tree walk is safe. A folder is guaranteed to be loop free. It is neither defined if this set of objects is also part of the opendma:Containees property nor if there are corresponding association objects in opendma:Associations for each folder in this set.</p>
      * 
-     * @return the collection of <code>Folder</code>s which have this <code>Folder</code> in their parent property
+     * @return the set of Folder objects that contain this folder in their opendma:Parent property
      */
      @SuppressWarnings("unchecked")
     public Iterable<OdmaFolder> getSubFolders() {

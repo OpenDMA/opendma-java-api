@@ -6,32 +6,32 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
  * The <i>Repository</i> specific version of the <code>{@link OdmaObject}</code> interface
  * offering short-cuts to all defined OpenDMA properties.
  * 
- * Full description follows.
+ * A Repository represents a place where all Objects are stored. It often constitues a data isolation boundary where objects with different management requirements or access restrictions are separated into different repositories. Qualified names of classes and properties as well as unique object identifiers are only unique within a repository. They can be reused across different repositories. Object references are limited in scope within a single repository.
  */
 public interface OdmaRepository extends OdmaObject {
 
     /**
-     * Returns the internal (technical) <i>name</i> of this <code>Repository</code>.<br/>
+     * Returns the internal technical name of this repository.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>Name</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
-     * @return the internal (technical) <i>name</i> of this <code>Repository</code>
+     * @return the internal technical name of this repository
      */
     String getName();
 
     /**
-     * Sets the internal (technical) <i>name</i> of this <code>Repository</code>.<br>
+     * Sets the internal technical name of this repository.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>Name</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
      * @param newValue
-     *             The new value for the internal (technical) <i>name</i> of this <code>Repository</code>
+     *             The new value for the internal technical name of this repository
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -39,27 +39,27 @@ public interface OdmaRepository extends OdmaObject {
     void setName(String newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the <i>display name</i> of this <code>Repository</code> to be displayed to end users.<br/>
+     * Returns the text shown to end users to refer to this repository.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>DisplayName</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
-     * @return the <i>display name</i> of this <code>Repository</code> to be displayed to end users
+     * @return the text shown to end users to refer to this repository
      */
     String getDisplayName();
 
     /**
-     * Sets the <i>display name</i> of this <code>Repository</code> to be displayed to end users.<br>
+     * Sets the text shown to end users to refer to this repository.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value)</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>DisplayName</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
      * @param newValue
-     *             The new value for the <i>display name</i> of this <code>Repository</code> to be displayed to end users
+     *             The new value for the text shown to end users to refer to this repository
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -67,38 +67,36 @@ public interface OdmaRepository extends OdmaObject {
     void setDisplayName(String newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the <i>root</i> <code>Class</code> of the class hierarchy in this <code>Repository</code>.<br/>
+     * Returns Valid class object describing the class hierarchy root.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ROOTCLASS).getReference()</code>.
      * 
-     * <p>Property <b>RootClass</b> (opendma): <b>Reference to Class (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>RootClass</b>: Reference to Class (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Required]</p>
      * 
-     * @return the <i>root</i> <code>Class</code> of the class hierarchy in this <code>Repository</code>
+     * @return Valid class object describing the class hierarchy root
      */
     OdmaClass getRootClass();
 
     /**
-     * Returns the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect.<br/>
+     * Returns set of valid aspect objects without a super class.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ROOTASPECTS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>RootAspects</b> (opendma): <b>Reference to Class (opendma)</b><br/>
-     * [MultiValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>RootAspects</b>: Reference to Class (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the list of <code>Class</code>es that represent an <i>Aspect</i> and that do not inherit another aspect
+     * @return set of valid aspect objects without a super class
      */
     Iterable<OdmaClass> getRootAspects();
 
     /**
-     * Returns the <i>root</i> <code>Folder</code> of a dedicated folder tree in this <code>Repository</code> (if any).<br/>
+     * Returns Object that has the opendma:Folder aspect representing the single root if this repository has a dedicated folder tree, null otherwise.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ROOTFOLDER).getReference()</code>.
      * 
-     * <p>Property <b>RootFolder</b> (opendma): <b>Reference to Folder (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
+     * <p>Property opendma:<b>RootFolder</b>: Reference to Folder (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Optional]<br/>
      * Full description follows.</p>
      * 
-     * @return the <i>root</i> <code>Folder</code> of a dedicated folder tree in this <code>Repository</code> (if any)
+     * @return Object that has the opendma:Folder aspect representing the single root if this repository has a dedicated folder tree, null otherwise
      */
     OdmaFolder getRootFolder();
 

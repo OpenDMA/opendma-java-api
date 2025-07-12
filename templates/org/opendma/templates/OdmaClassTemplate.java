@@ -12,7 +12,7 @@ import org.opendma.api.OdmaPropertyInfo;
 /**
  * Template implementation of the interface <code>{@link OdmaClass}</code>.<p>
  * 
- * The <i>Class</i> specific version of the <code>{@link OdmaObject}</code> interface that offers short cuts to all defined OpenDMA properties.
+ * Describes Classes and Aspects in OpenDMA. Every object in OpenDMA has a reference to an instance of this class describing it.
  */
 public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
 
@@ -22,14 +22,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     // The following template code is available as OdmaClassTemplate
 
     /**
-     * Returns the internal (technical) <i>name</i> of this <code>Class</code>.<br>
+     * Returns the name part of the qualified name of the class described by this object.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).getString()</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>Name</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The qualified name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
-     * @return the internal (technical) <i>name</i> of this <code>Class</code>
+     * @return the name part of the qualified name of the class described by this object
      */
     public String getName() {
         try {
@@ -44,15 +44,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Sets the internal (technical) <i>name</i> of this <code>Class</code>.<br>
+     * Sets the name part of the qualified name of the class described by this object.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAME).setValue(value)</code>.
      * 
-     * <p>Property <b>Name</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>Name</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The qualified name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
      * @param newValue
-     *             The new value for the internal (technical) <i>name</i> of this <code>Class</code>
+     *             The new value for the name part of the qualified name of the class described by this object
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -70,14 +70,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the <i>namespace</i> of this <code>Class</code>.<br>
+     * Returns the namespace part of the qualified name of the class described by this object.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMESPACE).getString()</code>.
      * 
-     * <p>Property <b>Namespace</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Namespace</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
+     * The qualified name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
-     * @return the <i>namespace</i> of this <code>Class</code>
+     * @return the namespace part of the qualified name of the class described by this object
      */
     public String getNamespace() {
         try {
@@ -92,15 +92,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Sets the <i>namespace</i> of this <code>Class</code>.<br>
+     * Sets the namespace part of the qualified name of the class described by this object.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_NAMESPACE).setValue(value)</code>.
      * 
-     * <p>Property <b>Namespace</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Namespace</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
+     * The qualified name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
      * @param newValue
-     *             The new value for the <i>namespace</i> of this <code>Class</code>
+     *             The new value for the namespace part of the qualified name of the class described by this object
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -118,14 +118,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br>
+     * Returns Text shown to end users to refer to this class.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).getString()</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>DisplayName</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The qualified name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
-     * @return the <i>display name</i> of this <code>Class</code> to be displayed to end users
+     * @return Text shown to end users to refer to this class
      */
     public String getDisplayName() {
         try {
@@ -140,15 +140,15 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Sets the <i>display name</i> of this <code>Class</code> to be displayed to end users.<br>
+     * Sets Text shown to end users to refer to this class.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DISPLAYNAME).setValue(value)</code>.
      * 
-     * <p>Property <b>DisplayName</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>DisplayName</b>: String<br/>
      * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * The qualified name is a technical identifier that typically has some restrictions, e.g. for database table names. The DisplayName in contrast is tailored for end users.</p>
      * 
      * @param newValue
-     *             The new value for the <i>display name</i> of this <code>Class</code> to be displayed to end users
+     *             The new value for Text shown to end users to refer to this class
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -166,14 +166,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the <i>super</i> <code>Class</code> that is extended by this <code>Class</code>.<br>
+     * Returns Super class of this class or aspect..<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUPERCLASS).getReference()</code>.
      * 
-     * <p>Property <b>SuperClass</b> (opendma): <b>Reference to Class (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>SuperClass</b>: Reference to Class (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Optional]<br/>
+     * OpenDMA guarantees this relationship to be loop-free. You can use it to explore the class hierarchy starting from the class described by this object. All opendma:PropertyInfo objects contained in the opendma:Properties set of the super class are also part of the opendma:Properties set of this class.</p>
      * 
-     * @return the <i>super</i> <code>Class</code> that is extended by this <code>Class</code>
+     * @return Super class of this class or aspect.
      */
     public OdmaClass getSuperClass() {
         try {
@@ -191,14 +191,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the list of <i>aspects</i> that are implemented by this <code>Class</code>.<br>
+     * Returns List of aspects that are implemented by this class.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>Aspects</b> (opendma): <b>Reference to Class (opendma)</b><br/>
-     * [MultiValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Aspects</b>: Reference to Class (opendma)<br/>
+     * [MultiValue] [Writable] [Optional]<br/>
+     * If this object describes an Aspect, i.e. the opendma:Aspect property is true, it cannot have any Aspects itself. For classes, this set contains all elements of the opendma:Aspects set of the super class. All opendma:PropertyInfo objects contained in the opendma:Properties set of any of the opendma:Class objects in this set are also part of the opendma:Properties set of this class.</p>
      * 
-     * @return the list of <i>aspects</i> that are implemented by this <code>Class</code>
+     * @return List of aspects that are implemented by this class
      */
      @SuppressWarnings("unchecked")
     public Iterable<OdmaClass> getAspects() {
@@ -217,14 +217,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties)..<br>
+     * Returns List of properties declared by this class.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DECLAREDPROPERTIES).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>DeclaredProperties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br/>
-     * [MultiValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>DeclaredProperties</b>: Reference to PropertyInfo (opendma)<br/>
+     * [MultiValue] [Writable] [Optional]<br/>
+     * Set of opendma:PropertyInfo objects describing properties newly introduced by this level in the class hierarchy. All elements of this set are also contained in the opendma:Properties set. Properties cannot be overwritten, i.e. the qualified nyme of any property described by an opendma:PropertyInfo object in this set cannot be used in the opendma:Properties sets of the super class or any Aspect.</p>
      * 
-     * @return the list of <i>properties</i> that are desclared by this <code>Class</code> (does not contain inherited properties).
+     * @return List of properties declared by this class
      */
      @SuppressWarnings("unchecked")
     public Iterable<OdmaPropertyInfo> getDeclaredProperties() {
@@ -243,14 +243,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties..<br>
+     * Returns List of effective properties.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PROPERTIES).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>Properties</b> (opendma): <b>Reference to PropertyInfo (opendma)</b><br/>
-     * [MultiValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Properties</b>: Reference to PropertyInfo (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]<br/>
+     * Set of opendma:PropertyInfo objects describing all properties of an object of this class. This set combines the opendma:DeclaredProperties set with the opendma:Properties of the super class as well as the opendma:Properties sets of all aspect objects listed in opendma:Aspects. Properties cannot be overwritten, i.e. the qualified nyme of any property described by an opendma:PropertyInfo object in the opendma:DeclaredProperties set cannot be used in the opendma:Properties sets of the super class or any Aspect.</p>
      * 
-     * @return the list of <i>properties</i> that are effective for objects of this <code>Class</code>. Contains inherited and declared properties.
+     * @return List of effective properties
      */
      @SuppressWarnings("unchecked")
     public Iterable<OdmaPropertyInfo> getProperties() {
@@ -269,14 +269,13 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns whether this <code>Class</code> describes an Aspect or a valid class object.<br>
+     * Returns Indicates if this object represents an Aspect (true) or a Class (false).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECT).getBoolean()</code>.
      * 
-     * <p>Property <b>Aspect</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Aspect</b>: Boolean<br/>
+     * [SingleValue] [ReadOnly] [Required]</p>
      * 
-     * @return whether this <code>Class</code> describes an Aspect or a valid class object
+     * @return Indicates if this object represents an Aspect (true) or a Class (false)
      */
     public Boolean isAspect() {
         try {
@@ -291,14 +290,13 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Returns Indicates if there can ob objects of this class (true) or if this class is abstract (false).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).getBoolean()</code>.
      * 
-     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Instantiable</b>: Boolean<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
-     * @return whether <code>Object</code>s of this <code>Class</code> can be created or not
+     * @return Indicates if there can ob objects of this class (true) or if this class is abstract (false)
      */
     public Boolean isInstantiable() {
         try {
@@ -313,15 +311,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Sets whether <code>Object</code>s of this <code>Class</code> can be created or not.<br>
+     * Sets Indicates if there can ob objects of this class (true) or if this class is abstract (false).<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).setValue(value)</code>.
      * 
-     * <p>Property <b>Instantiable</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Instantiable</b>: Boolean<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
      * @param newValue
-     *             The new value for whether <code>Object</code>s of this <code>Class</code> can be created or not
+     *             The new value for Indicates if there can ob objects of this class (true) or if this class is abstract (false)
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -339,14 +336,13 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns whether this <code>Class</code> should be displayed to end users or not.<br>
+     * Returns Indicates if this class should be hidden from end users and probably administrators.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
      * 
-     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Hidden</b>: Boolean<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
-     * @return whether this <code>Class</code> should be displayed to end users or not
+     * @return Indicates if this class should be hidden from end users and probably administrators
      */
     public Boolean isHidden() {
         try {
@@ -361,15 +357,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Sets whether this <code>Class</code> should be displayed to end users or not.<br>
+     * Sets Indicates if this class should be hidden from end users and probably administrators.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).setValue(value)</code>.
      * 
-     * <p>Property <b>Hidden</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Hidden</b>: Boolean<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
      * @param newValue
-     *             The new value for whether this <code>Class</code> should be displayed to end users or not
+     *             The new value for Indicates if this class should be hidden from end users and probably administrators
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -387,14 +382,13 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Returns Indicates if instances of this class are owned and managed by the system.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).getBoolean()</code>.
      * 
-     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>System</b>: Boolean<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
-     * @return whether this <code>Class</code> is defined by the system (true) or by users (false)
+     * @return Indicates if instances of this class are owned and managed by the system
      */
     public Boolean isSystem() {
         try {
@@ -409,15 +403,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Sets whether this <code>Class</code> is defined by the system (true) or by users (false).<br>
+     * Sets Indicates if instances of this class are owned and managed by the system.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SYSTEM).setValue(value)</code>.
      * 
-     * <p>Property <b>System</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [Writable] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>System</b>: Boolean<br/>
+     * [SingleValue] [Writable] [Required]</p>
      * 
      * @param newValue
-     *             The new value for whether this <code>Class</code> is defined by the system (true) or by users (false)
+     *             The new value for Indicates if instances of this class are owned and managed by the system
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -435,14 +428,13 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns whether objects of this class can be retrieved from a session by their id or not.<br>
+     * Returns Indicates if instances of this class can by retrieved by their Id.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_RETRIEVABLE).getBoolean()</code>.
      * 
-     * <p>Property <b>Retrievable</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Retrievable</b>: Boolean<br/>
+     * [SingleValue] [ReadOnly] [Required]</p>
      * 
-     * @return whether objects of this class can be retrieved from a session by their id or not
+     * @return Indicates if instances of this class can by retrieved by their Id
      */
     public Boolean isRetrievable() {
         try {
@@ -457,14 +449,13 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns whether objects of this class can be found by a search query or not.<br>
+     * Returns Indicates if instances of this class can be retrieved in a search.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SEARCHABLE).getBoolean()</code>.
      * 
-     * <p>Property <b>Searchable</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Searchable</b>: Boolean<br/>
+     * [SingleValue] [ReadOnly] [Required]</p>
      * 
-     * @return whether objects of this class can be found by a search query or not
+     * @return Indicates if instances of this class can be retrieved in a search
      */
     public Boolean isSearchable() {
         try {
@@ -479,14 +470,14 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <code>SuperClass</code> property).<br>
+     * Returns List of classes or aspects that extend this class.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SUBCLASSES).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>SubClasses</b> (opendma): <b>Reference to Class (opendma)</b><br/>
-     * [MultiValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>SubClasses</b>: Reference to Class (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]<br/>
+     * The value of the `opendma:SubClasses` property is exactly the set of valid class objects whose `opendma:SuperClass` property contains a reference to this class info object</p>
      * 
-     * @return the list of <code>Class</code>es that extend this class (i.e. that contain a reference to this <code>Class</code> in their <code>SuperClass</code> property)
+     * @return List of classes or aspects that extend this class
      */
      @SuppressWarnings("unchecked")
     public Iterable<OdmaClass> getSubClasses() {
@@ -505,10 +496,10 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * the qualified name of this <code>Class</code><br>
-     * <p>Full description follows.</p>
+     * the qualified name of this class<br>
+     * <p>A convenience shortcut to getting the name and namespace separately</p>
      * 
-     * @return the qualified name of this <code>Class</code>
+     * @return the qualified name of this class
      */
     public OdmaQName getQName() {
         return new OdmaQName(getNamespace(),getName());

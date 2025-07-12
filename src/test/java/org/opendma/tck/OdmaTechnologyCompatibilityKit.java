@@ -1,14 +1,390 @@
 package org.opendma.tck;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import org.opendma.api.*;
+import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaPropertyNotFoundException;
 
 public class OdmaTechnologyCompatibilityKit {
 
+    public static List<String> verifyObjectBaseline(OdmaObject obj) {
+        return verifyObjectBaseline(obj, new HashSet<OdmaId>(), new HashSet<OdmaQName>());
+    }
+
+    public static List<String> verifyObjectBaseline(OdmaObject obj, HashSet<OdmaId> objectLoopCheck, HashSet<OdmaQName> classLoopCheck) {
+        LinkedList<String> result = new LinkedList<>();
+        if(obj.getId() == null) {
+            result.add("getId() returns null");
+        }
+        if(objectLoopCheck.contains(obj.getId())) {
+            return result;
+        }
+        objectLoopCheck.add(obj.getId());
+        if(obj.getGuid() == null) {
+            result.add("getGuid() returns null");
+        }
+        if(obj.getRepository() == null) {
+            result.add(obj.getId()+" getRepository() returns null");
+        }
+        if(obj.getOdmaClass() == null) {
+            result.add(obj.getId()+" getOdmaClass() returns null");
+            result.add(obj.getId()+" ABORT baseline verification");
+            return result;
+        }
+        if(obj.getOdmaClass().getProperties() == null) {
+            result.add(obj.getId()+" getOdmaClass().getProperties() returns null");
+            result.add(obj.getId()+" ABORT baseline verification");
+            return result;
+        }
+        if(obj.getOdmaClass().isInstantiable() == false) {
+            result.add(obj.getId()+" getOdmaClass().isInstantiable() == false");
+        }
+        if(obj.getOdmaClass().isAspect() == true) {
+            result.add(obj.getId()+" getOdmaClass().isAspect() == true");
+        }
+        // check we have all properties
+        OdmaClass clazz = obj.getOdmaClass();
+        for(OdmaPropertyInfo pi : clazz.getProperties()) {
+            OdmaProperty prop;
+            try
+            {
+                prop = obj.getProperty(pi.getQName());
+            }
+            catch (OdmaPropertyNotFoundException e)
+            {
+                result.add("Missing property `"+pi.getQName()+"` in object with ID `"+obj.getId()+"`");
+                continue;
+            }
+            if(prop.getType() != OdmaType.fromNumericId(pi.getDataType())) {
+                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` has a different data type than described in the property info object");
+            }
+            if(prop.isMultiValue() != pi.isMultiValue()) {
+                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` has a different cardinality than described in the property info object");
+            }
+            if(pi.isRequired() && prop.getValue() == null) {
+                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is required but has null value");
+            }
+            if(pi.isMultiValue() && prop.getValue() == null) {
+                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is MultiValue but has null value");
+            }
+            if(pi.isMultiValue() && pi.isRequired()) {
+                try {
+                    if(prop.getType() == OdmaType.REFERENCE) {
+                        if(!prop.getReferenceIterable().iterator().hasNext()) {
+                            result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is required but reference set does not have any elements");
+                        }
+                    } else {
+                        List<?> list = (List<?>)prop.getValue();
+                        if(list.isEmpty()) {
+                            result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is required but list does not have any elements");
+                        }
+                    }
+                } catch(OdmaInvalidDataTypeException e) {
+                    result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` caused OdmaInvalidDataTypeException");
+                } catch(ClassCastException e) {
+                    result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` caused ClassCastException");
+                }
+            }
+        }
+        result.addAll(verifyClassBaseline(obj.getOdmaClass(), objectLoopCheck, classLoopCheck));
+        return result;
+    }
+
+    public static List<String> verifyClassBaseline(OdmaClass cls) {
+        return verifyClassBaseline(cls, new HashSet<OdmaId>(), new HashSet<OdmaQName>());
+    }
+
+    public static List<String> verifyClassBaseline(OdmaClass cls, HashSet<OdmaId> objectLoopCheck, HashSet<OdmaQName> classLoopCheck) {
+        List<String> result = verifyObjectBaseline(cls, objectLoopCheck, classLoopCheck);
+        if(!result.isEmpty()) {
+            result.add("object baseline test failed for class with ID `"+cls.getId()+"`");
+            result.add("ABORT class baseline verification");
+            return result;
+            
+        }
+        if(cls.getName() == null) {
+            result.add(cls.getId()+" cls.getName() returns null");
+        }
+        if(cls.getNamespace() == null) {
+            result.add(cls.getId()+" cls.getNamespace() returns null");
+        }
+        if(cls.getQName() == null) {
+            result.add(cls.getId()+" cls.getQName() returns null");
+            result.add("ABORT class baseline verification");
+            return result;
+        }
+        if(classLoopCheck.contains(cls.getQName())) {
+            return result;
+        }
+        classLoopCheck.add(cls.getQName());
+        if(cls.getProperties() == null) {
+            result.add(cls.getId()+" cls.getProperties() returns null");
+            result.add("ABORT class baseline verification");
+            return result;
+        }
+        if(cls.getProperties().iterator().hasNext() == false) {
+            result.add(cls.getId()+" cls.getProperties().iterator().hasNext() == false");
+            result.add("ABORT class baseline verification");
+            return result;
+        }
+        if(cls.getDeclaredProperties() == null) {
+            result.add(cls.getId()+" cls.getDeclaredProperties() returns null");
+            result.add("ABORT class baseline verification");
+            return result;
+        }
+        if(cls.getAspects() == null) {
+            result.add(cls.getId()+" cls.getAspects() returns null");
+        }
+        if(cls.getSuperClass() != null) {
+            if(cls.isAspect() != cls.getSuperClass().isAspect()) {
+                result.add(cls.getId()+" cls.isAspect() != cls.getSuperClass().isAspect()");
+            }
+            if(cls.getSuperClass().getSubClasses() == null) {
+                result.add(cls.getId()+" cls.getSuperClass().getSubClasses() == null");
+            }  else {
+                boolean found = false;
+                for(OdmaClass superSubClass : cls.getSuperClass().getSubClasses()) {
+                    if(superSubClass.getQName().equals(cls.getQName())) {
+                        found = true;
+                    }
+                }
+                if(!found) {
+                    result.add(cls.getId()+" cls.getSuperClass().getSubClasses() does not contain cls");
+                }
+            }
+            HashSet<OdmaQName> classHierarchyLoopCheck = new HashSet<OdmaQName>();
+            classHierarchyLoopCheck.add(cls.getQName());
+            OdmaClass s = cls.getSuperClass();
+            String loop = cls.getQName().toString();
+            while(s != null) {
+                loop = loop+"->"+s.getQName();
+                if(classHierarchyLoopCheck.contains(s.getQName())) {
+                    result.add(cls.getId()+" Class HierarchyLoopCheck failed. Loop: "+loop);
+                    break;
+                }
+                s = s.getSuperClass();
+            }
+        }
+        if(cls.getSubClasses() == null) {
+            result.add(cls.getId()+" cls.getSubClasses() == null");
+        } else {
+            for(OdmaClass subClass : cls.getSubClasses()) {
+                if(subClass.getSuperClass() == null) {
+                    result.add(cls.getId()+" cls.getSubClasses()[].getSuperClass() == null for cls.getSubClasses()[] "+subClass.getId());
+                } else if(!subClass.getSuperClass().getQName().equals(cls.getQName())) {
+                    result.add(cls.getId()+" cls.getSubClasses()[].getSuperClass().getQName() != cls.getQName() for cls.getSubClasses()[] "+subClass.getId());
+                }
+            }
+        }
+        HashMap<OdmaQName, OdmaPropertyInfo> superProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
+        if(cls.getSuperClass() != null) {
+            for(OdmaPropertyInfo pi : cls.getSuperClass().getProperties()) {
+                if(pi.getQName() == null) {
+                    result.add("class "+cls.getSuperClass().getQName()+" contains property info with getQName()==null");
+                    continue;
+                }
+                if(superProps.containsKey(pi.getQName())) {
+                    result.add("class "+cls.getSuperClass().getQName()+" contains property info with duplicate QName "+pi.getQName());
+                    continue;
+                }
+                superProps.put(pi.getQName(), pi);
+            }
+        }
+        if(cls.isAspect()) {
+            if(cls.getAspects().iterator().hasNext()) {
+                result.add(cls.getId()+" is declared as Aspect but does have aspects itself");
+            }
+        }
+        HashMap<OdmaQName, OdmaPropertyInfo> aspectProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
+        HashSet<OdmaQName> aspectNames = new HashSet<OdmaQName>();
+        for(OdmaClass aspect : cls.getAspects()) {
+            if(!aspect.isAspect()) {
+                result.add(cls.getId()+" aspect "+aspect.getQName()+" has isAspect()==false");
+            }
+            if(!aspect.isInstantiable()) {
+                result.add(cls.getId()+" aspect "+aspect.getQName()+" has isInstantiable()==false");
+            }
+            aspectNames.add(aspect.getQName());
+            for(OdmaPropertyInfo pi : aspect.getProperties()) {
+                if(pi.getQName() == null) {
+                    result.add(cls.getId()+" aspect "+aspect.getQName()+" contains property info with getQName()==null");
+                    continue;
+                }
+                if(aspectProps.containsKey(pi.getQName())) {
+                    result.add(cls.getId()+ "class imports multiple properties with same name through aspects: "+pi.getQName());
+                    continue;
+                }
+                if(superProps.containsKey(pi.getQName())) {
+                    result.add(cls.getId()+ "class imports aspect "+aspect.getQName()+" with naming conflict of property "+pi.getQName()+" with inherited properties from super class");
+                }
+                aspectProps.put(pi.getQName(), pi);
+            }
+        }
+        HashMap<OdmaQName, OdmaPropertyInfo> allProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
+        for(OdmaPropertyInfo pi : cls.getProperties()) {
+            if(pi.getQName() == null) {
+                result.add(cls.getId()+" class "+cls.getQName()+" contains property info with getQName()==null");
+                continue;
+            }
+            if(allProps.containsKey(pi.getQName())) {
+                result.add(cls.getId()+" class "+cls.getQName()+" contains property info with duplicate QName "+pi.getQName());
+                continue;
+            }
+            allProps.put(pi.getQName(), pi);
+        }
+        HashMap<OdmaQName, OdmaPropertyInfo> declaredProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
+        for(OdmaPropertyInfo pi : cls.getDeclaredProperties()) {
+            if(pi.getQName() == null) {
+                result.add(cls.getId()+" class "+cls.getQName()+" contains declared property info with getQName()==null");
+                continue;
+            }
+            if(declaredProps.containsKey(pi.getQName())) {
+                result.add(cls.getId()+" class "+cls.getQName()+" contains declared property info with duplicate QName "+pi.getQName());
+                continue;
+            }
+            declaredProps.put(pi.getQName(), pi);
+            if(superProps.containsKey(pi.getQName())) {
+                if(pi.getDataType() == OdmaType.REFERENCE.getNumericId()) {
+                    String piDiff = propInfoDiff(pi,superProps.get(pi.getQName()),true);
+                    if(piDiff != null) {
+                        result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" conflicts with inherited properties from superclass. both are reference but have different specs: "+piDiff);
+                    }
+                    if(!isOrExtends(superProps.get(pi.getQName()).getReferenceClass().getQName(),pi.getReferenceClass())) {
+                        result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" conflicts with inherited properties from superclass. both are reference but reference class of declared prop does not extend reference class of super prop: "+pi.getReferenceClass().getQName()+" is not and does not extend "+superProps.get(pi.getQName()).getReferenceClass().getQName());
+                    }
+                } else {
+                    result.add(cls.getId()+ " class declares property "+pi.getQName()+" with naming conflict with inherited properties from super class");
+                }
+            }
+            if(aspectProps.containsKey(pi.getQName())) {
+                result.add(cls.getId()+ " class declared property "+pi.getQName()+" with naming conflict with inherited properties from aspects");
+            }
+            if(!allProps.containsKey(pi.getQName())) {
+                result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" is missing in getProperties()");
+            } else {
+                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),false);
+                if(piDiff != null) {
+                    result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" is different in getProperties(): "+piDiff);
+                }
+            }
+        }
+        for(OdmaPropertyInfo pi : superProps.values()) {
+            if(!allProps.containsKey(pi.getQName())) {
+                result.add(cls.getId()+ " inherited superclass property "+pi.getQName()+" not part of properties");
+            } else {
+                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),false); 
+                if(piDiff != null) {
+                    result.add(cls.getId()+" class "+cls.getQName()+" inherited superclass property "+pi.getQName()+" is different in getProperties(): "+piDiff);
+                }
+            }
+        }
+        for(OdmaPropertyInfo pi : aspectProps.values()) {
+            if(!allProps.containsKey(pi.getQName())) {
+                result.add(cls.getId()+ " inherited aspect property "+pi.getQName()+" not part of properties");
+            } else {
+                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),false); 
+                if(piDiff != null) {
+                    result.add(cls.getId()+" class "+cls.getQName()+" inherited aspect property "+pi.getQName()+" is different in getProperties(): "+piDiff);
+                }
+            }
+        }
+        for(OdmaQName pn : allProps.keySet()) {
+            if( !superProps.containsKey(pn) && !aspectProps.containsKey(pn) && !declaredProps.containsKey(pn) ) {
+                result.add(cls.getId()+" class "+cls.getQName()+" property "+pn+" is neither inherited through sper class, inherited through aspects or declared");
+            }
+        }
+        if(cls.getSuperClass() != null) {
+            verifyClassBaseline(cls.getSuperClass(), objectLoopCheck, classLoopCheck);            
+        }
+        for(OdmaClass aspect : cls.getAspects()) {
+            verifyClassBaseline(aspect, objectLoopCheck, classLoopCheck);            
+        }
+        if(cls.getSuperClass() != null) {
+            for(OdmaClass superAspect : cls.getSuperClass().getAspects()) {
+                if(!aspectNames.contains(superAspect.getQName())) {
+                    result.add(cls.getId()+" class "+cls.getQName()+" inherited aspect "+superAspect.getQName()+" from super class but is missing in aspects");
+                }
+            }
+        }
+        return result;
+    }
+
+    private static String propInfoDiff(OdmaPropertyInfo piA, OdmaPropertyInfo piB, boolean ignoreReferenceClass) {
+        if(!piA.getName().equals(piB.getName())) {
+            return "Name is different: `"+piA.getName()+"` and `"+piB.getName()+"`";
+        }
+        if(!piA.getNamespace().equals(piB.getNamespace())) {
+            return "Namespace is different: `"+piA.getNamespace()+"` and `"+piB.getNamespace()+"`";
+        }
+        if(!piA.getDisplayName().equals(piB.getDisplayName())) {
+            return "DisplayName is different: `"+piA.getDisplayName()+"` and `"+piB.getDisplayName()+"`";
+        }
+        if(!piA.getDataType().equals(piB.getDataType())) {
+            return "DataType is different: `"+piA.getDataType()+"` and `"+piB.getDataType()+"`";
+        }
+        if(!piA.isMultiValue().equals(piB.isMultiValue())) {
+            return "MultiValue is different: `"+piA.isMultiValue()+"` and `"+piB.isMultiValue()+"`";
+        }
+        if(!piA.isRequired().equals(piB.isRequired())) {
+            return "Required is different: `"+piA.isRequired()+"` and `"+piB.isRequired()+"`";
+        }
+        if(!piA.isReadOnly().equals(piB.isReadOnly())) {
+            return "ReadOnly is different: `"+piA.isReadOnly()+"` and `"+piB.isReadOnly()+"`";
+        }
+        if(!piA.isHidden().equals(piB.isHidden())) {
+            return "Hidden is different: `"+piA.isHidden()+"` and `"+piB.isHidden()+"`";
+        }
+        if(!piA.isSystem().equals(piB.isSystem())) {
+            return "System is different: `"+piA.isSystem()+"` and `"+piB.isSystem()+"`";
+        }
+        if(!piA.getQName().equals(piB.getQName())) {
+            return "QName is different: `"+piA.getQName()+"` and `"+piB.getQName()+"`";
+        }
+        if(!(piA.getChoices().iterator().hasNext() == piB.getChoices().iterator().hasNext())) {
+            return "Choices presence is different: `"+piA.getChoices().iterator().hasNext()+"` and `"+piB.getChoices().iterator().hasNext()+"`";
+        }
+        if(piA.getChoices().iterator().hasNext()) {
+            HashSet<OdmaId> choices = new HashSet<OdmaId>();
+            for(OdmaChoiceValue cv : piA.getChoices()) {
+                choices.add(cv.getId());
+            }
+            for(OdmaChoiceValue cv : piB.getChoices()) {
+                if(!choices.contains(cv.getId())) {
+                    return "Choice elements are different";
+                }
+                choices.remove(cv.getId());
+            }
+            if(!choices.isEmpty()) {
+                return "Choice elements are different";
+            }
+        }
+        if(!ignoreReferenceClass && piA.getDataType() == OdmaType.REFERENCE.getNumericId()) {
+            if(!piA.getReferenceClass().getQName().equals(piB.getReferenceClass().getQName())) {
+                return "ReferenceClass is different: `"+piA.getReferenceClass().getQName()+"` and `"+piB.getReferenceClass().getQName()+"`";
+            }
+        }
+        return null;
+    }
+
+    private static boolean isOrExtends(OdmaQName name, OdmaClass cls) {
+        while(cls != null) {
+            if(cls.getQName().equals(name)) {
+                return true;
+            }
+            cls = cls.getSuperClass();
+        }
+        return false;
+    }
+
     public static List<String> verifyOdmaObject(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaObject)) {
+            result.add("Does not implement OdmaObject interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
         Iterable<OdmaPropertyInfo> allProperties = clazz != null ? clazz.getProperties() : null;
@@ -477,6 +853,15 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaClass(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaClass)) {
+            result.add("Does not implement OdmaClass interface");
+        }
+        if(obj instanceof OdmaClass) {
+            result.addAll(verifyClassBaseline((OdmaClass)obj));
+        } else {
+            result.add("Skipping class baseline verification");
+            result.addAll(verifyObjectBaseline(obj));
+        }
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -2054,6 +2439,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaPropertyInfo(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaPropertyInfo)) {
+            result.add("Does not implement OdmaPropertyInfo interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -3268,6 +3657,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaChoiceValue(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaChoiceValue)) {
+            result.add("Does not implement OdmaChoiceValue interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -4452,6 +4845,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaRepository(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaRepository)) {
+            result.add("Does not implement OdmaRepository interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -5030,6 +5427,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaDocument(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaDocument)) {
+            result.add("Does not implement OdmaDocument interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -5943,9 +6344,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propCreatedAt.isReadOnly()) {
                 result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
             }
-            if(propCreatedAt.getValue() == null) {
-                result.add("Property opendma:CreatedAt is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CreatedAt");
         }
@@ -5984,8 +6382,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCreatedAt.isHidden() != false) {
                     result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'true'");
+                if(piDeclaredCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCreatedAt.isSystem() != true) {
                     result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
@@ -6026,8 +6424,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCreatedAt.isHidden() != false) {
                 result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
             }
-            if(piAllCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'true'");
+            if(piAllCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
             }
             if(piAllCreatedAt.isSystem() != true) {
                 result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
@@ -6054,9 +6452,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propCreatedBy.isReadOnly()) {
                 result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-            if(propCreatedBy.getValue() == null) {
-                result.add("Property opendma:CreatedBy is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CreatedBy");
@@ -6096,8 +6491,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCreatedBy.isHidden() != false) {
                     result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'true'");
+                if(piDeclaredCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCreatedBy.isSystem() != true) {
                     result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
@@ -6138,8 +6533,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCreatedBy.isHidden() != false) {
                 result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
             }
-            if(piAllCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'true'");
+            if(piAllCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
             }
             if(piAllCreatedBy.isSystem() != true) {
                 result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
@@ -6166,9 +6561,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propLastModifiedAt.isReadOnly()) {
                 result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
-            }
-            if(propLastModifiedAt.getValue() == null) {
-                result.add("Property opendma:LastModifiedAt is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:LastModifiedAt");
@@ -6208,8 +6600,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLastModifiedAt.isHidden() != false) {
                     result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLastModifiedAt.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'true'");
+                if(piDeclaredLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLastModifiedAt.isSystem() != true) {
                     result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
@@ -6250,8 +6642,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLastModifiedAt.isHidden() != false) {
                 result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
             }
-            if(piAllLastModifiedAt.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'true'");
+            if(piAllLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
             }
             if(piAllLastModifiedAt.isSystem() != true) {
                 result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
@@ -6278,9 +6670,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propLastModifiedBy.isReadOnly()) {
                 result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
-            }
-            if(propLastModifiedBy.getValue() == null) {
-                result.add("Property opendma:LastModifiedBy is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:LastModifiedBy");
@@ -6320,8 +6709,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLastModifiedBy.isHidden() != false) {
                     result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLastModifiedBy.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'true'");
+                if(piDeclaredLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLastModifiedBy.isSystem() != true) {
                     result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
@@ -6362,8 +6751,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLastModifiedBy.isHidden() != false) {
                 result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
             }
-            if(piAllLastModifiedBy.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'true'");
+            if(piAllLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
             }
             if(piAllLastModifiedBy.isSystem() != true) {
                 result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");
@@ -6707,6 +7096,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaContentElement(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaContentElement)) {
+            result.add("Does not implement OdmaContentElement interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -6931,6 +7324,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaDataContentElement(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaDataContentElement)) {
+            result.add("Does not implement OdmaDataContentElement interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaContentElement(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -7261,6 +7658,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaReferenceContentElement(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaReferenceContentElement)) {
+            result.add("Does not implement OdmaReferenceContentElement interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaContentElement(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -7376,6 +7777,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaVersionCollection(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaVersionCollection)) {
+            result.add("Does not implement OdmaVersionCollection interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -7405,8 +7810,12 @@ public class OdmaTechnologyCompatibilityKit {
             if(propVersions.getValue() == null) {
                 result.add("Property opendma:Versions is multi-valued but value is null");
             }
-            if(((List<Object>)propVersions.getValue()).isEmpty()) {
-                result.add("Property opendma:Versions is required but value is empty");
+            try {
+                if(propVersions.getReferenceIterable().iterator().hasNext()) {
+                    result.add("Property opendma:Versions is required but value is empty");
+                }
+            } catch(OdmaInvalidDataTypeException idte) {
+                result.add("OdmaInvalidDataTypeException accessing value of property opendma:Versions");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:Versions");
@@ -7846,235 +8255,15 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property info for opendma:InProgress in all properties System is not 'true'");
             }
         }
-        // opendma:CreatedAt
-        OdmaQName qnameCreatedAt = new OdmaQName("opendma","CreatedAt");
-        try {
-            OdmaProperty propCreatedAt = obj.getProperty(qnameCreatedAt);
-            if(propCreatedAt.getName() == null) {
-                result.add("Property opendma:CreatedAt qname is null");
-            }
-            if(!"opendma".equals(propCreatedAt.getName().getNamespace())) {
-                result.add("Property opendma:CreatedAt qname namespace is not 'opendma', found instead'"+propCreatedAt.getName().getNamespace()+"'");
-            }
-            if(!"CreatedAt".equals(propCreatedAt.getName().getName())) {
-                result.add("Property opendma:CreatedAt qname name is not 'CreatedAt', found instead'"+propCreatedAt.getName().getName()+"'");
-            }
-            if(propCreatedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:CreatedAt type is not 'DATETIME'");
-            }
-            if(propCreatedAt.isMultiValue() != false) {
-                result.add("Property opendma:CreatedAt MultiValue is not 'false'");
-            }
-            if(!propCreatedAt.isReadOnly()) {
-                result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
-            }
-            if(propCreatedAt.getValue() == null) {
-                result.add("Property opendma:CreatedAt is required but value is null");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","VersionCollection")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedAt.equals(pi.getQName())) {
-                        if(piDeclaredCreatedAt == null) {
-                            piDeclaredCreatedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedAt");
-            }
-            if(piDeclaredCreatedAt != null) {
-                if(!"opendma".equals(piDeclaredCreatedAt.getNamespace())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedAt".equals(piDeclaredCreatedAt.getName())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname name is not 'CreatedAt'");
-                }
-                if(piDeclaredCreatedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:CreatedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredCreatedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedAt.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'true'");
-                }
-                if(piDeclaredCreatedAt.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedAt.equals(pi.getQName())) {
-                    if(piAllCreatedAt == null) {
-                        piAllCreatedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedAt");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedAt");
-        }
-        if(piAllCreatedAt != null) {
-            if(!"opendma".equals(piAllCreatedAt.getNamespace())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedAt".equals(piAllCreatedAt.getName())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname name is not 'CreatedAt'");
-            }
-            if(piAllCreatedAt.getDataType() != 8) {
-                result.add("Property info for opendma:CreatedAt in all properties data type is not '8'");
-            }
-            if(piAllCreatedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedAt.isHidden() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'true'");
-            }
-            if(piAllCreatedAt.isSystem() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:CreatedBy
-        OdmaQName qnameCreatedBy = new OdmaQName("opendma","CreatedBy");
-        try {
-            OdmaProperty propCreatedBy = obj.getProperty(qnameCreatedBy);
-            if(propCreatedBy.getName() == null) {
-                result.add("Property opendma:CreatedBy qname is null");
-            }
-            if(!"opendma".equals(propCreatedBy.getName().getNamespace())) {
-                result.add("Property opendma:CreatedBy qname namespace is not 'opendma', found instead'"+propCreatedBy.getName().getNamespace()+"'");
-            }
-            if(!"CreatedBy".equals(propCreatedBy.getName().getName())) {
-                result.add("Property opendma:CreatedBy qname name is not 'CreatedBy', found instead'"+propCreatedBy.getName().getName()+"'");
-            }
-            if(propCreatedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:CreatedBy type is not 'STRING'");
-            }
-            if(propCreatedBy.isMultiValue() != false) {
-                result.add("Property opendma:CreatedBy MultiValue is not 'false'");
-            }
-            if(!propCreatedBy.isReadOnly()) {
-                result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-            if(propCreatedBy.getValue() == null) {
-                result.add("Property opendma:CreatedBy is required but value is null");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","VersionCollection")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedBy.equals(pi.getQName())) {
-                        if(piDeclaredCreatedBy == null) {
-                            piDeclaredCreatedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedBy");
-            }
-            if(piDeclaredCreatedBy != null) {
-                if(!"opendma".equals(piDeclaredCreatedBy.getNamespace())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedBy".equals(piDeclaredCreatedBy.getName())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname name is not 'CreatedBy'");
-                }
-                if(piDeclaredCreatedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:CreatedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredCreatedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedBy.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'true'");
-                }
-                if(piDeclaredCreatedBy.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedBy.equals(pi.getQName())) {
-                    if(piAllCreatedBy == null) {
-                        piAllCreatedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedBy");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedBy");
-        }
-        if(piAllCreatedBy != null) {
-            if(!"opendma".equals(piAllCreatedBy.getNamespace())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedBy".equals(piAllCreatedBy.getName())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname name is not 'CreatedBy'");
-            }
-            if(piAllCreatedBy.getDataType() != 1) {
-                result.add("Property info for opendma:CreatedBy in all properties data type is not '1'");
-            }
-            if(piAllCreatedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedBy.isHidden() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'true'");
-            }
-            if(piAllCreatedBy.isSystem() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
-            }
-        }
         return result;
     }
 
     public static List<String> verifyOdmaContainer(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaContainer)) {
+            result.add("Does not implement OdmaContainer interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -8443,9 +8632,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propCreatedAt.isReadOnly()) {
                 result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
             }
-            if(propCreatedAt.getValue() == null) {
-                result.add("Property opendma:CreatedAt is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CreatedAt");
         }
@@ -8484,8 +8670,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCreatedAt.isHidden() != false) {
                     result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'true'");
+                if(piDeclaredCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCreatedAt.isSystem() != true) {
                     result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
@@ -8526,8 +8712,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCreatedAt.isHidden() != false) {
                 result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
             }
-            if(piAllCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'true'");
+            if(piAllCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
             }
             if(piAllCreatedAt.isSystem() != true) {
                 result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
@@ -8554,9 +8740,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propCreatedBy.isReadOnly()) {
                 result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-            if(propCreatedBy.getValue() == null) {
-                result.add("Property opendma:CreatedBy is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CreatedBy");
@@ -8596,8 +8779,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCreatedBy.isHidden() != false) {
                     result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'true'");
+                if(piDeclaredCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCreatedBy.isSystem() != true) {
                     result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
@@ -8638,8 +8821,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCreatedBy.isHidden() != false) {
                 result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
             }
-            if(piAllCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'true'");
+            if(piAllCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
             }
             if(piAllCreatedBy.isSystem() != true) {
                 result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
@@ -8666,9 +8849,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propLastModifiedAt.isReadOnly()) {
                 result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
-            }
-            if(propLastModifiedAt.getValue() == null) {
-                result.add("Property opendma:LastModifiedAt is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:LastModifiedAt");
@@ -8708,8 +8888,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLastModifiedAt.isHidden() != false) {
                     result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLastModifiedAt.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'true'");
+                if(piDeclaredLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLastModifiedAt.isSystem() != true) {
                     result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
@@ -8750,8 +8930,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLastModifiedAt.isHidden() != false) {
                 result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
             }
-            if(piAllLastModifiedAt.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'true'");
+            if(piAllLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
             }
             if(piAllLastModifiedAt.isSystem() != true) {
                 result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
@@ -8778,9 +8958,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propLastModifiedBy.isReadOnly()) {
                 result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
-            }
-            if(propLastModifiedBy.getValue() == null) {
-                result.add("Property opendma:LastModifiedBy is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:LastModifiedBy");
@@ -8820,8 +8997,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLastModifiedBy.isHidden() != false) {
                     result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLastModifiedBy.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'true'");
+                if(piDeclaredLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLastModifiedBy.isSystem() != true) {
                     result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
@@ -8862,8 +9039,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLastModifiedBy.isHidden() != false) {
                 result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
             }
-            if(piAllLastModifiedBy.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'true'");
+            if(piAllLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
             }
             if(piAllLastModifiedBy.isSystem() != true) {
                 result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");
@@ -8874,6 +9051,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaFolder(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaFolder)) {
+            result.add("Does not implement OdmaFolder interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaContainer(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -9113,6 +9294,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaContainable(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaContainable)) {
+            result.add("Does not implement OdmaContainable interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -9358,6 +9543,10 @@ public class OdmaTechnologyCompatibilityKit {
 
     public static List<String> verifyOdmaAssociation(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaAssociation)) {
+            result.add("Does not implement OdmaAssociation interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
         result.addAll(verifyOdmaObject(obj));
         OdmaClass clazz = obj.getOdmaClass();
         Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
@@ -9723,9 +9912,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propCreatedAt.isReadOnly()) {
                 result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
             }
-            if(propCreatedAt.getValue() == null) {
-                result.add("Property opendma:CreatedAt is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CreatedAt");
         }
@@ -9764,8 +9950,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCreatedAt.isHidden() != false) {
                     result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'true'");
+                if(piDeclaredCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCreatedAt.isSystem() != true) {
                     result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
@@ -9806,8 +9992,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCreatedAt.isHidden() != false) {
                 result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
             }
-            if(piAllCreatedAt.isRequired() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'true'");
+            if(piAllCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
             }
             if(piAllCreatedAt.isSystem() != true) {
                 result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
@@ -9834,9 +10020,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propCreatedBy.isReadOnly()) {
                 result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-            if(propCreatedBy.getValue() == null) {
-                result.add("Property opendma:CreatedBy is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CreatedBy");
@@ -9876,8 +10059,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCreatedBy.isHidden() != false) {
                     result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'true'");
+                if(piDeclaredCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCreatedBy.isSystem() != true) {
                     result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
@@ -9918,8 +10101,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCreatedBy.isHidden() != false) {
                 result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
             }
-            if(piAllCreatedBy.isRequired() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'true'");
+            if(piAllCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
             }
             if(piAllCreatedBy.isSystem() != true) {
                 result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
@@ -9946,9 +10129,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propLastModifiedAt.isReadOnly()) {
                 result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
-            }
-            if(propLastModifiedAt.getValue() == null) {
-                result.add("Property opendma:LastModifiedAt is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:LastModifiedAt");
@@ -9988,8 +10168,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLastModifiedAt.isHidden() != false) {
                     result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLastModifiedAt.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'true'");
+                if(piDeclaredLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLastModifiedAt.isSystem() != true) {
                     result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
@@ -10030,8 +10210,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLastModifiedAt.isHidden() != false) {
                 result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
             }
-            if(piAllLastModifiedAt.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'true'");
+            if(piAllLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
             }
             if(piAllLastModifiedAt.isSystem() != true) {
                 result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
@@ -10058,9 +10238,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(!propLastModifiedBy.isReadOnly()) {
                 result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
-            }
-            if(propLastModifiedBy.getValue() == null) {
-                result.add("Property opendma:LastModifiedBy is required but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:LastModifiedBy");
@@ -10100,8 +10277,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredLastModifiedBy.isHidden() != false) {
                     result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredLastModifiedBy.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'true'");
+                if(piDeclaredLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredLastModifiedBy.isSystem() != true) {
                     result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
@@ -10142,8 +10319,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllLastModifiedBy.isHidden() != false) {
                 result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
             }
-            if(piAllLastModifiedBy.isRequired() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'true'");
+            if(piAllLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
             }
             if(piAllLastModifiedBy.isSystem() != true) {
                 result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");

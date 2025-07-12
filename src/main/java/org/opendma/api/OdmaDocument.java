@@ -4,32 +4,32 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 import java.util.Date;
 
 /**
- * Full description follows.
+ * A Document is the atomic element users work on in a content based environment. It can be compared to a file in a file system. Unlike files, it may consist of multiple octet streams. These content streams can for example contain images of the individual pages that make up the document. A Document is able to keep track of its changes (versioning) and manage the access to it (checkin and checkout).
  */
 public interface OdmaDocument extends OdmaObject {
 
     /**
-     * Returns the <i>title</i> of this <code>Document</code>.<br/>
+     * Returns the title of this document.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).getString()</code>.
      * 
-     * <p>Property <b>Title</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Title</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
+     * Typically a human friendly readable description of this document. Does not need to be a file name, but can be the file name.</p>
      * 
-     * @return the <i>title</i> of this <code>Document</code>
+     * @return the title of this document
      */
     String getTitle();
 
     /**
-     * Sets the <i>title</i> of this <code>Document</code>.<br>
+     * Sets the title of this document.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_TITLE).setValue(value)</code>.
      * 
-     * <p>Property <b>Title</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Title</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]<br/>
+     * Typically a human friendly readable description of this document. Does not need to be a file name, but can be the file name.</p>
      * 
      * @param newValue
-     *             The new value for the <i>title</i> of this <code>Document</code>
+     *             The new value for the title of this document
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -37,87 +37,83 @@ public interface OdmaDocument extends OdmaObject {
     void setTitle(String newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0).<br/>
+     * Returns Identifier of this version consisting of a set of numbers separated by a point (e.g. 1.2.3).<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSION).getString()</code>.
      * 
-     * <p>Property <b>Version</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>Version</b>: String<br/>
+     * [SingleValue] [ReadOnly] [Optional]<br/>
+     * This value is heavily vendor specific. You should not have any expectations of the format.</p>
      * 
-     * @return the <i>version string</i> describing this <i>version</i> of this <code>Document</code> (e.g. 1.0, 1.1, 1.2, 2.0)
+     * @return Identifier of this version consisting of a set of numbers separated by a point (e.g. 1.2.3)
      */
     String getVersion();
 
     /**
-     * Returns reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information.<br/>
+     * Returns reference to a opendma:VersionCollection object representing all versions of this document or null if versioning is not supported.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONCOLLECTION).getReference()</code>.
      * 
-     * <p>Property <b>VersionCollection</b> (opendma): <b>Reference to VersionCollection (opendma)</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>VersionCollection</b>: Reference to VersionCollection (opendma)<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return reference to a <i>VersionCollection</i> object containing the collection of all <i>versions</i> of this <code>Document</code> along with other information
+     * @return reference to a opendma:VersionCollection object representing all versions of this document or null if versioning is not supported
      */
     OdmaVersionCollection getVersionCollection();
 
     /**
-     * Returns the <i>unique object identifier</i> identifying this logical document independent from the specific version inside its <code>Repository</code>.<br/>
+     * Returns the unique object identifier identifying this logical document independent from the specific version inside its opendma:Repository.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONINDEPENDENTID).getId()</code>.
      * 
-     * <p>Property <b>VersionIndependentId</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>VersionIndependentId</b>: String<br/>
      * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * Retrieving this Id from the Repository will result in the latest version</p>
      * 
-     * @return the <i>unique object identifier</i> identifying this logical document independent from the specific version inside its <code>Repository</code>
+     * @return the unique object identifier identifying this logical document independent from the specific version inside its opendma:Repository
      */
     OdmaId getVersionIndependentId();
 
     /**
-     * Returns the <i>global unique object identifier</i> globally identifying this logical document independent from the specific version.<br/>
+     * Returns the global unique object identifier globally identifying this logical document independent from the specific version.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_VERSIONINDEPENDENTGUID).getGuid()</code>.
      * 
-     * <p>Property <b>VersionIndependentGuid</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>VersionIndependentGuid</b>: String<br/>
+     * [SingleValue] [ReadOnly] [Required]</p>
      * 
-     * @return the <i>global unique object identifier</i> globally identifying this logical document independent from the specific version
+     * @return the global unique object identifier globally identifying this logical document independent from the specific version
      */
     OdmaGuid getVersionIndependentGuid();
 
     /**
-     * Returns the collection of all <code>ContentElement</code>s this <code>Document</code> consists of.<br/>
+     * Returns set of opendma:ContentElement objects representing the individual binary elements this document is made up of.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CONTENTELEMENTS).getReferenceIterable()</code>.
      * 
-     * <p>Property <b>ContentElements</b> (opendma): <b>Reference to ContentElement (opendma)</b><br/>
-     * [MultiValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>ContentElements</b>: Reference to ContentElement (opendma)<br/>
+     * [MultiValue] [Writable] [Optional]<br/>
+     * Typically has only one element. Can contain more then one element in rare cases, e.g. if individual pages of a document are scanned as separate images</p>
      * 
-     * @return the collection of all <code>ContentElement</code>s this <code>Document</code> consists of
+     * @return set of opendma:ContentElement objects representing the individual binary elements this document is made up of
      */
     Iterable<OdmaContentElement> getContentElements();
 
     /**
-     * Returns the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br/>
+     * Returns the combined conent type of the whole Document, calculated from the content types of each ContentElement.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_COMBINEDCONTENTTYPE).getString()</code>.
      * 
-     * <p>Property <b>CombinedContentType</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CombinedContentType</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
-     * @return the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of
+     * @return the combined conent type of the whole Document, calculated from the content types of each ContentElement
      */
     String getCombinedContentType();
 
     /**
-     * Sets the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of.<br>
+     * Sets the combined conent type of the whole Document, calculated from the content types of each ContentElement.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_COMBINEDCONTENTTYPE).setValue(value)</code>.
      * 
-     * <p>Property <b>CombinedContentType</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CombinedContentType</b>: String<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
      * @param newValue
-     *             The new value for the combined mime type that has been build over all <code>ContentElement</code>s this <code>Document</code> consists of
+     *             The new value for the combined conent type of the whole Document, calculated from the content types of each ContentElement
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -125,27 +121,25 @@ public interface OdmaDocument extends OdmaObject {
     void setCombinedContentType(String newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the primary <code>ContentElement</code>s that represents this <code>Document</code>.<br/>
+     * Returns the dedicated primary ContentElement. May only be null if ContentElements is empty..<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYCONTENTELEMENT).getReference()</code>.
      * 
-     * <p>Property <b>PrimaryContentElement</b> (opendma): <b>Reference to ContentElement (opendma)</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>PrimaryContentElement</b>: Reference to ContentElement (opendma)<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
-     * @return the primary <code>ContentElement</code>s that represents this <code>Document</code>
+     * @return the dedicated primary ContentElement. May only be null if ContentElements is empty.
      */
     OdmaContentElement getPrimaryContentElement();
 
     /**
-     * Sets the primary <code>ContentElement</code>s that represents this <code>Document</code>.<br>
+     * Sets the dedicated primary ContentElement. May only be null if ContentElements is empty..<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_PRIMARYCONTENTELEMENT).setValue(value)</code>.
      * 
-     * <p>Property <b>PrimaryContentElement</b> (opendma): <b>Reference to ContentElement (opendma)</b><br/>
-     * [SingleValue] [Writable] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>PrimaryContentElement</b>: Reference to ContentElement (opendma)<br/>
+     * [SingleValue] [Writable] [Optional]</p>
      * 
      * @param newValue
-     *             The new value for the primary <code>ContentElement</code>s that represents this <code>Document</code>
+     *             The new value for the dedicated primary ContentElement. May only be null if ContentElements is empty.
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
@@ -153,86 +147,80 @@ public interface OdmaDocument extends OdmaObject {
     void setPrimaryContentElement(OdmaContentElement newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the date when this version of this <code>Document</code> has been created.<br/>
+     * Returns the timestamp when this version of this document has been created.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
      * 
-     * <p>Property <b>CreatedAt</b> (opendma): <b>DateTime</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CreatedAt</b>: DateTime<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the date when this version of this <code>Document</code> has been created
+     * @return the timestamp when this version of this document has been created
      */
     Date getCreatedAt();
 
     /**
-     * Returns the user who has created this version of this <code>Document</code>.<br/>
+     * Returns the User who created this version of this document.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
      * 
-     * <p>Property <b>CreatedBy</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CreatedBy</b>: String<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the user who has created this version of this <code>Document</code>
+     * @return the User who created this version of this document
      */
     String getCreatedBy();
 
     /**
-     * Returns the date when this version of this <code>Document</code> has been modified the last time.<br/>
+     * Returns the timestamp when this version of this document has been modified the last time.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
      * 
-     * <p>Property <b>LastModifiedAt</b> (opendma): <b>DateTime</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>LastModifiedAt</b>: DateTime<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the date when this version of this <code>Document</code> has been modified the last time
+     * @return the timestamp when this version of this document has been modified the last time
      */
     Date getLastModifiedAt();
 
     /**
-     * Returns the user who has modified this version of this <code>Document</code> the last time.<br/>
+     * Returns the user who modified this version of this document the last time.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
      * 
-     * <p>Property <b>LastModifiedBy</b> (opendma): <b>String</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>LastModifiedBy</b>: String<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the user who has modified this version of this <code>Document</code> the last time
+     * @return the user who modified this version of this document the last time
      */
     String getLastModifiedBy();
 
     /**
-     * Returns <code>true</code> if and only if this <code>Document</code> is checked out.<br/>
+     * Returns indicates if this document is checked out.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUT).getBoolean()</code>.
      * 
-     * <p>Property <b>CheckedOut</b> (opendma): <b>Boolean</b><br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CheckedOut</b>: Boolean<br/>
+     * [SingleValue] [ReadOnly] [Required]</p>
      * 
-     * @return <code>true</code> if and only if this <code>Document</code> is checked out
+     * @return indicates if this document is checked out
      */
     Boolean isCheckedOut();
 
     /**
-     * Returns the date when this <code>Document</code> has been checked out.<br/>
+     * Returns the timestamp when this version of the document has been checked out, null if this document is not checked out.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUTAT).getDateTime()</code>.
      * 
-     * <p>Property <b>CheckedOutAt</b> (opendma): <b>DateTime</b><br/>
-     * [SingleValue] [ReadOnly] [NotRequired]<br/>
-     * Full description follows.</p>
+     * <p>Property opendma:<b>CheckedOutAt</b>: DateTime<br/>
+     * [SingleValue] [ReadOnly] [Optional]</p>
      * 
-     * @return the date when this <code>Document</code> has been checked out
+     * @return the timestamp when this version of the document has been checked out, null if this document is not checked out
      */
     Date getCheckedOutAt();
 
     /**
-     * Returns the user who has checked out this <code>Document</code>.<br/>
+     * Returns the user who checked out this version of this document, null if this document is not checked out.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUTBY).getString()</code>.
      * 
-     * <p>Property <b>CheckedOutBy</b> (opendma): <b>String</b><br/>
+     * <p>Property opendma:<b>CheckedOutBy</b>: String<br/>
      * [SingleValue] [ReadOnly] [Required]<br/>
      * Full description follows.</p>
      * 
-     * @return the user who has checked out this <code>Document</code>
+     * @return the user who checked out this version of this document, null if this document is not checked out
      */
     String getCheckedOutBy();
 
