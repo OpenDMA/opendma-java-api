@@ -151,8 +151,12 @@ public class OdmaPropertyImpl implements OdmaProperty {
      *             if and only if the Class of the given Object does not match
      *             the data type of this property
      */
-    public static OdmaPropertyImpl fromValueProvider(OdmaQName name, OdmaLazyPropertyValueProvider valueProvider, OdmaType dataType, boolean multiValue, boolean readOnly) throws OdmaInvalidDataTypeException {
-        return new OdmaPropertyImpl(name, null, valueProvider, dataType, multiValue, readOnly);
+    public static OdmaPropertyImpl fromValueProvider(OdmaQName name, OdmaLazyPropertyValueProvider valueProvider, OdmaType dataType, boolean multiValue, boolean readOnly) {
+        try {
+            return new OdmaPropertyImpl(name, null, valueProvider, dataType, multiValue, readOnly);
+        } catch(OdmaInvalidDataTypeException idte) {
+            throw new RuntimeException("Implementation error. OdmaInvalidDataTypeException should not be possible when initialising with OdmaLazyPropertyValueProvider");
+        }
     }
 
     /**
