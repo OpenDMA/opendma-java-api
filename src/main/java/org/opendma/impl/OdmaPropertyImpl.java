@@ -712,12 +712,28 @@ public class OdmaPropertyImpl implements OdmaProperty {
     public OdmaId getReferenceId() throws OdmaInvalidDataTypeException {
         if( (multiValue == false) && (dataType == OdmaType.REFERENCE) ) {
             if(valueProvider == null) {
-                return ((OdmaObject)value).getId();
+                if(value != null) {
+                    if(value instanceof OdmaObject) {
+                        return ((OdmaObject)value).getId();
+                    } else {
+                        throw new OdmaRuntimeException("Internal error. Reference value is expected to be instance of OdmaObject");
+                    }
+                } else {
+                    return null;
+                }
             } else if(valueProvider.hasReferenceId()) {
                 return valueProvider.getReferenceId();
             } else {
                 enforceValue();
-                return ((OdmaObject)value).getId();
+                if(value != null) {
+                    if(value instanceof OdmaObject) {
+                        return ((OdmaObject)value).getId();
+                    } else {
+                        throw new OdmaRuntimeException("Internal error. Reference value is expected to be instance of OdmaObject");
+                    }
+                } else {
+                    return null;
+                }
             }
         } else {
             throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getReference()`");
