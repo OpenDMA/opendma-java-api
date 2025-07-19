@@ -198,6 +198,12 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add(cls.getId()+" is declared as Aspect but does have aspects itself");
             }
         }
+        HashSet<OdmaQName> superClassAspectNames = new HashSet<OdmaQName>();
+        if(cls.getSuperClass() != null) {
+            for(OdmaClass superAspect : cls.getSuperClass().getAspects()) {
+                superClassAspectNames.add(superAspect.getQName());
+            }
+        }
         HashMap<OdmaQName, OdmaPropertyInfo> aspectProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
         HashSet<OdmaQName> aspectNames = new HashSet<OdmaQName>();
         for(OdmaClass aspect : cls.getAspects()) {
@@ -217,7 +223,7 @@ public class OdmaTechnologyCompatibilityKit {
                     result.add(cls.getId()+ "class imports multiple properties with same name through aspects: "+pi.getQName());
                     continue;
                 }
-                if(superProps.containsKey(pi.getQName())) {
+                if(!superClassAspectNames.contains(aspect.getQName()) && superProps.containsKey(pi.getQName())) {
                     result.add(cls.getId()+ "class imports aspect "+aspect.getQName()+" with naming conflict of property "+pi.getQName()+" with inherited properties from super class");
                 }
                 aspectProps.put(pi.getQName(), pi);
@@ -7811,7 +7817,7 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property opendma:Versions is multi-valued but value is null");
             }
             try {
-                if(propVersions.getReferenceIterable().iterator().hasNext()) {
+                if(!propVersions.getReferenceIterable().iterator().hasNext()) {
                     result.add("Property opendma:Versions is required but value is empty");
                 }
             } catch(OdmaInvalidDataTypeException idte) {
