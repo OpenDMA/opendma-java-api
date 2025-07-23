@@ -9,6 +9,51 @@ import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaPropertyNotFoundException;
 
 public class OdmaTechnologyCompatibilityKit {
+	
+	public static String debugDescribe(OdmaObject obj) {
+		String result = obj instanceof OdmaClass ? "class(id=`" : obj instanceof OdmaPropertyInfo ? "property(id=`" : "object(id=`";
+		try {
+			OdmaId id = obj.getId();
+			result = result + (id == null ? "<null>" : id.toString());
+		} catch(Exception e) {
+			result = result + "<except>";
+		}
+		if(obj instanceof OdmaClass) {
+			result = result + "`, qname=`";
+			try {
+				OdmaQName qname = ((OdmaClass)obj).getQName();
+				result = result + (qname == null ? "<null>" : qname.toString());
+			} catch(Exception e) {
+				result = result + "<except>";
+			}
+		} else if(obj instanceof OdmaPropertyInfo) {
+			result = result + "`, qname=`";
+			try {
+				OdmaQName qname = ((OdmaPropertyInfo)obj).getQName();
+				result = result + (qname == null ? "<null>" : qname.toString());
+			} catch(Exception e) {
+				result = result + "<except>";
+			}
+		}
+		result = result + "`, class=`";
+		try {
+			OdmaClass clazz = obj.getOdmaClass();
+			if(clazz == null) {
+				result = result + "<null>";
+			} else {
+				try {
+					OdmaQName qname = clazz.getQName();
+					result = result + (qname == null ? "<qname-null>" : qname.toString());
+				} catch(Exception e) {
+					result = result + "<qname-except>";
+				}
+			}
+		} catch(Exception e) {
+			result = result + "<except>";
+		}
+		result = result + "`)";
+		return result;
+	}
 
     public static List<String> verifyObjectBaseline(OdmaObject obj) {
         return verifyObjectBaseline(obj, new HashSet<OdmaId>(), new HashSet<OdmaQName>());
@@ -17,33 +62,33 @@ public class OdmaTechnologyCompatibilityKit {
     public static List<String> verifyObjectBaseline(OdmaObject obj, HashSet<OdmaId> objectLoopCheck, HashSet<OdmaQName> classLoopCheck) {
         LinkedList<String> result = new LinkedList<>();
         if(obj.getId() == null) {
-            result.add("getId() returns null");
+            result.add(debugDescribe(obj)+".getId() returns null");
         }
         if(objectLoopCheck.contains(obj.getId())) {
             return result;
         }
         objectLoopCheck.add(obj.getId());
         if(obj.getGuid() == null) {
-            result.add("getGuid() returns null");
+            result.add(debugDescribe(obj)+".getGuid() returns null");
         }
         if(obj.getRepository() == null) {
-            result.add(obj.getId()+" getRepository() returns null");
+            result.add(debugDescribe(obj)+".getRepository() returns null");
         }
         if(obj.getOdmaClass() == null) {
-            result.add(obj.getId()+" getOdmaClass() returns null");
-            result.add(obj.getId()+" ABORT baseline verification");
+            result.add(debugDescribe(obj)+".getOdmaClass() returns null");
+            result.add(debugDescribe(obj)+" ABORT baseline verification");
             return result;
         }
         if(obj.getOdmaClass().getProperties() == null) {
-            result.add(obj.getId()+" getOdmaClass().getProperties() returns null");
-            result.add(obj.getId()+" ABORT baseline verification");
+            result.add(debugDescribe(obj)+".getOdmaClass().getProperties() returns null");
+            result.add(debugDescribe(obj)+" ABORT baseline verification");
             return result;
         }
         if(obj.getOdmaClass().isInstantiable() == false) {
-            result.add(obj.getId()+" getOdmaClass().isInstantiable() == false");
+            result.add(debugDescribe(obj)+".getOdmaClass().isInstantiable() == false");
         }
         if(obj.getOdmaClass().isAspect() == true) {
-            result.add(obj.getId()+" getOdmaClass().isAspect() == true");
+            result.add(debugDescribe(obj)+".getOdmaClass().isAspect() == true");
         }
         // check we have all properties
         OdmaClass clazz = obj.getOdmaClass();
@@ -55,37 +100,37 @@ public class OdmaTechnologyCompatibilityKit {
             }
             catch (OdmaPropertyNotFoundException e)
             {
-                result.add("Missing property `"+pi.getQName()+"` in object with ID `"+obj.getId()+"`");
+                result.add(debugDescribe(obj)+": Missing property `"+pi.getQName()+"`");
                 continue;
             }
             if(prop.getType() != OdmaType.fromNumericId(pi.getDataType())) {
-                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` has a different data type than described in the property info object");
+                result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` has a different data type than described in the property info object");
             }
             if(prop.isMultiValue() != pi.isMultiValue()) {
-                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` has a different cardinality than described in the property info object");
+                result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` has a different cardinality than described in the property info object");
             }
             if(pi.isRequired() && prop.getValue() == null) {
-                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is required but has null value");
+                result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` is required but has null value");
             }
             if(pi.isMultiValue() && prop.getValue() == null) {
-                result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is MultiValue but has null value");
+                result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` is MultiValue but has null value");
             }
             if(pi.isMultiValue() && pi.isRequired()) {
                 try {
                     if(prop.getType() == OdmaType.REFERENCE) {
                         if(!prop.getReferenceIterable().iterator().hasNext()) {
-                            result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is required but reference set does not have any elements");
+                            result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` is required but reference set does not have any elements");
                         }
                     } else {
                         List<?> list = (List<?>)prop.getValue();
                         if(list.isEmpty()) {
-                            result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` is required but list does not have any elements");
+                            result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` is required but list does not have any elements");
                         }
                     }
                 } catch(OdmaInvalidDataTypeException e) {
-                    result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` caused OdmaInvalidDataTypeException");
+                    result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` caused OdmaInvalidDataTypeException");
                 } catch(ClassCastException e) {
-                    result.add("Property `"+pi.getQName()+"` in object `"+obj.getId()+"` caused ClassCastException");
+                    result.add(debugDescribe(obj)+": Property `"+pi.getQName()+"` caused ClassCastException");
                 }
             }
         }
@@ -100,20 +145,20 @@ public class OdmaTechnologyCompatibilityKit {
     public static List<String> verifyClassBaseline(OdmaClass cls, HashSet<OdmaId> objectLoopCheck, HashSet<OdmaQName> classLoopCheck) {
         List<String> result = verifyObjectBaseline(cls, objectLoopCheck, classLoopCheck);
         if(!result.isEmpty()) {
-            result.add("object baseline test failed for class with ID `"+cls.getId()+"`");
-            result.add("ABORT class baseline verification");
+            result.add(debugDescribe(cls)+": Object baseline test failed");
+            result.add(debugDescribe(cls)+" ABORT class baseline verification");
             return result;
             
         }
         if(cls.getName() == null) {
-            result.add(cls.getId()+" cls.getName() returns null");
+            result.add(debugDescribe(cls)+".getName() returns null");
         }
         if(cls.getNamespace() == null) {
-            result.add(cls.getId()+" cls.getNamespace() returns null");
+            result.add(debugDescribe(cls)+".getNamespace() returns null");
         }
         if(cls.getQName() == null) {
-            result.add(cls.getId()+" cls.getQName() returns null");
-            result.add("ABORT class baseline verification");
+            result.add(debugDescribe(cls)+".getQName() returns null");
+            result.add(debugDescribe(cls)+" ABORT class baseline verification");
             return result;
         }
         if(classLoopCheck.contains(cls.getQName())) {
@@ -121,29 +166,29 @@ public class OdmaTechnologyCompatibilityKit {
         }
         classLoopCheck.add(cls.getQName());
         if(cls.getProperties() == null) {
-            result.add(cls.getId()+" cls.getProperties() returns null");
-            result.add("ABORT class baseline verification");
+            result.add(debugDescribe(cls)+".getProperties() returns null");
+            result.add(debugDescribe(cls)+" ABORT class baseline verification");
             return result;
         }
         if(cls.getProperties().iterator().hasNext() == false) {
-            result.add(cls.getId()+" cls.getProperties().iterator().hasNext() == false");
-            result.add("ABORT class baseline verification");
+            result.add(debugDescribe(cls)+".getProperties().iterator().hasNext() == false");
+            result.add(debugDescribe(cls)+" ABORT class baseline verification");
             return result;
         }
         if(cls.getDeclaredProperties() == null) {
-            result.add(cls.getId()+" cls.getDeclaredProperties() returns null");
-            result.add("ABORT class baseline verification");
+            result.add(debugDescribe(cls)+".getDeclaredProperties() returns null");
+            result.add(debugDescribe(cls)+" ABORT class baseline verification");
             return result;
         }
         if(cls.getAspects() == null) {
-            result.add(cls.getId()+" cls.getAspects() returns null");
+            result.add(debugDescribe(cls)+".getAspects() returns null");
         }
         if(cls.getSuperClass() != null) {
             if(cls.isAspect() != cls.getSuperClass().isAspect()) {
-                result.add(cls.getId()+" cls.isAspect() != cls.getSuperClass().isAspect()");
+                result.add(debugDescribe(cls)+".isAspect() != cls.getSuperClass().isAspect()");
             }
             if(cls.getSuperClass().getSubClasses() == null) {
-                result.add(cls.getId()+" cls.getSuperClass().getSubClasses() == null");
+                result.add(debugDescribe(cls)+".getSuperClass().getSubClasses() == null");
             }  else {
                 boolean found = false;
                 for(OdmaClass superSubClass : cls.getSuperClass().getSubClasses()) {
@@ -152,7 +197,7 @@ public class OdmaTechnologyCompatibilityKit {
                     }
                 }
                 if(!found) {
-                    result.add(cls.getId()+" cls.getSuperClass().getSubClasses() does not contain cls");
+                    result.add(debugDescribe(cls)+".getSuperClass().getSubClasses() does not contain cls");
                 }
             }
             HashSet<OdmaQName> classHierarchyLoopCheck = new HashSet<OdmaQName>();
@@ -162,20 +207,20 @@ public class OdmaTechnologyCompatibilityKit {
             while(s != null) {
                 loop = loop+"->"+s.getQName();
                 if(classHierarchyLoopCheck.contains(s.getQName())) {
-                    result.add(cls.getId()+" Class HierarchyLoopCheck failed. Loop: "+loop);
+                    result.add(debugDescribe(cls)+": Class HierarchyLoopCheck failed. Loop: "+loop);
                     break;
                 }
                 s = s.getSuperClass();
             }
         }
         if(cls.getSubClasses() == null) {
-            result.add(cls.getId()+" cls.getSubClasses() == null");
+            result.add(debugDescribe(cls)+".getSubClasses() == null");
         } else {
             for(OdmaClass subClass : cls.getSubClasses()) {
                 if(subClass.getSuperClass() == null) {
-                    result.add(cls.getId()+" cls.getSubClasses()[].getSuperClass() == null for cls.getSubClasses()[] "+subClass.getId());
+                    result.add(debugDescribe(cls)+".getSubClasses()[].getSuperClass() == null for cls.getSubClasses()["+debugDescribe(subClass)+"]");
                 } else if(!subClass.getSuperClass().getQName().equals(cls.getQName())) {
-                    result.add(cls.getId()+" cls.getSubClasses()[].getSuperClass().getQName() != cls.getQName() for cls.getSubClasses()[] "+subClass.getId());
+                    result.add(debugDescribe(cls)+".getSubClasses()[].getSuperClass().getQName() != cls.getQName() for cls.getSubClasses()["+debugDescribe(subClass)+"]");
                 }
             }
         }
@@ -183,11 +228,11 @@ public class OdmaTechnologyCompatibilityKit {
         if(cls.getSuperClass() != null) {
             for(OdmaPropertyInfo pi : cls.getSuperClass().getProperties()) {
                 if(pi.getQName() == null) {
-                    result.add("class "+cls.getSuperClass().getQName()+" contains property info with getQName()==null");
+                    result.add(debugDescribe(cls.getSuperClass())+" contains "+debugDescribe(pi)+" with getQName()==null");
                     continue;
                 }
                 if(superProps.containsKey(pi.getQName())) {
-                    result.add("class "+cls.getSuperClass().getQName()+" contains property info with duplicate QName "+pi.getQName());
+                    result.add(debugDescribe(cls.getSuperClass())+" contains multiple property infos with duplicate QName "+pi.getQName());
                     continue;
                 }
                 superProps.put(pi.getQName(), pi);
@@ -195,7 +240,7 @@ public class OdmaTechnologyCompatibilityKit {
         }
         if(cls.isAspect()) {
             if(cls.getAspects().iterator().hasNext()) {
-                result.add(cls.getId()+" is declared as Aspect but does have aspects itself");
+                result.add(debugDescribe(cls)+" is declared as Aspect but does have aspects itself");
             }
         }
         HashSet<OdmaQName> superClassAspectNames = new HashSet<OdmaQName>();
@@ -208,23 +253,34 @@ public class OdmaTechnologyCompatibilityKit {
         HashSet<OdmaQName> aspectNames = new HashSet<OdmaQName>();
         for(OdmaClass aspect : cls.getAspects()) {
             if(!aspect.isAspect()) {
-                result.add(cls.getId()+" aspect "+aspect.getQName()+" has isAspect()==false");
+                result.add(debugDescribe(cls)+" aspect "+debugDescribe(aspect)+" has isAspect()==false");
             }
             if(!aspect.isInstantiable()) {
-                result.add(cls.getId()+" aspect "+aspect.getQName()+" has isInstantiable()==false");
+                result.add(debugDescribe(cls)+" aspect "+debugDescribe(aspect)+" has isInstantiable()==false");
             }
             aspectNames.add(aspect.getQName());
             for(OdmaPropertyInfo pi : aspect.getProperties()) {
                 if(pi.getQName() == null) {
-                    result.add(cls.getId()+" aspect "+aspect.getQName()+" contains property info with getQName()==null");
+                    result.add(debugDescribe(cls)+" aspect "+debugDescribe(aspect)+" contains property info with getQName()==null");
                     continue;
                 }
                 if(aspectProps.containsKey(pi.getQName())) {
-                    result.add(cls.getId()+ "class imports multiple properties with same name through aspects: "+pi.getQName());
+                    result.add(debugDescribe(cls)+ " imports multiple properties with same name through aspects: "+pi.getQName());
                     continue;
                 }
-                if(!superClassAspectNames.contains(aspect.getQName()) && superProps.containsKey(pi.getQName())) {
-                    result.add(cls.getId()+ "class imports aspect "+aspect.getQName()+" with naming conflict of property "+pi.getQName()+" with inherited properties from super class");
+                boolean aspectInherited;
+                if(superClassAspectNames.contains(aspect.getQName())) {
+                	aspectInherited = true;
+                } else {
+                	aspectInherited = false;
+                	for(OdmaQName superAspectName : superClassAspectNames) {
+                		if(isOrExtends(superAspectName, aspect)) {
+                			aspectInherited = true;
+                		}
+                	}
+                }
+                if(!aspectInherited && superProps.containsKey(pi.getQName())) {
+                    result.add(debugDescribe(cls)+" imports aspect "+debugDescribe(aspect)+" with naming conflict of property "+debugDescribe(pi)+" with inherited properties from super class");
                 }
                 aspectProps.put(pi.getQName(), pi);
             }
@@ -232,11 +288,11 @@ public class OdmaTechnologyCompatibilityKit {
         HashMap<OdmaQName, OdmaPropertyInfo> allProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
         for(OdmaPropertyInfo pi : cls.getProperties()) {
             if(pi.getQName() == null) {
-                result.add(cls.getId()+" class "+cls.getQName()+" contains property info with getQName()==null");
+                result.add(debugDescribe(cls)+" contains "+debugDescribe(pi)+" with getQName()==null");
                 continue;
             }
             if(allProps.containsKey(pi.getQName())) {
-                result.add(cls.getId()+" class "+cls.getQName()+" contains property info with duplicate QName "+pi.getQName());
+                result.add(debugDescribe(cls)+" contains multiple property infos with duplicate QName "+pi.getQName());
                 continue;
             }
             allProps.put(pi.getQName(), pi);
@@ -244,62 +300,69 @@ public class OdmaTechnologyCompatibilityKit {
         HashMap<OdmaQName, OdmaPropertyInfo> declaredProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
         for(OdmaPropertyInfo pi : cls.getDeclaredProperties()) {
             if(pi.getQName() == null) {
-                result.add(cls.getId()+" class "+cls.getQName()+" contains declared property info with getQName()==null");
+                result.add(debugDescribe(cls)+" contains declared "+debugDescribe(pi)+" with getQName()==null");
                 continue;
             }
             if(declaredProps.containsKey(pi.getQName())) {
-                result.add(cls.getId()+" class "+cls.getQName()+" contains declared property info with duplicate QName "+pi.getQName());
+                result.add(debugDescribe(cls)+" contains multiple declared property infos with duplicate QName "+pi.getQName());
                 continue;
             }
             declaredProps.put(pi.getQName(), pi);
             if(superProps.containsKey(pi.getQName())) {
                 if(pi.getDataType() == OdmaType.REFERENCE.getNumericId()) {
-                    String piDiff = propInfoDiff(pi,superProps.get(pi.getQName()),true);
+                    String piDiff = propInfoDiff(pi,superProps.get(pi.getQName()),inheritedPropertiesStrictMatch,inheritedPropertiesReferenceMatch==REFERENCE_MATCH_LEVEL.EXACT);
                     if(piDiff != null) {
-                        result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" conflicts with inherited properties from superclass. both are reference but have different specs: "+piDiff);
+                        result.add(debugDescribe(cls)+" declared property "+debugDescribe(pi)+" conflicts with inherited properties from superclass. Both are reference but have different specs: "+piDiff);
                     }
-                    if(!isOrExtends(superProps.get(pi.getQName()).getReferenceClass().getQName(),pi.getReferenceClass())) {
-                        result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" conflicts with inherited properties from superclass. both are reference but reference class of declared prop does not extend reference class of super prop: "+pi.getReferenceClass().getQName()+" is not and does not extend "+superProps.get(pi.getQName()).getReferenceClass().getQName());
+                    if(inheritedPropertiesReferenceMatch==REFERENCE_MATCH_LEVEL.ISOREXTENDS) {
+                        if(!isOrExtends(superProps.get(pi.getQName()).getReferenceClass().getQName(),pi.getReferenceClass())) {
+                            result.add(debugDescribe(cls)+" declared property "+debugDescribe(pi)+" conflicts with inherited properties from superclass. Both are reference but reference class of declared prop does not extend reference class of super prop: "+pi.getReferenceClass().getQName()+" is not and does not extend "+superProps.get(pi.getQName()).getReferenceClass().getQName());
+                        }
                     }
                 } else {
-                    result.add(cls.getId()+ " class declares property "+pi.getQName()+" with naming conflict with inherited properties from super class");
+                    result.add(debugDescribe(cls)+" declares property "+debugDescribe(pi)+" with naming conflict with inherited properties from super class");
                 }
             }
             if(aspectProps.containsKey(pi.getQName())) {
-                result.add(cls.getId()+ " class declared property "+pi.getQName()+" with naming conflict with inherited properties from aspects");
+                result.add(debugDescribe(cls)+" declares property "+debugDescribe(pi)+" with naming conflict with inherited properties from aspects");
             }
             if(!allProps.containsKey(pi.getQName())) {
-                result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" is missing in getProperties()");
+                result.add(debugDescribe(cls)+" declared property "+debugDescribe(pi)+" is missing in getProperties()");
             } else {
-                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),false);
+                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),true,true);
                 if(piDiff != null) {
-                    result.add(cls.getId()+" class "+cls.getQName()+" declared property "+pi.getQName()+" is different in getProperties(): "+piDiff);
+                    result.add(debugDescribe(cls)+" declared property "+debugDescribe(pi)+" is different in getProperties(): "+piDiff);
                 }
             }
         }
         for(OdmaPropertyInfo pi : superProps.values()) {
             if(!allProps.containsKey(pi.getQName())) {
-                result.add(cls.getId()+ " inherited superclass property "+pi.getQName()+" not part of properties");
+                result.add(debugDescribe(cls)+" inherited superclass property "+debugDescribe(pi)+" not part of properties");
             } else {
-                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),false); 
+                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),inheritedPropertiesStrictMatch,inheritedPropertiesReferenceMatch==REFERENCE_MATCH_LEVEL.EXACT); 
                 if(piDiff != null) {
-                    result.add(cls.getId()+" class "+cls.getQName()+" inherited superclass property "+pi.getQName()+" is different in getProperties(): "+piDiff);
+                    result.add(debugDescribe(cls)+" inherited superclass property "+debugDescribe(pi)+" is different in getProperties(): "+piDiff);
+                }
+                if(pi.getDataType() == OdmaType.REFERENCE.getNumericId() && inheritedPropertiesReferenceMatch==REFERENCE_MATCH_LEVEL.ISOREXTENDS) {
+                    if(!isOrExtends(pi.getReferenceClass().getQName(),allProps.get(pi.getQName()).getReferenceClass())) {
+                        result.add(debugDescribe(cls)+" inherited superclass property "+debugDescribe(pi)+" is different in getProperties(): Both are reference but reference class of property in getProperties() does not extend reference class of super prop: "+allProps.get(pi.getQName()).getReferenceClass().getQName()+" is not and does not extend "+pi.getReferenceClass().getQName());
+                    }
                 }
             }
         }
         for(OdmaPropertyInfo pi : aspectProps.values()) {
             if(!allProps.containsKey(pi.getQName())) {
-                result.add(cls.getId()+ " inherited aspect property "+pi.getQName()+" not part of properties");
+                result.add(debugDescribe(cls)+" inherited aspect property "+debugDescribe(pi)+" not part of properties");
             } else {
-                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),false); 
+                String piDiff = propInfoDiff(pi,allProps.get(pi.getQName()),inheritedPropertiesStrictMatch,inheritedPropertiesReferenceMatch==REFERENCE_MATCH_LEVEL.EXACT); 
                 if(piDiff != null) {
-                    result.add(cls.getId()+" class "+cls.getQName()+" inherited aspect property "+pi.getQName()+" is different in getProperties(): "+piDiff);
+                    result.add(debugDescribe(cls)+" inherited aspect property "+debugDescribe(pi)+" is different in getProperties(): "+piDiff);
                 }
             }
         }
         for(OdmaQName pn : allProps.keySet()) {
             if( !superProps.containsKey(pn) && !aspectProps.containsKey(pn) && !declaredProps.containsKey(pn) ) {
-                result.add(cls.getId()+" class "+cls.getQName()+" property "+pn+" is neither inherited through sper class, inherited through aspects or declared");
+                result.add(debugDescribe(cls)+" property "+pn+" is neither inherited through super class, inherited through aspects or declared");
             }
         }
         if(cls.getSuperClass() != null) {
@@ -311,22 +374,42 @@ public class OdmaTechnologyCompatibilityKit {
         if(cls.getSuperClass() != null) {
             for(OdmaClass superAspect : cls.getSuperClass().getAspects()) {
                 if(!aspectNames.contains(superAspect.getQName())) {
-                    result.add(cls.getId()+" class "+cls.getQName()+" inherited aspect "+superAspect.getQName()+" from super class but is missing in aspects");
+                	boolean foundExtendingAspect = false;
+                    for(OdmaClass a : cls.getAspects()) {
+                    	foundExtendingAspect |= isOrExtends(superAspect.getQName(), a);
+                    }
+                	if(!foundExtendingAspect) {
+                        result.add(debugDescribe(cls)+" inherited aspect "+debugDescribe(superAspect)+" from super class "+debugDescribe(cls.getSuperClass())+" but is missing in aspects");
+                	}
                 }
             }
         }
         return result;
     }
+    
+    public static enum REFERENCE_MATCH_LEVEL { EXACT, ISOREXTENDS, ANY };
+    
+    private static boolean inheritedPropertiesStrictMatch = true;
+    
+    private static REFERENCE_MATCH_LEVEL inheritedPropertiesReferenceMatch = REFERENCE_MATCH_LEVEL.ISOREXTENDS;
+    
+    public static void setInheritedPropertiesStrictMatch(boolean strict) {
+    	inheritedPropertiesStrictMatch = strict;
+    }
+    
+    public static void setInheritedPropertiesReferenceMatch(REFERENCE_MATCH_LEVEL matchLevel) {
+    	inheritedPropertiesReferenceMatch = matchLevel;
+    }
 
-    private static String propInfoDiff(OdmaPropertyInfo piA, OdmaPropertyInfo piB, boolean ignoreReferenceClass) {
+    private static String propInfoDiff(OdmaPropertyInfo piA, OdmaPropertyInfo piB, boolean strictMatch, boolean referenceClassMatch) {
         if(!piA.getName().equals(piB.getName())) {
             return "Name is different: `"+piA.getName()+"` and `"+piB.getName()+"`";
         }
         if(!piA.getNamespace().equals(piB.getNamespace())) {
             return "Namespace is different: `"+piA.getNamespace()+"` and `"+piB.getNamespace()+"`";
         }
-        if(!piA.getDisplayName().equals(piB.getDisplayName())) {
-            return "DisplayName is different: `"+piA.getDisplayName()+"` and `"+piB.getDisplayName()+"`";
+        if(!piA.getQName().equals(piB.getQName())) {
+            return "QName is different: `"+piA.getQName()+"` and `"+piB.getQName()+"`";
         }
         if(!piA.getDataType().equals(piB.getDataType())) {
             return "DataType is different: `"+piA.getDataType()+"` and `"+piB.getDataType()+"`";
@@ -334,20 +417,22 @@ public class OdmaTechnologyCompatibilityKit {
         if(!piA.isMultiValue().equals(piB.isMultiValue())) {
             return "MultiValue is different: `"+piA.isMultiValue()+"` and `"+piB.isMultiValue()+"`";
         }
-        if(!piA.isRequired().equals(piB.isRequired())) {
-            return "Required is different: `"+piA.isRequired()+"` and `"+piB.isRequired()+"`";
-        }
-        if(!piA.isReadOnly().equals(piB.isReadOnly())) {
-            return "ReadOnly is different: `"+piA.isReadOnly()+"` and `"+piB.isReadOnly()+"`";
-        }
-        if(!piA.isHidden().equals(piB.isHidden())) {
-            return "Hidden is different: `"+piA.isHidden()+"` and `"+piB.isHidden()+"`";
-        }
-        if(!piA.isSystem().equals(piB.isSystem())) {
-            return "System is different: `"+piA.isSystem()+"` and `"+piB.isSystem()+"`";
-        }
-        if(!piA.getQName().equals(piB.getQName())) {
-            return "QName is different: `"+piA.getQName()+"` and `"+piB.getQName()+"`";
+        if(strictMatch) {
+            if(!piA.getDisplayName().equals(piB.getDisplayName())) {
+                return "DisplayName is different: `"+piA.getDisplayName()+"` and `"+piB.getDisplayName()+"`";
+            }
+            if(!piA.isRequired().equals(piB.isRequired())) {
+                return "Required is different: `"+piA.isRequired()+"` and `"+piB.isRequired()+"`";
+            }
+            if(!piA.isReadOnly().equals(piB.isReadOnly())) {
+                return "ReadOnly is different: `"+piA.isReadOnly()+"` and `"+piB.isReadOnly()+"`";
+            }
+            if(!piA.isHidden().equals(piB.isHidden())) {
+                return "Hidden is different: `"+piA.isHidden()+"` and `"+piB.isHidden()+"`";
+            }
+            if(!piA.isSystem().equals(piB.isSystem())) {
+                return "System is different: `"+piA.isSystem()+"` and `"+piB.isSystem()+"`";
+            }
         }
         if(!(piA.getChoices().iterator().hasNext() == piB.getChoices().iterator().hasNext())) {
             return "Choices presence is different: `"+piA.getChoices().iterator().hasNext()+"` and `"+piB.getChoices().iterator().hasNext()+"`";
@@ -367,7 +452,15 @@ public class OdmaTechnologyCompatibilityKit {
                 return "Choice elements are different";
             }
         }
-        if(!ignoreReferenceClass && piA.getDataType() == OdmaType.REFERENCE.getNumericId()) {
+        if(referenceClassMatch && piA.getDataType() == OdmaType.REFERENCE.getNumericId()) {
+        	OdmaClass refClassA = piA.getReferenceClass();
+        	OdmaClass refClassB = piB.getReferenceClass();
+        	if(refClassA == null) {
+        		return "Property Info "+piA.getQName()+" has REFERENCE type but ReferenceClass is null";
+        	}
+        	if(refClassB == null) {
+        		return "Property Info "+piB.getQName()+" has REFERENCE type but ReferenceClass is null";
+        	}
             if(!piA.getReferenceClass().getQName().equals(piB.getReferenceClass().getQName())) {
                 return "ReferenceClass is different: `"+piA.getReferenceClass().getQName()+"` and `"+piB.getReferenceClass().getQName()+"`";
             }
