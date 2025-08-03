@@ -6,6 +6,7 @@ import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.exceptions.OdmaPropertyNotFoundException;
 import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.exceptions.OdmaAccessDeniedException;
+import java.util.Date;
 import org.opendma.api.OdmaObject;
 
 /**
@@ -118,17 +119,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).getInteger()</code>.
      * 
-     * <p>Property opendma:<b>IntegerValue</b>: String<br/>
+     * <p>Property opendma:<b>IntegerValue</b>: Integer<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer
      */
-    public String getIntegerValue() {
+    public Integer getIntegerValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).getInteger();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -142,7 +143,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Integer value of this choice or null, if the property info this choice is assigned to is not of data type Integer.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INTEGERVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>IntegerValue</b>: String<br/>
+     * <p>Property opendma:<b>IntegerValue</b>: Integer<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -152,7 +153,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setIntegerValue(String newValue) throws OdmaAccessDeniedException {
+    public void setIntegerValue(Integer newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_INTEGERVALUE).setValue(newValue);
         }
@@ -166,17 +167,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SHORTVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SHORTVALUE).getShort()</code>.
      * 
-     * <p>Property opendma:<b>ShortValue</b>: String<br/>
+     * <p>Property opendma:<b>ShortValue</b>: Short<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short
      */
-    public String getShortValue() {
+    public Short getShortValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).getShort();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -190,7 +191,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Short value of this choice or null, if the property info this choice is assigned to is not of data type Short.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_SHORTVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>ShortValue</b>: String<br/>
+     * <p>Property opendma:<b>ShortValue</b>: Short<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -200,7 +201,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setShortValue(String newValue) throws OdmaAccessDeniedException {
+    public void setShortValue(Short newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_SHORTVALUE).setValue(newValue);
         }
@@ -214,17 +215,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LONGVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LONGVALUE).getLong()</code>.
      * 
-     * <p>Property opendma:<b>LongValue</b>: String<br/>
+     * <p>Property opendma:<b>LongValue</b>: Long<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long
      */
-    public String getLongValue() {
+    public Long getLongValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).getLong();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -238,7 +239,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Long value of this choice or null, if the property info this choice is assigned to is not of data type Long.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LONGVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>LongValue</b>: String<br/>
+     * <p>Property opendma:<b>LongValue</b>: Long<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -248,7 +249,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setLongValue(String newValue) throws OdmaAccessDeniedException {
+    public void setLongValue(Long newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_LONGVALUE).setValue(newValue);
         }
@@ -262,17 +263,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FLOATVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FLOATVALUE).getFloat()</code>.
      * 
-     * <p>Property opendma:<b>FloatValue</b>: String<br/>
+     * <p>Property opendma:<b>FloatValue</b>: Float<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float
      */
-    public String getFloatValue() {
+    public Float getFloatValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).getFloat();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -286,7 +287,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Float value of this choice or null, if the property info this choice is assigned to is not of data type Float.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_FLOATVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>FloatValue</b>: String<br/>
+     * <p>Property opendma:<b>FloatValue</b>: Float<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -296,7 +297,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setFloatValue(String newValue) throws OdmaAccessDeniedException {
+    public void setFloatValue(Float newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_FLOATVALUE).setValue(newValue);
         }
@@ -310,17 +311,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).getDouble()</code>.
      * 
-     * <p>Property opendma:<b>DoubleValue</b>: String<br/>
+     * <p>Property opendma:<b>DoubleValue</b>: Double<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double
      */
-    public String getDoubleValue() {
+    public Double getDoubleValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).getDouble();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -334,7 +335,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Double value of this choice or null, if the property info this choice is assigned to is not of data type Double.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DOUBLEVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>DoubleValue</b>: String<br/>
+     * <p>Property opendma:<b>DoubleValue</b>: Double<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -344,7 +345,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDoubleValue(String newValue) throws OdmaAccessDeniedException {
+    public void setDoubleValue(Double newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_DOUBLEVALUE).setValue(newValue);
         }
@@ -358,17 +359,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).getBoolean()</code>.
      * 
-     * <p>Property opendma:<b>BooleanValue</b>: String<br/>
+     * <p>Property opendma:<b>BooleanValue</b>: Boolean<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean
      */
-    public String getBooleanValue() {
+    public Boolean isBooleanValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).getBoolean();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -382,7 +383,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the Boolean value of this choice or null, if the property info this choice is assigned to is not of data type Boolean.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BOOLEANVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>BooleanValue</b>: String<br/>
+     * <p>Property opendma:<b>BooleanValue</b>: Boolean<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -392,7 +393,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setBooleanValue(String newValue) throws OdmaAccessDeniedException {
+    public void setBooleanValue(Boolean newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_BOOLEANVALUE).setValue(newValue);
         }
@@ -406,17 +407,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).getDateTime()</code>.
      * 
-     * <p>Property opendma:<b>DateTimeValue</b>: String<br/>
+     * <p>Property opendma:<b>DateTimeValue</b>: DateTime<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime
      */
-    public String getDateTimeValue() {
+    public Date getDateTimeValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).getDateTime();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -430,7 +431,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the DateTime value of this choice or null, if the property info this choice is assigned to is not of data type DateTime.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_DATETIMEVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>DateTimeValue</b>: String<br/>
+     * <p>Property opendma:<b>DateTimeValue</b>: DateTime<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -440,7 +441,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setDateTimeValue(String newValue) throws OdmaAccessDeniedException {
+    public void setDateTimeValue(Date newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_DATETIMEVALUE).setValue(newValue);
         }
@@ -454,17 +455,17 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
 
     /**
      * Returns the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getString()</code>.
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getBlob()</code>.
      * 
-     * <p>Property opendma:<b>BlobValue</b>: String<br/>
+     * <p>Property opendma:<b>BlobValue</b>: Blob<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
      */
-    public String getBlobValue() {
+    public byte[] getBlobValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).getString();
+            return getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).getBlob();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -478,7 +479,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * Sets the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>BlobValue</b>: String<br/>
+     * <p>Property opendma:<b>BlobValue</b>: Blob<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
@@ -488,7 +489,7 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setBlobValue(String newValue) throws OdmaAccessDeniedException {
+    public void setBlobValue(byte[] newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).setValue(newValue);
         }

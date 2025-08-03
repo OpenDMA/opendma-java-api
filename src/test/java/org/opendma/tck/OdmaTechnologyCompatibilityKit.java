@@ -3992,8 +3992,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"IntegerValue".equals(propIntegerValue.getName().getName())) {
                 result.add("Property opendma:IntegerValue qname name is not 'IntegerValue', found instead'"+propIntegerValue.getName().getName()+"'");
             }
-            if(propIntegerValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:IntegerValue type is not 'STRING'");
+            if(propIntegerValue.getType() != OdmaType.INTEGER) {
+                result.add("Property opendma:IntegerValue type is not 'INTEGER'");
             }
             if(propIntegerValue.isMultiValue() != false) {
                 result.add("Property opendma:IntegerValue MultiValue is not 'false'");
@@ -4024,8 +4024,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"IntegerValue".equals(piDeclaredIntegerValue.getName())) {
                     result.add("Property info for opendma:IntegerValue in declared properties qname name is not 'IntegerValue'");
                 }
-                if(piDeclaredIntegerValue.getDataType() != 1) {
-                    result.add("Property info for opendma:IntegerValue in declared properties data type is not '1'");
+                if(piDeclaredIntegerValue.getDataType() != 2) {
+                    result.add("Property info for opendma:IntegerValue in declared properties data type is not '2'");
                 }
                 if(piDeclaredIntegerValue.isMultiValue() != false) {
                     result.add("Property info for opendma:IntegerValue in declared properties MultiValue is not 'false'");
@@ -4066,8 +4066,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"IntegerValue".equals(piAllIntegerValue.getName())) {
                 result.add("Property info for opendma:IntegerValue in all properties qname name is not 'IntegerValue'");
             }
-            if(piAllIntegerValue.getDataType() != 1) {
-                result.add("Property info for opendma:IntegerValue in all properties data type is not '1'");
+            if(piAllIntegerValue.getDataType() != 2) {
+                result.add("Property info for opendma:IntegerValue in all properties data type is not '2'");
             }
             if(piAllIntegerValue.isMultiValue() != false) {
                 result.add("Property info for opendma:IntegerValue in all properties MultiValue is not 'false'");
@@ -4098,8 +4098,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"ShortValue".equals(propShortValue.getName().getName())) {
                 result.add("Property opendma:ShortValue qname name is not 'ShortValue', found instead'"+propShortValue.getName().getName()+"'");
             }
-            if(propShortValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:ShortValue type is not 'STRING'");
+            if(propShortValue.getType() != OdmaType.SHORT) {
+                result.add("Property opendma:ShortValue type is not 'SHORT'");
             }
             if(propShortValue.isMultiValue() != false) {
                 result.add("Property opendma:ShortValue MultiValue is not 'false'");
@@ -4130,8 +4130,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"ShortValue".equals(piDeclaredShortValue.getName())) {
                     result.add("Property info for opendma:ShortValue in declared properties qname name is not 'ShortValue'");
                 }
-                if(piDeclaredShortValue.getDataType() != 1) {
-                    result.add("Property info for opendma:ShortValue in declared properties data type is not '1'");
+                if(piDeclaredShortValue.getDataType() != 3) {
+                    result.add("Property info for opendma:ShortValue in declared properties data type is not '3'");
                 }
                 if(piDeclaredShortValue.isMultiValue() != false) {
                     result.add("Property info for opendma:ShortValue in declared properties MultiValue is not 'false'");
@@ -4172,8 +4172,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"ShortValue".equals(piAllShortValue.getName())) {
                 result.add("Property info for opendma:ShortValue in all properties qname name is not 'ShortValue'");
             }
-            if(piAllShortValue.getDataType() != 1) {
-                result.add("Property info for opendma:ShortValue in all properties data type is not '1'");
+            if(piAllShortValue.getDataType() != 3) {
+                result.add("Property info for opendma:ShortValue in all properties data type is not '3'");
             }
             if(piAllShortValue.isMultiValue() != false) {
                 result.add("Property info for opendma:ShortValue in all properties MultiValue is not 'false'");
@@ -4204,8 +4204,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"LongValue".equals(propLongValue.getName().getName())) {
                 result.add("Property opendma:LongValue qname name is not 'LongValue', found instead'"+propLongValue.getName().getName()+"'");
             }
-            if(propLongValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:LongValue type is not 'STRING'");
+            if(propLongValue.getType() != OdmaType.LONG) {
+                result.add("Property opendma:LongValue type is not 'LONG'");
             }
             if(propLongValue.isMultiValue() != false) {
                 result.add("Property opendma:LongValue MultiValue is not 'false'");
@@ -4236,8 +4236,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"LongValue".equals(piDeclaredLongValue.getName())) {
                     result.add("Property info for opendma:LongValue in declared properties qname name is not 'LongValue'");
                 }
-                if(piDeclaredLongValue.getDataType() != 1) {
-                    result.add("Property info for opendma:LongValue in declared properties data type is not '1'");
+                if(piDeclaredLongValue.getDataType() != 4) {
+                    result.add("Property info for opendma:LongValue in declared properties data type is not '4'");
                 }
                 if(piDeclaredLongValue.isMultiValue() != false) {
                     result.add("Property info for opendma:LongValue in declared properties MultiValue is not 'false'");
@@ -4278,8 +4278,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"LongValue".equals(piAllLongValue.getName())) {
                 result.add("Property info for opendma:LongValue in all properties qname name is not 'LongValue'");
             }
-            if(piAllLongValue.getDataType() != 1) {
-                result.add("Property info for opendma:LongValue in all properties data type is not '1'");
+            if(piAllLongValue.getDataType() != 4) {
+                result.add("Property info for opendma:LongValue in all properties data type is not '4'");
             }
             if(piAllLongValue.isMultiValue() != false) {
                 result.add("Property info for opendma:LongValue in all properties MultiValue is not 'false'");
@@ -4310,8 +4310,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"FloatValue".equals(propFloatValue.getName().getName())) {
                 result.add("Property opendma:FloatValue qname name is not 'FloatValue', found instead'"+propFloatValue.getName().getName()+"'");
             }
-            if(propFloatValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:FloatValue type is not 'STRING'");
+            if(propFloatValue.getType() != OdmaType.FLOAT) {
+                result.add("Property opendma:FloatValue type is not 'FLOAT'");
             }
             if(propFloatValue.isMultiValue() != false) {
                 result.add("Property opendma:FloatValue MultiValue is not 'false'");
@@ -4342,8 +4342,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"FloatValue".equals(piDeclaredFloatValue.getName())) {
                     result.add("Property info for opendma:FloatValue in declared properties qname name is not 'FloatValue'");
                 }
-                if(piDeclaredFloatValue.getDataType() != 1) {
-                    result.add("Property info for opendma:FloatValue in declared properties data type is not '1'");
+                if(piDeclaredFloatValue.getDataType() != 5) {
+                    result.add("Property info for opendma:FloatValue in declared properties data type is not '5'");
                 }
                 if(piDeclaredFloatValue.isMultiValue() != false) {
                     result.add("Property info for opendma:FloatValue in declared properties MultiValue is not 'false'");
@@ -4384,8 +4384,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"FloatValue".equals(piAllFloatValue.getName())) {
                 result.add("Property info for opendma:FloatValue in all properties qname name is not 'FloatValue'");
             }
-            if(piAllFloatValue.getDataType() != 1) {
-                result.add("Property info for opendma:FloatValue in all properties data type is not '1'");
+            if(piAllFloatValue.getDataType() != 5) {
+                result.add("Property info for opendma:FloatValue in all properties data type is not '5'");
             }
             if(piAllFloatValue.isMultiValue() != false) {
                 result.add("Property info for opendma:FloatValue in all properties MultiValue is not 'false'");
@@ -4416,8 +4416,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"DoubleValue".equals(propDoubleValue.getName().getName())) {
                 result.add("Property opendma:DoubleValue qname name is not 'DoubleValue', found instead'"+propDoubleValue.getName().getName()+"'");
             }
-            if(propDoubleValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:DoubleValue type is not 'STRING'");
+            if(propDoubleValue.getType() != OdmaType.DOUBLE) {
+                result.add("Property opendma:DoubleValue type is not 'DOUBLE'");
             }
             if(propDoubleValue.isMultiValue() != false) {
                 result.add("Property opendma:DoubleValue MultiValue is not 'false'");
@@ -4448,8 +4448,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"DoubleValue".equals(piDeclaredDoubleValue.getName())) {
                     result.add("Property info for opendma:DoubleValue in declared properties qname name is not 'DoubleValue'");
                 }
-                if(piDeclaredDoubleValue.getDataType() != 1) {
-                    result.add("Property info for opendma:DoubleValue in declared properties data type is not '1'");
+                if(piDeclaredDoubleValue.getDataType() != 6) {
+                    result.add("Property info for opendma:DoubleValue in declared properties data type is not '6'");
                 }
                 if(piDeclaredDoubleValue.isMultiValue() != false) {
                     result.add("Property info for opendma:DoubleValue in declared properties MultiValue is not 'false'");
@@ -4490,8 +4490,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"DoubleValue".equals(piAllDoubleValue.getName())) {
                 result.add("Property info for opendma:DoubleValue in all properties qname name is not 'DoubleValue'");
             }
-            if(piAllDoubleValue.getDataType() != 1) {
-                result.add("Property info for opendma:DoubleValue in all properties data type is not '1'");
+            if(piAllDoubleValue.getDataType() != 6) {
+                result.add("Property info for opendma:DoubleValue in all properties data type is not '6'");
             }
             if(piAllDoubleValue.isMultiValue() != false) {
                 result.add("Property info for opendma:DoubleValue in all properties MultiValue is not 'false'");
@@ -4522,8 +4522,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"BooleanValue".equals(propBooleanValue.getName().getName())) {
                 result.add("Property opendma:BooleanValue qname name is not 'BooleanValue', found instead'"+propBooleanValue.getName().getName()+"'");
             }
-            if(propBooleanValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:BooleanValue type is not 'STRING'");
+            if(propBooleanValue.getType() != OdmaType.BOOLEAN) {
+                result.add("Property opendma:BooleanValue type is not 'BOOLEAN'");
             }
             if(propBooleanValue.isMultiValue() != false) {
                 result.add("Property opendma:BooleanValue MultiValue is not 'false'");
@@ -4554,8 +4554,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"BooleanValue".equals(piDeclaredBooleanValue.getName())) {
                     result.add("Property info for opendma:BooleanValue in declared properties qname name is not 'BooleanValue'");
                 }
-                if(piDeclaredBooleanValue.getDataType() != 1) {
-                    result.add("Property info for opendma:BooleanValue in declared properties data type is not '1'");
+                if(piDeclaredBooleanValue.getDataType() != 7) {
+                    result.add("Property info for opendma:BooleanValue in declared properties data type is not '7'");
                 }
                 if(piDeclaredBooleanValue.isMultiValue() != false) {
                     result.add("Property info for opendma:BooleanValue in declared properties MultiValue is not 'false'");
@@ -4596,8 +4596,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"BooleanValue".equals(piAllBooleanValue.getName())) {
                 result.add("Property info for opendma:BooleanValue in all properties qname name is not 'BooleanValue'");
             }
-            if(piAllBooleanValue.getDataType() != 1) {
-                result.add("Property info for opendma:BooleanValue in all properties data type is not '1'");
+            if(piAllBooleanValue.getDataType() != 7) {
+                result.add("Property info for opendma:BooleanValue in all properties data type is not '7'");
             }
             if(piAllBooleanValue.isMultiValue() != false) {
                 result.add("Property info for opendma:BooleanValue in all properties MultiValue is not 'false'");
@@ -4628,8 +4628,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"DateTimeValue".equals(propDateTimeValue.getName().getName())) {
                 result.add("Property opendma:DateTimeValue qname name is not 'DateTimeValue', found instead'"+propDateTimeValue.getName().getName()+"'");
             }
-            if(propDateTimeValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:DateTimeValue type is not 'STRING'");
+            if(propDateTimeValue.getType() != OdmaType.DATETIME) {
+                result.add("Property opendma:DateTimeValue type is not 'DATETIME'");
             }
             if(propDateTimeValue.isMultiValue() != false) {
                 result.add("Property opendma:DateTimeValue MultiValue is not 'false'");
@@ -4660,8 +4660,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"DateTimeValue".equals(piDeclaredDateTimeValue.getName())) {
                     result.add("Property info for opendma:DateTimeValue in declared properties qname name is not 'DateTimeValue'");
                 }
-                if(piDeclaredDateTimeValue.getDataType() != 1) {
-                    result.add("Property info for opendma:DateTimeValue in declared properties data type is not '1'");
+                if(piDeclaredDateTimeValue.getDataType() != 8) {
+                    result.add("Property info for opendma:DateTimeValue in declared properties data type is not '8'");
                 }
                 if(piDeclaredDateTimeValue.isMultiValue() != false) {
                     result.add("Property info for opendma:DateTimeValue in declared properties MultiValue is not 'false'");
@@ -4702,8 +4702,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"DateTimeValue".equals(piAllDateTimeValue.getName())) {
                 result.add("Property info for opendma:DateTimeValue in all properties qname name is not 'DateTimeValue'");
             }
-            if(piAllDateTimeValue.getDataType() != 1) {
-                result.add("Property info for opendma:DateTimeValue in all properties data type is not '1'");
+            if(piAllDateTimeValue.getDataType() != 8) {
+                result.add("Property info for opendma:DateTimeValue in all properties data type is not '8'");
             }
             if(piAllDateTimeValue.isMultiValue() != false) {
                 result.add("Property info for opendma:DateTimeValue in all properties MultiValue is not 'false'");
@@ -4734,8 +4734,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"BlobValue".equals(propBlobValue.getName().getName())) {
                 result.add("Property opendma:BlobValue qname name is not 'BlobValue', found instead'"+propBlobValue.getName().getName()+"'");
             }
-            if(propBlobValue.getType() != OdmaType.STRING) {
-                result.add("Property opendma:BlobValue type is not 'STRING'");
+            if(propBlobValue.getType() != OdmaType.BLOB) {
+                result.add("Property opendma:BlobValue type is not 'BLOB'");
             }
             if(propBlobValue.isMultiValue() != false) {
                 result.add("Property opendma:BlobValue MultiValue is not 'false'");
@@ -4766,8 +4766,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(!"BlobValue".equals(piDeclaredBlobValue.getName())) {
                     result.add("Property info for opendma:BlobValue in declared properties qname name is not 'BlobValue'");
                 }
-                if(piDeclaredBlobValue.getDataType() != 1) {
-                    result.add("Property info for opendma:BlobValue in declared properties data type is not '1'");
+                if(piDeclaredBlobValue.getDataType() != 9) {
+                    result.add("Property info for opendma:BlobValue in declared properties data type is not '9'");
                 }
                 if(piDeclaredBlobValue.isMultiValue() != false) {
                     result.add("Property info for opendma:BlobValue in declared properties MultiValue is not 'false'");
@@ -4808,8 +4808,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(!"BlobValue".equals(piAllBlobValue.getName())) {
                 result.add("Property info for opendma:BlobValue in all properties qname name is not 'BlobValue'");
             }
-            if(piAllBlobValue.getDataType() != 1) {
-                result.add("Property info for opendma:BlobValue in all properties data type is not '1'");
+            if(piAllBlobValue.getDataType() != 9) {
+                result.add("Property info for opendma:BlobValue in all properties data type is not '9'");
             }
             if(piAllBlobValue.isMultiValue() != false) {
                 result.add("Property info for opendma:BlobValue in all properties MultiValue is not 'false'");
