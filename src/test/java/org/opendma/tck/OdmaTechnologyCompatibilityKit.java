@@ -2,6 +2,7 @@ package org.opendma.tck;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.opendma.api.*;
@@ -134,6 +135,20 @@ public class OdmaTechnologyCompatibilityKit {
                 }
             }
         }
+        // if available properties are marked as complete, check all properties are available
+        if(obj.availablePropertiesComplete()) {
+            HashSet<OdmaQName> availablePropertyNames = new HashSet<OdmaQName>();
+            Iterator<OdmaProperty> itAvailableProperties = obj.availableProperties();
+            while(itAvailableProperties.hasNext()) {
+                availablePropertyNames.add(itAvailableProperties.next().getName());
+            }
+            for(OdmaPropertyInfo pi : clazz.getProperties()) {
+                if(!availablePropertyNames.contains(pi.getQName())) {
+                    result.add(debugDescribe(obj)+": Marked as availablePropertiesComplete, but property is not available `"+pi.getQName()+"`");
+                }
+            }
+        }
+        // verify class of this object
         result.addAll(verifyClassBaseline(obj.getOdmaClass(), objectLoopCheck, classLoopCheck));
         return result;
     }
