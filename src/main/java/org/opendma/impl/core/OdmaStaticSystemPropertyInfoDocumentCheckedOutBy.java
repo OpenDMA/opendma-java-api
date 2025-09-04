@@ -18,7 +18,7 @@ public class OdmaStaticSystemPropertyInfoDocumentCheckedOutBy extends OdmaStatic
         properties.put(OdmaCommonNames.PROPERTY_DATATYPE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DATATYPE,Integer.valueOf(1),OdmaType.INTEGER,false,true));
         properties.put(OdmaCommonNames.PROPERTY_REFERENCECLASS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_REFERENCECLASS,null,OdmaType.REFERENCE,false,true));
         properties.put(OdmaCommonNames.PROPERTY_MULTIVALUE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_MULTIVALUE,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_REQUIRED,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_REQUIRED,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_REQUIRED,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_REQUIRED,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_READONLY,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_READONLY,Boolean.TRUE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_HIDDEN,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_HIDDEN,Boolean.FALSE,OdmaType.BOOLEAN,false,true));
         properties.put(OdmaCommonNames.PROPERTY_SYSTEM,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_SYSTEM,Boolean.TRUE,OdmaType.BOOLEAN,false,true));

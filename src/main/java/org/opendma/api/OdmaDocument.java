@@ -217,7 +217,7 @@ public interface OdmaDocument extends OdmaObject {
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUTBY).getString()</code>.
      * 
      * <p>Property opendma:<b>CheckedOutBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Required]<br/>
+     * [SingleValue] [ReadOnly] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @return the user who checked out this version of this document, null if this document is not checked out

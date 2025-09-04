@@ -7137,9 +7137,6 @@ public class OdmaTechnologyCompatibilityKit {
             if(!propCheckedOutBy.isReadOnly()) {
                 result.add("Property opendma:CheckedOutBy ReadOnly must be 'true'");
             }
-            if(propCheckedOutBy.getValue() == null) {
-                result.add("Property opendma:CheckedOutBy is required but value is null");
-            }
         } catch(OdmaPropertyNotFoundException pnfe) {
             result.add("Missing property opendma:CheckedOutBy");
         }
@@ -7178,8 +7175,8 @@ public class OdmaTechnologyCompatibilityKit {
                 if(piDeclaredCheckedOutBy.isHidden() != false) {
                     result.add("Property info for opendma:CheckedOutBy in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredCheckedOutBy.isRequired() != true) {
-                result.add("Property info for opendma:CheckedOutBy in declared properties Required is not 'true'");
+                if(piDeclaredCheckedOutBy.isRequired() != false) {
+                result.add("Property info for opendma:CheckedOutBy in declared properties Required is not 'false'");
                 }
                 if(piDeclaredCheckedOutBy.isSystem() != true) {
                     result.add("Property info for opendma:CheckedOutBy in declared properties System is not 'true'");
@@ -7220,8 +7217,8 @@ public class OdmaTechnologyCompatibilityKit {
             if(piAllCheckedOutBy.isHidden() != false) {
                 result.add("Property info for opendma:CheckedOutBy in all properties Hidden is not 'false'");
             }
-            if(piAllCheckedOutBy.isRequired() != true) {
-                result.add("Property info for opendma:CheckedOutBy in all properties Required is not 'true'");
+            if(piAllCheckedOutBy.isRequired() != false) {
+                result.add("Property info for opendma:CheckedOutBy in all properties Required is not 'false'");
             }
             if(piAllCheckedOutBy.isSystem() != true) {
                 result.add("Property info for opendma:CheckedOutBy in all properties System is not 'true'");
