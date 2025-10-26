@@ -5,7 +5,7 @@
 
     <groupId>org.opendma</groupId>
     <artifactId>opendma-api</artifactId>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>0.8-SNAPSHOT</version>
     <name>OpenDMA API</name>
     <description>Java API for OpenDMA</description>
     <url>https://opendma.org</url>
