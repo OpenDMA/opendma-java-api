@@ -51,9 +51,6 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>Aspect</code> */
     public static final OdmaQName PROPERTY_ASPECT = new OdmaQName("opendma", "Aspect");
 
-    /** qualified name of the OpenDMA system property <code>Instantiable</code> */
-    public static final OdmaQName PROPERTY_INSTANTIABLE = new OdmaQName("opendma", "Instantiable");
-
     /** qualified name of the OpenDMA system property <code>Hidden</code> */
     public static final OdmaQName PROPERTY_HIDDEN = new OdmaQName("opendma", "Hidden");
 

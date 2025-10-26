@@ -154,32 +154,6 @@ public interface OdmaClass extends OdmaObject {
     Boolean isAspect();
 
     /**
-     * Returns Indicates if there can ob objects of this class (true) or if this class is abstract (false).<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).getBoolean()</code>.
-     * 
-     * <p>Property opendma:<b>Instantiable</b>: Boolean<br/>
-     * [SingleValue] [Writable] [Required]</p>
-     * 
-     * @return Indicates if there can ob objects of this class (true) or if this class is abstract (false)
-     */
-    Boolean isInstantiable();
-
-    /**
-     * Sets Indicates if there can ob objects of this class (true) or if this class is abstract (false).<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).setValue(value)</code>.
-     * 
-     * <p>Property opendma:<b>Instantiable</b>: Boolean<br/>
-     * [SingleValue] [Writable] [Required]</p>
-     * 
-     * @param newValue
-     *             The new value for Indicates if there can ob objects of this class (true) or if this class is abstract (false)
-     * 
-     * @throws OdmaAccessDeniedException
-     *             If this OdmaProperty is read-only or cannot be set by the current user
-     */
-    void setInstantiable(Boolean newValue) throws OdmaAccessDeniedException;
-
-    /**
      * Returns Indicates if this class should be hidden from end users and probably administrators.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
      * 

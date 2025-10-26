@@ -85,9 +85,6 @@ public class OdmaTechnologyCompatibilityKit {
             result.add(debugDescribe(obj)+" ABORT baseline verification");
             return result;
         }
-        if(obj.getOdmaClass().isInstantiable() == false) {
-            result.add(debugDescribe(obj)+".getOdmaClass().isInstantiable() == false");
-        }
         if(obj.getOdmaClass().isAspect() == true) {
             result.add(debugDescribe(obj)+".getOdmaClass().isAspect() == true");
         }
@@ -269,9 +266,6 @@ public class OdmaTechnologyCompatibilityKit {
         for(OdmaClass aspect : cls.getAspects()) {
             if(!aspect.isAspect()) {
                 result.add(debugDescribe(cls)+" aspect "+debugDescribe(aspect)+" has isAspect()==false");
-            }
-            if(!aspect.isInstantiable()) {
-                result.add(debugDescribe(cls)+" aspect "+debugDescribe(aspect)+" has isInstantiable()==false");
             }
             aspectNames.add(aspect.getQName());
             if(!superClassAspectNames.contains(aspect.getQName())) {
@@ -1899,115 +1893,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(piAllAspect.isSystem() != true) {
                 result.add("Property info for opendma:Aspect in all properties System is not 'true'");
-            }
-        }
-        // opendma:Instantiable
-        OdmaQName qnameInstantiable = new OdmaQName("opendma","Instantiable");
-        try {
-            OdmaProperty propInstantiable = obj.getProperty(qnameInstantiable);
-            if(propInstantiable.getName() == null) {
-                result.add("Property opendma:Instantiable qname is null");
-            }
-            if(!"opendma".equals(propInstantiable.getName().getNamespace())) {
-                result.add("Property opendma:Instantiable qname namespace is not 'opendma', found instead'"+propInstantiable.getName().getNamespace()+"'");
-            }
-            if(!"Instantiable".equals(propInstantiable.getName().getName())) {
-                result.add("Property opendma:Instantiable qname name is not 'Instantiable', found instead'"+propInstantiable.getName().getName()+"'");
-            }
-            if(propInstantiable.getType() != OdmaType.BOOLEAN) {
-                result.add("Property opendma:Instantiable type is not 'BOOLEAN'");
-            }
-            if(propInstantiable.isMultiValue() != false) {
-                result.add("Property opendma:Instantiable MultiValue is not 'false'");
-            }
-            if(propInstantiable.getValue() == null) {
-                result.add("Property opendma:Instantiable is required but value is null");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:Instantiable");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Class")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredInstantiable = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameInstantiable.equals(pi.getQName())) {
-                        if(piDeclaredInstantiable == null) {
-                            piDeclaredInstantiable = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:Instantiable");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredInstantiable == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:Instantiable");
-            }
-            if(piDeclaredInstantiable != null) {
-                if(!"opendma".equals(piDeclaredInstantiable.getNamespace())) {
-                    result.add("Property info for opendma:Instantiable in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"Instantiable".equals(piDeclaredInstantiable.getName())) {
-                    result.add("Property info for opendma:Instantiable in declared properties qname name is not 'Instantiable'");
-                }
-                if(piDeclaredInstantiable.getDataType() != 7) {
-                    result.add("Property info for opendma:Instantiable in declared properties data type is not '7'");
-                }
-                if(piDeclaredInstantiable.isMultiValue() != false) {
-                    result.add("Property info for opendma:Instantiable in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredInstantiable.isReadOnly() != false) {
-                    result.add("Property info for opendma:Instantiable in declared properties ReadOnly is not 'false'");
-                }
-                if(piDeclaredInstantiable.isHidden() != false) {
-                    result.add("Property info for opendma:Instantiable in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredInstantiable.isRequired() != true) {
-                result.add("Property info for opendma:Instantiable in declared properties Required is not 'true'");
-                }
-                if(piDeclaredInstantiable.isSystem() != true) {
-                    result.add("Property info for opendma:Instantiable in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllInstantiable = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameInstantiable.equals(pi.getQName())) {
-                    if(piAllInstantiable == null) {
-                        piAllInstantiable = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:Instantiable");
-                    }
-                }
-            }
-        }
-        if(piAllInstantiable == null) {
-            result.add("All properties in class have no property info object with qname opendma:Instantiable");
-        }
-        if(piAllInstantiable != null) {
-            if(!"opendma".equals(piAllInstantiable.getNamespace())) {
-                result.add("Property info for opendma:Instantiable in all properties qname namespace is not 'opendma'");
-            }
-            if(!"Instantiable".equals(piAllInstantiable.getName())) {
-                result.add("Property info for opendma:Instantiable in all properties qname name is not 'Instantiable'");
-            }
-            if(piAllInstantiable.getDataType() != 7) {
-                result.add("Property info for opendma:Instantiable in all properties data type is not '7'");
-            }
-            if(piAllInstantiable.isMultiValue() != false) {
-                result.add("Property info for opendma:Instantiable in all properties MultiValue is not 'false'");
-            }
-            if(piAllInstantiable.isReadOnly() != false) {
-                result.add("Property info for opendma:Instantiable in all properties ReadOnly is not 'false'");
-            }
-            if(piAllInstantiable.isHidden() != false) {
-                result.add("Property info for opendma:Instantiable in all properties Hidden is not 'false'");
-            }
-            if(piAllInstantiable.isRequired() != true) {
-                result.add("Property info for opendma:Instantiable in all properties Required is not 'true'");
-            }
-            if(piAllInstantiable.isSystem() != true) {
-                result.add("Property info for opendma:Instantiable in all properties System is not 'true'");
             }
         }
         // opendma:Hidden

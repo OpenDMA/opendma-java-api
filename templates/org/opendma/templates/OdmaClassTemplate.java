@@ -290,52 +290,6 @@ public class OdmaClassTemplate extends OdmaObjectTemplate implements OdmaClass {
     }
 
     /**
-     * Returns Indicates if there can ob objects of this class (true) or if this class is abstract (false).<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).getBoolean()</code>.
-     * 
-     * <p>Property opendma:<b>Instantiable</b>: Boolean<br/>
-     * [SingleValue] [Writable] [Required]</p>
-     * 
-     * @return Indicates if there can ob objects of this class (true) or if this class is abstract (false)
-     */
-    public Boolean isInstantiable() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_INSTANTIABLE).getBoolean();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Sets Indicates if there can ob objects of this class (true) or if this class is abstract (false).<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INSTANTIABLE).setValue(value)</code>.
-     * 
-     * <p>Property opendma:<b>Instantiable</b>: Boolean<br/>
-     * [SingleValue] [Writable] [Required]</p>
-     * 
-     * @param newValue
-     *             The new value for Indicates if there can ob objects of this class (true) or if this class is abstract (false)
-     * 
-     * @throws OdmaAccessDeniedException
-     *             If this OdmaProperty is read-only or cannot be set by the current user
-     */
-    public void setInstantiable(Boolean newValue) throws OdmaAccessDeniedException {
-        try {
-            getProperty(OdmaCommonNames.PROPERTY_INSTANTIABLE).setValue(newValue);
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
      * Returns Indicates if this class should be hidden from end users and probably administrators.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_HIDDEN).getBoolean()</code>.
      * 

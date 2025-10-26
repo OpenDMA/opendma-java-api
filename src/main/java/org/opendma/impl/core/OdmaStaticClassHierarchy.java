@@ -366,7 +366,6 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES, new OdmaStaticSystemPropertyInfoClassDeclaredProperties());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_PROPERTIES, new OdmaStaticSystemPropertyInfoClassProperties());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECT, new OdmaStaticSystemPropertyInfoClassAspect());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_INSTANTIABLE, new OdmaStaticSystemPropertyInfoClassInstantiable());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_HIDDEN, new OdmaStaticSystemPropertyInfoClassHidden());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SYSTEM, new OdmaStaticSystemPropertyInfoClassSystem());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_RETRIEVABLE, new OdmaStaticSystemPropertyInfoClassRetrievable());
@@ -462,7 +461,6 @@ public class OdmaStaticClassHierarchy {
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_PROPERTIES));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_INSTANTIABLE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_HIDDEN));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SYSTEM));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_RETRIEVABLE));
