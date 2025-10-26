@@ -208,17 +208,17 @@ public interface OdmaProperty {
     public Date getDateTime() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>Blob</code> value of this property if and only if
-     * the data type of this property is a single valued <i>Blob</i>. Throws
+     * Returns the <code>Binary</code> value of this property if and only if
+     * the data type of this property is a single valued <i>Binary</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>Blob</code> value of this property
+     * @return the <code>Binary</code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
-     *             if and only if this property is not a single valued <i>Blob</i>
+     *             if and only if this property is not a single valued <i>Binary</i>
      *             property
      */
-    public byte[] getBlob() throws OdmaInvalidDataTypeException;
+    public byte[] getBinary() throws OdmaInvalidDataTypeException;
 
     /**
      * Returns the <code>Reference</code> value of this property if and only if
@@ -393,17 +393,17 @@ public interface OdmaProperty {
     public List<Date> getDateTimeList() throws OdmaInvalidDataTypeException;
 
     /**
-     * Returns the <code>Blob</code> value of this property if and only if
-     * the data type of this property is a multi valued <i>Blob</i>. Throws
+     * Returns the <code>Binary</code> value of this property if and only if
+     * the data type of this property is a multi valued <i>Binary</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>Blob</code> value of this property
+     * @return the <code>Binary</code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
-     *             if and only if this property is not a multi valued <i>Blob</i>
+     *             if and only if this property is not a multi valued <i>Binary</i>
      *             property
      */
-    public List<byte[]> getBlobList() throws OdmaInvalidDataTypeException;
+    public List<byte[]> getBinaryList() throws OdmaInvalidDataTypeException;
 
     /**
      * Returns the <code>Reference</code> value of this property if and only if

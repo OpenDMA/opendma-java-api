@@ -454,18 +454,18 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     }
 
     /**
-     * Returns the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).getBlob()</code>.
+     * Returns the Binary value of this choice or null, if the property info this choice is assigned to is not of data type Binary.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BINARYVALUE).getBinary()</code>.
      * 
-     * <p>Property opendma:<b>BlobValue</b>: Blob<br/>
+     * <p>Property opendma:<b>BinaryValue</b>: Binary<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
-     * @return the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
+     * @return the Binary value of this choice or null, if the property info this choice is assigned to is not of data type Binary
      */
-    public byte[] getBlobValue() {
+    public byte[] getBinaryValue() {
         try {
-            return getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).getBlob();
+            return getProperty(OdmaCommonNames.PROPERTY_BINARYVALUE).getBinary();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);
@@ -476,22 +476,22 @@ public class OdmaChoiceValueTemplate extends OdmaObjectTemplate implements OdmaC
     }
 
     /**
-     * Sets the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BLOBVALUE).setValue(value)</code>.
+     * Sets the Binary value of this choice or null, if the property info this choice is assigned to is not of data type Binary.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_BINARYVALUE).setValue(value)</code>.
      * 
-     * <p>Property opendma:<b>BlobValue</b>: Blob<br/>
+     * <p>Property opendma:<b>BinaryValue</b>: Binary<br/>
      * [SingleValue] [Writable] [Optional]<br/>
      * Full description follows.</p>
      * 
      * @param newValue
-     *             The new value for the BLOB value of this choice or null, if the property info this choice is assigned to is not of data type BLOB
+     *             The new value for the Binary value of this choice or null, if the property info this choice is assigned to is not of data type Binary
      * 
      * @throws OdmaAccessDeniedException
      *             If this OdmaProperty is read-only or cannot be set by the current user
      */
-    public void setBlobValue(byte[] newValue) throws OdmaAccessDeniedException {
+    public void setBinaryValue(byte[] newValue) throws OdmaAccessDeniedException {
         try {
-            getProperty(OdmaCommonNames.PROPERTY_BLOBVALUE).setValue(newValue);
+            getProperty(OdmaCommonNames.PROPERTY_BINARYVALUE).setValue(newValue);
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);

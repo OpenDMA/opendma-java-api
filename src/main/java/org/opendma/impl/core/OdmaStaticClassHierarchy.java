@@ -392,7 +392,7 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_DOUBLEVALUE, new OdmaStaticSystemPropertyInfoChoiceValueDoubleValue());
         registerPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_BOOLEANVALUE, new OdmaStaticSystemPropertyInfoChoiceValueBooleanValue());
         registerPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_DATETIMEVALUE, new OdmaStaticSystemPropertyInfoChoiceValueDateTimeValue());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_BLOBVALUE, new OdmaStaticSystemPropertyInfoChoiceValueBlobValue());
+        registerPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_BINARYVALUE, new OdmaStaticSystemPropertyInfoChoiceValueBinaryValue());
         registerPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_REFERENCEVALUE, new OdmaStaticSystemPropertyInfoChoiceValueReferenceValue());
         registerPropertyInfo(OdmaCommonNames.CLASS_REPOSITORY, OdmaCommonNames.PROPERTY_NAME, new OdmaStaticSystemPropertyInfoRepositoryName());
         registerPropertyInfo(OdmaCommonNames.CLASS_REPOSITORY, OdmaCommonNames.PROPERTY_DISPLAYNAME, new OdmaStaticSystemPropertyInfoRepositoryDisplayName());
@@ -500,7 +500,7 @@ public class OdmaStaticClassHierarchy {
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_DOUBLEVALUE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_BOOLEANVALUE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_DATETIMEVALUE));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_BLOBVALUE));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_BINARYVALUE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaCommonNames.PROPERTY_REFERENCEVALUE));
         ssc = new OdmaStaticSystemClassChoiceValue(getClassInfo(OdmaCommonNames.CLASS_OBJECT), getSubClasses(OdmaCommonNames.CLASS_CHOICEVALUE), Collections.unmodifiableList(declaredAspects), Collections.unmodifiableList(declaredProperties), getRetrievable(OdmaCommonNames.CLASS_CHOICEVALUE), getSearchable(OdmaCommonNames.CLASS_CHOICEVALUE));
         registerSubClass(OdmaCommonNames.CLASS_OBJECT, ssc);

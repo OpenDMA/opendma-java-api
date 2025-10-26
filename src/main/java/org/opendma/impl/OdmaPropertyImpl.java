@@ -355,11 +355,11 @@ public class OdmaPropertyImpl implements OdmaProperty {
                     throw new OdmaInvalidDataTypeException("This property has a multi-valued DateTime data type. It can only be set to values assignable to `List<Date>`");
                 }
                 break;
-            case BLOB:
+            case BINARY:
                 if(checkListAndValues(newValue,byte[].class)) {
                     value = newValue;
                 } else {
-                    throw new OdmaInvalidDataTypeException("This property has a multi-valued Blob data type. It can only be set to values assignable to `List<byte[]>`");
+                    throw new OdmaInvalidDataTypeException("This property has a multi-valued Binary data type. It can only be set to values assignable to `List<byte[]>`");
                 }
                 break;
             case REFERENCE:
@@ -453,11 +453,11 @@ public class OdmaPropertyImpl implements OdmaProperty {
                     throw new OdmaInvalidDataTypeException("This property has a single-valued DateTime data type. It can only be set to values assignable to `Date`");
                 }
                 break;
-            case BLOB:
+            case BINARY:
                 if(newValue instanceof byte[]) {
                     value = newValue;
                 } else {
-                    throw new OdmaInvalidDataTypeException("This property has a single-valued Blob data type. It can only be set to values assignable to `byte[]`");
+                    throw new OdmaInvalidDataTypeException("This property has a single-valued Binary data type. It can only be set to values assignable to `byte[]`");
                 }
                 break;
             case REFERENCE:
@@ -656,22 +656,22 @@ public class OdmaPropertyImpl implements OdmaProperty {
     }
 
     /**
-     * Returns the <code>Blob</code> value of this property if and only if
-     * the data type of this property is a single valued <i>Blob</i>. Throws
+     * Returns the <code>Binary</code> value of this property if and only if
+     * the data type of this property is a single valued <i>Binary</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>Blob</code> value of this property
+     * @return the <code>Binary</code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
-     *             if and only if this property is not a single valued <i>Blob</i>
+     *             if and only if this property is not a single valued <i>Binary</i>
      *             property
      */
-    public byte[] getBlob() throws OdmaInvalidDataTypeException {
-        if( (multiValue == false) && (dataType == OdmaType.BLOB) ) {
+    public byte[] getBinary() throws OdmaInvalidDataTypeException {
+        if( (multiValue == false) && (dataType == OdmaType.BINARY) ) {
             enforceValue();
             return (byte[])value;
         } else {
-            throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBlob()`");
+            throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBinary()`");
         }
     }
 
@@ -969,23 +969,23 @@ public class OdmaPropertyImpl implements OdmaProperty {
     }
 
     /**
-     * Returns the <code>Blob</code> value of this property if and only if
-     * the data type of this property is a multi valued <i>Blob</i>. Throws
+     * Returns the <code>Binary</code> value of this property if and only if
+     * the data type of this property is a multi valued <i>Binary</i>. Throws
      * an <code>OdmaInvalidDataTypeException</code> otherwise.
      * 
-     * @return the <code>Blob</code> value of this property
+     * @return the <code>Binary</code> value of this property
      * 
      * @throws OdmaInvalidDataTypeException
-     *             if and only if this property is not a multi valued <i>Blob</i>
+     *             if and only if this property is not a multi valued <i>Binary</i>
      *             property
      */
     @SuppressWarnings("unchecked")
-    public List<byte[]> getBlobList() throws OdmaInvalidDataTypeException {
-        if( (multiValue == true) && (dataType == OdmaType.BLOB) ) {
+    public List<byte[]> getBinaryList() throws OdmaInvalidDataTypeException {
+        if( (multiValue == true) && (dataType == OdmaType.BINARY) ) {
             enforceValue();
             return (List<byte[]>)value;
         } else {
-            throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBlobList()`");
+            throw new OdmaInvalidDataTypeException("This property has a different data type and/or cardinality. It cannot return values with `getBinaryList()`");
         }
     }
 

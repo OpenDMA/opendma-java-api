@@ -9,12 +9,12 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemPropertyInfoChoiceValueBlobValue extends OdmaStaticSystemPropertyInfo {
+public class OdmaStaticSystemPropertyInfoChoiceValueBinaryValue extends OdmaStaticSystemPropertyInfo {
 
-    public OdmaStaticSystemPropertyInfoChoiceValueBlobValue() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
-        properties.put(OdmaCommonNames.PROPERTY_NAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.PROPERTY_BLOBVALUE.getName(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.PROPERTY_BLOBVALUE.getNamespace(),OdmaType.STRING,false,true));
-        properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.PROPERTY_BLOBVALUE.getName(),OdmaType.STRING,false,true));
+    public OdmaStaticSystemPropertyInfoChoiceValueBinaryValue() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
+        properties.put(OdmaCommonNames.PROPERTY_NAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.PROPERTY_BINARYVALUE.getName(),OdmaType.STRING,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.PROPERTY_BINARYVALUE.getNamespace(),OdmaType.STRING,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.PROPERTY_BINARYVALUE.getName(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_DATATYPE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DATATYPE,Integer.valueOf(9),OdmaType.INTEGER,false,true));
         properties.put(OdmaCommonNames.PROPERTY_REFERENCECLASS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_REFERENCECLASS,null,OdmaType.REFERENCE,false,true));
         properties.put(OdmaCommonNames.PROPERTY_MULTIVALUE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_MULTIVALUE,Boolean.FALSE,OdmaType.BOOLEAN,false,true));

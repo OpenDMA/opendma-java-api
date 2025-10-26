@@ -133,8 +133,8 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>DateTimeValue</code> */
     public static final OdmaQName PROPERTY_DATETIMEVALUE = new OdmaQName("opendma", "DateTimeValue");
 
-    /** qualified name of the OpenDMA system property <code>BlobValue</code> */
-    public static final OdmaQName PROPERTY_BLOBVALUE = new OdmaQName("opendma", "BlobValue");
+    /** qualified name of the OpenDMA system property <code>BinaryValue</code> */
+    public static final OdmaQName PROPERTY_BINARYVALUE = new OdmaQName("opendma", "BinaryValue");
 
     /** qualified name of the OpenDMA system property <code>ReferenceValue</code> */
     public static final OdmaQName PROPERTY_REFERENCEVALUE = new OdmaQName("opendma", "ReferenceValue");

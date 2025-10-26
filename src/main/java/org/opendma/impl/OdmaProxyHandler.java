@@ -75,8 +75,8 @@ public class OdmaProxyHandler implements InvocationHandler {
         PROPERTY_MAP.put("setBooleanValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BOOLEANVALUE, OdmaType.BOOLEAN, false));
         PROPERTY_MAP.put("getDateTimeValue", new PropertyMapping(OdmaCommonNames.PROPERTY_DATETIMEVALUE, OdmaType.DATETIME, false));
         PROPERTY_MAP.put("setDateTimeValue", new PropertyMapping(OdmaCommonNames.PROPERTY_DATETIMEVALUE, OdmaType.DATETIME, false));
-        PROPERTY_MAP.put("getBlobValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BLOBVALUE, OdmaType.BLOB, false));
-        PROPERTY_MAP.put("setBlobValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BLOBVALUE, OdmaType.BLOB, false));
+        PROPERTY_MAP.put("getBinaryValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BINARYVALUE, OdmaType.BINARY, false));
+        PROPERTY_MAP.put("setBinaryValue", new PropertyMapping(OdmaCommonNames.PROPERTY_BINARYVALUE, OdmaType.BINARY, false));
         PROPERTY_MAP.put("getReferenceValue", new PropertyMapping(OdmaCommonNames.PROPERTY_REFERENCEVALUE, OdmaType.REFERENCE, false));
         PROPERTY_MAP.put("setReferenceValue", new PropertyMapping(OdmaCommonNames.PROPERTY_REFERENCEVALUE, OdmaType.REFERENCE, false));
         PROPERTY_MAP.put("getRootClass", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTCLASS, OdmaType.REFERENCE, false));
@@ -204,8 +204,8 @@ public class OdmaProxyHandler implements InvocationHandler {
                 return property.getBooleanList();
             case DATETIME:
                 return property.getDateTimeList();
-            case BLOB:
-                return property.getBlobList();
+            case BINARY:
+                return property.getBinaryList();
             case REFERENCE:
                 return property.getReferenceIterable();
             case CONTENT:
@@ -237,8 +237,8 @@ public class OdmaProxyHandler implements InvocationHandler {
                 return property.getBoolean();
             case DATETIME:
                 return property.getDateTime();
-            case BLOB:
-                return property.getBlob();
+            case BINARY:
+                return property.getBinary();
             case REFERENCE:
                 return property.getReference();
             case CONTENT:
