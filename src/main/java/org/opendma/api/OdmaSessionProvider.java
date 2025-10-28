@@ -1,5 +1,7 @@
 package org.opendma.api;
 
+import java.util.List;
+
 import org.opendma.exceptions.OdmaException;
 
 /**
@@ -48,5 +50,12 @@ public interface OdmaSessionProvider {
      * @throws OdmaException if this provider cannot establish a session
      */
     public OdmaSession getSessionWithToken(OdmaQName tokenType, String token) throws OdmaException;
+    
+    /**
+     * Returns a list of token types that can be used for authentication.
+     * 
+     * @return a list of token types that can be used for authentication
+     */
+    List<OdmaQName> getSupportedTokenTypes();
 
 }

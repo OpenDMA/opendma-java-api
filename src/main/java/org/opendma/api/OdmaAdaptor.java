@@ -1,5 +1,6 @@
 package org.opendma.api;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.opendma.exceptions.OdmaException;
@@ -16,6 +17,9 @@ public interface OdmaAdaptor
     public static final String PARAM_TOKEN = "token";
 
     public static final String PARAM_ENDPOINT = "endpoint";
+
+    /**  qualified name of the JWT token type */
+    public static final OdmaQName TOKEN_TYPE_JWT = new OdmaQName("web", "jwt");
 
     /**
      * Attempts to establish a session with the document management system through this adaptor.
@@ -36,5 +40,12 @@ public interface OdmaAdaptor
      * @return The identifier of this adaptor.
      */
     public String getSystemId();
+    
+    /**
+     * Returns a list of token types that can be used for authentication.
+     * 
+     * @return a list of token types that can be used for authentication
+     */
+    List<OdmaQName> getSupportedTokenTypes();
 
 }
