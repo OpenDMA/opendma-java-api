@@ -398,6 +398,10 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_REPOSITORY, OdmaCommonNames.PROPERTY_ROOTCLASS, new OdmaStaticSystemPropertyInfoRepositoryRootClass());
         registerPropertyInfo(OdmaCommonNames.CLASS_REPOSITORY, OdmaCommonNames.PROPERTY_ROOTASPECTS, new OdmaStaticSystemPropertyInfoRepositoryRootAspects());
         registerPropertyInfo(OdmaCommonNames.CLASS_REPOSITORY, OdmaCommonNames.PROPERTY_ROOTFOLDER, new OdmaStaticSystemPropertyInfoRepositoryRootFolder());
+        registerPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_CREATEDAT, new OdmaStaticSystemPropertyInfoAuditStampedCreatedAt());
+        registerPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_CREATEDBY, new OdmaStaticSystemPropertyInfoAuditStampedCreatedBy());
+        registerPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT, new OdmaStaticSystemPropertyInfoAuditStampedLastModifiedAt());
+        registerPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY, new OdmaStaticSystemPropertyInfoAuditStampedLastModifiedBy());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_TITLE, new OdmaStaticSystemPropertyInfoDocumentTitle());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_VERSION, new OdmaStaticSystemPropertyInfoDocumentVersion());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_VERSIONCOLLECTION, new OdmaStaticSystemPropertyInfoDocumentVersionCollection());
@@ -406,10 +410,6 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CONTENTELEMENTS, new OdmaStaticSystemPropertyInfoDocumentContentElements());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_COMBINEDCONTENTTYPE, new OdmaStaticSystemPropertyInfoDocumentCombinedContentType());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_PRIMARYCONTENTELEMENT, new OdmaStaticSystemPropertyInfoDocumentPrimaryContentElement());
-        registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CREATEDAT, new OdmaStaticSystemPropertyInfoDocumentCreatedAt());
-        registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CREATEDBY, new OdmaStaticSystemPropertyInfoDocumentCreatedBy());
-        registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT, new OdmaStaticSystemPropertyInfoDocumentLastModifiedAt());
-        registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY, new OdmaStaticSystemPropertyInfoDocumentLastModifiedBy());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CHECKEDOUT, new OdmaStaticSystemPropertyInfoDocumentCheckedOut());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CHECKEDOUTAT, new OdmaStaticSystemPropertyInfoDocumentCheckedOutAt());
         registerPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CHECKEDOUTBY, new OdmaStaticSystemPropertyInfoDocumentCheckedOutBy());
@@ -426,10 +426,6 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_TITLE, new OdmaStaticSystemPropertyInfoContainerTitle());
         registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_CONTAINEES, new OdmaStaticSystemPropertyInfoContainerContainees());
         registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_ASSOCIATIONS, new OdmaStaticSystemPropertyInfoContainerAssociations());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_CREATEDAT, new OdmaStaticSystemPropertyInfoContainerCreatedAt());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_CREATEDBY, new OdmaStaticSystemPropertyInfoContainerCreatedBy());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT, new OdmaStaticSystemPropertyInfoContainerLastModifiedAt());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY, new OdmaStaticSystemPropertyInfoContainerLastModifiedBy());
         registerPropertyInfo(OdmaCommonNames.CLASS_FOLDER, OdmaCommonNames.PROPERTY_PARENT, new OdmaStaticSystemPropertyInfoFolderParent());
         registerPropertyInfo(OdmaCommonNames.CLASS_FOLDER, OdmaCommonNames.PROPERTY_SUBFOLDERS, new OdmaStaticSystemPropertyInfoFolderSubFolders());
         registerPropertyInfo(OdmaCommonNames.CLASS_CONTAINABLE, OdmaCommonNames.PROPERTY_CONTAINEDIN, new OdmaStaticSystemPropertyInfoContainableContainedIn());
@@ -437,10 +433,6 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_NAME, new OdmaStaticSystemPropertyInfoAssociationName());
         registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CONTAINER, new OdmaStaticSystemPropertyInfoAssociationContainer());
         registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CONTAINABLE, new OdmaStaticSystemPropertyInfoAssociationContainable());
-        registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CREATEDAT, new OdmaStaticSystemPropertyInfoAssociationCreatedAt());
-        registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CREATEDBY, new OdmaStaticSystemPropertyInfoAssociationCreatedBy());
-        registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT, new OdmaStaticSystemPropertyInfoAssociationLastModifiedAt());
-        registerPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY, new OdmaStaticSystemPropertyInfoAssociationLastModifiedBy());
 
         declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
@@ -517,6 +509,16 @@ public class OdmaStaticClassHierarchy {
 
         declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_CREATEDAT));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_CREATEDBY));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY));
+        ssc = new OdmaStaticSystemClassAuditStamped(null, getSubClasses(OdmaCommonNames.CLASS_AUDITSTAMPED), Collections.unmodifiableList(declaredAspects), Collections.unmodifiableList(declaredProperties), getRetrievable(OdmaCommonNames.CLASS_AUDITSTAMPED), getSearchable(OdmaCommonNames.CLASS_AUDITSTAMPED));
+        registerRootAspect(ssc);
+        classInfos.put(OdmaCommonNames.CLASS_AUDITSTAMPED, ssc);
+
+        declaredAspects = new ArrayList<OdmaClass>();
+        declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_TITLE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_VERSION));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_VERSIONCOLLECTION));
@@ -525,10 +527,6 @@ public class OdmaStaticClassHierarchy {
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CONTENTELEMENTS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_COMBINEDCONTENTTYPE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_PRIMARYCONTENTELEMENT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CREATEDBY));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CHECKEDOUT));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CHECKEDOUTAT));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_DOCUMENT, OdmaCommonNames.PROPERTY_CHECKEDOUTBY));
@@ -575,10 +573,6 @@ public class OdmaStaticClassHierarchy {
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_TITLE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_CONTAINEES));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_ASSOCIATIONS));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_CREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_CREATEDBY));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CONTAINER, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY));
         ssc = new OdmaStaticSystemClassContainer(null, getSubClasses(OdmaCommonNames.CLASS_CONTAINER), Collections.unmodifiableList(declaredAspects), Collections.unmodifiableList(declaredProperties), getRetrievable(OdmaCommonNames.CLASS_CONTAINER), getSearchable(OdmaCommonNames.CLASS_CONTAINER));
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_CONTAINER, ssc);
@@ -604,10 +598,6 @@ public class OdmaStaticClassHierarchy {
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_NAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CONTAINER));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CONTAINABLE));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CREATEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_CREATEDBY));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_LASTMODIFIEDAT));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_ASSOCIATION, OdmaCommonNames.PROPERTY_LASTMODIFIEDBY));
         ssc = new OdmaStaticSystemClassAssociation(null, getSubClasses(OdmaCommonNames.CLASS_ASSOCIATION), Collections.unmodifiableList(declaredAspects), Collections.unmodifiableList(declaredProperties), getRetrievable(OdmaCommonNames.CLASS_ASSOCIATION), getSearchable(OdmaCommonNames.CLASS_ASSOCIATION));
         registerRootAspect(ssc);
         classInfos.put(OdmaCommonNames.CLASS_ASSOCIATION, ssc);

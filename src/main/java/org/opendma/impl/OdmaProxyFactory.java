@@ -9,6 +9,7 @@ import org.opendma.api.OdmaClass;
 import org.opendma.api.OdmaPropertyInfo;
 import org.opendma.api.OdmaChoiceValue;
 import org.opendma.api.OdmaRepository;
+import org.opendma.api.OdmaAuditStamped;
 import org.opendma.api.OdmaDocument;
 import org.opendma.api.OdmaContentElement;
 import org.opendma.api.OdmaDataContentElement;
@@ -35,6 +36,7 @@ public class OdmaProxyFactory {
         INTERFACE_MAP.put(OdmaCommonNames.CLASS_PROPERTYINFO, OdmaPropertyInfo.class);
         INTERFACE_MAP.put(OdmaCommonNames.CLASS_CHOICEVALUE, OdmaChoiceValue.class);
         INTERFACE_MAP.put(OdmaCommonNames.CLASS_REPOSITORY, OdmaRepository.class);
+        INTERFACE_MAP.put(OdmaCommonNames.CLASS_AUDITSTAMPED, OdmaAuditStamped.class);
         INTERFACE_MAP.put(OdmaCommonNames.CLASS_DOCUMENT, OdmaDocument.class);
         INTERFACE_MAP.put(OdmaCommonNames.CLASS_CONTENTELEMENT, OdmaContentElement.class);
         INTERFACE_MAP.put(OdmaCommonNames.CLASS_DATACONTENTELEMENT, OdmaDataContentElement.class);

@@ -5446,6 +5446,455 @@ public class OdmaTechnologyCompatibilityKit {
         return result;
     }
 
+    public static List<String> verifyOdmaAuditStamped(OdmaObject obj) {
+        LinkedList<String> result = new LinkedList<>();
+        if(!(obj instanceof OdmaAuditStamped)) {
+            result.add("Does not implement OdmaAuditStamped interface");
+        }
+        result.addAll(verifyObjectBaseline(obj));
+        result.addAll(verifyOdmaObject(obj));
+        OdmaClass clazz = obj.getOdmaClass();
+        Iterable<OdmaPropertyInfo> declaredProperties = clazz != null ? clazz.getDeclaredProperties() : null;
+        Iterable<OdmaPropertyInfo> allProperties = clazz != null ? clazz.getProperties() : null;
+        // opendma:CreatedAt
+        OdmaQName qnameCreatedAt = new OdmaQName("opendma","CreatedAt");
+        try {
+            OdmaProperty propCreatedAt = obj.getProperty(qnameCreatedAt);
+            if(propCreatedAt.getName() == null) {
+                result.add("Property opendma:CreatedAt qname is null");
+            }
+            if(!"opendma".equals(propCreatedAt.getName().getNamespace())) {
+                result.add("Property opendma:CreatedAt qname namespace is not 'opendma', found instead'"+propCreatedAt.getName().getNamespace()+"'");
+            }
+            if(!"CreatedAt".equals(propCreatedAt.getName().getName())) {
+                result.add("Property opendma:CreatedAt qname name is not 'CreatedAt', found instead'"+propCreatedAt.getName().getName()+"'");
+            }
+            if(propCreatedAt.getType() != OdmaType.DATETIME) {
+                result.add("Property opendma:CreatedAt type is not 'DATETIME'");
+            }
+            if(propCreatedAt.isMultiValue() != false) {
+                result.add("Property opendma:CreatedAt MultiValue is not 'false'");
+            }
+            if(!propCreatedAt.isReadOnly()) {
+                result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
+            }
+        } catch(OdmaPropertyNotFoundException pnfe) {
+            result.add("Missing property opendma:CreatedAt");
+        }
+        if(clazz != null && (new OdmaQName("opendma","AuditStamped")).equals(clazz.getQName())) {
+            OdmaPropertyInfo piDeclaredCreatedAt = null;
+            if(declaredProperties != null) {
+                for(OdmaPropertyInfo pi : declaredProperties) {
+                    if(qnameCreatedAt.equals(pi.getQName())) {
+                        if(piDeclaredCreatedAt == null) {
+                            piDeclaredCreatedAt = pi;
+                        } else {
+                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedAt");
+                        }
+                    }
+                }
+            }
+            if(piDeclaredCreatedAt == null) {
+                result.add("Declared properties in class have no property info object with qname opendma:CreatedAt");
+            }
+            if(piDeclaredCreatedAt != null) {
+                if(!"opendma".equals(piDeclaredCreatedAt.getNamespace())) {
+                    result.add("Property info for opendma:CreatedAt in declared properties qname namespace is not 'opendma'");
+                }
+                if(!"CreatedAt".equals(piDeclaredCreatedAt.getName())) {
+                    result.add("Property info for opendma:CreatedAt in declared properties qname name is not 'CreatedAt'");
+                }
+                if(piDeclaredCreatedAt.getDataType() != 8) {
+                    result.add("Property info for opendma:CreatedAt in declared properties data type is not '8'");
+                }
+                if(piDeclaredCreatedAt.isMultiValue() != false) {
+                    result.add("Property info for opendma:CreatedAt in declared properties MultiValue is not 'false'");
+                }
+                if(piDeclaredCreatedAt.isReadOnly() != true) {
+                    result.add("Property info for opendma:CreatedAt in declared properties ReadOnly is not 'true'");
+                }
+                if(piDeclaredCreatedAt.isHidden() != false) {
+                    result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
+                }
+                if(piDeclaredCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
+                }
+                if(piDeclaredCreatedAt.isSystem() != true) {
+                    result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
+                }
+            }
+        }
+        OdmaPropertyInfo piAllCreatedAt = null;
+        if(allProperties != null) {
+            for(OdmaPropertyInfo pi : allProperties) {
+                if(qnameCreatedAt.equals(pi.getQName())) {
+                    if(piAllCreatedAt == null) {
+                        piAllCreatedAt = pi;
+                    } else {
+                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedAt");
+                    }
+                }
+            }
+        }
+        if(piAllCreatedAt == null) {
+            result.add("All properties in class have no property info object with qname opendma:CreatedAt");
+        }
+        if(piAllCreatedAt != null) {
+            if(!"opendma".equals(piAllCreatedAt.getNamespace())) {
+                result.add("Property info for opendma:CreatedAt in all properties qname namespace is not 'opendma'");
+            }
+            if(!"CreatedAt".equals(piAllCreatedAt.getName())) {
+                result.add("Property info for opendma:CreatedAt in all properties qname name is not 'CreatedAt'");
+            }
+            if(piAllCreatedAt.getDataType() != 8) {
+                result.add("Property info for opendma:CreatedAt in all properties data type is not '8'");
+            }
+            if(piAllCreatedAt.isMultiValue() != false) {
+                result.add("Property info for opendma:CreatedAt in all properties MultiValue is not 'false'");
+            }
+            if(piAllCreatedAt.isReadOnly() != true) {
+                result.add("Property info for opendma:CreatedAt in all properties ReadOnly is not 'true'");
+            }
+            if(piAllCreatedAt.isHidden() != false) {
+                result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
+            }
+            if(piAllCreatedAt.isRequired() != false) {
+                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
+            }
+            if(piAllCreatedAt.isSystem() != true) {
+                result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
+            }
+        }
+        // opendma:CreatedBy
+        OdmaQName qnameCreatedBy = new OdmaQName("opendma","CreatedBy");
+        try {
+            OdmaProperty propCreatedBy = obj.getProperty(qnameCreatedBy);
+            if(propCreatedBy.getName() == null) {
+                result.add("Property opendma:CreatedBy qname is null");
+            }
+            if(!"opendma".equals(propCreatedBy.getName().getNamespace())) {
+                result.add("Property opendma:CreatedBy qname namespace is not 'opendma', found instead'"+propCreatedBy.getName().getNamespace()+"'");
+            }
+            if(!"CreatedBy".equals(propCreatedBy.getName().getName())) {
+                result.add("Property opendma:CreatedBy qname name is not 'CreatedBy', found instead'"+propCreatedBy.getName().getName()+"'");
+            }
+            if(propCreatedBy.getType() != OdmaType.STRING) {
+                result.add("Property opendma:CreatedBy type is not 'STRING'");
+            }
+            if(propCreatedBy.isMultiValue() != false) {
+                result.add("Property opendma:CreatedBy MultiValue is not 'false'");
+            }
+            if(!propCreatedBy.isReadOnly()) {
+                result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
+            }
+        } catch(OdmaPropertyNotFoundException pnfe) {
+            result.add("Missing property opendma:CreatedBy");
+        }
+        if(clazz != null && (new OdmaQName("opendma","AuditStamped")).equals(clazz.getQName())) {
+            OdmaPropertyInfo piDeclaredCreatedBy = null;
+            if(declaredProperties != null) {
+                for(OdmaPropertyInfo pi : declaredProperties) {
+                    if(qnameCreatedBy.equals(pi.getQName())) {
+                        if(piDeclaredCreatedBy == null) {
+                            piDeclaredCreatedBy = pi;
+                        } else {
+                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedBy");
+                        }
+                    }
+                }
+            }
+            if(piDeclaredCreatedBy == null) {
+                result.add("Declared properties in class have no property info object with qname opendma:CreatedBy");
+            }
+            if(piDeclaredCreatedBy != null) {
+                if(!"opendma".equals(piDeclaredCreatedBy.getNamespace())) {
+                    result.add("Property info for opendma:CreatedBy in declared properties qname namespace is not 'opendma'");
+                }
+                if(!"CreatedBy".equals(piDeclaredCreatedBy.getName())) {
+                    result.add("Property info for opendma:CreatedBy in declared properties qname name is not 'CreatedBy'");
+                }
+                if(piDeclaredCreatedBy.getDataType() != 1) {
+                    result.add("Property info for opendma:CreatedBy in declared properties data type is not '1'");
+                }
+                if(piDeclaredCreatedBy.isMultiValue() != false) {
+                    result.add("Property info for opendma:CreatedBy in declared properties MultiValue is not 'false'");
+                }
+                if(piDeclaredCreatedBy.isReadOnly() != true) {
+                    result.add("Property info for opendma:CreatedBy in declared properties ReadOnly is not 'true'");
+                }
+                if(piDeclaredCreatedBy.isHidden() != false) {
+                    result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
+                }
+                if(piDeclaredCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
+                }
+                if(piDeclaredCreatedBy.isSystem() != true) {
+                    result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
+                }
+            }
+        }
+        OdmaPropertyInfo piAllCreatedBy = null;
+        if(allProperties != null) {
+            for(OdmaPropertyInfo pi : allProperties) {
+                if(qnameCreatedBy.equals(pi.getQName())) {
+                    if(piAllCreatedBy == null) {
+                        piAllCreatedBy = pi;
+                    } else {
+                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedBy");
+                    }
+                }
+            }
+        }
+        if(piAllCreatedBy == null) {
+            result.add("All properties in class have no property info object with qname opendma:CreatedBy");
+        }
+        if(piAllCreatedBy != null) {
+            if(!"opendma".equals(piAllCreatedBy.getNamespace())) {
+                result.add("Property info for opendma:CreatedBy in all properties qname namespace is not 'opendma'");
+            }
+            if(!"CreatedBy".equals(piAllCreatedBy.getName())) {
+                result.add("Property info for opendma:CreatedBy in all properties qname name is not 'CreatedBy'");
+            }
+            if(piAllCreatedBy.getDataType() != 1) {
+                result.add("Property info for opendma:CreatedBy in all properties data type is not '1'");
+            }
+            if(piAllCreatedBy.isMultiValue() != false) {
+                result.add("Property info for opendma:CreatedBy in all properties MultiValue is not 'false'");
+            }
+            if(piAllCreatedBy.isReadOnly() != true) {
+                result.add("Property info for opendma:CreatedBy in all properties ReadOnly is not 'true'");
+            }
+            if(piAllCreatedBy.isHidden() != false) {
+                result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
+            }
+            if(piAllCreatedBy.isRequired() != false) {
+                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
+            }
+            if(piAllCreatedBy.isSystem() != true) {
+                result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
+            }
+        }
+        // opendma:LastModifiedAt
+        OdmaQName qnameLastModifiedAt = new OdmaQName("opendma","LastModifiedAt");
+        try {
+            OdmaProperty propLastModifiedAt = obj.getProperty(qnameLastModifiedAt);
+            if(propLastModifiedAt.getName() == null) {
+                result.add("Property opendma:LastModifiedAt qname is null");
+            }
+            if(!"opendma".equals(propLastModifiedAt.getName().getNamespace())) {
+                result.add("Property opendma:LastModifiedAt qname namespace is not 'opendma', found instead'"+propLastModifiedAt.getName().getNamespace()+"'");
+            }
+            if(!"LastModifiedAt".equals(propLastModifiedAt.getName().getName())) {
+                result.add("Property opendma:LastModifiedAt qname name is not 'LastModifiedAt', found instead'"+propLastModifiedAt.getName().getName()+"'");
+            }
+            if(propLastModifiedAt.getType() != OdmaType.DATETIME) {
+                result.add("Property opendma:LastModifiedAt type is not 'DATETIME'");
+            }
+            if(propLastModifiedAt.isMultiValue() != false) {
+                result.add("Property opendma:LastModifiedAt MultiValue is not 'false'");
+            }
+            if(!propLastModifiedAt.isReadOnly()) {
+                result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
+            }
+        } catch(OdmaPropertyNotFoundException pnfe) {
+            result.add("Missing property opendma:LastModifiedAt");
+        }
+        if(clazz != null && (new OdmaQName("opendma","AuditStamped")).equals(clazz.getQName())) {
+            OdmaPropertyInfo piDeclaredLastModifiedAt = null;
+            if(declaredProperties != null) {
+                for(OdmaPropertyInfo pi : declaredProperties) {
+                    if(qnameLastModifiedAt.equals(pi.getQName())) {
+                        if(piDeclaredLastModifiedAt == null) {
+                            piDeclaredLastModifiedAt = pi;
+                        } else {
+                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedAt");
+                        }
+                    }
+                }
+            }
+            if(piDeclaredLastModifiedAt == null) {
+                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedAt");
+            }
+            if(piDeclaredLastModifiedAt != null) {
+                if(!"opendma".equals(piDeclaredLastModifiedAt.getNamespace())) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties qname namespace is not 'opendma'");
+                }
+                if(!"LastModifiedAt".equals(piDeclaredLastModifiedAt.getName())) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties qname name is not 'LastModifiedAt'");
+                }
+                if(piDeclaredLastModifiedAt.getDataType() != 8) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties data type is not '8'");
+                }
+                if(piDeclaredLastModifiedAt.isMultiValue() != false) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties MultiValue is not 'false'");
+                }
+                if(piDeclaredLastModifiedAt.isReadOnly() != true) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties ReadOnly is not 'true'");
+                }
+                if(piDeclaredLastModifiedAt.isHidden() != false) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
+                }
+                if(piDeclaredLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
+                }
+                if(piDeclaredLastModifiedAt.isSystem() != true) {
+                    result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
+                }
+            }
+        }
+        OdmaPropertyInfo piAllLastModifiedAt = null;
+        if(allProperties != null) {
+            for(OdmaPropertyInfo pi : allProperties) {
+                if(qnameLastModifiedAt.equals(pi.getQName())) {
+                    if(piAllLastModifiedAt == null) {
+                        piAllLastModifiedAt = pi;
+                    } else {
+                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedAt");
+                    }
+                }
+            }
+        }
+        if(piAllLastModifiedAt == null) {
+            result.add("All properties in class have no property info object with qname opendma:LastModifiedAt");
+        }
+        if(piAllLastModifiedAt != null) {
+            if(!"opendma".equals(piAllLastModifiedAt.getNamespace())) {
+                result.add("Property info for opendma:LastModifiedAt in all properties qname namespace is not 'opendma'");
+            }
+            if(!"LastModifiedAt".equals(piAllLastModifiedAt.getName())) {
+                result.add("Property info for opendma:LastModifiedAt in all properties qname name is not 'LastModifiedAt'");
+            }
+            if(piAllLastModifiedAt.getDataType() != 8) {
+                result.add("Property info for opendma:LastModifiedAt in all properties data type is not '8'");
+            }
+            if(piAllLastModifiedAt.isMultiValue() != false) {
+                result.add("Property info for opendma:LastModifiedAt in all properties MultiValue is not 'false'");
+            }
+            if(piAllLastModifiedAt.isReadOnly() != true) {
+                result.add("Property info for opendma:LastModifiedAt in all properties ReadOnly is not 'true'");
+            }
+            if(piAllLastModifiedAt.isHidden() != false) {
+                result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
+            }
+            if(piAllLastModifiedAt.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
+            }
+            if(piAllLastModifiedAt.isSystem() != true) {
+                result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
+            }
+        }
+        // opendma:LastModifiedBy
+        OdmaQName qnameLastModifiedBy = new OdmaQName("opendma","LastModifiedBy");
+        try {
+            OdmaProperty propLastModifiedBy = obj.getProperty(qnameLastModifiedBy);
+            if(propLastModifiedBy.getName() == null) {
+                result.add("Property opendma:LastModifiedBy qname is null");
+            }
+            if(!"opendma".equals(propLastModifiedBy.getName().getNamespace())) {
+                result.add("Property opendma:LastModifiedBy qname namespace is not 'opendma', found instead'"+propLastModifiedBy.getName().getNamespace()+"'");
+            }
+            if(!"LastModifiedBy".equals(propLastModifiedBy.getName().getName())) {
+                result.add("Property opendma:LastModifiedBy qname name is not 'LastModifiedBy', found instead'"+propLastModifiedBy.getName().getName()+"'");
+            }
+            if(propLastModifiedBy.getType() != OdmaType.STRING) {
+                result.add("Property opendma:LastModifiedBy type is not 'STRING'");
+            }
+            if(propLastModifiedBy.isMultiValue() != false) {
+                result.add("Property opendma:LastModifiedBy MultiValue is not 'false'");
+            }
+            if(!propLastModifiedBy.isReadOnly()) {
+                result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
+            }
+        } catch(OdmaPropertyNotFoundException pnfe) {
+            result.add("Missing property opendma:LastModifiedBy");
+        }
+        if(clazz != null && (new OdmaQName("opendma","AuditStamped")).equals(clazz.getQName())) {
+            OdmaPropertyInfo piDeclaredLastModifiedBy = null;
+            if(declaredProperties != null) {
+                for(OdmaPropertyInfo pi : declaredProperties) {
+                    if(qnameLastModifiedBy.equals(pi.getQName())) {
+                        if(piDeclaredLastModifiedBy == null) {
+                            piDeclaredLastModifiedBy = pi;
+                        } else {
+                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedBy");
+                        }
+                    }
+                }
+            }
+            if(piDeclaredLastModifiedBy == null) {
+                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedBy");
+            }
+            if(piDeclaredLastModifiedBy != null) {
+                if(!"opendma".equals(piDeclaredLastModifiedBy.getNamespace())) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties qname namespace is not 'opendma'");
+                }
+                if(!"LastModifiedBy".equals(piDeclaredLastModifiedBy.getName())) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties qname name is not 'LastModifiedBy'");
+                }
+                if(piDeclaredLastModifiedBy.getDataType() != 1) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties data type is not '1'");
+                }
+                if(piDeclaredLastModifiedBy.isMultiValue() != false) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties MultiValue is not 'false'");
+                }
+                if(piDeclaredLastModifiedBy.isReadOnly() != true) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties ReadOnly is not 'true'");
+                }
+                if(piDeclaredLastModifiedBy.isHidden() != false) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
+                }
+                if(piDeclaredLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
+                }
+                if(piDeclaredLastModifiedBy.isSystem() != true) {
+                    result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
+                }
+            }
+        }
+        OdmaPropertyInfo piAllLastModifiedBy = null;
+        if(allProperties != null) {
+            for(OdmaPropertyInfo pi : allProperties) {
+                if(qnameLastModifiedBy.equals(pi.getQName())) {
+                    if(piAllLastModifiedBy == null) {
+                        piAllLastModifiedBy = pi;
+                    } else {
+                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedBy");
+                    }
+                }
+            }
+        }
+        if(piAllLastModifiedBy == null) {
+            result.add("All properties in class have no property info object with qname opendma:LastModifiedBy");
+        }
+        if(piAllLastModifiedBy != null) {
+            if(!"opendma".equals(piAllLastModifiedBy.getNamespace())) {
+                result.add("Property info for opendma:LastModifiedBy in all properties qname namespace is not 'opendma'");
+            }
+            if(!"LastModifiedBy".equals(piAllLastModifiedBy.getName())) {
+                result.add("Property info for opendma:LastModifiedBy in all properties qname name is not 'LastModifiedBy'");
+            }
+            if(piAllLastModifiedBy.getDataType() != 1) {
+                result.add("Property info for opendma:LastModifiedBy in all properties data type is not '1'");
+            }
+            if(piAllLastModifiedBy.isMultiValue() != false) {
+                result.add("Property info for opendma:LastModifiedBy in all properties MultiValue is not 'false'");
+            }
+            if(piAllLastModifiedBy.isReadOnly() != true) {
+                result.add("Property info for opendma:LastModifiedBy in all properties ReadOnly is not 'true'");
+            }
+            if(piAllLastModifiedBy.isHidden() != false) {
+                result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
+            }
+            if(piAllLastModifiedBy.isRequired() != false) {
+                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
+            }
+            if(piAllLastModifiedBy.isSystem() != true) {
+                result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");
+            }
+        }
+        return result;
+    }
+
     public static List<String> verifyOdmaDocument(OdmaObject obj) {
         LinkedList<String> result = new LinkedList<>();
         if(!(obj instanceof OdmaDocument)) {
@@ -6341,442 +6790,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(piAllPrimaryContentElement.isSystem() != true) {
                 result.add("Property info for opendma:PrimaryContentElement in all properties System is not 'true'");
-            }
-        }
-        // opendma:CreatedAt
-        OdmaQName qnameCreatedAt = new OdmaQName("opendma","CreatedAt");
-        try {
-            OdmaProperty propCreatedAt = obj.getProperty(qnameCreatedAt);
-            if(propCreatedAt.getName() == null) {
-                result.add("Property opendma:CreatedAt qname is null");
-            }
-            if(!"opendma".equals(propCreatedAt.getName().getNamespace())) {
-                result.add("Property opendma:CreatedAt qname namespace is not 'opendma', found instead'"+propCreatedAt.getName().getNamespace()+"'");
-            }
-            if(!"CreatedAt".equals(propCreatedAt.getName().getName())) {
-                result.add("Property opendma:CreatedAt qname name is not 'CreatedAt', found instead'"+propCreatedAt.getName().getName()+"'");
-            }
-            if(propCreatedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:CreatedAt type is not 'DATETIME'");
-            }
-            if(propCreatedAt.isMultiValue() != false) {
-                result.add("Property opendma:CreatedAt MultiValue is not 'false'");
-            }
-            if(!propCreatedAt.isReadOnly()) {
-                result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Document")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedAt.equals(pi.getQName())) {
-                        if(piDeclaredCreatedAt == null) {
-                            piDeclaredCreatedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedAt");
-            }
-            if(piDeclaredCreatedAt != null) {
-                if(!"opendma".equals(piDeclaredCreatedAt.getNamespace())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedAt".equals(piDeclaredCreatedAt.getName())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname name is not 'CreatedAt'");
-                }
-                if(piDeclaredCreatedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:CreatedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredCreatedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedAt.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isRequired() != false) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedAt.equals(pi.getQName())) {
-                    if(piAllCreatedAt == null) {
-                        piAllCreatedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedAt");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedAt");
-        }
-        if(piAllCreatedAt != null) {
-            if(!"opendma".equals(piAllCreatedAt.getNamespace())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedAt".equals(piAllCreatedAt.getName())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname name is not 'CreatedAt'");
-            }
-            if(piAllCreatedAt.getDataType() != 8) {
-                result.add("Property info for opendma:CreatedAt in all properties data type is not '8'");
-            }
-            if(piAllCreatedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedAt.isHidden() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedAt.isRequired() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
-            }
-            if(piAllCreatedAt.isSystem() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:CreatedBy
-        OdmaQName qnameCreatedBy = new OdmaQName("opendma","CreatedBy");
-        try {
-            OdmaProperty propCreatedBy = obj.getProperty(qnameCreatedBy);
-            if(propCreatedBy.getName() == null) {
-                result.add("Property opendma:CreatedBy qname is null");
-            }
-            if(!"opendma".equals(propCreatedBy.getName().getNamespace())) {
-                result.add("Property opendma:CreatedBy qname namespace is not 'opendma', found instead'"+propCreatedBy.getName().getNamespace()+"'");
-            }
-            if(!"CreatedBy".equals(propCreatedBy.getName().getName())) {
-                result.add("Property opendma:CreatedBy qname name is not 'CreatedBy', found instead'"+propCreatedBy.getName().getName()+"'");
-            }
-            if(propCreatedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:CreatedBy type is not 'STRING'");
-            }
-            if(propCreatedBy.isMultiValue() != false) {
-                result.add("Property opendma:CreatedBy MultiValue is not 'false'");
-            }
-            if(!propCreatedBy.isReadOnly()) {
-                result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Document")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedBy.equals(pi.getQName())) {
-                        if(piDeclaredCreatedBy == null) {
-                            piDeclaredCreatedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedBy");
-            }
-            if(piDeclaredCreatedBy != null) {
-                if(!"opendma".equals(piDeclaredCreatedBy.getNamespace())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedBy".equals(piDeclaredCreatedBy.getName())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname name is not 'CreatedBy'");
-                }
-                if(piDeclaredCreatedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:CreatedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredCreatedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedBy.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isRequired() != false) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedBy.equals(pi.getQName())) {
-                    if(piAllCreatedBy == null) {
-                        piAllCreatedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedBy");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedBy");
-        }
-        if(piAllCreatedBy != null) {
-            if(!"opendma".equals(piAllCreatedBy.getNamespace())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedBy".equals(piAllCreatedBy.getName())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname name is not 'CreatedBy'");
-            }
-            if(piAllCreatedBy.getDataType() != 1) {
-                result.add("Property info for opendma:CreatedBy in all properties data type is not '1'");
-            }
-            if(piAllCreatedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedBy.isHidden() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedBy.isRequired() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
-            }
-            if(piAllCreatedBy.isSystem() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
-            }
-        }
-        // opendma:LastModifiedAt
-        OdmaQName qnameLastModifiedAt = new OdmaQName("opendma","LastModifiedAt");
-        try {
-            OdmaProperty propLastModifiedAt = obj.getProperty(qnameLastModifiedAt);
-            if(propLastModifiedAt.getName() == null) {
-                result.add("Property opendma:LastModifiedAt qname is null");
-            }
-            if(!"opendma".equals(propLastModifiedAt.getName().getNamespace())) {
-                result.add("Property opendma:LastModifiedAt qname namespace is not 'opendma', found instead'"+propLastModifiedAt.getName().getNamespace()+"'");
-            }
-            if(!"LastModifiedAt".equals(propLastModifiedAt.getName().getName())) {
-                result.add("Property opendma:LastModifiedAt qname name is not 'LastModifiedAt', found instead'"+propLastModifiedAt.getName().getName()+"'");
-            }
-            if(propLastModifiedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:LastModifiedAt type is not 'DATETIME'");
-            }
-            if(propLastModifiedAt.isMultiValue() != false) {
-                result.add("Property opendma:LastModifiedAt MultiValue is not 'false'");
-            }
-            if(!propLastModifiedAt.isReadOnly()) {
-                result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:LastModifiedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Document")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredLastModifiedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameLastModifiedAt.equals(pi.getQName())) {
-                        if(piDeclaredLastModifiedAt == null) {
-                            piDeclaredLastModifiedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredLastModifiedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedAt");
-            }
-            if(piDeclaredLastModifiedAt != null) {
-                if(!"opendma".equals(piDeclaredLastModifiedAt.getNamespace())) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"LastModifiedAt".equals(piDeclaredLastModifiedAt.getName())) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties qname name is not 'LastModifiedAt'");
-                }
-                if(piDeclaredLastModifiedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredLastModifiedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredLastModifiedAt.isHidden() != false) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isSystem() != true) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllLastModifiedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameLastModifiedAt.equals(pi.getQName())) {
-                    if(piAllLastModifiedAt == null) {
-                        piAllLastModifiedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedAt");
-                    }
-                }
-            }
-        }
-        if(piAllLastModifiedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:LastModifiedAt");
-        }
-        if(piAllLastModifiedAt != null) {
-            if(!"opendma".equals(piAllLastModifiedAt.getNamespace())) {
-                result.add("Property info for opendma:LastModifiedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"LastModifiedAt".equals(piAllLastModifiedAt.getName())) {
-                result.add("Property info for opendma:LastModifiedAt in all properties qname name is not 'LastModifiedAt'");
-            }
-            if(piAllLastModifiedAt.getDataType() != 8) {
-                result.add("Property info for opendma:LastModifiedAt in all properties data type is not '8'");
-            }
-            if(piAllLastModifiedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllLastModifiedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllLastModifiedAt.isHidden() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllLastModifiedAt.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
-            }
-            if(piAllLastModifiedAt.isSystem() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:LastModifiedBy
-        OdmaQName qnameLastModifiedBy = new OdmaQName("opendma","LastModifiedBy");
-        try {
-            OdmaProperty propLastModifiedBy = obj.getProperty(qnameLastModifiedBy);
-            if(propLastModifiedBy.getName() == null) {
-                result.add("Property opendma:LastModifiedBy qname is null");
-            }
-            if(!"opendma".equals(propLastModifiedBy.getName().getNamespace())) {
-                result.add("Property opendma:LastModifiedBy qname namespace is not 'opendma', found instead'"+propLastModifiedBy.getName().getNamespace()+"'");
-            }
-            if(!"LastModifiedBy".equals(propLastModifiedBy.getName().getName())) {
-                result.add("Property opendma:LastModifiedBy qname name is not 'LastModifiedBy', found instead'"+propLastModifiedBy.getName().getName()+"'");
-            }
-            if(propLastModifiedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:LastModifiedBy type is not 'STRING'");
-            }
-            if(propLastModifiedBy.isMultiValue() != false) {
-                result.add("Property opendma:LastModifiedBy MultiValue is not 'false'");
-            }
-            if(!propLastModifiedBy.isReadOnly()) {
-                result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:LastModifiedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Document")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredLastModifiedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameLastModifiedBy.equals(pi.getQName())) {
-                        if(piDeclaredLastModifiedBy == null) {
-                            piDeclaredLastModifiedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredLastModifiedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedBy");
-            }
-            if(piDeclaredLastModifiedBy != null) {
-                if(!"opendma".equals(piDeclaredLastModifiedBy.getNamespace())) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"LastModifiedBy".equals(piDeclaredLastModifiedBy.getName())) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties qname name is not 'LastModifiedBy'");
-                }
-                if(piDeclaredLastModifiedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredLastModifiedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredLastModifiedBy.isHidden() != false) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isSystem() != true) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllLastModifiedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameLastModifiedBy.equals(pi.getQName())) {
-                    if(piAllLastModifiedBy == null) {
-                        piAllLastModifiedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedBy");
-                    }
-                }
-            }
-        }
-        if(piAllLastModifiedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:LastModifiedBy");
-        }
-        if(piAllLastModifiedBy != null) {
-            if(!"opendma".equals(piAllLastModifiedBy.getNamespace())) {
-                result.add("Property info for opendma:LastModifiedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"LastModifiedBy".equals(piAllLastModifiedBy.getName())) {
-                result.add("Property info for opendma:LastModifiedBy in all properties qname name is not 'LastModifiedBy'");
-            }
-            if(piAllLastModifiedBy.getDataType() != 1) {
-                result.add("Property info for opendma:LastModifiedBy in all properties data type is not '1'");
-            }
-            if(piAllLastModifiedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllLastModifiedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllLastModifiedBy.isHidden() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllLastModifiedBy.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
-            }
-            if(piAllLastModifiedBy.isSystem() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");
             }
         }
         // opendma:CheckedOut
@@ -8628,442 +8641,6 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property info for opendma:Associations in all properties System is not 'true'");
             }
         }
-        // opendma:CreatedAt
-        OdmaQName qnameCreatedAt = new OdmaQName("opendma","CreatedAt");
-        try {
-            OdmaProperty propCreatedAt = obj.getProperty(qnameCreatedAt);
-            if(propCreatedAt.getName() == null) {
-                result.add("Property opendma:CreatedAt qname is null");
-            }
-            if(!"opendma".equals(propCreatedAt.getName().getNamespace())) {
-                result.add("Property opendma:CreatedAt qname namespace is not 'opendma', found instead'"+propCreatedAt.getName().getNamespace()+"'");
-            }
-            if(!"CreatedAt".equals(propCreatedAt.getName().getName())) {
-                result.add("Property opendma:CreatedAt qname name is not 'CreatedAt', found instead'"+propCreatedAt.getName().getName()+"'");
-            }
-            if(propCreatedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:CreatedAt type is not 'DATETIME'");
-            }
-            if(propCreatedAt.isMultiValue() != false) {
-                result.add("Property opendma:CreatedAt MultiValue is not 'false'");
-            }
-            if(!propCreatedAt.isReadOnly()) {
-                result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Container")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedAt.equals(pi.getQName())) {
-                        if(piDeclaredCreatedAt == null) {
-                            piDeclaredCreatedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedAt");
-            }
-            if(piDeclaredCreatedAt != null) {
-                if(!"opendma".equals(piDeclaredCreatedAt.getNamespace())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedAt".equals(piDeclaredCreatedAt.getName())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname name is not 'CreatedAt'");
-                }
-                if(piDeclaredCreatedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:CreatedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredCreatedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedAt.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isRequired() != false) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedAt.equals(pi.getQName())) {
-                    if(piAllCreatedAt == null) {
-                        piAllCreatedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedAt");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedAt");
-        }
-        if(piAllCreatedAt != null) {
-            if(!"opendma".equals(piAllCreatedAt.getNamespace())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedAt".equals(piAllCreatedAt.getName())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname name is not 'CreatedAt'");
-            }
-            if(piAllCreatedAt.getDataType() != 8) {
-                result.add("Property info for opendma:CreatedAt in all properties data type is not '8'");
-            }
-            if(piAllCreatedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedAt.isHidden() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedAt.isRequired() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
-            }
-            if(piAllCreatedAt.isSystem() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:CreatedBy
-        OdmaQName qnameCreatedBy = new OdmaQName("opendma","CreatedBy");
-        try {
-            OdmaProperty propCreatedBy = obj.getProperty(qnameCreatedBy);
-            if(propCreatedBy.getName() == null) {
-                result.add("Property opendma:CreatedBy qname is null");
-            }
-            if(!"opendma".equals(propCreatedBy.getName().getNamespace())) {
-                result.add("Property opendma:CreatedBy qname namespace is not 'opendma', found instead'"+propCreatedBy.getName().getNamespace()+"'");
-            }
-            if(!"CreatedBy".equals(propCreatedBy.getName().getName())) {
-                result.add("Property opendma:CreatedBy qname name is not 'CreatedBy', found instead'"+propCreatedBy.getName().getName()+"'");
-            }
-            if(propCreatedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:CreatedBy type is not 'STRING'");
-            }
-            if(propCreatedBy.isMultiValue() != false) {
-                result.add("Property opendma:CreatedBy MultiValue is not 'false'");
-            }
-            if(!propCreatedBy.isReadOnly()) {
-                result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Container")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedBy.equals(pi.getQName())) {
-                        if(piDeclaredCreatedBy == null) {
-                            piDeclaredCreatedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedBy");
-            }
-            if(piDeclaredCreatedBy != null) {
-                if(!"opendma".equals(piDeclaredCreatedBy.getNamespace())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedBy".equals(piDeclaredCreatedBy.getName())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname name is not 'CreatedBy'");
-                }
-                if(piDeclaredCreatedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:CreatedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredCreatedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedBy.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isRequired() != false) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedBy.equals(pi.getQName())) {
-                    if(piAllCreatedBy == null) {
-                        piAllCreatedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedBy");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedBy");
-        }
-        if(piAllCreatedBy != null) {
-            if(!"opendma".equals(piAllCreatedBy.getNamespace())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedBy".equals(piAllCreatedBy.getName())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname name is not 'CreatedBy'");
-            }
-            if(piAllCreatedBy.getDataType() != 1) {
-                result.add("Property info for opendma:CreatedBy in all properties data type is not '1'");
-            }
-            if(piAllCreatedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedBy.isHidden() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedBy.isRequired() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
-            }
-            if(piAllCreatedBy.isSystem() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
-            }
-        }
-        // opendma:LastModifiedAt
-        OdmaQName qnameLastModifiedAt = new OdmaQName("opendma","LastModifiedAt");
-        try {
-            OdmaProperty propLastModifiedAt = obj.getProperty(qnameLastModifiedAt);
-            if(propLastModifiedAt.getName() == null) {
-                result.add("Property opendma:LastModifiedAt qname is null");
-            }
-            if(!"opendma".equals(propLastModifiedAt.getName().getNamespace())) {
-                result.add("Property opendma:LastModifiedAt qname namespace is not 'opendma', found instead'"+propLastModifiedAt.getName().getNamespace()+"'");
-            }
-            if(!"LastModifiedAt".equals(propLastModifiedAt.getName().getName())) {
-                result.add("Property opendma:LastModifiedAt qname name is not 'LastModifiedAt', found instead'"+propLastModifiedAt.getName().getName()+"'");
-            }
-            if(propLastModifiedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:LastModifiedAt type is not 'DATETIME'");
-            }
-            if(propLastModifiedAt.isMultiValue() != false) {
-                result.add("Property opendma:LastModifiedAt MultiValue is not 'false'");
-            }
-            if(!propLastModifiedAt.isReadOnly()) {
-                result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:LastModifiedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Container")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredLastModifiedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameLastModifiedAt.equals(pi.getQName())) {
-                        if(piDeclaredLastModifiedAt == null) {
-                            piDeclaredLastModifiedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredLastModifiedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedAt");
-            }
-            if(piDeclaredLastModifiedAt != null) {
-                if(!"opendma".equals(piDeclaredLastModifiedAt.getNamespace())) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"LastModifiedAt".equals(piDeclaredLastModifiedAt.getName())) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties qname name is not 'LastModifiedAt'");
-                }
-                if(piDeclaredLastModifiedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredLastModifiedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredLastModifiedAt.isHidden() != false) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isSystem() != true) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllLastModifiedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameLastModifiedAt.equals(pi.getQName())) {
-                    if(piAllLastModifiedAt == null) {
-                        piAllLastModifiedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedAt");
-                    }
-                }
-            }
-        }
-        if(piAllLastModifiedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:LastModifiedAt");
-        }
-        if(piAllLastModifiedAt != null) {
-            if(!"opendma".equals(piAllLastModifiedAt.getNamespace())) {
-                result.add("Property info for opendma:LastModifiedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"LastModifiedAt".equals(piAllLastModifiedAt.getName())) {
-                result.add("Property info for opendma:LastModifiedAt in all properties qname name is not 'LastModifiedAt'");
-            }
-            if(piAllLastModifiedAt.getDataType() != 8) {
-                result.add("Property info for opendma:LastModifiedAt in all properties data type is not '8'");
-            }
-            if(piAllLastModifiedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllLastModifiedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllLastModifiedAt.isHidden() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllLastModifiedAt.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
-            }
-            if(piAllLastModifiedAt.isSystem() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:LastModifiedBy
-        OdmaQName qnameLastModifiedBy = new OdmaQName("opendma","LastModifiedBy");
-        try {
-            OdmaProperty propLastModifiedBy = obj.getProperty(qnameLastModifiedBy);
-            if(propLastModifiedBy.getName() == null) {
-                result.add("Property opendma:LastModifiedBy qname is null");
-            }
-            if(!"opendma".equals(propLastModifiedBy.getName().getNamespace())) {
-                result.add("Property opendma:LastModifiedBy qname namespace is not 'opendma', found instead'"+propLastModifiedBy.getName().getNamespace()+"'");
-            }
-            if(!"LastModifiedBy".equals(propLastModifiedBy.getName().getName())) {
-                result.add("Property opendma:LastModifiedBy qname name is not 'LastModifiedBy', found instead'"+propLastModifiedBy.getName().getName()+"'");
-            }
-            if(propLastModifiedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:LastModifiedBy type is not 'STRING'");
-            }
-            if(propLastModifiedBy.isMultiValue() != false) {
-                result.add("Property opendma:LastModifiedBy MultiValue is not 'false'");
-            }
-            if(!propLastModifiedBy.isReadOnly()) {
-                result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:LastModifiedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Container")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredLastModifiedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameLastModifiedBy.equals(pi.getQName())) {
-                        if(piDeclaredLastModifiedBy == null) {
-                            piDeclaredLastModifiedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredLastModifiedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedBy");
-            }
-            if(piDeclaredLastModifiedBy != null) {
-                if(!"opendma".equals(piDeclaredLastModifiedBy.getNamespace())) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"LastModifiedBy".equals(piDeclaredLastModifiedBy.getName())) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties qname name is not 'LastModifiedBy'");
-                }
-                if(piDeclaredLastModifiedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredLastModifiedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredLastModifiedBy.isHidden() != false) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isSystem() != true) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllLastModifiedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameLastModifiedBy.equals(pi.getQName())) {
-                    if(piAllLastModifiedBy == null) {
-                        piAllLastModifiedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedBy");
-                    }
-                }
-            }
-        }
-        if(piAllLastModifiedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:LastModifiedBy");
-        }
-        if(piAllLastModifiedBy != null) {
-            if(!"opendma".equals(piAllLastModifiedBy.getNamespace())) {
-                result.add("Property info for opendma:LastModifiedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"LastModifiedBy".equals(piAllLastModifiedBy.getName())) {
-                result.add("Property info for opendma:LastModifiedBy in all properties qname name is not 'LastModifiedBy'");
-            }
-            if(piAllLastModifiedBy.getDataType() != 1) {
-                result.add("Property info for opendma:LastModifiedBy in all properties data type is not '1'");
-            }
-            if(piAllLastModifiedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllLastModifiedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllLastModifiedBy.isHidden() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllLastModifiedBy.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
-            }
-            if(piAllLastModifiedBy.isSystem() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");
-            }
-        }
         return result;
     }
 
@@ -9906,442 +9483,6 @@ public class OdmaTechnologyCompatibilityKit {
             }
             if(piAllContainable.isSystem() != true) {
                 result.add("Property info for opendma:Containable in all properties System is not 'true'");
-            }
-        }
-        // opendma:CreatedAt
-        OdmaQName qnameCreatedAt = new OdmaQName("opendma","CreatedAt");
-        try {
-            OdmaProperty propCreatedAt = obj.getProperty(qnameCreatedAt);
-            if(propCreatedAt.getName() == null) {
-                result.add("Property opendma:CreatedAt qname is null");
-            }
-            if(!"opendma".equals(propCreatedAt.getName().getNamespace())) {
-                result.add("Property opendma:CreatedAt qname namespace is not 'opendma', found instead'"+propCreatedAt.getName().getNamespace()+"'");
-            }
-            if(!"CreatedAt".equals(propCreatedAt.getName().getName())) {
-                result.add("Property opendma:CreatedAt qname name is not 'CreatedAt', found instead'"+propCreatedAt.getName().getName()+"'");
-            }
-            if(propCreatedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:CreatedAt type is not 'DATETIME'");
-            }
-            if(propCreatedAt.isMultiValue() != false) {
-                result.add("Property opendma:CreatedAt MultiValue is not 'false'");
-            }
-            if(!propCreatedAt.isReadOnly()) {
-                result.add("Property opendma:CreatedAt ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Association")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedAt.equals(pi.getQName())) {
-                        if(piDeclaredCreatedAt == null) {
-                            piDeclaredCreatedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedAt");
-            }
-            if(piDeclaredCreatedAt != null) {
-                if(!"opendma".equals(piDeclaredCreatedAt.getNamespace())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedAt".equals(piDeclaredCreatedAt.getName())) {
-                    result.add("Property info for opendma:CreatedAt in declared properties qname name is not 'CreatedAt'");
-                }
-                if(piDeclaredCreatedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:CreatedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredCreatedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedAt.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isRequired() != false) {
-                result.add("Property info for opendma:CreatedAt in declared properties Required is not 'false'");
-                }
-                if(piDeclaredCreatedAt.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedAt.equals(pi.getQName())) {
-                    if(piAllCreatedAt == null) {
-                        piAllCreatedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedAt");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedAt");
-        }
-        if(piAllCreatedAt != null) {
-            if(!"opendma".equals(piAllCreatedAt.getNamespace())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedAt".equals(piAllCreatedAt.getName())) {
-                result.add("Property info for opendma:CreatedAt in all properties qname name is not 'CreatedAt'");
-            }
-            if(piAllCreatedAt.getDataType() != 8) {
-                result.add("Property info for opendma:CreatedAt in all properties data type is not '8'");
-            }
-            if(piAllCreatedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedAt.isHidden() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedAt.isRequired() != false) {
-                result.add("Property info for opendma:CreatedAt in all properties Required is not 'false'");
-            }
-            if(piAllCreatedAt.isSystem() != true) {
-                result.add("Property info for opendma:CreatedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:CreatedBy
-        OdmaQName qnameCreatedBy = new OdmaQName("opendma","CreatedBy");
-        try {
-            OdmaProperty propCreatedBy = obj.getProperty(qnameCreatedBy);
-            if(propCreatedBy.getName() == null) {
-                result.add("Property opendma:CreatedBy qname is null");
-            }
-            if(!"opendma".equals(propCreatedBy.getName().getNamespace())) {
-                result.add("Property opendma:CreatedBy qname namespace is not 'opendma', found instead'"+propCreatedBy.getName().getNamespace()+"'");
-            }
-            if(!"CreatedBy".equals(propCreatedBy.getName().getName())) {
-                result.add("Property opendma:CreatedBy qname name is not 'CreatedBy', found instead'"+propCreatedBy.getName().getName()+"'");
-            }
-            if(propCreatedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:CreatedBy type is not 'STRING'");
-            }
-            if(propCreatedBy.isMultiValue() != false) {
-                result.add("Property opendma:CreatedBy MultiValue is not 'false'");
-            }
-            if(!propCreatedBy.isReadOnly()) {
-                result.add("Property opendma:CreatedBy ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:CreatedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Association")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredCreatedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameCreatedBy.equals(pi.getQName())) {
-                        if(piDeclaredCreatedBy == null) {
-                            piDeclaredCreatedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:CreatedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredCreatedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:CreatedBy");
-            }
-            if(piDeclaredCreatedBy != null) {
-                if(!"opendma".equals(piDeclaredCreatedBy.getNamespace())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"CreatedBy".equals(piDeclaredCreatedBy.getName())) {
-                    result.add("Property info for opendma:CreatedBy in declared properties qname name is not 'CreatedBy'");
-                }
-                if(piDeclaredCreatedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:CreatedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredCreatedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredCreatedBy.isHidden() != false) {
-                    result.add("Property info for opendma:CreatedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isRequired() != false) {
-                result.add("Property info for opendma:CreatedBy in declared properties Required is not 'false'");
-                }
-                if(piDeclaredCreatedBy.isSystem() != true) {
-                    result.add("Property info for opendma:CreatedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllCreatedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameCreatedBy.equals(pi.getQName())) {
-                    if(piAllCreatedBy == null) {
-                        piAllCreatedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:CreatedBy");
-                    }
-                }
-            }
-        }
-        if(piAllCreatedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:CreatedBy");
-        }
-        if(piAllCreatedBy != null) {
-            if(!"opendma".equals(piAllCreatedBy.getNamespace())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"CreatedBy".equals(piAllCreatedBy.getName())) {
-                result.add("Property info for opendma:CreatedBy in all properties qname name is not 'CreatedBy'");
-            }
-            if(piAllCreatedBy.getDataType() != 1) {
-                result.add("Property info for opendma:CreatedBy in all properties data type is not '1'");
-            }
-            if(piAllCreatedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllCreatedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllCreatedBy.isHidden() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllCreatedBy.isRequired() != false) {
-                result.add("Property info for opendma:CreatedBy in all properties Required is not 'false'");
-            }
-            if(piAllCreatedBy.isSystem() != true) {
-                result.add("Property info for opendma:CreatedBy in all properties System is not 'true'");
-            }
-        }
-        // opendma:LastModifiedAt
-        OdmaQName qnameLastModifiedAt = new OdmaQName("opendma","LastModifiedAt");
-        try {
-            OdmaProperty propLastModifiedAt = obj.getProperty(qnameLastModifiedAt);
-            if(propLastModifiedAt.getName() == null) {
-                result.add("Property opendma:LastModifiedAt qname is null");
-            }
-            if(!"opendma".equals(propLastModifiedAt.getName().getNamespace())) {
-                result.add("Property opendma:LastModifiedAt qname namespace is not 'opendma', found instead'"+propLastModifiedAt.getName().getNamespace()+"'");
-            }
-            if(!"LastModifiedAt".equals(propLastModifiedAt.getName().getName())) {
-                result.add("Property opendma:LastModifiedAt qname name is not 'LastModifiedAt', found instead'"+propLastModifiedAt.getName().getName()+"'");
-            }
-            if(propLastModifiedAt.getType() != OdmaType.DATETIME) {
-                result.add("Property opendma:LastModifiedAt type is not 'DATETIME'");
-            }
-            if(propLastModifiedAt.isMultiValue() != false) {
-                result.add("Property opendma:LastModifiedAt MultiValue is not 'false'");
-            }
-            if(!propLastModifiedAt.isReadOnly()) {
-                result.add("Property opendma:LastModifiedAt ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:LastModifiedAt");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Association")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredLastModifiedAt = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameLastModifiedAt.equals(pi.getQName())) {
-                        if(piDeclaredLastModifiedAt == null) {
-                            piDeclaredLastModifiedAt = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedAt");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredLastModifiedAt == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedAt");
-            }
-            if(piDeclaredLastModifiedAt != null) {
-                if(!"opendma".equals(piDeclaredLastModifiedAt.getNamespace())) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"LastModifiedAt".equals(piDeclaredLastModifiedAt.getName())) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties qname name is not 'LastModifiedAt'");
-                }
-                if(piDeclaredLastModifiedAt.getDataType() != 8) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties data type is not '8'");
-                }
-                if(piDeclaredLastModifiedAt.isMultiValue() != false) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isReadOnly() != true) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredLastModifiedAt.isHidden() != false) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedAt in declared properties Required is not 'false'");
-                }
-                if(piDeclaredLastModifiedAt.isSystem() != true) {
-                    result.add("Property info for opendma:LastModifiedAt in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllLastModifiedAt = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameLastModifiedAt.equals(pi.getQName())) {
-                    if(piAllLastModifiedAt == null) {
-                        piAllLastModifiedAt = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedAt");
-                    }
-                }
-            }
-        }
-        if(piAllLastModifiedAt == null) {
-            result.add("All properties in class have no property info object with qname opendma:LastModifiedAt");
-        }
-        if(piAllLastModifiedAt != null) {
-            if(!"opendma".equals(piAllLastModifiedAt.getNamespace())) {
-                result.add("Property info for opendma:LastModifiedAt in all properties qname namespace is not 'opendma'");
-            }
-            if(!"LastModifiedAt".equals(piAllLastModifiedAt.getName())) {
-                result.add("Property info for opendma:LastModifiedAt in all properties qname name is not 'LastModifiedAt'");
-            }
-            if(piAllLastModifiedAt.getDataType() != 8) {
-                result.add("Property info for opendma:LastModifiedAt in all properties data type is not '8'");
-            }
-            if(piAllLastModifiedAt.isMultiValue() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties MultiValue is not 'false'");
-            }
-            if(piAllLastModifiedAt.isReadOnly() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties ReadOnly is not 'true'");
-            }
-            if(piAllLastModifiedAt.isHidden() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Hidden is not 'false'");
-            }
-            if(piAllLastModifiedAt.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedAt in all properties Required is not 'false'");
-            }
-            if(piAllLastModifiedAt.isSystem() != true) {
-                result.add("Property info for opendma:LastModifiedAt in all properties System is not 'true'");
-            }
-        }
-        // opendma:LastModifiedBy
-        OdmaQName qnameLastModifiedBy = new OdmaQName("opendma","LastModifiedBy");
-        try {
-            OdmaProperty propLastModifiedBy = obj.getProperty(qnameLastModifiedBy);
-            if(propLastModifiedBy.getName() == null) {
-                result.add("Property opendma:LastModifiedBy qname is null");
-            }
-            if(!"opendma".equals(propLastModifiedBy.getName().getNamespace())) {
-                result.add("Property opendma:LastModifiedBy qname namespace is not 'opendma', found instead'"+propLastModifiedBy.getName().getNamespace()+"'");
-            }
-            if(!"LastModifiedBy".equals(propLastModifiedBy.getName().getName())) {
-                result.add("Property opendma:LastModifiedBy qname name is not 'LastModifiedBy', found instead'"+propLastModifiedBy.getName().getName()+"'");
-            }
-            if(propLastModifiedBy.getType() != OdmaType.STRING) {
-                result.add("Property opendma:LastModifiedBy type is not 'STRING'");
-            }
-            if(propLastModifiedBy.isMultiValue() != false) {
-                result.add("Property opendma:LastModifiedBy MultiValue is not 'false'");
-            }
-            if(!propLastModifiedBy.isReadOnly()) {
-                result.add("Property opendma:LastModifiedBy ReadOnly must be 'true'");
-            }
-        } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:LastModifiedBy");
-        }
-        if(clazz != null && (new OdmaQName("opendma","Association")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredLastModifiedBy = null;
-            if(declaredProperties != null) {
-                for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameLastModifiedBy.equals(pi.getQName())) {
-                        if(piDeclaredLastModifiedBy == null) {
-                            piDeclaredLastModifiedBy = pi;
-                        } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:LastModifiedBy");
-                        }
-                    }
-                }
-            }
-            if(piDeclaredLastModifiedBy == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:LastModifiedBy");
-            }
-            if(piDeclaredLastModifiedBy != null) {
-                if(!"opendma".equals(piDeclaredLastModifiedBy.getNamespace())) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties qname namespace is not 'opendma'");
-                }
-                if(!"LastModifiedBy".equals(piDeclaredLastModifiedBy.getName())) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties qname name is not 'LastModifiedBy'");
-                }
-                if(piDeclaredLastModifiedBy.getDataType() != 1) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties data type is not '1'");
-                }
-                if(piDeclaredLastModifiedBy.isMultiValue() != false) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties MultiValue is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isReadOnly() != true) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties ReadOnly is not 'true'");
-                }
-                if(piDeclaredLastModifiedBy.isHidden() != false) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties Hidden is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedBy in declared properties Required is not 'false'");
-                }
-                if(piDeclaredLastModifiedBy.isSystem() != true) {
-                    result.add("Property info for opendma:LastModifiedBy in declared properties System is not 'true'");
-                }
-            }
-        }
-        OdmaPropertyInfo piAllLastModifiedBy = null;
-        if(allProperties != null) {
-            for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameLastModifiedBy.equals(pi.getQName())) {
-                    if(piAllLastModifiedBy == null) {
-                        piAllLastModifiedBy = pi;
-                    } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:LastModifiedBy");
-                    }
-                }
-            }
-        }
-        if(piAllLastModifiedBy == null) {
-            result.add("All properties in class have no property info object with qname opendma:LastModifiedBy");
-        }
-        if(piAllLastModifiedBy != null) {
-            if(!"opendma".equals(piAllLastModifiedBy.getNamespace())) {
-                result.add("Property info for opendma:LastModifiedBy in all properties qname namespace is not 'opendma'");
-            }
-            if(!"LastModifiedBy".equals(piAllLastModifiedBy.getName())) {
-                result.add("Property info for opendma:LastModifiedBy in all properties qname name is not 'LastModifiedBy'");
-            }
-            if(piAllLastModifiedBy.getDataType() != 1) {
-                result.add("Property info for opendma:LastModifiedBy in all properties data type is not '1'");
-            }
-            if(piAllLastModifiedBy.isMultiValue() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties MultiValue is not 'false'");
-            }
-            if(piAllLastModifiedBy.isReadOnly() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties ReadOnly is not 'true'");
-            }
-            if(piAllLastModifiedBy.isHidden() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Hidden is not 'false'");
-            }
-            if(piAllLastModifiedBy.isRequired() != false) {
-                result.add("Property info for opendma:LastModifiedBy in all properties Required is not 'false'");
-            }
-            if(piAllLastModifiedBy.isSystem() != true) {
-                result.add("Property info for opendma:LastModifiedBy in all properties System is not 'true'");
             }
         }
         return result;

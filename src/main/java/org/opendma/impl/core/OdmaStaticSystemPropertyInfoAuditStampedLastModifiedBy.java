@@ -9,9 +9,9 @@ import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.exceptions.OdmaInvalidDataTypeException;
 import org.opendma.impl.OdmaPropertyImpl;
 
-public class OdmaStaticSystemPropertyInfoAssociationLastModifiedBy extends OdmaStaticSystemPropertyInfo {
+public class OdmaStaticSystemPropertyInfoAuditStampedLastModifiedBy extends OdmaStaticSystemPropertyInfo {
 
-    public OdmaStaticSystemPropertyInfoAssociationLastModifiedBy() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
+    public OdmaStaticSystemPropertyInfoAuditStampedLastModifiedBy() throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_NAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAME,OdmaCommonNames.PROPERTY_LASTMODIFIEDBY.getName(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_NAMESPACE,OdmaCommonNames.PROPERTY_LASTMODIFIEDBY.getNamespace(),OdmaType.STRING,false,true));
         properties.put(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_DISPLAYNAME,OdmaCommonNames.PROPERTY_LASTMODIFIEDBY.getName(),OdmaType.STRING,false,true));

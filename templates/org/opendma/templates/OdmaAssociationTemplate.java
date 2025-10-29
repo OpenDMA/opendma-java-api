@@ -8,7 +8,6 @@ import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaContainer;
 import org.opendma.api.OdmaContainable;
-import java.util.Date;
 
 /**
  * Template implementation of the interface <code>{@link OdmaAssociation}</code>.<p>
@@ -159,90 +158,6 @@ public class OdmaAssociationTemplate extends OdmaObjectTemplate implements OdmaA
     public void setContainable(OdmaContainable newValue) throws OdmaAccessDeniedException {
         try {
             getProperty(OdmaCommonNames.PROPERTY_CONTAINABLE).setValue(newValue);
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the timestamp when this association has been created.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
-     * 
-     * <p>Property opendma:<b>CreatedAt</b>: DateTime<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the timestamp when this association has been created
-     */
-    public Date getCreatedAt() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the user who created this association.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
-     * 
-     * <p>Property opendma:<b>CreatedBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the user who created this association
-     */
-    public String getCreatedBy() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the timestamp when this association has been modified the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
-     * 
-     * <p>Property opendma:<b>LastModifiedAt</b>: DateTime<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the timestamp when this association has been modified the last time
-     */
-    public Date getLastModifiedAt() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT).getDateTime();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the user who modified this association the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
-     * 
-     * <p>Property opendma:<b>LastModifiedBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the user who modified this association the last time
-     */
-    public String getLastModifiedBy() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);

@@ -80,6 +80,10 @@ public class OdmaProxyHandler implements InvocationHandler {
         PROPERTY_MAP.put("getRootClass", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTCLASS, OdmaType.REFERENCE, false));
         PROPERTY_MAP.put("getRootAspects", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTASPECTS, OdmaType.REFERENCE, true));
         PROPERTY_MAP.put("getRootFolder", new PropertyMapping(OdmaCommonNames.PROPERTY_ROOTFOLDER, OdmaType.REFERENCE, false));
+        PROPERTY_MAP.put("getCreatedAt", new PropertyMapping(OdmaCommonNames.PROPERTY_CREATEDAT, OdmaType.DATETIME, false));
+        PROPERTY_MAP.put("getCreatedBy", new PropertyMapping(OdmaCommonNames.PROPERTY_CREATEDBY, OdmaType.STRING, false));
+        PROPERTY_MAP.put("getLastModifiedAt", new PropertyMapping(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT, OdmaType.DATETIME, false));
+        PROPERTY_MAP.put("getLastModifiedBy", new PropertyMapping(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY, OdmaType.STRING, false));
         PROPERTY_MAP.put("getTitle", new PropertyMapping(OdmaCommonNames.PROPERTY_TITLE, OdmaType.STRING, false));
         PROPERTY_MAP.put("setTitle", new PropertyMapping(OdmaCommonNames.PROPERTY_TITLE, OdmaType.STRING, false));
         PROPERTY_MAP.put("getVersion", new PropertyMapping(OdmaCommonNames.PROPERTY_VERSION, OdmaType.STRING, false));
@@ -91,10 +95,6 @@ public class OdmaProxyHandler implements InvocationHandler {
         PROPERTY_MAP.put("setCombinedContentType", new PropertyMapping(OdmaCommonNames.PROPERTY_COMBINEDCONTENTTYPE, OdmaType.STRING, false));
         PROPERTY_MAP.put("getPrimaryContentElement", new PropertyMapping(OdmaCommonNames.PROPERTY_PRIMARYCONTENTELEMENT, OdmaType.REFERENCE, false));
         PROPERTY_MAP.put("setPrimaryContentElement", new PropertyMapping(OdmaCommonNames.PROPERTY_PRIMARYCONTENTELEMENT, OdmaType.REFERENCE, false));
-        PROPERTY_MAP.put("getCreatedAt", new PropertyMapping(OdmaCommonNames.PROPERTY_CREATEDAT, OdmaType.DATETIME, false));
-        PROPERTY_MAP.put("getCreatedBy", new PropertyMapping(OdmaCommonNames.PROPERTY_CREATEDBY, OdmaType.STRING, false));
-        PROPERTY_MAP.put("getLastModifiedAt", new PropertyMapping(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT, OdmaType.DATETIME, false));
-        PROPERTY_MAP.put("getLastModifiedBy", new PropertyMapping(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY, OdmaType.STRING, false));
         PROPERTY_MAP.put("isCheckedOut", new PropertyMapping(OdmaCommonNames.PROPERTY_CHECKEDOUT, OdmaType.BOOLEAN, false));
         PROPERTY_MAP.put("getCheckedOutAt", new PropertyMapping(OdmaCommonNames.PROPERTY_CHECKEDOUTAT, OdmaType.DATETIME, false));
         PROPERTY_MAP.put("getCheckedOutBy", new PropertyMapping(OdmaCommonNames.PROPERTY_CHECKEDOUTBY, OdmaType.STRING, false));

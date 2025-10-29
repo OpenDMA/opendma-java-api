@@ -8,7 +8,6 @@ import org.opendma.exceptions.OdmaRuntimeException;
 import org.opendma.exceptions.OdmaAccessDeniedException;
 import org.opendma.api.OdmaContainable;
 import org.opendma.api.OdmaAssociation;
-import java.util.Date;
 
 /**
  * Template implementation of the interface <code>{@link OdmaContainer}</code>.<p>
@@ -109,92 +108,6 @@ public class OdmaContainerTemplate extends OdmaObjectTemplate implements OdmaCon
         }
         catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the timestamp when this container has been created.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
-     * 
-     * <p>Property opendma:<b>CreatedAt</b>: DateTime<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the timestamp when this container has been created
-     */
-    public Date getCreatedAt() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_CREATEDAT).getDateTime();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the user who created this container.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
-     * 
-     * <p>Property opendma:<b>CreatedBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the user who created this container
-     */
-    public String getCreatedBy() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_CREATEDBY).getString();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the timestamp when this container has been modified the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
-     * 
-     * <p>Property opendma:<b>LastModifiedAt</b>: DateTime<br/>
-     * [SingleValue] [ReadOnly] [Optional]<br/>
-     * There is no definition what counts as a modification. Some systems update this timestamp when objects are added or removed, other systems only update this timestamp when properties of this object get changed.</p>
-     * 
-     * @return the timestamp when this container has been modified the last time
-     */
-    public Date getLastModifiedAt() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDAT).getDateTime();
-        }
-        catch(OdmaInvalidDataTypeException oidte) {
-            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
-        }
-        catch(OdmaPropertyNotFoundException oonfe) {
-            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
-        }
-    }
-
-    /**
-     * Returns the user who modified this container the last time.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
-     * 
-     * <p>Property opendma:<b>LastModifiedBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Optional]<br/>
-     * There is no definition what counts as a modification. Some systems update this timestamp when objects are added or removed, other systems only update this timestamp when properties of this object get changed.</p>
-     * 
-     * @return the user who modified this container the last time
-     */
-    public String getLastModifiedBy() {
-        try {
-            return getProperty(OdmaCommonNames.PROPERTY_LASTMODIFIEDBY).getString();
         }
         catch(OdmaInvalidDataTypeException oidte) {
             throw new OdmaRuntimeException("Invalid data type of system property",oidte);

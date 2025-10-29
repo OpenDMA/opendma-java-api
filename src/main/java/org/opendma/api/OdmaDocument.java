@@ -147,50 +147,6 @@ public interface OdmaDocument extends OdmaObject {
     void setPrimaryContentElement(OdmaContentElement newValue) throws OdmaAccessDeniedException;
 
     /**
-     * Returns the timestamp when this version of this document has been created.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDAT).getDateTime()</code>.
-     * 
-     * <p>Property opendma:<b>CreatedAt</b>: DateTime<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the timestamp when this version of this document has been created
-     */
-    Date getCreatedAt();
-
-    /**
-     * Returns the User who created this version of this document.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CREATEDBY).getString()</code>.
-     * 
-     * <p>Property opendma:<b>CreatedBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the User who created this version of this document
-     */
-    String getCreatedBy();
-
-    /**
-     * Returns the timestamp when this version of this document has been modified the last time.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDAT).getDateTime()</code>.
-     * 
-     * <p>Property opendma:<b>LastModifiedAt</b>: DateTime<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the timestamp when this version of this document has been modified the last time
-     */
-    Date getLastModifiedAt();
-
-    /**
-     * Returns the user who modified this version of this document the last time.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_LASTMODIFIEDBY).getString()</code>.
-     * 
-     * <p>Property opendma:<b>LastModifiedBy</b>: String<br/>
-     * [SingleValue] [ReadOnly] [Optional]</p>
-     * 
-     * @return the user who modified this version of this document the last time
-     */
-    String getLastModifiedBy();
-
-    /**
      * Returns indicates if this document is checked out.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_CHECKEDOUT).getBoolean()</code>.
      * 

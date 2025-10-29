@@ -154,6 +154,23 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>RootFolder</code> */
     public static final OdmaQName PROPERTY_ROOTFOLDER = new OdmaQName("opendma", "RootFolder");
 
+    // -----< class AuditStamped >------------------------------------------------------------------
+
+    /** qualified name of the OpenDMA system class <code>AuditStamped</code> */
+    public static final OdmaQName CLASS_AUDITSTAMPED = new OdmaQName("opendma", "AuditStamped");
+
+    /** qualified name of the OpenDMA system property <code>CreatedAt</code> */
+    public static final OdmaQName PROPERTY_CREATEDAT = new OdmaQName("opendma", "CreatedAt");
+
+    /** qualified name of the OpenDMA system property <code>CreatedBy</code> */
+    public static final OdmaQName PROPERTY_CREATEDBY = new OdmaQName("opendma", "CreatedBy");
+
+    /** qualified name of the OpenDMA system property <code>LastModifiedAt</code> */
+    public static final OdmaQName PROPERTY_LASTMODIFIEDAT = new OdmaQName("opendma", "LastModifiedAt");
+
+    /** qualified name of the OpenDMA system property <code>LastModifiedBy</code> */
+    public static final OdmaQName PROPERTY_LASTMODIFIEDBY = new OdmaQName("opendma", "LastModifiedBy");
+
     // -----< class Document >----------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Document</code> */
@@ -182,18 +199,6 @@ public class OdmaCommonNames {
 
     /** qualified name of the OpenDMA system property <code>PrimaryContentElement</code> */
     public static final OdmaQName PROPERTY_PRIMARYCONTENTELEMENT = new OdmaQName("opendma", "PrimaryContentElement");
-
-    /** qualified name of the OpenDMA system property <code>CreatedAt</code> */
-    public static final OdmaQName PROPERTY_CREATEDAT = new OdmaQName("opendma", "CreatedAt");
-
-    /** qualified name of the OpenDMA system property <code>CreatedBy</code> */
-    public static final OdmaQName PROPERTY_CREATEDBY = new OdmaQName("opendma", "CreatedBy");
-
-    /** qualified name of the OpenDMA system property <code>LastModifiedAt</code> */
-    public static final OdmaQName PROPERTY_LASTMODIFIEDAT = new OdmaQName("opendma", "LastModifiedAt");
-
-    /** qualified name of the OpenDMA system property <code>LastModifiedBy</code> */
-    public static final OdmaQName PROPERTY_LASTMODIFIEDBY = new OdmaQName("opendma", "LastModifiedBy");
 
     /** qualified name of the OpenDMA system property <code>CheckedOut</code> */
     public static final OdmaQName PROPERTY_CHECKEDOUT = new OdmaQName("opendma", "CheckedOut");
@@ -267,14 +272,6 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>Associations</code> */
     public static final OdmaQName PROPERTY_ASSOCIATIONS = new OdmaQName("opendma", "Associations");
 
-    // Property CreatedAt already defined previously
-
-    // Property CreatedBy already defined previously
-
-    // Property LastModifiedAt already defined previously
-
-    // Property LastModifiedBy already defined previously
-
     // -----< class Folder >------------------------------------------------------------------------
 
     /** qualified name of the OpenDMA system class <code>Folder</code> */
@@ -309,14 +306,6 @@ public class OdmaCommonNames {
 
     /** qualified name of the OpenDMA system property <code>Containable</code> */
     public static final OdmaQName PROPERTY_CONTAINABLE = new OdmaQName("opendma", "Containable");
-
-    // Property CreatedAt already defined previously
-
-    // Property CreatedBy already defined previously
-
-    // Property LastModifiedAt already defined previously
-
-    // Property LastModifiedBy already defined previously
 
     /**
      * Empty private constructor to prevent instantiation of this class.
