@@ -39,8 +39,8 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>SuperClass</code> */
     public static final OdmaQName PROPERTY_SUPERCLASS = new OdmaQName("opendma", "SuperClass");
 
-    /** qualified name of the OpenDMA system property <code>Aspects</code> */
-    public static final OdmaQName PROPERTY_ASPECTS = new OdmaQName("opendma", "Aspects");
+    /** qualified name of the OpenDMA system property <code>IncludedAspects</code> */
+    public static final OdmaQName PROPERTY_INCLUDEDASPECTS = new OdmaQName("opendma", "IncludedAspects");
 
     /** qualified name of the OpenDMA system property <code>DeclaredProperties</code> */
     public static final OdmaQName PROPERTY_DECLAREDPROPERTIES = new OdmaQName("opendma", "DeclaredProperties");

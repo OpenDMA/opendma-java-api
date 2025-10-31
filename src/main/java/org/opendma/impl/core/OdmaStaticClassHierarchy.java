@@ -281,7 +281,7 @@ public class OdmaStaticClassHierarchy {
             return true;
         }
         // test aspects
-        Iterable<OdmaClass> aspects = c.getAspects();
+        Iterable<OdmaClass> aspects = c.getIncludedAspects();
         if(aspects != null) {
             Iterator<OdmaClass> itAspects = aspects.iterator();
             while(itAspects.hasNext()) {
@@ -362,7 +362,7 @@ public class OdmaStaticClassHierarchy {
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_NAMESPACE, new OdmaStaticSystemPropertyInfoClassNamespace());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DISPLAYNAME, new OdmaStaticSystemPropertyInfoClassDisplayName());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SUPERCLASS, new OdmaStaticSystemPropertyInfoClassSuperClass());
-        registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECTS, new OdmaStaticSystemPropertyInfoClassAspects());
+        registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_INCLUDEDASPECTS, new OdmaStaticSystemPropertyInfoClassIncludedAspects());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES, new OdmaStaticSystemPropertyInfoClassDeclaredProperties());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_PROPERTIES, new OdmaStaticSystemPropertyInfoClassProperties());
         registerPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECT, new OdmaStaticSystemPropertyInfoClassAspect());
@@ -449,7 +449,7 @@ public class OdmaStaticClassHierarchy {
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_NAMESPACE));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DISPLAYNAME));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SUPERCLASS));
-        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECTS));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_INCLUDEDASPECTS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_PROPERTIES));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECT));
@@ -620,7 +620,7 @@ public class OdmaStaticClassHierarchy {
         getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_CLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_REPOSITORY).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_REPOSITORY));
         getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SUPERCLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
-        getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_ASPECTS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
+        getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_INCLUDEDASPECTS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_PROPERTYINFO));
         getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_PROPERTIES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_PROPERTYINFO));
         getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SUBCLASSES).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));

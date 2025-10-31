@@ -107,16 +107,16 @@ public interface OdmaClass extends OdmaObject {
     OdmaClass getSuperClass();
 
     /**
-     * Returns List of aspects that are implemented by this class.<br/>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
+     * Returns List of aspects that are included in this class.<br/>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INCLUDEDASPECTS).getReferenceIterable()</code>.
      * 
-     * <p>Property opendma:<b>Aspects</b>: Reference to Class (opendma)<br/>
+     * <p>Property opendma:<b>IncludedAspects</b>: Reference to Class (opendma)<br/>
      * [MultiValue] [Writable] [Optional]<br/>
      * If this object describes an Aspect, i.e. the opendma:Aspect property is true, it cannot have any Aspects itself. For classes, this set contains all elements of the opendma:Aspects set of the super class. All opendma:PropertyInfo objects contained in the opendma:Properties set of any of the opendma:Class objects in this set are also part of the opendma:Properties set of this class.</p>
      * 
-     * @return List of aspects that are implemented by this class
+     * @return List of aspects that are included in this class
      */
-    Iterable<OdmaClass> getAspects();
+    Iterable<OdmaClass> getIncludedAspects();
 
     /**
      * Returns List of properties declared by this class.<br/>

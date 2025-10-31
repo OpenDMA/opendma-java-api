@@ -35,7 +35,7 @@ public class OdmaProxyHandler implements InvocationHandler {
         PROPERTY_MAP.put("getDisplayName", new PropertyMapping(OdmaCommonNames.PROPERTY_DISPLAYNAME, OdmaType.STRING, false));
         PROPERTY_MAP.put("setDisplayName", new PropertyMapping(OdmaCommonNames.PROPERTY_DISPLAYNAME, OdmaType.STRING, false));
         PROPERTY_MAP.put("getSuperClass", new PropertyMapping(OdmaCommonNames.PROPERTY_SUPERCLASS, OdmaType.REFERENCE, false));
-        PROPERTY_MAP.put("getAspects", new PropertyMapping(OdmaCommonNames.PROPERTY_ASPECTS, OdmaType.REFERENCE, true));
+        PROPERTY_MAP.put("getIncludedAspects", new PropertyMapping(OdmaCommonNames.PROPERTY_INCLUDEDASPECTS, OdmaType.REFERENCE, true));
         PROPERTY_MAP.put("getDeclaredProperties", new PropertyMapping(OdmaCommonNames.PROPERTY_DECLAREDPROPERTIES, OdmaType.REFERENCE, true));
         PROPERTY_MAP.put("getProperties", new PropertyMapping(OdmaCommonNames.PROPERTY_PROPERTIES, OdmaType.REFERENCE, true));
         PROPERTY_MAP.put("isAspect", new PropertyMapping(OdmaCommonNames.PROPERTY_ASPECT, OdmaType.BOOLEAN, false));

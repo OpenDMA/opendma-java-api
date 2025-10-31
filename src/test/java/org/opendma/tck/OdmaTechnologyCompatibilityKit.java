@@ -192,8 +192,8 @@ public class OdmaTechnologyCompatibilityKit {
             result.add(debugDescribe(cls)+" ABORT class baseline verification");
             return result;
         }
-        if(cls.getAspects() == null) {
-            result.add(debugDescribe(cls)+".getAspects() returns null");
+        if(cls.getIncludedAspects() == null) {
+            result.add(debugDescribe(cls)+".getIncludedAspects() returns null");
         }
         if(cls.getSuperClass() != null) {
             if(cls.isAspect() != cls.getSuperClass().isAspect()) {
@@ -251,26 +251,26 @@ public class OdmaTechnologyCompatibilityKit {
             }
         }
         if(cls.isAspect()) {
-            if(cls.getAspects().iterator().hasNext()) {
+            if(cls.getIncludedAspects().iterator().hasNext()) {
                 result.add(debugDescribe(cls)+" is declared as Aspect but does have aspects itself");
             }
         }
         HashSet<OdmaQName> superClassAspectNames = new HashSet<OdmaQName>();
         if(cls.getSuperClass() != null) {
-            for(OdmaClass superAspect : cls.getSuperClass().getAspects()) {
+            for(OdmaClass superAspect : cls.getSuperClass().getIncludedAspects()) {
                 superClassAspectNames.add(superAspect.getQName());
             }
         }
         HashMap<OdmaQName, OdmaPropertyInfo> aspectProps = new HashMap<OdmaQName, OdmaPropertyInfo>();
         HashMap<OdmaQName, OdmaClass> propNameToAspect = new HashMap<OdmaQName, OdmaClass>();
         HashSet<OdmaQName> aspectNames = new HashSet<OdmaQName>();
-        for(OdmaClass aspect : cls.getAspects()) {
+        for(OdmaClass aspect : cls.getIncludedAspects()) {
             if(!aspect.isAspect()) {
                 result.add(debugDescribe(cls)+" aspect "+debugDescribe(aspect)+" has isAspect()==false");
             }
             if(aspectNames.contains(aspect.getQName())) {
                 result.add(debugDescribe(cls)+" has multiple aspects with same name: "+aspect.getQName());
-                cls.getAspects();
+                cls.getIncludedAspects();
             }
             aspectNames.add(aspect.getQName());
             if(!superClassAspectNames.contains(aspect.getQName())) {
@@ -299,7 +299,7 @@ public class OdmaTechnologyCompatibilityKit {
                 } else {
                 	aspectPropInherited = false;
                     if(cls.getSuperClass() != null) {
-                        for(OdmaClass superAspect : cls.getSuperClass().getAspects()) {
+                        for(OdmaClass superAspect : cls.getSuperClass().getIncludedAspects()) {
                             if(isOrExtends(superAspect.getQName(), aspect)) {
                                 for(OdmaPropertyInfo superAspectProp : superAspect.getProperties()) {
                                     if(superAspectProp.getQName().equals(pi.getQName())) {
@@ -405,14 +405,14 @@ public class OdmaTechnologyCompatibilityKit {
         if(cls.getSuperClass() != null) {
             verifyClassBaseline(cls.getSuperClass(), objectLoopCheck, classLoopCheck);            
         }
-        for(OdmaClass aspect : cls.getAspects()) {
+        for(OdmaClass aspect : cls.getIncludedAspects()) {
             verifyClassBaseline(aspect, objectLoopCheck, classLoopCheck);            
         }
         if(cls.getSuperClass() != null) {
-            for(OdmaClass superAspect : cls.getSuperClass().getAspects()) {
+            for(OdmaClass superAspect : cls.getSuperClass().getIncludedAspects()) {
                 if(!aspectNames.contains(superAspect.getQName())) {
                 	boolean foundExtendingAspect = false;
-                    for(OdmaClass a : cls.getAspects()) {
+                    for(OdmaClass a : cls.getIncludedAspects()) {
                     	foundExtendingAspect |= isOrExtends(superAspect.getQName(), a);
                     }
                 	if(!foundExtendingAspect) {
@@ -1441,119 +1441,119 @@ public class OdmaTechnologyCompatibilityKit {
                 result.add("Property info for opendma:SuperClass in all properties System is not 'true'");
             }
         }
-        // opendma:Aspects
-        OdmaQName qnameAspects = new OdmaQName("opendma","Aspects");
+        // opendma:IncludedAspects
+        OdmaQName qnameIncludedAspects = new OdmaQName("opendma","IncludedAspects");
         try {
-            OdmaProperty propAspects = obj.getProperty(qnameAspects);
-            if(propAspects.getName() == null) {
-                result.add("Property opendma:Aspects qname is null");
+            OdmaProperty propIncludedAspects = obj.getProperty(qnameIncludedAspects);
+            if(propIncludedAspects.getName() == null) {
+                result.add("Property opendma:IncludedAspects qname is null");
             }
-            if(!"opendma".equals(propAspects.getName().getNamespace())) {
-                result.add("Property opendma:Aspects qname namespace is not 'opendma', found instead'"+propAspects.getName().getNamespace()+"'");
+            if(!"opendma".equals(propIncludedAspects.getName().getNamespace())) {
+                result.add("Property opendma:IncludedAspects qname namespace is not 'opendma', found instead'"+propIncludedAspects.getName().getNamespace()+"'");
             }
-            if(!"Aspects".equals(propAspects.getName().getName())) {
-                result.add("Property opendma:Aspects qname name is not 'Aspects', found instead'"+propAspects.getName().getName()+"'");
+            if(!"IncludedAspects".equals(propIncludedAspects.getName().getName())) {
+                result.add("Property opendma:IncludedAspects qname name is not 'IncludedAspects', found instead'"+propIncludedAspects.getName().getName()+"'");
             }
-            if(propAspects.getType() != OdmaType.REFERENCE) {
-                result.add("Property opendma:Aspects type is not 'REFERENCE'");
+            if(propIncludedAspects.getType() != OdmaType.REFERENCE) {
+                result.add("Property opendma:IncludedAspects type is not 'REFERENCE'");
             }
-            if(propAspects.isMultiValue() != true) {
-                result.add("Property opendma:Aspects MultiValue is not 'true'");
+            if(propIncludedAspects.isMultiValue() != true) {
+                result.add("Property opendma:IncludedAspects MultiValue is not 'true'");
             }
-            if(propAspects.getValue() == null) {
-                result.add("Property opendma:Aspects is multi-valued but value is null");
+            if(propIncludedAspects.getValue() == null) {
+                result.add("Property opendma:IncludedAspects is multi-valued but value is null");
             }
         } catch(OdmaPropertyNotFoundException pnfe) {
-            result.add("Missing property opendma:Aspects");
+            result.add("Missing property opendma:IncludedAspects");
         }
         if(clazz != null && (new OdmaQName("opendma","Class")).equals(clazz.getQName())) {
-            OdmaPropertyInfo piDeclaredAspects = null;
+            OdmaPropertyInfo piDeclaredIncludedAspects = null;
             if(declaredProperties != null) {
                 for(OdmaPropertyInfo pi : declaredProperties) {
-                    if(qnameAspects.equals(pi.getQName())) {
-                        if(piDeclaredAspects == null) {
-                            piDeclaredAspects = pi;
+                    if(qnameIncludedAspects.equals(pi.getQName())) {
+                        if(piDeclaredIncludedAspects == null) {
+                            piDeclaredIncludedAspects = pi;
                         } else {
-                            result.add("Declared properties in class have multiple property info objects with qname opendma:Aspects");
+                            result.add("Declared properties in class have multiple property info objects with qname opendma:IncludedAspects");
                         }
                     }
                 }
             }
-            if(piDeclaredAspects == null) {
-                result.add("Declared properties in class have no property info object with qname opendma:Aspects");
+            if(piDeclaredIncludedAspects == null) {
+                result.add("Declared properties in class have no property info object with qname opendma:IncludedAspects");
             }
-            if(piDeclaredAspects != null) {
-                if(!"opendma".equals(piDeclaredAspects.getNamespace())) {
-                    result.add("Property info for opendma:Aspects in declared properties qname namespace is not 'opendma'");
+            if(piDeclaredIncludedAspects != null) {
+                if(!"opendma".equals(piDeclaredIncludedAspects.getNamespace())) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties qname namespace is not 'opendma'");
                 }
-                if(!"Aspects".equals(piDeclaredAspects.getName())) {
-                    result.add("Property info for opendma:Aspects in declared properties qname name is not 'Aspects'");
+                if(!"IncludedAspects".equals(piDeclaredIncludedAspects.getName())) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties qname name is not 'IncludedAspects'");
                 }
-                if(piDeclaredAspects.getDataType() != 10) {
-                    result.add("Property info for opendma:Aspects in declared properties data type is not '10'");
+                if(piDeclaredIncludedAspects.getDataType() != 10) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties data type is not '10'");
                 }
-                if(piDeclaredAspects.isMultiValue() != true) {
-                    result.add("Property info for opendma:Aspects in declared properties MultiValue is not 'true'");
+                if(piDeclaredIncludedAspects.isMultiValue() != true) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties MultiValue is not 'true'");
                 }
-                if(piDeclaredAspects.isReadOnly() != false) {
-                    result.add("Property info for opendma:Aspects in declared properties ReadOnly is not 'false'");
+                if(piDeclaredIncludedAspects.isReadOnly() != false) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties ReadOnly is not 'false'");
                 }
-                if(!(new OdmaQName("opendma","Class")).equals(piDeclaredAspects.getReferenceClass().getQName())) {
-                    result.add("Property info for opendma:Aspects in declared properties ReadOnly is not 'false'");
+                if(!(new OdmaQName("opendma","Class")).equals(piDeclaredIncludedAspects.getReferenceClass().getQName())) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties ReadOnly is not 'false'");
                 }
-                if(piDeclaredAspects.isHidden() != false) {
-                    result.add("Property info for opendma:Aspects in declared properties Hidden is not 'false'");
+                if(piDeclaredIncludedAspects.isHidden() != false) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties Hidden is not 'false'");
                 }
-                if(piDeclaredAspects.isRequired() != false) {
-                result.add("Property info for opendma:Aspects in declared properties Required is not 'false'");
+                if(piDeclaredIncludedAspects.isRequired() != false) {
+                result.add("Property info for opendma:IncludedAspects in declared properties Required is not 'false'");
                 }
-                if(piDeclaredAspects.isSystem() != true) {
-                    result.add("Property info for opendma:Aspects in declared properties System is not 'true'");
+                if(piDeclaredIncludedAspects.isSystem() != true) {
+                    result.add("Property info for opendma:IncludedAspects in declared properties System is not 'true'");
                 }
             }
         }
-        OdmaPropertyInfo piAllAspects = null;
+        OdmaPropertyInfo piAllIncludedAspects = null;
         if(allProperties != null) {
             for(OdmaPropertyInfo pi : allProperties) {
-                if(qnameAspects.equals(pi.getQName())) {
-                    if(piAllAspects == null) {
-                        piAllAspects = pi;
+                if(qnameIncludedAspects.equals(pi.getQName())) {
+                    if(piAllIncludedAspects == null) {
+                        piAllIncludedAspects = pi;
                     } else {
-                        result.add("All properties in class have multiple property info objects with qname opendma:Aspects");
+                        result.add("All properties in class have multiple property info objects with qname opendma:IncludedAspects");
                     }
                 }
             }
         }
-        if(piAllAspects == null) {
-            result.add("All properties in class have no property info object with qname opendma:Aspects");
+        if(piAllIncludedAspects == null) {
+            result.add("All properties in class have no property info object with qname opendma:IncludedAspects");
         }
-        if(piAllAspects != null) {
-            if(!"opendma".equals(piAllAspects.getNamespace())) {
-                result.add("Property info for opendma:Aspects in all properties qname namespace is not 'opendma'");
+        if(piAllIncludedAspects != null) {
+            if(!"opendma".equals(piAllIncludedAspects.getNamespace())) {
+                result.add("Property info for opendma:IncludedAspects in all properties qname namespace is not 'opendma'");
             }
-            if(!"Aspects".equals(piAllAspects.getName())) {
-                result.add("Property info for opendma:Aspects in all properties qname name is not 'Aspects'");
+            if(!"IncludedAspects".equals(piAllIncludedAspects.getName())) {
+                result.add("Property info for opendma:IncludedAspects in all properties qname name is not 'IncludedAspects'");
             }
-            if(piAllAspects.getDataType() != 10) {
-                result.add("Property info for opendma:Aspects in all properties data type is not '10'");
+            if(piAllIncludedAspects.getDataType() != 10) {
+                result.add("Property info for opendma:IncludedAspects in all properties data type is not '10'");
             }
-            if(piAllAspects.isMultiValue() != true) {
-                result.add("Property info for opendma:Aspects in all properties MultiValue is not 'true'");
+            if(piAllIncludedAspects.isMultiValue() != true) {
+                result.add("Property info for opendma:IncludedAspects in all properties MultiValue is not 'true'");
             }
-            if(piAllAspects.isReadOnly() != false) {
-                result.add("Property info for opendma:Aspects in all properties ReadOnly is not 'false'");
+            if(piAllIncludedAspects.isReadOnly() != false) {
+                result.add("Property info for opendma:IncludedAspects in all properties ReadOnly is not 'false'");
             }
-            if(!(new OdmaQName("opendma","Class")).equals(piAllAspects.getReferenceClass().getQName())) {
-                result.add("Property info for opendma:Aspects in all properties ReadOnly is not 'false'");
+            if(!(new OdmaQName("opendma","Class")).equals(piAllIncludedAspects.getReferenceClass().getQName())) {
+                result.add("Property info for opendma:IncludedAspects in all properties ReadOnly is not 'false'");
             }
-            if(piAllAspects.isHidden() != false) {
-                result.add("Property info for opendma:Aspects in all properties Hidden is not 'false'");
+            if(piAllIncludedAspects.isHidden() != false) {
+                result.add("Property info for opendma:IncludedAspects in all properties Hidden is not 'false'");
             }
-            if(piAllAspects.isRequired() != false) {
-                result.add("Property info for opendma:Aspects in all properties Required is not 'false'");
+            if(piAllIncludedAspects.isRequired() != false) {
+                result.add("Property info for opendma:IncludedAspects in all properties Required is not 'false'");
             }
-            if(piAllAspects.isSystem() != true) {
-                result.add("Property info for opendma:Aspects in all properties System is not 'true'");
+            if(piAllIncludedAspects.isSystem() != true) {
+                result.add("Property info for opendma:IncludedAspects in all properties System is not 'true'");
             }
         }
         // opendma:DeclaredProperties

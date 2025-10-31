@@ -35,7 +35,7 @@ public abstract class OdmaStaticSystemClass extends OdmaStaticSystemObject imple
                 props.add(itSuperClassProps.next());
             }
         }
-        for(OdmaClass aspect : getAspects()) {
+        for(OdmaClass aspect : getIncludedAspects()) {
             Iterable<OdmaPropertyInfo> aspectProps = aspect.getProperties();
             Iterator<OdmaPropertyInfo> itAspectProps = aspectProps.iterator();
             while(itAspectProps.hasNext()) {
@@ -224,19 +224,19 @@ public abstract class OdmaStaticSystemClass extends OdmaStaticSystemObject imple
     }
 
     /**
-     * Returns List of aspects that are implemented by this class.<br>
-     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
+     * Returns List of aspects that are included in this class.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_INCLUDEDASPECTS).getReferenceIterable()</code>.
      * 
-     * <p>Property opendma:<b>Aspects</b>: Reference to Class (opendma)<br/>
+     * <p>Property opendma:<b>IncludedAspects</b>: Reference to Class (opendma)<br/>
      * [MultiValue] [Writable] [Optional]<br/>
      * If this object describes an Aspect, i.e. the opendma:Aspect property is true, it cannot have any Aspects itself. For classes, this set contains all elements of the opendma:Aspects set of the super class. All opendma:PropertyInfo objects contained in the opendma:Properties set of any of the opendma:Class objects in this set are also part of the opendma:Properties set of this class.</p>
      * 
-     * @return List of aspects that are implemented by this class
+     * @return List of aspects that are included in this class
      */
      @SuppressWarnings("unchecked")
-    public Iterable<OdmaClass> getAspects() {
+    public Iterable<OdmaClass> getIncludedAspects() {
         try {
-            return (Iterable<OdmaClass>)getProperty(OdmaCommonNames.PROPERTY_ASPECTS).getReferenceIterable();
+            return (Iterable<OdmaClass>)getProperty(OdmaCommonNames.PROPERTY_INCLUDEDASPECTS).getReferenceIterable();
         }
         catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
