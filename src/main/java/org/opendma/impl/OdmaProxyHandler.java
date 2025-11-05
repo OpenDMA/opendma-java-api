@@ -25,6 +25,7 @@ public class OdmaProxyHandler implements InvocationHandler {
 
     static {
         PROPERTY_MAP.put("getOdmaClass", new PropertyMapping(OdmaCommonNames.PROPERTY_CLASS, OdmaType.REFERENCE, false));
+        PROPERTY_MAP.put("getAspects", new PropertyMapping(OdmaCommonNames.PROPERTY_ASPECTS, OdmaType.REFERENCE, true));
         PROPERTY_MAP.put("getId", new PropertyMapping(OdmaCommonNames.PROPERTY_ID, OdmaType.ID, false));
         PROPERTY_MAP.put("getGuid", new PropertyMapping(OdmaCommonNames.PROPERTY_GUID, OdmaType.GUID, false));
         PROPERTY_MAP.put("getRepository", new PropertyMapping(OdmaCommonNames.PROPERTY_REPOSITORY, OdmaType.REFERENCE, false));

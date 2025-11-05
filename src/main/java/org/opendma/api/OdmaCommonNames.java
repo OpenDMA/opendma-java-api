@@ -13,6 +13,9 @@ public class OdmaCommonNames {
     /** qualified name of the OpenDMA system property <code>Class</code> */
     public static final OdmaQName PROPERTY_CLASS = new OdmaQName("opendma", "Class");
 
+    /** qualified name of the OpenDMA system property <code>Aspects</code> */
+    public static final OdmaQName PROPERTY_ASPECTS = new OdmaQName("opendma", "Aspects");
+
     /** qualified name of the OpenDMA system property <code>Id</code> */
     public static final OdmaQName PROPERTY_ID = new OdmaQName("opendma", "Id");
 

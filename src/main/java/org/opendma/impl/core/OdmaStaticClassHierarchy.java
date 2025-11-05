@@ -355,6 +355,7 @@ public class OdmaStaticClassHierarchy {
         OdmaStaticSystemClass ssc;
 
         registerPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_CLASS, new OdmaStaticSystemPropertyInfoObjectClass());
+        registerPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_ASPECTS, new OdmaStaticSystemPropertyInfoObjectAspects());
         registerPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_ID, new OdmaStaticSystemPropertyInfoObjectId());
         registerPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_GUID, new OdmaStaticSystemPropertyInfoObjectGuid());
         registerPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_REPOSITORY, new OdmaStaticSystemPropertyInfoObjectRepository());
@@ -437,6 +438,7 @@ public class OdmaStaticClassHierarchy {
         declaredAspects = new ArrayList<OdmaClass>();
         declaredProperties = new ArrayList<OdmaPropertyInfo>();
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_CLASS));
+        declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_ASPECTS));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_ID));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_GUID));
         declaredProperties.add(getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_REPOSITORY));
@@ -618,6 +620,7 @@ public class OdmaStaticClassHierarchy {
         }
 
         getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_CLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
+        getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_ASPECTS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.CLASS_OBJECT, OdmaCommonNames.PROPERTY_REPOSITORY).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_REPOSITORY));
         getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_SUPERCLASS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));
         getPropertyInfo(OdmaCommonNames.CLASS_CLASS, OdmaCommonNames.PROPERTY_INCLUDEDASPECTS).patchReferenceClass(getClassInfo(OdmaCommonNames.CLASS_CLASS));

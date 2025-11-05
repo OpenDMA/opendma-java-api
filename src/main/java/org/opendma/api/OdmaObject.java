@@ -19,6 +19,18 @@ public interface OdmaObject extends OdmaCoreObject {
     OdmaClass getOdmaClass();
 
     /**
+     * Returns References to valid aspect objects describing this object.<br/>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
+     * 
+     * <p>Property opendma:<b>Aspects</b>: Reference to Class (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]<br/>
+     * The opendma:Aspects can augment the layout and features defined by opendma:Class for this object.</p>
+     * 
+     * @return References to valid aspect objects describing this object
+     */
+    Iterable<OdmaClass> getAspects();
+
+    /**
      * Returns the unique object identifier.<br/>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ID).getId()</code>.
      * 

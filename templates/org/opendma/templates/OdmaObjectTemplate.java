@@ -162,6 +162,32 @@ public class OdmaObjectTemplate implements OdmaObject {
     }
 
     /**
+     * Returns References to valid aspect objects describing this object.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
+     * 
+     * <p>Property opendma:<b>Aspects</b>: Reference to Class (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]<br/>
+     * The opendma:Aspects can augment the layout and features defined by opendma:Class for this object.</p>
+     * 
+     * @return References to valid aspect objects describing this object
+     */
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaClass> getAspects() {
+        try {
+            return (Iterable<OdmaClass>)getProperty(OdmaCommonNames.PROPERTY_ASPECTS).getReferenceIterable();
+        }
+        catch(ClassCastException cce) {
+            throw new OdmaRuntimeException("Invalid data type of system property",cce);
+        }
+        catch(OdmaInvalidDataTypeException oidte) {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaPropertyNotFoundException oonfe) {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
      * Returns the unique object identifier.<br>
      * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ID).getId()</code>.
      * 

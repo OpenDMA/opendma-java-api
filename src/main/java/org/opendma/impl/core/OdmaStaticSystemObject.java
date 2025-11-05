@@ -1,5 +1,7 @@
 package org.opendma.impl.core;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,6 +28,7 @@ public class OdmaStaticSystemObject implements OdmaCoreObject {
     protected OdmaStaticSystemObject() {
         // properties of opendma.org Object
         properties.put(OdmaCommonNames.PROPERTY_CLASS,null);
+        properties.put(OdmaCommonNames.PROPERTY_ASPECTS,null);
         properties.put(OdmaCommonNames.PROPERTY_ID,null);
         properties.put(OdmaCommonNames.PROPERTY_GUID,null);
         properties.put(OdmaCommonNames.PROPERTY_REPOSITORY,null);
@@ -33,6 +36,7 @@ public class OdmaStaticSystemObject implements OdmaCoreObject {
 
     protected void patchClass(OdmaClass newClass) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
         properties.put(OdmaCommonNames.PROPERTY_CLASS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_CLASS,newClass,OdmaType.REFERENCE,false,true));
+        properties.put(OdmaCommonNames.PROPERTY_ASPECTS,OdmaPropertyImpl.fromValue(OdmaCommonNames.PROPERTY_ASPECTS,Collections.unmodifiableList(new ArrayList<OdmaClass>(0)),OdmaType.REFERENCE,true,true));
     }
 
     protected void patchIds(OdmaId newId, OdmaGuid newGuid) throws OdmaInvalidDataTypeException, OdmaAccessDeniedException {
@@ -149,6 +153,14 @@ public class OdmaStaticSystemObject implements OdmaCoreObject {
             }
             test = test.getSuperClass();
         }
+        for(OdmaClass testAspect : getAspects()) {
+            while(testAspect != null) {
+                if(testAspect.getQName().equals(classOrAspectName)) {
+                    return true;
+                }
+                testAspect = testAspect.getSuperClass();
+            }
+        }
         return false;
     }
 
@@ -204,6 +216,32 @@ public class OdmaStaticSystemObject implements OdmaCoreObject {
     public OdmaClass getOdmaClass() {
         try {
             return (OdmaClass)getProperty(OdmaCommonNames.PROPERTY_CLASS).getReference();
+        }
+        catch(ClassCastException cce) {
+            throw new OdmaRuntimeException("Invalid data type of system property",cce);
+        }
+        catch(OdmaInvalidDataTypeException oidte) {
+            throw new OdmaRuntimeException("Invalid data type of system property",oidte);
+        }
+        catch(OdmaPropertyNotFoundException oonfe) {
+            throw new OdmaRuntimeException("Predefined system property missing",oonfe);
+        }
+    }
+
+    /**
+     * Returns References to valid aspect objects describing this object.<br>
+     * Shortcut for <code>getProperty(OdmaTypes.PROPERTY_ASPECTS).getReferenceIterable()</code>.
+     * 
+     * <p>Property opendma:<b>Aspects</b>: Reference to Class (opendma)<br/>
+     * [MultiValue] [ReadOnly] [Optional]<br/>
+     * The opendma:Aspects can augment the layout and features defined by opendma:Class for this object.</p>
+     * 
+     * @return References to valid aspect objects describing this object
+     */
+     @SuppressWarnings("unchecked")
+    public Iterable<OdmaClass> getAspects() {
+        try {
+            return (Iterable<OdmaClass>)getProperty(OdmaCommonNames.PROPERTY_ASPECTS).getReferenceIterable();
         }
         catch(ClassCastException cce) {
             throw new OdmaRuntimeException("Invalid data type of system property",cce);
