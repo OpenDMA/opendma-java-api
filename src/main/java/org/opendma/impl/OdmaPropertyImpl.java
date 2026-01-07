@@ -121,6 +121,8 @@ public class OdmaPropertyImpl implements OdmaProperty {
      * @param readOnly
      *     Flag if this property is read only.
      * 
+     * @return the constructed <code>OdmaPropertyImpl</code> with the given value.
+     * 
      * @throws OdmaInvalidDataTypeException
      *             if and only if the Class of the given Object does not match
      *             the data type of this property
@@ -147,9 +149,7 @@ public class OdmaPropertyImpl implements OdmaProperty {
      * @param readOnly
      *     Flag if this property is read only.
      * 
-     * @throws OdmaInvalidDataTypeException
-     *             if and only if the Class of the given Object does not match
-     *             the data type of this property
+     * @return the constructed <code>OdmaPropertyImpl</code> with the given <code>OdmaLazyPropertyValueProvider</code>.
      */
     public static OdmaPropertyImpl fromValueProvider(OdmaQName name, OdmaLazyPropertyValueProvider valueProvider, OdmaType dataType, boolean multiValue, boolean readOnly) {
         try {
@@ -174,8 +174,6 @@ public class OdmaPropertyImpl implements OdmaProperty {
      * class.
      * 
      * @return the numeric identifier of the data type of this property.
-     * 
-     * @see org.opendma.OdmaTypes
      */
     public OdmaType getType() {
         return dataType;

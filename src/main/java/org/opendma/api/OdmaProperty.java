@@ -12,7 +12,7 @@ import java.util.Date;
  * <code>{@link #isReadOnly()}</code> returns <code>false</code>), it can
  * change its value by calling the <code>{@link #setValue(Object)}</code>
  * method. Changes are only persisted in the repository after a call to the
- * <code>{@link #save()}</code> method of the containing object.
+ * <code>save()</code> method of the containing object.
  */
 public interface OdmaProperty {
 
@@ -29,8 +29,6 @@ public interface OdmaProperty {
      * class.
      * 
      * @return the data type of this property.
-     * 
-     * @see org.opendma.OdmaTypes
      */
     public OdmaType getType();
 
