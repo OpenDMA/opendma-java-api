@@ -5,7 +5,7 @@
 
     <groupId>org.opendma</groupId>
     <artifactId>opendma-api</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <version>0.8</version>
     <name>OpenDMA API</name>
     <description>Java API for OpenDMA</description>
     <url>https://opendma.org</url>
@@ -21,7 +21,7 @@
         <connection>scm:git:git://github.com/OpenDMA/opendma-java-api.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/OpenDMA/opendma-java-api.git</developerConnection>
         <url>https://github.com/OpenDMA/opendma-java-api</url>
-        <tag>HEAD</tag>
+        <tag>0.8</tag>
     </scm>
 
     <issueManagement>
